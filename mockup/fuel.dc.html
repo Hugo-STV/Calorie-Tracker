@@ -1774,7 +1774,8 @@ class Component extends DCLogic {
     if (['sug', 'sat', 'na'].filter((k) => per[k] != null).length < 2) return { rated: false, why: 'Not rated: the label data is missing sugar, saturated fat or sodium.' };
     const bev = food.bev != null ? food.bev : (grp === 'Drinks' && !/milk|yog|kefir|smoothie/.test(name));
     const water = bev && /\bwater\b/.test(name) && per.k < 1 && !(food.additives || []).length;
-    const fv = ['Fruit', 'Vegetables', 'Beans & legumes', 'Nuts & seeds'].includes(grp) || (bev && /juice/.test(name)) ? 100 : 0;
+    // fruit/veg/legume share: from the product's ingredients when known, else estimated from its food group
+    const fv = food.fv != null ? food.fv : (['Fruit', 'Vegetables', 'Beans & legumes', 'Nuts & seeds'].includes(grp) || (bev && /juice/.test(name)) ? 100 : 0);
     const kj = per.k * 4.184, sug = per.sug || 0, sat = per.sat || 0, na = per.na || 0, fib = per.fib || 0, pro = per.p || 0, fat = per.f || 0;
     const st = (v, arr) => arr.filter((t) => v > t).length;
     const T10 = [90, 180, 270, 360, 450, 540, 630, 720, 810, 900];
@@ -1796,6 +1797,13 @@ class Component extends DCLogic {
       pts = (N >= 11 && fvp < 5 && !cheese) ? N - fi - fvp : N - fi - pr - fvp;
       grade = pts <= -1 ? 'A' : pts <= 2 ? 'B' : pts <= 10 ? 'C' : pts <= 18 ? 'D' : 'E';
       ns = Math.max(0, Math.min(100, 100 - (pts + 11) * 2.5));
+    }
+    // packaged products: use the official Nutri-Score when the database has one (it uses the full ingredient list)
+    if (food.nsGrade && /^[a-e]$/i.test(food.nsGrade)) {
+      grade = food.nsGrade.toUpperCase();
+      if (food.nsPoints != null && !isNaN(food.nsPoints)) { pts = +food.nsPoints; ns = bev ? (water ? 100 : Math.max(0, Math.min(100, 100 - Math.max(0, pts) * 6))) : Math.max(0, Math.min(100, 100 - (pts + 11) * 2.5)); }
+      const band = { A: [75, 100], B: [62, 82], C: [42, 66], D: [24, 46], E: [0, 28] }[grade];
+      ns = Math.max(band[0], Math.min(band[1], ns));
     }
     const adds = (food.additives || []).map((c) => { const a = this.ADD[c] || ['Additive', 1]; return { code: c, name: a[0], r: a[1] }; });
     let score = ns;

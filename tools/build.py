@@ -100,25 +100,48 @@ t = once(t, '  <span class="lbl">Try a demo product</span>', '''  <sc-if value="
 t = once_re(t, r'(<div style="width: 88px; height: 88px; border-radius: 20px; background: \{\{pr.tileBg\}\}; display: flex; align-items: center; justify-content: center; flex: none">)(<svg.*?</svg>)(</div>)',
             r'\1<sc-if value="{{pr.hasImg}}" hint-placeholder-val="{{ false }}"><img src="{{pr.img}}" alt="" style="width: 88px; height: 88px; object-fit: contain; border-radius: 20px; background: #FFFFFF"></sc-if><sc-if value="{{pr.noImg}}" hint-placeholder-val="{{ true }}">\2</sc-if>\3', 'product photo')
 
+# product page: nutrition table and "fill in missing values"
+t = once(t, '<p class="muted small" style="margin: 16px 4px 0; line-height: 1.5">{{pr.note}}</p>', '''<sc-if value="{{pr.hasFacts}}" hint-placeholder-val="{{ true }}">
+      <div class="row" style="margin: 20px 4px 8px"><h2 class="h2">Nutrition facts</h2><span class="muted small">{{pr.factsBasis}}</span></div>
+      <div class="card" style="padding: 2px 16px">
+        <sc-for list="{{pr.facts}}" as="fa" hint-placeholder-count="8"><div class="row" style="padding: 9px 0; border-bottom: 1px solid #23272E; font-size: 14px"><span style="padding-left: {{fa.pad}}px; color: {{fa.lc}}">{{fa.l}}</span><span style="color: {{fa.vc}}">{{fa.v}}</span></div></sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{pr.canFix}}" hint-placeholder-val="{{ false }}">
+      <div class="card" style="margin-top: 12px">
+        <p style="margin: 0 0 12px; font-size: 14px; line-height: 1.5">{{pr.fixText}}</p>
+        <button type="button" class="btn" style="width: 100%" onClick="{{pr.fix}}">Fill in missing values</button>
+        <button type="button" onClick="{{pr.openOff}}" style="width: 100%; min-height: 44px; margin-top: 6px; border: 0; background: none; color: #C8F25C; font: inherit; font-weight: 600; cursor: pointer">Improve it on Open Food Facts ↗</button>
+      </div>
+    </sc-if>
+    <p class="muted small" style="margin: 16px 4px 0; line-height: 1.5">{{pr.note}}</p>''', 'nutrition facts')
+
 # search: packaged products from Open Food Facts
 FIT = '''      <div class="fitem">
         <button type="button" class="fname" onClick="{{f.open}}"><span style="display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600">{{f.name}}<span class="tag">{{f.tag}}</span></span><span class="muted" style="font-size: 13px; display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{f.dot}}; flex: none"></span>{{f.brand}} · {{f.kcalTxt}}</span></button>
         <button type="button" class="plus" aria-label="Add {{f.name}}" onClick="{{f.quick}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
       </div>'''
+ROW = re.search(r'<sc-for list="\{\{results\}\}" as="f" hint-placeholder-count="5">(.*?)</sc-for>', t, re.S).group(1).strip('\n')
 t = once(t, '  </sc-if>\n\n  <sc-if value="{{showAll}}"', '''    <div style="margin: 14px 0 4px">
       <sc-if value="{{off.canSearch}}" hint-placeholder-val="{{ true }}"><button type="button" class="btn ghost" style="width: 100%; height: auto; min-height: 52px; padding: 10px 18px; font-size: 15px" onClick="{{off.search}}">{{off.label}}</button></sc-if>
-      <sc-if value="{{off.busy}}" hint-placeholder-val="{{ false }}"><p class="muted small" role="status">Searching Open Food Facts…</p></sc-if>
+      <sc-if value="{{off.busy}}" hint-placeholder-val="{{ false }}"><p class="muted small" role="status">Searching about 3 million packaged products…</p></sc-if>
       <sc-if value="{{off.err}}" hint-placeholder-val="{{ false }}"><p role="alert" style="color: #FFA866; font-size: 13px">{{off.errText}}</p></sc-if>
       <sc-if value="{{off.hasRes}}" hint-placeholder-val="{{ false }}">
-        <div class="muted small" style="margin: 10px 0">{{off.count}}</div>
+        <div style="margin: 16px 0 10px; font-weight: 700; font-size: 15px">{{off.count}}</div>
         <sc-for list="{{off.results}}" as="f" hint-placeholder-count="5">
 ''' + FIT + '''
         </sc-for>
       </sc-if>
     </div>
+    <sc-if value="{{hasMore}}" hint-placeholder-val="{{ false }}">
+      <div style="margin: 18px 0 10px; font-weight: 700; font-size: 15px">More generic foods</div>
+      <sc-for list="{{moreResults}}" as="f" hint-placeholder-count="5">
+__RESULT_ROW__
+      </sc-for>
+    </sc-if>
   </sc-if>
 
-  <sc-if value="{{showAll}}"''', 'packaged product search')
+  <sc-if value="{{showAll}}"'''.replace('__RESULT_ROW__', ROW), 'packaged product search')
 
 # ---- logic patches -------------------------------------------------------------------------
 L = logic

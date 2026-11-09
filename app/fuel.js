@@ -71,13 +71,13 @@
 
   // ---- Open Food Facts -------------------------------------------------------------------
   const OFF = 'https://world.openfoodfacts.org';
-  const OFF_FIELDS = 'code,product_name,generic_name,brands,nutriments,serving_size,serving_quantity,additives_tags,nova_group,labels_tags,categories_tags,image_front_small_url,product_quantity,quantity';
+  const OFF_FIELDS = 'code,nutriscore_grade,nutriscore_score,nutrition_data_per,product_name,generic_name,brands,nutriments,serving_size,serving_quantity,additives_tags,nova_group,labels_tags,categories_tags,image_front_small_url,product_quantity,quantity';
   const OFF_GROUPS = [
     [['en:breakfast-cereals'], 'Breakfast cereals'], [['en:cheeses', 'en:yogurts', 'en:dairies', 'en:eggs', 'en:milks'], 'Dairy & eggs'],
     [['en:beverages', 'en:waters', 'en:sodas', 'en:juices'], 'Drinks'], [['en:fats', 'en:vegetable-oils', 'en:butters', 'en:margarines'], 'Fats & oils'],
     [['en:sausages', 'en:hams', 'en:prepared-meats', 'en:bacons'], 'Sausages & deli meats'], [['en:poultries', 'en:chickens'], 'Poultry'],
     [['en:fishes', 'en:seafood', 'en:canned-fishes'], 'Fish & seafood'], [['en:meats'], 'Beef'], [['en:legumes', 'en:beans'], 'Beans & legumes'],
-    [['en:nuts', 'en:seeds', 'en:nut-butters'], 'Nuts & seeds'], [['en:fresh-fruits', 'en:fruits'], 'Fruit'], [['en:fresh-vegetables', 'en:vegetables'], 'Vegetables'],
+    [['en:nuts', 'en:seeds', 'en:nut-butters'], 'Nuts & seeds'], [['en:fresh-fruits', 'en:fruits', 'en:fruits-based-foods', 'en:compotes', 'en:fruit-purees', 'en:dried-fruits'], 'Fruit'], [['en:fresh-vegetables', 'en:vegetables', 'en:vegetables-based-foods'], 'Vegetables'],
     [['en:confectioneries', 'en:chocolates', 'en:candies', 'en:sweet-spreads'], 'Sweets'], [['en:biscuits-and-cakes', 'en:breads', 'en:pastries', 'en:viennoiseries'], 'Baked goods'],
     [['en:salty-snacks', 'en:chips-and-fries', 'en:crisps', 'en:snacks', 'en:protein-bars', 'en:bars'], 'Snacks'], [['en:pastas', 'en:rices', 'en:cereals-and-their-products'], 'Grains & pasta'],
     [['en:soups', 'en:sauces', 'en:condiments'], 'Soups & sauces'], [['en:meals', 'en:prepared-meals'], 'Meals & sides']
@@ -294,15 +294,29 @@
     }
     offToFood(p, scanned) {
       const n = p.nutriments || {};
-      const g = (k) => { const v = n[k + '_100g']; return v == null || v === '' || isNaN(+v) ? null : +v; };
+      const num = (v) => v == null || v === '' || isNaN(+v) ? null : +v;
+      const g = (k) => num(n[k + '_100g']);
+      const gs = (k) => num(n[k + '_serving']);
       const cats = p.categories_tags || [];
       const isDrink = (cats.includes('en:beverages') || cats.includes('en:waters')) && !cats.some((c) => /dairies|milks|yogurt/.test(c));
-      let kcal = g('energy-kcal'); if (kcal == null && g('energy') != null) kcal = g('energy') / 4.184;
-      let na = g('sodium') != null ? g('sodium') * 1000 : (g('salt') != null ? g('salt') * 400 : null);
-      const per = kcal == null ? null : { k: kcal, p: g('proteins'), c: g('carbohydrates'), f: g('fat'), fib: g('fiber'), sug: g('sugars'), sat: g('saturated-fat'), na, ch: null, po: null };
+      // values per 100 g, or per serving (common for US/Canadian products) converted when the serving weight is known
+      const readSet = (get) => {
+        let k = get('energy-kcal'); if (k == null && get('energy-kj') != null) k = get('energy-kj') / 4.184; if (k == null && get('energy') != null) k = get('energy') / 4.184;
+        const na = get('sodium') != null ? get('sodium') * 1000 : (get('salt') != null ? get('salt') * 400 : null);
+        return { k, p: get('proteins'), c: get('carbohydrates'), f: get('fat'), fib: get('fiber'), sug: get('sugars'), sat: get('saturated-fat'), na, ch: null, po: null };
+      };
+      // serving weight: the field, else grams/ml written in the serving text ("4 cookies (30 g)")
+      const svm = String(p.serving_size || '').match(/(\d+(?:[.,]\d+)?)\s*(g|gr|ml)\b/i);
+      const sv = +p.serving_quantity || (svm ? +svm[1].replace(',', '.') : 0);
+      const p100 = readSet(g), psv = readSet(gs);
+      const filled = (o) => Object.keys(o).filter((k) => o[k] != null).length;
+      let per = null, perServ = null;
+      if (p100.k != null && filled(p100) >= filled(psv)) per = p100;
+      else if (psv.k != null && sv > 0) { per = {}; Object.keys(psv).forEach((k) => { per[k] = psv[k] == null ? null : psv[k] * 100 / sv; }); }
+      else if (psv.k != null) perServ = psv;
+      else if (p100.k != null) per = p100;
       const unit = isDrink ? 'ml' : 'g';
       const units = [];
-      const sv = +p.serving_quantity;
       if (sv > 0) units.push({ label: (p.serving_size ? String(p.serving_size).replace(/\s*\(.*\)\s*$/, '') : '1 serving') + ' (' + Math.round(sv) + ' ' + unit + ')', g: sv });
       units.push({ label: '100 ' + unit, g: 100 });
       const pq = +p.product_quantity;
@@ -314,11 +328,16 @@
       const labels = p.labels_tags || [];
       const code = String(p.code || scanned);
       const u = units[0];
+      const fvRaw = num(n['fruits-vegetables-legumes-estimate-from-ingredients_100g']) ?? num(n['fruits-vegetables-nuts-estimate-from-ingredients_100g']) ?? num(n['fruits-vegetables-nuts_100g']);
       const food = {
         id: 'o' + code, code, name: (p.product_name || p.generic_name || 'Unnamed product').trim(), brand: (p.brands || '').split(',')[0].trim() || 'Packaged product',
         src: 'Open Food Facts', tag: regionOf(code), region: regionOf(code), verified: false, img: p.image_front_small_url || '', grp, bev: isDrink,
-        additives, organic: labels.some((l) => /organic|bio/.test(l)), nova: +p.nova_group || null, per100: per, units, incomplete: !per,
-        serving: u.label, kcal: per ? Math.round(per.k * u.g / 100) : 0, p: per ? Math.round((per.p || 0) * u.g) / 100 : 0, c: per ? Math.round((per.c || 0) * u.g) / 100 : 0, f: per ? Math.round((per.f || 0) * u.g) / 100 : 0,
+        additives, organic: labels.some((l) => /organic|bio/.test(l)), nova: +p.nova_group || null, per100: per, units: per ? units : null, incomplete: !per && !perServ, perServ,
+        fv: fvRaw, nsGrade: /^[a-e]$/.test(p.nutriscore_grade || '') ? p.nutriscore_grade : null, nsPoints: num(p.nutriscore_score),
+        serving: per ? u.label : (p.serving_size || '1 serving'),
+        kcal: per ? Math.round(per.k * u.g / 100) : perServ ? Math.round(perServ.k) : 0,
+        p: per ? Math.round((per.p || 0) * u.g) / 100 : perServ ? perServ.p || 0 : 0, c: per ? Math.round((per.c || 0) * u.g) / 100 : perServ ? perServ.c || 0 : 0, f: per ? Math.round((per.f || 0) * u.g) / 100 : perServ ? perServ.f || 0 : 0,
+        fib: perServ ? perServ.fib : undefined, sug: perServ ? perServ.sug : undefined, sat: perServ ? perServ.sat : undefined, na: perServ ? perServ.na : undefined,
         cat: grp === 'Drinks' && /beer|wine|spirit|alcohol/.test(cats.join(' ')) ? 'alcohol' : undefined
       };
       if (food.cat === 'alcohol') food.alcohol = true;
@@ -338,13 +357,20 @@
     async searchOff() {
       const q = (this.state.query || '').trim();
       if (!q || this.state.offBusy) return;
-      if (!navigator.onLine) { this.setState({ offErr: 'You\'re offline. Packaged products need a connection.' }); return; }
+      this.offCache = this.offCache || {};
+      if (this.offCache[q]) { this.setState({ offRes: this.offCache[q], offQ: q, offErr: '' }); return; }
+      if (!navigator.onLine) { this.setState({ offErr: 'You\'re offline. Packaged products need a connection.', offQ: q }); return; }
       this.setState({ offBusy: true, offErr: '', offRes: null, offQ: q });
       try {
-        const j = await this.offGet(OFF + '/cgi/search.pl?search_terms=' + encodeURIComponent(q) + '&search_simple=1&action=process&json=1&page_size=24&fields=' + OFF_FIELDS);
-        const res = ((j && j.products) || []).filter((p) => p.product_name).map((p) => this.offToFood(p, p.code));
+        const j = await this.offGet(OFF + '/cgi/search.pl?search_terms=' + encodeURIComponent(q) + '&search_simple=1&action=process&json=1&page_size=30&fields=' + OFF_FIELDS);
+        const res = ((j && j.products) || []).filter((p) => p.product_name).map((p) => this.offToFood(p, p.code))
+          .sort((a, b) => (a.per100 ? 0 : a.perServ ? 1 : 2) - (b.per100 ? 0 : b.perServ ? 1 : 2));
+        this.offCache[q] = res;
         this.setState({ offBusy: false, offRes: res });
-      } catch (e) { this.setState({ offBusy: false, offErr: 'Open Food Facts didn\'t answer. Try again in a minute.' }); }
+      } catch (e) {
+        const limited = String(e && e.message).includes('429');
+        this.setState({ offBusy: false, offErr: limited ? 'Open Food Facts allows about 10 searches a minute. Wait a moment and tap Search again.' : 'Open Food Facts didn\'t answer. Try again in a minute.' });
+      }
     }
 
     // ---- camera scanner (BarcodeDetector, ZXing fallback) ---------------------------------
@@ -472,7 +498,26 @@
         r.pr.note += ' Product data from Open Food Facts (openfoodfacts.org), shared under the Open Database License.';
         if (P.incomplete) { r.pr.unrated = true; r.pr.rated = false; r.pr.why = 'Open Food Facts has this product but no nutrition values yet. Add them from the label.'; }
       }
-      if (P.incomplete) r.pr.add = () => this.setState({ view: 'log', sheet: 'create', form: { name: P.name, code: P.code } });
+      // nutrition table: what the database actually has (per 100 g, or per serving)
+      const base = P.per100 || P.perServ || this.per100(P);
+      const unitTxt = P.per100 || (!P.perServ && base) ? 'Per 100 ' + (P.bev ? 'ml' : 'g') : 'Per serving' + (P.serving ? ' (' + P.serving + ')' : '');
+      const f1 = (x, u) => x == null ? '—' : (Math.round(x * 10) / 10) + ' ' + u;
+      r.pr.hasFacts = !!base; r.pr.factsBasis = unitTxt;
+      r.pr.facts = base ? [['Calories', base.k == null ? '—' : Math.round(base.k) + ' kcal'], ['Protein', f1(base.p, 'g')], ['Carbohydrates', f1(base.c, 'g')], ['  of which sugars', f1(base.sug, 'g')],
+        ['Fat', f1(base.f, 'g')], ['  of which saturated', f1(base.sat, 'g')], ['Fiber', f1(base.fib, 'g')], ['Salt', base.na == null ? '—' : f1(base.na * 2.5 / 1000, 'g')]].map(([l, v]) => ({ l: l.trim(), v, pad: l.startsWith('  ') ? 14 : 0, lc: l.startsWith('  ') ? '#9AA3AF' : '#F2F4F7', vc: v === '—' ? '#FFA866' : '#F2F4F7' })) : [];
+      const missing = !base || ['sug', 'sat', 'na'].some((k) => base[k] == null) || !P.per100;
+      r.pr.canFix = P.src === 'Open Food Facts' && (missing || P.incomplete);
+      r.pr.fixText = P.incomplete ? 'Open Food Facts knows this product but has no nutrition values for it yet.' : 'Some values are missing from Open Food Facts, so the rating is limited. Fill them in from the label once and Fuel will use your version every time you scan it.';
+      r.pr.fix = () => {
+        const u0 = P.units && P.units[0] && P.units[0].g ? P.units[0] : null;
+        const src = P.per100 && u0 ? Object.fromEntries(Object.entries(P.per100).map(([k, x]) => [k, x == null ? null : x * u0.g / 100])) : (P.perServ || {});
+        const fmt = (x) => x == null ? '' : String(Math.round(x * 10) / 10);
+        this.setState({ view: 'log', sheet: 'create', form: { name: P.name + (P.brand && P.brand !== 'Packaged product' ? ' (' + P.brand + ')' : ''), serving: u0 ? u0.label.replace(/\s*\(.*\)$/, '') : (P.serving || '1 serving'), grams: u0 ? String(u0.g) : '',
+          kcal: fmt(src.k), p: fmt(src.p), c: fmt(src.c), f: fmt(src.f), fib: fmt(src.fib), sug: fmt(src.sug), sat: fmt(src.sat), na: src.na == null ? '' : String(Math.round(src.na)), code: P.code } });
+      };
+      r.pr.openOff = () => window.open('https://world.openfoodfacts.org/product/' + P.code, '_blank', 'noopener');
+      if (P.incomplete) r.pr.add = r.pr.fix;
+      if (P.perServ && !P.per100 && !r.pr.rated) { r.pr.why = 'Not rated yet: Open Food Facts only has per-serving values without a serving weight. You can still add it to your diary.'; }
       return r;
     }
     renderVals() {
@@ -500,10 +545,20 @@
       const wrapOff = (f) => { const rt = this.rate(f); return Object.assign({}, f, { dot: rt.rated ? rt.dot : '#3A414C', kcalTxt: f.incomplete ? 'no nutrition data' : f.kcal + ' cal, ' + f.serving,
         open: () => { this.cacheProduct(f); this.setState({ prod: f, view: 'product', prodPrev: 'log' }); },
         quick: () => { if (f.incomplete) { this.setState({ prod: f, view: 'product', prodPrev: 'log' }); return; } this.cacheProduct(f); this.logFood(this.concrete(f, 0), 1); } }); };
+      const isCode = /^\d{8,14}$/.test(q);
+      // packaged products search automatically once you pause typing (cached; Open Food Facts allows ~10 searches a minute)
+      if (S.view === 'log' && q.length >= 3 && !isCode && navigator.onLine && S.offQ !== q && !(this.offCache && this.offCache[q]) && this._offPending !== q) {
+        clearTimeout(this._offT); this._offPending = q;
+        this._offT = setTimeout(() => { this._offPending = null; if ((this.state.query || '').trim() === q) this.searchOff(); }, 900);
+      } else if (this.offCache && this.offCache[q] && S.offQ !== q) setTimeout(() => this.setState({ offRes: this.offCache[q], offQ: q, offErr: '' }), 0);
       const offRes = S.offQ === q && S.offRes ? S.offRes : null;
-      v.off = { canSearch: q.length >= 2 && !S.offBusy && !offRes, label: 'Search packaged products for "' + q + '"', search: () => this.searchOff(), busy: !!S.offBusy,
-        hasRes: !!offRes, results: offRes ? offRes.map(wrapOff) : [], count: offRes ? (offRes.length ? offRes.length + ' packaged products from Open Food Facts' : 'No packaged products found') : '',
-        err: !!S.offErr, errText: S.offErr || '' };
+      v.off = { canSearch: isCode || (q.length >= 2 && !S.offBusy && !offRes && (!!S.offErr || !navigator.onLine || q.length < 3)),
+        label: isCode ? 'Look up barcode ' + q : 'Search packaged products for "' + q + '"', search: () => isCode ? this.findCode(q) : this.searchOff(), busy: !!S.offBusy && S.offQ === q,
+        hasRes: !!offRes, results: offRes ? offRes.map(wrapOff) : [], count: offRes ? (offRes.length ? 'Packaged products · ' + offRes.length + ' from Open Food Facts' : 'No packaged products found for "' + q + '"') : '',
+        err: !!S.offErr && S.offQ === q, errText: S.offErr || '' };
+      // local list: best matches first, then packaged products, then the rest
+      if (q && Array.isArray(v.results)) { v.moreResults = v.results.slice(6); v.results = v.results.slice(0, 6); v.hasMore = v.moreResults.length > 0; } else { v.moreResults = []; v.hasMore = false; }
+      if (q) { const n = (v.results.length + v.moreResults.length); v.resultCount = n + (n === 1 ? ' match' : ' matches') + ' in ' + (this.db ? this.db.foods.length.toLocaleString('en-US') : '…') + ' offline foods' + (navigator.onLine ? ' · plus ~3M packaged products online' : ' · offline: packaged products need internet'); }
       // account
       const signedIn = !!this.acct;
       const create = S.acctMode !== 'signin';

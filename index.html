@@ -1531,6 +1531,18 @@ input,textarea,button{font-size:16px}
             <button type="button" class="iconbtn" style="width: 44px; height: 44px" aria-label="More servings" onClick="{{servPlus}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
           </div>
         </div>
+        <sc-if value="{{wg.can}}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top: 12px; padding: 12px; border-radius: 14px; background: #14171B; border: 1px solid {{wg.border}}">
+            <div class="row" style="gap: 10px">
+              <label for="selg" style="min-width: 0"><span style="font-weight: 600">Or weigh it</span><div class="muted small" style="margin-top: 2px">{{wg.hint}}</div></label>
+              <div style="display: flex; align-items: center; gap: 6px; flex: none">
+                <input id="selg" class="inp" inputmode="decimal" value="{{wg.value}}" onChange="{{wg.on}}" placeholder="{{wg.ph}}" style="width: 84px; text-align: right; font-weight: 700">
+                <sc-for list="{{wg.unitOpts}}" as="wu" hint-placeholder-count="2"><button type="button" class="{{wu.cls}}" style="min-width: 44px; padding: 8px 10px" onClick="{{wu.pick}}">{{wu.label}}</button></sc-for>
+              </div>
+            </div>
+            <sc-if value="{{wg.active}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{wg.clear}}" style="margin-top: 6px; min-height: 36px; border: 0; background: none; color: #C8F25C; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; padding: 0">Use servings instead</button></sc-if>
+          </div>
+        </sc-if>
         <div style="display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap">
           <sc-for list="{{mealChips}}" as="o" hint-placeholder-count="4">
             <button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.label}}</button>
@@ -1755,7 +1767,7 @@ class Component extends DCLogic {
       log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, history: [], myFoods: [], myMeals: [],
       water: 0, weights: [], exercise: 0,
       query: '', region: 'ALL', sel: null, servings: 1, code: '', scanning: false, scanMissing: false,
-      sheet: null, form: {}, toast: '', saved: [], recipes: [], userRecipes: [], steps: [], dbReady: false, dbFail: false, prod: null, prodPrev: 'tabs', selUnit: 0, adaptive: true, trainMode: 'log', trainDays: 4, sessKcal: 300, targetPrev: 'tabs', wPend: [], wIn: '', wAgo: 0, exMenu: false, exLog: [], myEx: [], myRoutines: [], exType: 'cardio', exTab: 'browse', exQ: '', multi: false, multiSel: [], exSel: null, exMin: 30, exSets: 3, exReps: 10, exWt: '', rtTab: 'explore', rtSel: null, rbuild: null, digOff: 0, digVote: null, exCount: 0, stepGoal: 8000, joined: new Date().toISOString(), nutriTab: 'cal', nutriNet: true, weekOff: 0, span: 'week', metric: 'weight', mRange: 7, demo: false, range: 'week', override: null, waterGoal: 2500, weekendFlex: false, synced: false, builder: null, planView: 'home', browseCat: null, savedOnly: false, recipeId: null, recipeBack: 'tabs', nutriOpen: false
+      sheet: null, form: {}, toast: '', saved: [], recipes: [], userRecipes: [], steps: [], dbReady: false, dbFail: false, prod: null, prodPrev: 'tabs', selUnit: 0, selG: '', selGU: 'g', adaptive: true, trainMode: 'log', trainDays: 4, sessKcal: 300, targetPrev: 'tabs', wPend: [], wIn: '', wAgo: 0, exMenu: false, exLog: [], myEx: [], myRoutines: [], exType: 'cardio', exTab: 'browse', exQ: '', multi: false, multiSel: [], exSel: null, exMin: 30, exSets: 3, exReps: 10, exWt: '', rtTab: 'explore', rtSel: null, rbuild: null, digOff: 0, digVote: null, exCount: 0, stepGoal: 8000, joined: new Date().toISOString(), nutriTab: 'cal', nutriNet: true, weekOff: 0, span: 'week', metric: 'weight', mRange: 7, demo: false, range: 'week', override: null, waterGoal: 2500, weekendFlex: false, synced: false, builder: null, planView: 'home', browseCat: null, savedOnly: false, recipeId: null, recipeBack: 'tabs', nutriOpen: false
     };
   }
 
@@ -1824,6 +1836,18 @@ class Component extends DCLogic {
     const u = food.units[Math.min(ui || 0, food.units.length - 1)], P = food.per100, m = u.g / 100;
     const sc = (x) => x == null ? null : Math.round(x * m * 10) / 10;
     return { ...food, units: undefined, serving: u.label, kcal: Math.round(P.k * m), p: sc(P.p) || 0, c: sc(P.c) || 0, f: sc(P.f) || 0, fib: sc(P.fib), sug: sc(P.sug), sat: sc(P.sat), na: sc(P.na), ch: sc(P.ch), po: sc(P.po) };
+  }
+  // grams in one of the chosen serving, when known
+  unitGrams(food, ui) {
+    if (food.units && food.per100) return food.units[Math.min(ui || 0, food.units.length - 1)].g;
+    const m = /\(([\d.]+)\s*(g|ml)\)/i.exec(food.serving || '') || /^([\d.]+)\s*(g|ml)$/i.exec(food.serving || '');
+    return m ? parseFloat(m[1]) || 0 : 0;
+  }
+  // the food at an exact weight (what you put on the scale)
+  weighed(food, g) {
+    const P = this.per100(food); if (!P) return null;
+    const m = g / 100, sc = (x) => x == null ? null : Math.round(x * m * 10) / 10, ml = P.ml || /ml/.test(food.serving || '');
+    return { ...food, units: undefined, serving: Math.round(g) + (ml ? ' ml' : ' g') + ' (weighed)', kcal: Math.round(P.k * m), p: sc(P.p) || 0, c: sc(P.c) || 0, f: sc(P.f) || 0, fib: sc(P.fib), sug: sc(P.sug), sat: sc(P.sat), na: sc(P.na), ch: sc(P.ch), po: sc(P.po) };
   }
   per100(food) {
     if (food.per100) return food.per100;
@@ -2226,7 +2250,7 @@ class Component extends DCLogic {
       hasAlts: alts.length > 0, alts: alts.map((x) => ({ name: x.f.name, sub: x.f.grp + ' · ' + Math.round(x.f.per100.k) + ' kcal / 100 g', score: x.r.score, dot: x.r.dot,
         open: () => this.setState({ prod: x.f }) })),
       note: !r.rated ? 'Scores need calories plus sugar, saturated fat or sodium per 100 g.' : r.hasAddInfo ? 'Fuel score: 60% nutrition (Nutri-Score method), 30% additives, 10% organic. Any high-risk additive caps the score at 49. Additive ratings are a starter list based on EFSA and IARC reviews.' : 'Generic food: score is from nutrition only (Nutri-Score method). Packaged products also get additives and organic checks.',
-      add: () => this.setState({ sel: P, servings: 1, selUnit: 0, sheet: 'food' })
+      add: () => this.setState({ sel: P, servings: 1, selUnit: 0, selG: '', sheet: 'food' })
     } };
   }
   targetVals(S, plan, imp, wUnit, budget) {
@@ -2673,7 +2697,7 @@ class Component extends DCLogic {
     const q = S.query.trim().toLowerCase();
     const all = this.allFoods();
     const meal = S.addMeal;
-    const wrap = (f) => { const r = this.rate(f); return { ...f, tag: f.tag || (f.region === 'INTL' ? 'Generic' : f.region), dot: r.rated ? r.dot : '#3A414C', open: () => this.setState({ sel: f, servings: 1, selUnit: 0, sheet: 'food' }), quick: () => this.logFood(this.concrete(f, 0), 1) }; };
+    const wrap = (f) => { const r = this.rate(f); return { ...f, tag: f.tag || (f.region === 'INTL' ? 'Generic' : f.region), dot: r.rated ? r.dot : '#3A414C', open: () => this.setState({ sel: f, servings: 1, selUnit: 0, selG: '', sheet: 'food' }), quick: () => this.logFood(this.concrete(f, 0), 1) }; };
     const qa = q ? this.queryAlts(q) : [];
     const resCur = q ? all.map((f) => [f.code.includes(q) && q.length > 5 ? 999 : this.rankName(f.name.toLowerCase(), qa), f]).filter((x) => x[0] != null && (S.region === 'ALL' || x[1].region === S.region || (S.region === 'MINE' && x[1].region === 'MINE'))).map((x) => [x[0] + 25, x[1]]) : [];
     const resDb = q && S.region !== 'MINE' && q.length >= 2 ? this.searchDb(q, S.region, 60) : [];
@@ -2687,9 +2711,10 @@ class Component extends DCLogic {
       .map(([id, label]) => ({ label, cls: chip(S.region === id), pick: () => this.setState({ region: id }) }));
     const demoScans = this.scanDemo.map((d) => ({ label: d.region + ' · ' + d.name, pick: () => this.findCode(d.code) })).concat([{ label: 'Unknown code', pick: () => this.findCode('0123456789012') }]);
 
-    const sel = S.sel ? (() => { const cf = this.concrete(S.sel, S.selUnit || 0), n = S.servings, r = this.rate(S.sel);
+    const g0 = S.sel ? this.unitGrams(S.sel, S.selUnit || 0) : 0, gIn = this.num(S.selG) * (S.selGU === 'oz' ? 28.35 : 1), wActive = !!(g0 && gIn > 0);
+    const sel = S.sel ? (() => { const cf = this.concrete(S.sel, S.selUnit || 0), n = wActive ? gIn / g0 : S.servings, r = this.rate(S.sel);
       const mi = [['Fiber', cf.fib, 'g'], ['Sugar', cf.sug, 'g'], ['Sat fat', cf.sat, 'g'], ['Sodium', cf.na, 'mg']].filter((x) => x[1] != null);
-      return { name: S.sel.name, serving: cf.serving, region: S.sel.tag || S.sel.region, code: S.sel.code === '—' ? (S.sel.src ? S.sel.src + ' database' : 'generic food') : S.sel.code,
+      return { name: S.sel.name, serving: wActive ? (S.selGU === 'oz' ? this.num(S.selG) + ' oz' : Math.round(gIn) + ' g') + ' (weighed)' : cf.serving, region: S.sel.tag || S.sel.region, code: S.sel.code === '—' ? (S.sel.src ? S.sel.src + ' database' : 'generic food') : S.sel.code,
         kcal: Math.round(cf.kcal * n), p: this.r1(cf.p * n), c: this.r1(cf.c * n), f: this.r1(cf.f * n),
         hasMicro: mi.length > 0, micro: mi.map((x) => ({ l: x[0], v: (x[2] === 'mg' ? Math.round(x[1] * n) : this.r1(x[1] * n)) + ' ' + x[2] })),
         dot: r.rated ? r.dot : '#3A414C', scoreLine: r.rated ? r.score + '/100 · ' + r.label : 'Not rated', scoreSub: r.rated ? 'Nutri-Score ' + r.grade : '',
@@ -2853,12 +2878,19 @@ class Component extends DCLogic {
 
       sheetOpen: !!S.sheet, shFood: S.sheet === 'food' && !!S.sel, shForm: !!fm,
       closeSheet: () => this.setState({ sheet: null, sel: null }),
-      sel, servings: S.servings,
-      servMinus: () => this.setState({ servings: Math.max(0.5, S.servings - 0.5) }),
-      servPlus: () => this.setState({ servings: Math.min(20, S.servings + 0.5) }),
+      sel, servings: wActive ? Math.round(gIn / g0 * 100) / 100 : S.servings,
+      servMinus: () => this.setState({ selG: '', servings: Math.max(0.5, (wActive ? Math.ceil(gIn / g0 * 2) / 2 : S.servings) - 0.5) }),
+      servPlus: () => this.setState({ selG: '', servings: Math.min(20, (wActive ? Math.floor(gIn / g0 * 2) / 2 : S.servings) + 0.5) }),
+      wg: (() => { const ml = /ml/.test((S.sel && S.sel.units && S.sel.units[S.selUnit || 0] || {}).label || (S.sel && S.sel.serving) || ''), u0 = ml ? 'ml' : 'g';
+        const cur = Math.round(g0 * S.servings), oz = S.selGU === 'oz';
+        return { can: g0 > 0, active: wActive, border: wActive ? '#C8F25C' : '#2A2F37', value: S.selG, ph: oz ? String(Math.round(cur / 28.35 * 10) / 10) : String(cur),
+          hint: wActive ? '= ' + (Math.round(gIn / g0 * 100) / 100) + ' servings · values updated' : 'Type what your portion weighs (1 serving = ' + Math.round(g0) + ' ' + u0 + ')',
+          on: (e) => this.setState({ selG: e.target.value.replace(/[^\d.,]/g, '').replace(',', '.') }),
+          unitOpts: [[u0, 'g'], [ml ? 'fl oz' : 'oz', 'oz']].map(([label, id]) => ({ label, cls: chip(S.selGU === id), pick: () => this.setState({ selGU: id }) })),
+          clear: () => this.setState({ selG: '' }) }; })(),
       mealChips: Object.keys(mealNames).map((k) => ({ label: mealNames[k], cls: chip(meal === k), pick: () => this.setState({ addMeal: k }) })),
       addMealLabel: mealNames[meal].toLowerCase(),
-      addFood: () => { const f = this.concrete(S.sel, S.selUnit || 0), n = S.servings; this.setState({ sheet: null, sel: null }); this.logFood(f, n); },
+      addFood: () => { const w = wActive && this.weighed(S.sel, gIn); const f = w || this.concrete(S.sel, S.selUnit || 0), n = w ? 1 : S.servings; this.setState({ sheet: null, sel: null, selG: '' }); this.logFood(f, n); },
       formTitle: fm ? fm.title : '', formSub: fm ? fm.sub : '', formFields: fm ? fm.fields : [], formCta: fm ? fm.cta : '',
       formDisabled: fm ? !fm.ok : true, formSave: fm ? fm.save : () => {},
       isWater: S.sheet === 'water',
@@ -2897,7 +2929,7 @@ class Component extends DCLogic {
       nutriOpen: S.nutriOpen, toggleNutri: () => this.setState({ nutriOpen: !S.nutriOpen }),
       nutriLabel: S.nutriOpen ? 'HIDE NUTRITION' : 'SHOW NUTRITION', nutriChevron: S.nutriOpen ? 'm6 15 6-6 6 6' : 'm6 9 6 6 6-6',
       addRecipe: () => { const food = { id: 'rx-' + rcp.id, name: rcp.title, serving: '1 serving (recipe serves ' + rcp.serves + ')', kcal: rcp.kcal, p: rcp.p, c: rcp.c, f: rcp.f, region: 'RECIPE', code: '—', verified: true };
-        this.setState({ sel: food, servings: 1, sheet: 'food' }); },
+        this.setState({ sel: food, servings: 1, selG: '', sheet: 'food' }); },
       noSaved: !S.saved.length,
       recipes: S.userRecipes.map((r) => ({ ...rx(r), serving: '1 of ' + r.serves + ' servings', quick: () => this.logFood({ id: 'rx-' + r.id, name: r.title, serving: '1 serving', kcal: r.kcal, p: r.p, c: r.c, f: r.f, region: 'RECIPE', code: '—' }, 1) })),
       noRecipes: !S.userRecipes.length, hasRecipes: S.userRecipes.length > 0,

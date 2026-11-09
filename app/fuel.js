@@ -51,6 +51,19 @@
       } while (token);
       return out;
     },
+    // Peak's workouts: users/{uid}/w/{id}, each with the workout as JSON in field "j" (read only)
+    async workouts(a) {
+      const out = []; let token = '';
+      do {
+        const r = await fetch(this.url(a, 'w') + '?pageSize=300' + (token ? '&pageToken=' + encodeURIComponent(token) : ''), { headers: { Authorization: 'Bearer ' + a.idToken } });
+        if (r.status === 404) return out;
+        if (!r.ok) throw new Error('PEAK ' + r.status);
+        const j = await r.json();
+        (j.documents || []).forEach((d) => { const f = d.fields || {}; if (f.del && f.del.booleanValue) return; try { const w = JSON.parse(f.j ? f.j.stringValue : 'null'); if (w && w.start) out.push(w); } catch (e) { /* skip a damaged workout */ } });
+        token = j.nextPageToken || '';
+      } while (token);
+      return out;
+    },
     unpack(d) {
       const f = d.fields || {};
       let data = null; try { data = JSON.parse(f.json ? f.json.stringValue : 'null'); } catch (e) { data = null; }
@@ -87,7 +100,7 @@
   // ---- persistence helpers ---------------------------------------------------------------
   const TRANSIENT = ['view', 'sheet', 'fab', 'toast', 'scanning', 'scanMissing', 'scanErr', 'query', 'sel', 'prod', 'form', 'exMenu', 'mealMenu', 'builder', 'rbuild', 'wPend', 'wIn', 'code',
     'prevView', 'prodPrev', 'targetPrev', 'waterPrev', 'wPrev', 'exPrev', 'builderBack', 'recipeBack', 'planView', 'browseCat', 'recipeId', 'nutriOpen', 'exSel', 'multi', 'multiSel', 'exQ', 'rtSel',
-    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit'];
+    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy'];
   const persistable = (S) => { const o = {}; for (const k in S) if (!TRANSIENT.includes(k)) o[k] = S[k]; return o; };
   const revive = (o) => {
     if (o.weights) o.weights = o.weights.map((w) => Object.assign({}, w, { at: new Date(w.at) }));
@@ -147,7 +160,7 @@
       this.saveSoon();
     }
     daySummary(S) {
-      const t = { kcal: 0, p: 0, c: 0, f: 0, mic: null, ex: S.exercise || 0, water: S.water || 0, items: [] };
+      const t = { kcal: 0, p: 0, c: 0, f: 0, mic: null, ex: (S.exercise || 0) + this.peakDay(S, S.logDay).counted, water: S.water || 0, items: [] };
       Object.keys(S.log || {}).forEach((meal) => (S.log[meal] || []).forEach((e) => {
         const m = e.servings || 1, fd = e.food;
         t.kcal += fd.kcal * m; t.p += (fd.p || 0) * m; t.c += (fd.c || 0) * m; t.f += (fd.f || 0) * m;
@@ -169,10 +182,10 @@
 
     componentDidMount() {
       super.componentDidMount();
-      document.addEventListener('visibilitychange', () => { if (!document.hidden) { this.rollover(); this.forceUpdate(); this.pull(); } else this.saveNow(); });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) { this.rollover(); this.forceUpdate(); this.pull(); this.peakPull(); } else this.saveNow(); });
       window.addEventListener('online', () => this.pushSoon(0));
       setInterval(() => { const d = this.state.logDay; this.rollover(); if (d !== this.state.logDay) this.forceUpdate(); }, 60000);
-      if (this.acct) this.pull();
+      if (this.acct) this.pull().then(() => this.peakPull());
     }
 
     // ---- accounts & sync -------------------------------------------------------------------
@@ -227,6 +240,31 @@
         return !!(prof && prof.data);
       } catch (e) { console.warn('[Fuel] pull failed', e); this.status(String(e.message).includes('403') ? 'Sync blocked: check Firestore rules' : 'Sync failed · will retry'); return false; }
     }
+    // ---- Peak workouts: read from the shared account, keep the last 3 weeks on the phone ----
+    peakList(S) { return (S.peakRaw || []).filter((w) => w && w.start && !w.del); }
+    async peakPull(force) {
+      const S = this.state;
+      if (!this.acct || !S.peakOn || !navigator.onLine || this.peakBusy) return false;
+      if (!force && S.peakAt && Date.now() - S.peakAt < 10 * 60000) return false;
+      this.peakBusy = true; this.setState({ peakBusy: true });
+      try {
+        const a = await this.token();
+        const since = Date.now() - 21 * 864e5;
+        const list = (await CLOUD.workouts(a)).filter((w) => w.start >= since)
+          .map((w) => ({ id: w.id, name: w.name, start: w.start, end: w.end, quick: !!w.quick, exercises: (w.exercises || []).map((e) => ({ exId: e.exId, sets: (e.sets || []).map((x) => ({ type: x.type, w: x.w, r: x.r, t: x.t, d: x.d })) })) }));
+        this.setState({ peakRaw: list, peakAt: Date.now(), peakBusy: false });
+        return true;
+      } catch (e) {
+        console.warn('[Fuel] Peak pull failed', e);
+        this.setState({ peakBusy: false });
+        if (force) this.flash(String(e.message).includes('403') ? 'Peak workouts blocked: check Firestore rules' : 'Couldn\'t reach Peak. Try again online.');
+        return false;
+      } finally { this.peakBusy = false; }
+    }
+    async peakCheck() {
+      if (!this.acct) { this.flash('Sign in with your Peak email to import workouts'); return; }
+      if (await this.peakPull(true)) { const n = this.peakDay(this.state, new Date().toDateString()).list.length; this.flash(n ? 'Up to date · ' + n + (n === 1 ? ' workout' : ' workouts') + ' today' : 'Up to date · no Peak workout today yet'); }
+    }
     status(t) { this.state.syncStatus = t; this.forceUpdate(); }
 
     async doAuth() {
@@ -243,6 +281,7 @@
         else { this.state = Object.assign({}, this.state, local, { updatedAt: 0 }); }
         this._savedJson = null;
         const hadRemote = await this.pull();
+        this.peakPull(true);
         const from = this.state.acctFrom;
         if (hadRemote) this.setState({ mode: 'app', view: 'tabs', tab: from === 'more' ? 'more' : 'today', acctBusy: false, pw: '', email: sess.email });
         else if (from === 'more' || this.state.mode === 'app') this.setState({ mode: 'app', view: 'tabs', tab: 'more', acctBusy: false, pw: '', email: sess.email });

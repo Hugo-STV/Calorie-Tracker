@@ -289,7 +289,7 @@ a{color:#C8F25C}a:hover{color:#E2FF9A}
       </div>
       <sc-for list="{{exToday}}" as="it" hint-placeholder-count="0">
         <div class="row" style="padding: 8px 0 0 36px">
-          <div style="min-width: 0"><div style="font-size: 14px">{{it.name}}</div><div class="muted small">{{it.detail}}</div></div>
+          <button type="button" onClick="{{it.open}}" style="min-width: 0; flex: 1; min-height: 44px; border: 0; background: none; padding: 0; color: #F2F4F7; font: inherit; text-align: left; cursor: pointer"><div style="font-size: 14px">{{it.name}}<sc-if value="{{it.peak}}" hint-placeholder-val="{{ false }}"><span style="margin-left: 6px; padding: 1px 6px; border-radius: 6px; background: #2A2016; color: #FFA866; font-size: 11px; font-weight: 700">PEAK</span></sc-if></div><div class="muted small">{{it.detail}}</div></button>
           <div style="display: flex; align-items: center"><span style="font-size: 14px; font-weight: 600; color: #FFA866">−{{it.kcal}}</span>
             <button type="button" aria-label="Remove {{it.name}}" onClick="{{it.remove}}" style="width: 44px; height: 44px; border: 0; background: none; color: #8A93A0; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></div>
         </div>
@@ -1073,6 +1073,62 @@ a{color:#C8F25C}a:hover{color:#E2FF9A}
 </div>
 </sc-if>
 
+<sc-if value="{{vPeak}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; overflow-y: auto; padding: 14px 0 28px">
+  <div class="row" style="padding: 0 12px 0 8px"><div style="display: flex; align-items: center; gap: 6px"><button type="button" class="iconbtn" style="width: 44px; height: 44px; background: none" aria-label="Back" onClick="{{pk.back}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><h1 class="h1" style="font-size: 22px; margin: 0">Peak workouts</h1></div></div>
+  <div style="padding: 0 16px">
+    <div class="card" style="padding: 0; overflow: hidden; margin-top: 10px">
+      <button type="button" class="lt" role="switch" aria-checked="{{pk.on}}" onClick="{{pk.toggle}}"><span>Import my Peak workouts<span class="muted" style="display: block; font-size: 12px; margin-top: 2px">{{pk.status}}</span></span><span style="margin-left: auto; width: 46px; height: 28px; border-radius: 99px; background: {{pk.swBg}}; position: relative; flex: none"><span style="position: absolute; top: 4px; left: {{pk.swLeft}}px; width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF"></span></span></button>
+      <sc-if value="{{pk.on}}" hint-placeholder-val="{{ true }}"><button type="button" class="lt" style="border: 0; color: #C8F25C; font-weight: 600" onClick="{{pk.check}}">{{pk.checkLabel}}</button></sc-if>
+    </div>
+
+    <sc-if value="{{pk.on}}" hint-placeholder-val="{{ true }}">
+      <div class="card" style="margin-top: 12px; text-align: center; padding: 18px 16px">
+        <div class="muted" style="font-size: 13px; font-weight: 600">Today from Peak</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: #FFA866; margin-top: 4px">{{pk.todayCounted}}<span style="font-size: 18px; color: #9AA3AF; font-weight: 600"> kcal</span></div>
+        <div class="muted small" style="margin-top: 2px">{{pk.todayLine}}</div>
+      </div>
+
+      <span class="lbl">How much to eat back</span>
+      <div style="display: flex; gap: 8px">
+        <sc-for list="{{pk.pctOpts}}" as="o" hint-placeholder-count="3"><button type="button" class="{{o.cls}}" style="flex: 1" onClick="{{o.pick}}">{{o.label}}</button></sc-for>
+      </div>
+      <p class="muted small" style="margin: 8px 2px 0; line-height: 1.5">{{pk.pctNote}}</p>
+
+      <sc-if value="{{pk.isAvg}}" hint-placeholder-val="{{ false }}">
+        <div class="card" style="margin-top: 12px; border-color: #3A3420; background: #1E1B12">
+          <p style="margin: 0 0 8px; font-size: 14px; line-height: 1.5">{{pk.avgNote}}</p>
+          <button type="button" onClick="{{pk.goTarget}}" style="min-height: 40px; border: 0; background: none; padding: 0; color: #C8F25C; font: inherit; font-weight: 600; cursor: pointer">Change in How your target is set ›</button>
+        </div>
+      </sc-if>
+
+      <sc-for list="{{pk.groups}}" as="gr" hint-placeholder-count="2">
+        <span class="lbl">{{gr.label}}</span>
+        <sc-for list="{{gr.items}}" as="w" hint-placeholder-count="1">
+          <div class="card" style="padding: 0; margin-bottom: 8px; overflow: hidden; opacity: {{w.opacity}}">
+            <button type="button" onClick="{{w.open}}" aria-expanded="{{w.isOpen}}" style="display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; padding: 12px 16px; border: 0; background: none; color: #F2F4F7; font: inherit; text-align: left; cursor: pointer">
+              <span style="width: 36px; height: 36px; border-radius: 10px; background: #2A2016; display: flex; align-items: center; justify-content: center; flex: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFA866" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"></path></svg></span>
+              <span style="flex: 1; min-width: 0"><span style="display: block; font-size: 15px; font-weight: 600">{{w.name}}</span><span class="muted small">{{w.meta}}</span></span>
+              <span style="text-align: right; flex: none"><span style="display: block; font-weight: 700; color: {{w.kcalColor}}">{{w.kcal}}</span><span class="muted" style="font-size: 11px">{{w.kcalSub}}</span></span>
+            </button>
+            <sc-if value="{{w.isOpen}}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 0 16px 12px; border-top: 1px solid #23272E">
+                <sc-for list="{{w.parts}}" as="pa" hint-placeholder-count="3"><div class="row" style="padding: 9px 0; border-bottom: 1px solid #1F232A; font-size: 13px; gap: 12px"><span style="color: #C9D0D8; line-height: 1.4">{{pa.l}}</span><span style="font-weight: 600; flex: none">{{pa.v}}</span></div></sc-for>
+                <button type="button" role="switch" aria-checked="{{w.counted}}" onClick="{{w.toggleCount}}" class="row" style="width: 100%; min-height: 48px; border: 0; background: none; color: #F2F4F7; font: inherit; padding: 0; cursor: pointer; text-align: left">Count this workout<span style="width: 46px; height: 28px; border-radius: 99px; background: {{w.swBg}}; position: relative; flex: none"><span style="position: absolute; top: 4px; left: {{w.swLeft}}px; width: 20px; height: 20px; border-radius: 50%; background: #FFFFFF"></span></span></button>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </sc-for>
+      <sc-if value="{{pk.empty}}" hint-placeholder-val="{{ false }}"><div class="card" style="margin-top: 12px; text-align: center"><p class="muted" style="margin: 0; font-size: 14px; line-height: 1.5">No Peak workouts in the last 2 weeks. Finish a workout in Peak and it shows up here.</p></div></sc-if>
+
+      <span class="lbl">How it's estimated</span>
+      <div class="card"><p style="margin: 0; font-size: 13px; line-height: 1.6; color: #C9D0D8">{{pk.how}}</p></div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
 <sc-if value="{{vWater}}" hint-placeholder-val="{{ false }}">
 <div style="flex: 1; display: flex; flex-direction: column; min-height: 0; padding: 14px 20px 22px">
   <div class="row"><button type="button" class="iconbtn" style="width: 44px; height: 44px; background: none" aria-label="Close" onClick="{{wa.close}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
@@ -1700,7 +1756,7 @@ class Component extends DCLogic {
       log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, history: [], myFoods: [], myMeals: [],
       water: 0, weights: [], exercise: 0,
       query: '', region: 'ALL', sel: null, servings: 1, code: '', scanning: false, scanMissing: false,
-      sheet: null, form: {}, toast: '', saved: [], recipes: [], userRecipes: [], steps: [], dbReady: false, dbFail: false, prod: null, prodPrev: 'tabs', selUnit: 0, selG: '', selGU: 'g', adaptive: true, trainMode: 'log', trainDays: 4, sessKcal: 300, targetPrev: 'tabs', wPend: [], wIn: '', wAgo: 0, exMenu: false, exLog: [], myEx: [], myRoutines: [], exType: 'cardio', exTab: 'browse', exQ: '', multi: false, multiSel: [], exSel: null, exMin: 30, exSets: 3, exReps: 10, exWt: '', rtTab: 'explore', rtSel: null, rbuild: null, digOff: 0, digVote: null, exCount: 0, stepGoal: 8000, joined: new Date().toISOString(), nutriTab: 'cal', nutriNet: true, weekOff: 0, span: 'week', metric: 'weight', mRange: 7, demo: false, range: 'week', override: null, waterGoal: 2500, weekendFlex: false, synced: false, builder: null, planView: 'home', browseCat: null, savedOnly: false, recipeId: null, recipeBack: 'tabs', nutriOpen: false
+      sheet: null, form: {}, toast: '', saved: [], recipes: [], userRecipes: [], steps: [], dbReady: false, dbFail: false, prod: null, prodPrev: 'tabs', selUnit: 0, selG: '', selGU: 'g', peakOn: true, peakPct: 100, peakSkip: [], peakRaw: null, peakAt: null, peakOpen: null, peakPrev: 'tabs', adaptive: true, trainMode: 'log', trainDays: 4, sessKcal: 300, targetPrev: 'tabs', wPend: [], wIn: '', wAgo: 0, exMenu: false, exLog: [], myEx: [], myRoutines: [], exType: 'cardio', exTab: 'browse', exQ: '', multi: false, multiSel: [], exSel: null, exMin: 30, exSets: 3, exReps: 10, exWt: '', rtTab: 'explore', rtSel: null, rbuild: null, digOff: 0, digVote: null, exCount: 0, stepGoal: 8000, joined: new Date().toISOString(), nutriTab: 'cal', nutriNet: true, weekOff: 0, span: 'week', metric: 'weight', mRange: 7, demo: false, range: 'week', override: null, waterGoal: 2500, weekendFlex: false, synced: false, builder: null, planView: 'home', browseCat: null, savedOnly: false, recipeId: null, recipeBack: 'tabs', nutriOpen: false
     };
   }
 
@@ -1998,7 +2054,7 @@ class Component extends DCLogic {
       swBg: S.reminders ? '#C8F25C' : '#3A414C', swLeft: S.reminders ? 22 : 4,
       weekendFlex: S.weekendFlex, toggleWeekend: () => this.setState({ weekendFlex: !S.weekendFlex }),
       wkBg: S.weekendFlex ? '#C8F25C' : '#3A414C', wkLeft: S.weekendFlex ? 22 : 4,
-      syncLabel: S.synced ? 'Connected' : 'Not connected', openSync: () => this.openForm('sync')
+      syncLabel: S.peakOn ? 'Peak · on' : 'Peak · off', openSync: () => this.setState({ view: 'peak', peakPrev: S.view, peakOpen: null })
     };
   }
   dayAt(ago, S, plan, eat) {
@@ -2009,10 +2065,10 @@ class Component extends DCLogic {
     if (S.demo && ago <= 89) {
       const s = this.sample[89 - ago];
       d.steps = s.st; d.w = s.w;
-      if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: S.exercise, mic: eat.mic, micro: !!eat.mic });
+      if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: this.exToday(S), mic: eat.mic, micro: !!eat.mic });
       else if (s.logged) { const B = plan.ref || plan; const k = B.cal * s.ratio, p = B.p * s.pr, f = B.f * s.fr; Object.assign(d, { logged: true, mic: null, kcal: Math.round(k), p, f, c: Math.max(0, (k - p * 4 - f * 9) / 4), ex: s.ex }); }
       d.micro = d.logged; d.mr = s.mr;
-    } else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: S.exercise, mic: eat.mic, micro: !!eat.mic });
+    } else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: this.exToday(S), mic: eat.mic, micro: !!eat.mic });
     if (!S.demo) {
       const st = S.steps.find((x) => x.key === key); if (st) d.steps = st.val;
       const w = S.weights.find((x) => x.at.toDateString() === key); if (w) d.w = w.unit === 'lb' ? w.val : w.val / 0.4536;
@@ -2234,7 +2290,7 @@ class Component extends DCLogic {
         goalLine: plan.adjLabel.replace('Goal: ', '').replace(/^./, (x) => x.toUpperCase()) + ' · ' + plan.styleLabel + ' macros',
         weekly: Math.abs(wkRate) < 0.05 ? 'holds your weight' : (wkRate < 0 ? '≈ −' : '≈ +') + Math.abs(Math.round(wkRate * 10) / 10) + ' ' + wUnit + ' a week',
         steps, macros,
-        hasToday: S.trainMode !== 'avg' && S.exercise > 0, todayStr: fmt(budget), todaySub: fmt(plan.cal) + ' target + ' + fmt(S.exercise) + ' kcal exercise logged today',
+        hasToday: S.trainMode !== 'avg' && this.exToday(S) > 0, todayStr: fmt(budget), todaySub: fmt(plan.cal) + ' target + ' + fmt(this.exToday(S)) + ' kcal exercise today (Fuel + Peak)',
         projection,
         adaptiveOn: S.adaptive, toggleAdaptive: () => this.setState({ adaptive: !S.adaptive }),
         swBg: S.adaptive ? '#C8F25C' : '#3A414C', swLeft: S.adaptive ? 22 : 4,
@@ -2253,6 +2309,89 @@ class Component extends DCLogic {
         sessHint: sess.length ? 'Your logged sessions average ' + fmt(sess.reduce((a, e) => a + e.kcal, 0) / sess.length) + ' kcal' : 'A 45–60 min lifting session is about 250–400'
       } };
   }
+  // ---- Peak workouts → calories burned -------------------------------------------------------
+  // Peak saves each finished workout as { id, name, start, end, quick, exercises: [{ exId, sets: [{ type, w (kg), r, t (s), d (km) }] }] }.
+  // In the mockup peakRaw is null and sample workouts stand in; the app fills it from your account.
+  peakList(S) { return (S.peakRaw || this.peakSamples()).filter((w) => w && w.start && !w.del); }
+  peakSamples() {
+    if (this._peakSamples) return this._peakSamples;
+    const at = (ago, h, m) => { const d = new Date(); d.setDate(d.getDate() - ago); d.setHours(h, m, 0, 0); return d.getTime(); };
+    const L = (exId, n, w, r, warm) => ({ exId, sets: Array.from({ length: (warm || 0) + n }, (_, i) => ({ type: i < (warm || 0) ? 'W' : 'N', w: i < (warm || 0) ? Math.round(w * 0.5) : w, r: i < (warm || 0) ? 8 : r })) });
+    const run = (exId, km, min) => ({ exId, sets: [{ type: 'N', d: km, t: min * 60 }] });
+    this._peakSamples = [
+      { id: 'pk1', name: 'Push day', start: at(0, 7, 10), end: at(0, 8, 8), exercises: [L('Barbell_Bench_Press', 4, 80, 8, 2), L('Incline_Dumbbell_Press', 3, 30, 10), L('Overhead_Press', 3, 45, 8), L('Lateral_Raise', 4, 10, 15), L('Triceps_Pushdown', 3, 25, 12)] },
+      { id: 'pk2', name: 'Pull + treadmill', start: at(1, 18, 0), end: at(1, 19, 12), exercises: [L('Deadlift', 3, 140, 5, 2), L('Pull_Up', 4, 0, 8), L('Barbell_Row', 3, 70, 10), L('Dumbbell_Curl', 3, 15, 12), run('Treadmill', 3, 18)] },
+      { id: 'pk3', name: 'Legs', start: at(3, 17, 30), end: at(3, 18, 35), exercises: [L('Barbell_Squat', 5, 100, 5, 2), L('Romanian_Deadlift', 3, 90, 8), L('Leg_Press', 3, 180, 12), L('Standing_Calf_Raise', 4, 60, 15)] },
+      { id: 'pk4', name: 'Zone 2 run', start: at(5, 7, 0), end: at(5, 7, 0), quick: true, exercises: [run('Outdoor_Run', 6, 40)] }
+    ];
+    return this._peakSamples;
+  }
+  peakEst(w, kg) {
+    const r5 = (x) => Math.round(x / 5) * 5, nice = (id) => /_/.test(id || '') ? id.replace(/_/g, ' ') : (/^[A-Za-z][a-z]+( [A-Za-z][a-z]+)*$/.test(id || '') ? id : 'Exercise');
+    let sets = 0, liftSets = 0, workSets = 0, vol = 0, cardioSec = 0, cardioKcal = 0, km = 0; const cardio = [];
+    (w.exercises || []).forEach((e) => (e.sets || []).forEach((s) => {
+      sets++;
+      if (s.d != null && s.d > 0 || (s.t && s.r == null && s.w == null && /run|walk|bike|cycl|row|tread|ellip|swim|cardio|jog|stair/i.test(e.exId || ''))) {
+        const sec = +s.t || 0, d = +s.d || 0, v = sec > 0 && d > 0 ? d / (sec / 3600) : 0, mm = v * 1000 / 60;
+        // ACSM equations: running above 8 km/h, walking below; 7 METs when only time is known
+        const met = v ? Math.min(16, (v >= 8 ? 0.2 * mm + 3.5 : 0.1 * mm + 3.5) / 3.5) : 7;
+        const k = (met - 1) * kg * sec / 3600;
+        cardioSec += sec; cardioKcal += k; km += d;
+        cardio.push({ l: nice(e.exId) + (d ? ' · ' + (Math.round(d * 10) / 10) + ' km' : '') + ' in ' + Math.round(sec / 60) + ' min' + (v ? ' (' + (Math.round(v * 10) / 10) + ' km/h)' : '') + ' · ' + (Math.round(met * 10) / 10) + ' METs', v: r5(k) + ' kcal' });
+      } else { liftSets++; if (s.type !== 'W') workSets++; if (s.w && s.r) vol += s.w * s.r; }
+    }));
+    let min = (w.end - w.start) / 60000, timed = true;
+    if (w.quick || !(min >= 5 && min <= 300)) { min = cardioSec / 60 + liftSets * 2.5; timed = false; }
+    const liftMin = Math.max(0, min - cardioSec / 60);
+    // weight training: 5 METs when you keep moving (a working set every 5 min or less), 3.5 when it's slower
+    const dens = liftMin ? workSets / liftMin : 0, met = dens >= 0.2 ? 5 : 3.5;
+    const liftKcal = liftSets ? (met - 1) * kg * liftMin / 60 : 0;
+    const parts = [];
+    if (liftSets) parts.push({ l: 'Lifting · ' + Math.round(liftMin) + ' min · ' + workSets + ' working sets · ' + met + ' METs (' + (met === 5 ? 'steady pace' : 'long rests') + ')', v: r5(liftKcal) + ' kcal' });
+    parts.push(...cardio);
+    parts.push({ l: 'Body weight ' + Math.round(kg) + ' kg from Fuel. ' + (timed ? 'Time from Peak\'s start and finish.' : 'Logged without a timer, so time is estimated at 2.5 min a set.') + ' Resting calories are taken out (already in your target).', v: '' });
+    return { kcal: r5(liftKcal + cardioKcal), min: Math.round(min), sets, workSets, vol: Math.round(vol), km, parts };
+  }
+  peakDay(S, dayStr) {
+    if (!S.peakOn) return { burned: 0, counted: 0, list: [] };
+    const kg = this.kgNow(S), pct = (S.peakPct || 100) / 100;
+    const list = this.peakList(S).filter((w) => new Date(w.start).toDateString() === dayStr).map((w) => ({ w, est: this.peakEst(w, kg), skip: (S.peakSkip || []).includes(w.id) }));
+    const burned = list.reduce((a, x) => a + x.est.kcal, 0), counted = Math.round(list.reduce((a, x) => a + (x.skip ? 0 : x.est.kcal), 0) * pct / 5) * 5;
+    return { burned, counted, list };
+  }
+  // all exercise counted today: what you logged in Fuel plus Peak workouts
+  exToday(S) { return (S.exercise || 0) + this.peakDay(S, new Date().toDateString()).counted; }
+  peakVals(S) {
+    const kg = this.kgNow(S), pct = S.peakPct || 100, today = new Date().toDateString(), yest = new Date(Date.now() - 864e5).toDateString();
+    const sw = (on) => ({ swBg: on ? '#C8F25C' : '#3A414C', swLeft: on ? 22 : 4 });
+    const D = this.peakDay(S, today), since = Date.now() - 14 * 864e5;
+    const items = this.peakList(S).filter((w) => w.start >= since).sort((a, b) => b.start - a.start);
+    const groups = [];
+    items.forEach((w) => {
+      const d = new Date(w.start), key = d.toDateString(), est = this.peakEst(w, kg), skip = (S.peakSkip || []).includes(w.id), open = S.peakOpen === w.id;
+      const label = key === today ? 'Today' : key === yest ? 'Yesterday' : d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+      let g = groups.find((x) => x.label === label); if (!g) { g = { label, items: [] }; groups.push(g); }
+      g.items.push({ name: w.name || 'Workout', isOpen: open, counted: !skip, opacity: skip ? 0.55 : 1, ...sw(!skip),
+        meta: d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + ' · ' + est.min + ' min · ' + est.sets + (est.sets === 1 ? ' set' : ' sets') + (est.vol ? ' · ' + est.vol.toLocaleString('en-US') + ' kg lifted' : '') + (est.km ? ' · ' + (Math.round(est.km * 10) / 10) + ' km' : ''),
+        kcal: skip ? 'Not counted' : est.kcal + ' kcal', kcalColor: skip ? '#8A93A0' : '#FFA866', kcalSub: skip ? '' : (pct < 100 ? 'counts ' + Math.round(est.kcal * pct / 100 / 5) * 5 : 'estimated'),
+        parts: est.parts, open: () => this.setState({ peakOpen: open ? null : w.id }),
+        toggleCount: () => this.setState({ peakSkip: skip ? S.peakSkip.filter((x) => x !== w.id) : (S.peakSkip || []).concat([w.id]) }) });
+    });
+    const ago = S.peakAt ? Math.round((Date.now() - S.peakAt) / 60000) : null;
+    return { vPeak: S.view === 'peak', pk: { on: !!S.peakOn, ...sw(!!S.peakOn),
+      back: () => this.setState({ view: S.peakPrev || 'tabs', peakOpen: null }),
+      toggle: () => this.setState({ peakOn: !S.peakOn }),
+      status: !S.peakOn ? 'Off. Peak workouts are not counted.' : S.peakRaw ? 'Same account as Peak · ' + (ago == null ? 'not checked yet' : ago < 1 ? 'checked just now' : 'checked ' + ago + ' min ago') : 'Sample workouts in this mockup',
+      checkLabel: S.peakBusy ? 'Checking Peak…' : 'Check for new workouts', check: () => this.peakCheck(),
+      todayCounted: D.counted, todayLine: D.list.length ? D.list.length + (D.list.length === 1 ? ' workout' : ' workouts') + ' · ' + D.burned + ' kcal burned' + (pct < 100 ? ' · counting ' + pct + '%' : '') + (S.trainMode === 'avg' ? ' · not added (built into target)' : ' · added to today\'s budget') : 'No Peak workout today yet',
+      pctOpts: [100, 75, 50].map((n) => ({ label: n + '%', cls: 'chip' + (pct === n ? ' on' : ''), pick: () => this.setState({ peakPct: n }) })),
+      pctNote: pct === 100 ? 'All of the estimate goes back into today\'s budget. If you\'re cutting and progress stalls, 75% is a safer margin since workout estimates often run high.' : pct === 75 ? 'Three quarters of the estimate goes back into today\'s budget. A common choice when losing fat: estimates often run high.' : 'Half of the estimate goes back into today\'s budget. The most conservative option.',
+      isAvg: S.trainMode === 'avg', avgNote: 'Your target already includes ' + S.trainDays + ' training days a week, so Peak workouts are shown here but not added on top. Switch to "Add back when I log" to count each workout instead.',
+      goTarget: () => this.setState({ view: 'target', targetPrev: 'peak' }),
+      groups, empty: S.peakOn && !items.length,
+      how: 'Each finished Peak workout uses its real length, sets and distances. Lifting time uses 5 METs at a steady pace (a working set every 5 minutes or less) and 3.5 METs with long rests. Runs and walks use the ACSM equations from your speed. Calories = (METs − 1) × your body weight × hours, so the resting calories already in your target aren\'t counted twice. Fuel only reads from Peak; it never changes your workouts.' } };
+  }
+  peakCheck() { this.setState({ peakAt: Date.now() }); this.flash('Up to date with Peak'); }
   kgNow(S) {
     if (S.weights.length) { const w = S.weights[0]; return w.unit === 'kg' ? w.val : w.val * 0.4536; }
     return this.num(S.weight) * (S.units === 'imperial' ? 0.4536 : 1) || 80;
@@ -2396,14 +2535,19 @@ class Component extends DCLogic {
         saveDisabled: !(B.name.trim() && B.items.length),
         save: () => { this.setState({ myRoutines: S.myRoutines.concat([{ id: 'm' + Date.now(), title: B.name.trim(), items: B.items.map((it) => [it.name, it.s, it.r]) }]), view: 'routines', rtTab: 'mine', rbuild: null }); this.flash('Saved ' + B.name.trim()); } };
     }
-    const exTot = S.exLog.reduce((a, e) => a + e.kcal, 0);
+    const exTot = S.exLog.reduce((a, e) => a + e.kcal, 0), PD = this.peakDay(S, new Date().toDateString());
+    const openPeak = () => this.setState({ view: 'peak', peakPrev: S.view === 'peak' ? S.peakPrev : S.view, peakOpen: null });
     return { ex, xe, rt, rm, rb,
       goCardio: goEx('cardio'), goStrength: goEx('strength'), goRoutines,
       vExList: S.view === 'exlist', vRoutines: S.view === 'routines', vRBuild: S.view === 'rbuild' && !!B,
       vWater: S.view === 'water', vWeightLog: S.view === 'weight',
       shEx: S.sheet === 'exentry' && !!X, shRt: S.sheet === 'rtmenu' && !!sel,
-      hasExLog: S.exLog.length > 0, exTodayLine: exTot + ' kcal burned · ' + S.exLog.length + (S.exLog.length === 1 ? ' entry' : ' entries'),
-      exToday: S.exLog.map((e) => ({ name: e.name, detail: e.detail, kcal: e.kcal, remove: () => this.setState({ exLog: S.exLog.filter((x) => x.id !== e.id), exercise: Math.max(0, S.exercise - e.kcal) }) }))
+      hasExLog: S.exLog.length + PD.list.length > 0, exTodayLine: (exTot + PD.counted) + ' kcal burned · ' + (S.exLog.length + PD.list.length) + (S.exLog.length + PD.list.length === 1 ? ' entry' : ' entries'),
+      exToday: PD.list.map((x) => ({ name: x.w.name || 'Workout', peak: true, open: openPeak,
+        detail: x.skip ? 'Not counted · tap to change' : x.est.min + ' min · ' + x.est.sets + (x.est.sets === 1 ? ' set' : ' sets') + ((S.peakPct || 100) < 100 ? ' · counting ' + S.peakPct + '%' : ''),
+        kcal: x.skip ? 0 : Math.round(x.est.kcal * (S.peakPct || 100) / 100 / 5) * 5,
+        remove: () => { this.setState({ peakSkip: x.skip ? S.peakSkip.filter((i) => i !== x.w.id) : (S.peakSkip || []).concat([x.w.id]) }); if (!x.skip) this.flash('Not counting ' + (x.w.name || 'that workout') + '. Tap it to count it again.'); } }))
+        .concat(S.exLog.map((e) => ({ name: e.name, detail: e.detail, kcal: e.kcal, peak: false, open: () => {}, remove: () => this.setState({ exLog: S.exLog.filter((x) => x.id !== e.id), exercise: Math.max(0, S.exercise - e.kcal) }) })))
     };
   }
   digestVals(S, plan, eat, imp) {
@@ -2614,7 +2758,7 @@ class Component extends DCLogic {
       });
       return { label: mealNames[k], icon: mealIcons[k], kcal: kc, items, has: items.length > 0, count: items.length + (items.length === 1 ? ' item' : ' items'), add: () => this.openLog(k) };
     });
-    const budget = plan.cal + (S.trainMode === 'avg' ? 0 : S.exercise);
+    const budget = plan.cal + (S.trainMode === 'avg' ? 0 : this.exToday(S));
     const remain = budget - eat.kcal;
     const over = remain < 0;
     const today = new Date();
@@ -2761,8 +2905,8 @@ class Component extends DCLogic {
       week, targetStr: budget.toLocaleString('en-US'), eatenStr: eat.kcal.toLocaleString('en-US'),
       remainStr: Math.abs(remain).toLocaleString('en-US'), remainLabel: over ? 'over' : 'left', leftColor: over ? '#FFA866' : '#F2F4F7',
       calPct: Math.min(100, Math.round(eat.kcal / budget * 100)), calColor: over ? '#FFA866' : '#C8F25C',
-      hasExercise: S.exercise > 0 || S.trainMode === 'avg', exerciseKcal: S.exercise,
-      exerciseNote: S.trainMode === 'avg' ? 'Workouts are built into your target (' + S.trainDays + ' days a week)' : 'Includes +' + S.exercise + ' kcal from exercise',
+      hasExercise: this.exToday(S) > 0 || S.trainMode === 'avg', exerciseKcal: this.exToday(S),
+      exerciseNote: S.trainMode === 'avg' ? 'Workouts are built into your target (' + S.trainDays + ' days a week)' : 'Includes +' + this.exToday(S) + ' kcal from exercise',
       ...this.targetVals(S, plan, imp, wUnit, budget),
       ...this.productVals(S),
       macroBars: [bar('Carbs', eat.c, plan.c, '#7CC0FF'), bar('Fat', eat.f, plan.f, '#D4B2FF'), bar('Protein', eat.p, plan.p, '#FFA866')],
@@ -2783,7 +2927,7 @@ class Component extends DCLogic {
       openWeight: () => this.setState({ view: 'weight', wPrev: S.view === 'weight' ? S.wPrev : S.view, fab: false, wIn: '', wAgo: 0 }),
       openExercise: () => this.setState({ exMenu: true, fab: false }),
       exMenuOpen: S.exMenu, closeExMenu: () => this.setState({ exMenu: false }), quickEx: () => this.setState({ exMenu: false, sheet: 'exercise', form: {} }),
-      ...this.waterVals(S, imp), ...this.weightLogVals(S, imp, wUnit), ...this.exerciseVals(S, wUnit),
+      ...this.waterVals(S, imp), ...this.weightLogVals(S, imp, wUnit), ...this.exerciseVals(S, wUnit), ...this.peakVals(S),
 
       closeLog: () => this.setState({ view: 'tabs', mealMenu: false }),
       mealTitle: mealNames[meal], mealMenu: S.mealMenu, toggleMealMenu: () => this.setState({ mealMenu: !S.mealMenu }),

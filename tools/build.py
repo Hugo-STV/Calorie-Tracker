@@ -146,8 +146,8 @@ __RESULT_ROW__
 # ---- logic patches -------------------------------------------------------------------------
 L = logic
 L = once_re(L, r"this\.DB_URL = '/_blob/[0-9a-f]+';", "this.DB_URL = './foods-db.json';", 'database url')
-L = once(L, "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: S.exercise, mic: eat.mic, micro: !!eat.mic });",
-         "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: S.exercise, mic: eat.mic, micro: !!eat.mic });\n    else if (ago > 0 && S.days && S.days[key] && S.days[key].kcal > 0) { const a = S.days[key]; Object.assign(d, { logged: true, kcal: a.kcal, p: a.p, c: a.c, f: a.f, ex: a.ex || 0, mic: a.mic || null, micro: !!a.mic }); }",
+L = once(L, "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: this.exToday(S), mic: eat.mic, micro: !!eat.mic });",
+         "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: this.exToday(S), mic: eat.mic, micro: !!eat.mic });\n    else if (ago > 0 && S.days && S.days[key] && S.days[key].kcal > 0) { const a = S.days[key]; Object.assign(d, { logged: true, kcal: a.kcal, p: a.p, c: a.c, f: a.f, ex: a.ex || 0, mic: a.mic || null, micro: !!a.mic }); }",
          'saved days in charts')
 L = once(L, "let c = e.food.cat;", "let c = e.food.cat || (this.catOf ? this.catOf(e.food) : '');", 'food category')
 L = once(L, "    if (S.demo) lg.filter((d) => !(d.ago === 0 && eat.kcal > 0)).forEach((d) => {",

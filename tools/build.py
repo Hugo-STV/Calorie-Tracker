@@ -82,7 +82,7 @@ t = once(t, '    <div class="lbl">Travel and data</div>', '''    <div class="lbl
 t = once_re(t, r'<button type="button" class="lt" onClick="\{\{soon\}\}">Export my data \(CSV\)(<svg.*?</svg>)</button>',
             r'<button type="button" class="lt" onClick="{{acct.exportData}}">Export a backup\1</button>\n      <button type="button" class="lt" onClick="{{acct.importData}}">Import a backup\1</button>', 'backup rows')
 t = once(t, 'Fuel · prototype v5 · food data from Open Food Facts and USDA in production',
-         'Fuel ' + VERSION + ' · foods: USDA, BLS 4.0 (CC BY 4.0), TempoLife (CC BY 4.0) · packaged products: Open Food Facts (ODbL)', 'footer')
+         'Fuel ' + VERSION + ' · foods: USDA SR28 and FNDDS (public domain); Canadian Nutrient File, Health Canada (Open Government Licence – Canada); McCance and Widdowson’s CoFID (contains public sector information licensed under the Open Government Licence v3.0); Australian Food Composition Database © FSANZ (CC BY 2.5 AU); Ciqual © ANSES (Licence Ouverte); BLS 4.0 and TempoLife (CC BY 4.0) · packaged products: Open Food Facts (ODbL)', 'footer')
 
 # no meal scan in this build yet (the on-phone recognizer and label reader come next)
 t = once_re(t, r'\n\s*<button type="button" class="bigtile"[^\n]*onClick="\{\{fabMealScan\}\}">.*?</button>', '', 'remove fab meal scan')

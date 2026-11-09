@@ -1,0 +1,46 @@
+Rejected (energy does not match macros):
+Cream of tartar [CoFID] stated 239 vs 0
+Sweet potato flour, sampled in the island of La Martinique [Ciqual] missing macros
+Lactic acid 80 % (E 270) [BLS] stated 240 vs 0
+Citric acid (E 330) [BLS] stated 300 vs 0
+Acetic acid 60 % (E 260) [BLS] stated 180 vs 0
+
+Staples replaced by an official entry:
+Poutine
+Butter tart
+Tourtière (meat pie)
+Bannock
+Maple taffy (tire sur la neige)
+Beef jerky, plain
+Crumpet
+Scone, plain
+Yorkshire pudding
+Sausage roll
+Cornish pasty
+Fish and chips (battered cod and chips)
+Shepherd's pie
+Black pudding
+Scotch egg
+Chicken tikka masala
+Yeast extract spread
+Mince pie
+Meat pie
+Lamington
+Pavlova with cream and fruit
+Anzac biscuit
+Chicken parmigiana
+Sausage roll, beef
+Barramundi, grilled
+Pain au chocolat
+Quiche lorraine
+Croque-monsieur
+Ratatouille
+Crêpe, plain
+Galette complète (ham, egg, cheese)
+Boeuf bourguignon
+Confit de canard
+Fromage blanc 0%
+Croissant aux amandes
+Tarte aux pommes
+Jambon-beurre sandwich
+Comté cheese

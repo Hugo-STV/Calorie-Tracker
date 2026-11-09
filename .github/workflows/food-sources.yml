@@ -1,0 +1,97 @@
+# Downloads the official food composition databases and converts them to plain CSV on the
+# "food-sources" branch, so tools/mkdb.mjs can build foods-db.json from them.
+# Runs when this branch (data-sources) is pushed, or by hand.
+name: Fetch food sources
+
+on:
+  push:
+    branches: [data-sources]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Download
+        run: |
+          mkdir -p raw out
+          dl() { echo "== $1"; curl -fsSL --retry 3 --retry-delay 5 -A "Mozilla/5.0 (Fuel food database build; github.com/Hugo-STV/Calorie-Tracker)" -o "raw/$1" "$2" && ls -la "raw/$1" || echo "FAILED $1" | tee -a out/FAILED.txt; }
+          # Canada: Canadian Nutrient File 2015 (Health Canada)
+          dl cnf.zip "https://www.canada.ca/content/dam/hc-sc/migration/hc-sc/fn-an/alt_formats/zip/nutrition/fiche-nutri-data/cnf-fcen-csv.zip"
+          # UK: McCance and Widdowson's CoFID 2021 (Open Government Licence v3)
+          dl cofid.xlsx "https://assets.publishing.service.gov.uk/media/60538b91e90e07527df82ae4/McCance_Widdowsons_Composition_of_Foods_Integrated_Dataset_2021..xlsx"
+          # Australia: AFCD Release 3 (FSANZ)
+          B="https://www.foodstandards.gov.au/sites/default/files/2025-12"
+          dl afcd-nutrients.xlsx "$B/AFCD%20Release%203%20-%20Nutrient%20profiles.xlsx"
+          dl afcd-details.xlsx "$B/AFCD%20Release%203%20-%20Food%20Details.xlsx"
+          dl afcd-groups.xlsx "$B/AFCD%20Release%203%20-%20Food%20group%20information.xlsx"
+          # France: Ciqual (ANSES, Licence Ouverte). Newest edition from recherche.data.gouv, else the 2020 table
+          curl -fsSL -A "Mozilla/5.0" "https://entrepot.recherche.data.gouv.fr/api/datasets/:persistentId/?persistentId=doi:10.57745/RDMHWY" -o raw/ciqual-meta.json || echo "no ciqual meta" | tee -a out/FAILED.txt
+          if [ -s raw/ciqual-meta.json ]; then
+            node -e '
+              const m = JSON.parse(require("fs").readFileSync("raw/ciqual-meta.json"));
+              const files = (m.data && m.data.latestVersion && m.data.latestVersion.files || []).map((f) => [f.dataFile.id, f.label || f.dataFile.filename, f.dataFile.filesize]);
+              require("fs").writeFileSync("out/ciqual-files.txt", files.map((f) => f.join("\t")).join("\n"));
+              const pick = files.filter((f) => /\.(xlsx|xls|csv|xml)$/i.test(f[1]));
+              console.log(JSON.stringify(files, null, 1));
+              require("fs").writeFileSync("raw/ciqual-pick.txt", pick.map((f) => f[0] + "\t" + f[1].replace(/[^\w.-]+/g, "_")).join("\n"));'
+            while IFS=$'\t' read -r id name; do dl "ciqual-new-$name" "https://entrepot.recherche.data.gouv.fr/api/access/datafile/$id"; done < raw/ciqual-pick.txt
+          fi
+          # Ciqual 2020 has English names for the same food codes
+          dl ciqual2020-eng.xls "https://ciqual.anses.fr/cms/sites/default/files/inline-files/Table%20Ciqual%202020_ENG_2020%2007%2007.xls"
+          # USA: FNDDS mixed dishes as eaten, and Foundation Foods (USDA FoodData Central, public domain)
+          dl fndds.zip "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_survey_food_csv_2024-10-31.zip"
+          ls -la raw
+
+      - name: Convert to CSV
+        run: |
+          set -x
+          mkdir -p out/cnf out/fndds out/xlsx
+          [ -f raw/cnf.zip ] && unzip -o -q raw/cnf.zip -d out/cnf && find out/cnf -type f | head -50
+          # FoodData Central: keep the tables needed, and only the nutrients Fuel uses
+          for z in fndds; do
+            [ -f raw/$z.zip ] || continue
+            unzip -l raw/$z.zip | tee out/$z/LISTING.txt | head -60
+            mkdir -p tmp/$z && unzip -o -q -j raw/$z.zip '*food.csv' '*food_nutrient.csv' '*food_portion.csv' '*measure_unit.csv' '*nutrient.csv' '*food_category.csv' '*wweia_food_category.csv' '*survey_fndds_food.csv' '*foundation_food.csv' -d tmp/$z || true
+            ls -la tmp/$z
+            mv tmp/$z/* out/$z/
+          done
+          # Spreadsheets: every sheet to CSV
+          npm install --no-audit --no-fund xlsx@0.18.5 > /dev/null
+          node -e '
+            const XLSX = require("xlsx"), fs = require("fs");
+            for (const f of fs.readdirSync("raw").filter((x) => /\.(xlsx|xls)$/i.test(x))) {
+              let wb; try { wb = XLSX.readFile("raw/" + f); } catch (e) { console.log("cannot read", f, e.message); continue; }
+              for (const sn of wb.SheetNames) {
+                const out = "out/xlsx/" + f.replace(/\.(xlsx|xls)$/i, "") + "__" + sn.replace(/[^\w.-]+/g, "_") + ".csv";
+                fs.writeFileSync(out, XLSX.utils.sheet_to_csv(wb.Sheets[sn], { blankrows: false, rawNumbers: true }));
+                console.log(out, fs.statSync(out).size);
+              }
+            }'
+          # Ciqual 2025 food list (may carry English names), skip the 69 MB composition XML
+          mkdir -p out/ciqual && cp raw/ciqual-new-alim_*.xml raw/ciqual-new-alim_grp_*.xml out/ciqual/ 2>/dev/null || true
+          # anything over 50 MB gets gzipped so it fits in git
+          find out -type f -size +50M -exec gzip -9 {} \;
+          find out -type f -printf '%s\t%p\n' | sort -k2 > out/MANIFEST.txt
+          for f in $(find out -name '*.csv' | sort); do echo "### $f"; head -c 1500 "$f" | head -6; echo; done > out/HEADS.txt
+          du -sh out
+
+      - name: Push to the food-sources branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd out
+          git init -q -b food-sources
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Food sources fetched $(date -u +%Y-%m-%d) (run ${{ github.run_id }})"
+          git push -q --force "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}" food-sources

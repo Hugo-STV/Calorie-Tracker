@@ -84,11 +84,16 @@ t = once_re(t, r'<button type="button" class="lt" onClick="\{\{soon\}\}">Export 
 t = once(t, 'Fuel · prototype v5 · food data from Open Food Facts and USDA in production',
          'Fuel ' + VERSION + ' · foods: USDA, BLS 4.0 (CC BY 4.0), TempoLife (CC BY 4.0) · packaged products: Open Food Facts (ODbL)', 'footer')
 
-# no meal scan in this build (needs an AI vision service)
+# no meal scan in this build yet (the on-phone recognizer and label reader come next)
 t = once_re(t, r'\n\s*<button type="button" class="bigtile"[^\n]*onClick="\{\{fabMealScan\}\}">.*?</button>', '', 'remove fab meal scan')
 t = once_re(t, r'\n\s*<button type="button" class="tile" onClick="\{\{goMealScan\}\}">.*?</button>', '', 'remove log meal scan')
 t = once(t, '<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">\n      <button type="button" class="tile" onClick="{{goScanFromLog}}">',
          '<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">\n      <button type="button" class="tile" onClick="{{goScanFromLog}}">', 'log tiles to 2 columns')
+
+# label scan: mockup only until the label reader is built in
+t = once(t, '''      <button type="button" class="btn" style="width: 100%" onClick="{{scanLabelFromScan}}">Scan the nutrition label</button>
+      <button type="button" onClick="{{createFromScan}}" style="width: 100%; min-height: 44px; margin-top: 4px; border: 0; background: none; color: #C8F25C; font: inherit; font-weight: 600; cursor: pointer">Type it in instead</button>''',
+         '''      <button type="button" class="btn" style="width: 100%" onClick="{{createFromScan}}">Create this food</button>''', 'label scan hidden')
 
 # scanner screen: real camera
 t = once_re(t, r'<p class="sub">UPC \(US, Canada\) and EAN.*?</p>', '<p class="sub">UPC (US, Canada) and EAN (UK, France, Australia) barcodes. Products come from Open Food Facts and are saved on your phone after the first scan.</p>', 'scan subtitle')

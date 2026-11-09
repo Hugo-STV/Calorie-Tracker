@@ -6,7 +6,7 @@ name: Build Android APK
 on:
   push:
     branches: [main]
-    paths-ignore: ['README.md', 'mockup/**', 'tools/**']
+    paths-ignore: ['README.md', 'mockup/**', 'tools/**', 'preview/**']
   workflow_dispatch:
 
 permissions:

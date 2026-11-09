@@ -136,7 +136,29 @@
     }
 
     // every state change is saved locally, then synced
-    setState(patch) { super.setState(patch); this.saveSoon(); }
+    setState(patch) {
+      super.setState(patch);
+      // Peak settings changed: past days' exercise follows
+      if (patch && ('peakRaw' in patch || 'peakPct' in patch || 'peakSkip' in patch || 'peakOn' in patch)) this.peakDays();
+      this.saveSoon();
+    }
+    // Put Peak calories on the right past days, even when Fuel wasn't opened that day.
+    // Each saved day keeps exFuel (exercise logged in Fuel) so the Peak part can be redone any time.
+    peakDays() {
+      const S = this.state, days = Object.assign({}, S.days || {}), today = new Date().toDateString();
+      const keys = new Set(Object.keys(days));
+      this.peakList(S).forEach((w) => keys.add(new Date(w.start).toDateString()));
+      let changed = false;
+      keys.forEach((k) => {
+        if (k === today || Date.now() - new Date(k).getTime() > 22 * 864e5) return;
+        const d = days[k], fuelEx = d ? (d.exFuel != null ? d.exFuel : d.ex || 0) : 0, ex = fuelEx + this.peakDay(S, k).counted;
+        if (d && d.ex === ex && d.exFuel != null) return;
+        if (!d && !ex) return;
+        days[k] = Object.assign(d ? {} : { kcal: 0, p: 0, c: 0, f: 0, mic: null, water: 0, items: [] }, d || {}, { ex, exFuel: fuelEx });
+        changed = true;
+      });
+      if (changed) { this.state.days = days; this.pushSoon && this.pushSoon(2000); }
+    }
     saveSoon() { clearTimeout(this._saveT); this._saveT = setTimeout(() => this.saveNow(), 400); }
     saveNow() {
       const p = persistable(this.state); delete p.updatedAt;
@@ -160,7 +182,7 @@
       this.saveSoon();
     }
     daySummary(S) {
-      const t = { kcal: 0, p: 0, c: 0, f: 0, mic: null, ex: (S.exercise || 0) + this.peakDay(S, S.logDay).counted, water: S.water || 0, items: [] };
+      const t = { kcal: 0, p: 0, c: 0, f: 0, mic: null, ex: (S.exercise || 0) + this.peakDay(S, S.logDay).counted, exFuel: S.exercise || 0, water: S.water || 0, items: [] };
       Object.keys(S.log || {}).forEach((meal) => (S.log[meal] || []).forEach((e) => {
         const m = e.servings || 1, fd = e.food;
         t.kcal += fd.kcal * m; t.p += (fd.p || 0) * m; t.c += (fd.c || 0) * m; t.f += (fd.f || 0) * m;

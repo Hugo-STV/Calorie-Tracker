@@ -72,7 +72,7 @@ jobs:
               let wb; try { wb = XLSX.readFile("raw/" + f); } catch (e) { console.log("cannot read", f, e.message); continue; }
               for (const sn of wb.SheetNames) {
                 const out = "out/xlsx/" + f.replace(/\.(xlsx|xls)$/i, "") + "__" + sn.replace(/[^\w.-]+/g, "_") + ".csv";
-                fs.writeFileSync(out, XLSX.utils.sheet_to_csv(wb.Sheets[sn], { blankrows: false }));
+                fs.writeFileSync(out, XLSX.utils.sheet_to_csv(wb.Sheets[sn], { blankrows: false, rawNumbers: true }));
                 console.log(out, fs.statSync(out).size);
               }
             }'

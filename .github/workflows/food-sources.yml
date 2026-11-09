@@ -45,20 +45,23 @@ jobs:
               require("fs").writeFileSync("raw/ciqual-pick.txt", pick.map((f) => f[0] + "\t" + f[1].replace(/[^\w.-]+/g, "_")).join("\n"));'
             while IFS=$'\t' read -r id name; do dl "ciqual-new-$name" "https://entrepot.recherche.data.gouv.fr/api/access/datafile/$id"; done < raw/ciqual-pick.txt
           fi
-          dl ciqual2020-a.xls "https://www.data.gouv.fr/api/1/datasets/r/bcdb7fec-875c-42aa-ba6e-460adf97aad3"
-          dl ciqual2020-b.xls "https://www.data.gouv.fr/api/1/datasets/r/f844ae25-6cbf-4027-930c-6a62459b8d42"
+          # Ciqual 2020 has English names (same food codes): from its Zenodo record
+          curl -fsSL -A "Mozilla/5.0" "https://zenodo.org/api/records/4770202" -o raw/zenodo.json || echo "no zenodo" | tee -a out/FAILED.txt
+          if [ -s raw/zenodo.json ]; then
+            node -e 'const m = JSON.parse(require("fs").readFileSync("raw/zenodo.json")); const f = (m.files || []).map((x) => [x.key, x.links && (x.links.self || x.links.download)]); console.log(JSON.stringify(f, null, 1)); require("fs").writeFileSync("raw/zenodo-pick.txt", f.filter((x) => /\.xlsx?$/i.test(x[0])).map((x) => x[1] + "\t" + x[0].replace(/[^\w.-]+/g, "_")).join("\n"));'
+            while IFS=$'\t' read -r url name; do dl "ciqual2020-$name" "$url"; done < raw/zenodo-pick.txt
+          fi
           # USA: FNDDS mixed dishes as eaten, and Foundation Foods (USDA FoodData Central, public domain)
           dl fndds.zip "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_survey_food_csv_2024-10-31.zip"
-          dl foundation.zip "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_foundation_food_csv_2026-10-29.zip"
           ls -la raw
 
       - name: Convert to CSV
         run: |
           set -x
-          mkdir -p out/cnf out/fndds out/foundation out/xlsx
+          mkdir -p out/cnf out/fndds out/xlsx
           [ -f raw/cnf.zip ] && unzip -o -q raw/cnf.zip -d out/cnf && find out/cnf -type f | head -50
           # FoodData Central: keep the tables needed, and only the nutrients Fuel uses
-          for z in fndds foundation; do
+          for z in fndds; do
             [ -f raw/$z.zip ] || continue
             unzip -l raw/$z.zip | tee out/$z/LISTING.txt | head -60
             mkdir -p tmp/$z && unzip -o -q -j raw/$z.zip '*food.csv' '*food_nutrient.csv' '*food_portion.csv' '*measure_unit.csv' '*nutrient.csv' '*food_category.csv' '*wweia_food_category.csv' '*survey_fndds_food.csv' '*foundation_food.csv' -d tmp/$z || true
@@ -66,17 +69,9 @@ jobs:
             python3 - "$z" <<'PY'
           import csv, sys, os
           z = sys.argv[1]; src = 'tmp/' + z; dst = 'out/' + z
-          keep = {'1008','2047','2048','1003','1004','1005','1050','1079','2000','1063','1258','1093','1253','1092','1051','1018'}
-          for name in os.listdir(src):
+                    for name in os.listdir(src):
               p = os.path.join(src, name)
-              if name == 'food_nutrient.csv':
-                  with open(p, newline='', encoding='utf-8') as f, open(os.path.join(dst, name), 'w', newline='', encoding='utf-8') as o:
-                      r = csv.reader(f); w = csv.writer(o); h = next(r); w.writerow(h); i = h.index('nutrient_id'); n = 0
-                      for row in r:
-                          if row[i] in keep: w.writerow(row); n += 1
-                  print(z, name, 'kept', n)
-              else:
-                  os.replace(p, os.path.join(dst, name))
+              os.replace(p, os.path.join(dst, name))
           PY
           done
           # Spreadsheets: every sheet to CSV

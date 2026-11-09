@@ -45,12 +45,8 @@ jobs:
               require("fs").writeFileSync("raw/ciqual-pick.txt", pick.map((f) => f[0] + "\t" + f[1].replace(/[^\w.-]+/g, "_")).join("\n"));'
             while IFS=$'\t' read -r id name; do dl "ciqual-new-$name" "https://entrepot.recherche.data.gouv.fr/api/access/datafile/$id"; done < raw/ciqual-pick.txt
           fi
-          # Ciqual 2020 has English names (same food codes): from its Zenodo record
-          curl -fsSL -A "Mozilla/5.0" "https://zenodo.org/api/records/4770202" -o raw/zenodo.json || echo "no zenodo" | tee -a out/FAILED.txt
-          if [ -s raw/zenodo.json ]; then
-            node -e 'const m = JSON.parse(require("fs").readFileSync("raw/zenodo.json")); const f = (m.files || []).map((x) => [x.key, x.links && (x.links.self || x.links.download)]); console.log(JSON.stringify(f, null, 1)); require("fs").writeFileSync("raw/zenodo-pick.txt", f.filter((x) => /\.xlsx?$/i.test(x[0])).map((x) => x[1] + "\t" + x[0].replace(/[^\w.-]+/g, "_")).join("\n"));'
-            while IFS=$'\t' read -r url name; do dl "ciqual2020-$name" "$url"; done < raw/zenodo-pick.txt
-          fi
+          # Ciqual 2020 has English names for the same food codes
+          dl ciqual2020-eng.xls "https://ciqual.anses.fr/cms/sites/default/files/inline-files/Table%20Ciqual%202020_ENG_2020%2007%2007.xls"
           # USA: FNDDS mixed dishes as eaten, and Foundation Foods (USDA FoodData Central, public domain)
           dl fndds.zip "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_survey_food_csv_2024-10-31.zip"
           ls -la raw
@@ -66,13 +62,7 @@ jobs:
             unzip -l raw/$z.zip | tee out/$z/LISTING.txt | head -60
             mkdir -p tmp/$z && unzip -o -q -j raw/$z.zip '*food.csv' '*food_nutrient.csv' '*food_portion.csv' '*measure_unit.csv' '*nutrient.csv' '*food_category.csv' '*wweia_food_category.csv' '*survey_fndds_food.csv' '*foundation_food.csv' -d tmp/$z || true
             ls -la tmp/$z
-            python3 - "$z" <<'PY'
-          import csv, sys, os
-          z = sys.argv[1]; src = 'tmp/' + z; dst = 'out/' + z
-                    for name in os.listdir(src):
-              p = os.path.join(src, name)
-              os.replace(p, os.path.join(dst, name))
-          PY
+            mv tmp/$z/* out/$z/
           done
           # Spreadsheets: every sheet to CSV
           npm install --no-audit --no-fund xlsx@0.18.5 > /dev/null
@@ -86,6 +76,8 @@ jobs:
                 console.log(out, fs.statSync(out).size);
               }
             }'
+          # Ciqual 2025 food list (may carry English names), skip the 69 MB composition XML
+          mkdir -p out/ciqual && cp raw/ciqual-new-alim_*.xml raw/ciqual-new-alim_grp_*.xml out/ciqual/ 2>/dev/null || true
           # anything over 50 MB gets gzipped so it fits in git
           find out -type f -size +50M -exec gzip -9 {} \;
           find out -type f -printf '%s\t%p\n' | sort -k2 > out/MANIFEST.txt

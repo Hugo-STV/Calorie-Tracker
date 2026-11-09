@@ -3,7 +3,8 @@
 A free, private macro and calorie tracker. It runs in your browser and as an Android app, scans barcodes, rates foods, and syncs through your own Firebase project. Nothing in it depends on Claude or any AI service.
 
 - **Web app:** https://hugo-stv.github.io/Calorie-Tracker/ (add it to your home screen; works offline)
-- **Android:** download the latest `Fuel-*.apk` from [Releases](../../releases)
+- **Android:** download the latest `Fuel-*.apk` from [Releases](../../releases). The app opens the live site, so updates arrive by themselves; you only reinstall when a release says so.
+- **Preview:** https://hugo-stv.github.io/Calorie-Tracker/preview/ and the *Fuel Preview* app (pre-releases). Changes are tried here before they go live.
 
 ## What it does
 
@@ -26,11 +27,18 @@ A free, private macro and calorie tracker. It runs in your browser and as an And
 | `app/fuel.js` | Production layer: saving, new log each day, accounts and sync, camera scanner, Open Food Facts, backup. |
 | `foods-db.json` | The offline food database. Rebuild with `tools/mkdb.mjs`. |
 | `sw.js`, `manifest.json` | Offline cache and install info. |
-| `.github/workflows/android.yml` | Builds the APK on every push and publishes it to Releases. |
+| `.github/workflows/android.yml` | Builds the Android shell (Fuel or Fuel Preview) and publishes it to Releases. |
+| `offline.html` | Shown by the Android app if it can't reach the site the first time it opens. |
+| `preview/`, `tools/make_preview.py` | The preview copy of the app and the script that makes it. |
 
-### Updating the app
+### How changes ship (preview first, then live)
 
-Push a change to `main`. GitHub Pages serves the new web version within a minute or two, and the workflow builds a new APK into Releases (about 5–8 minutes). Phones pick up the web update the next time the app is opened.
+1. Make the change on a branch, update the mockup, and run `python3 tools/build.py`.
+2. `python3 tools/make_preview.py <branch>` on `main`, then push. Only `preview/` changes, so the live app is untouched.
+3. Try it at `/preview/` or in the *Fuel Preview* app. The preview uses the same accounts, so test entries are real data.
+4. When it's approved, merge the branch into `main`. GitHub Pages serves it within a minute or two, and the Fuel app shows it the next time it's opened.
+
+A new APK is built only when the Android shell changes (`.github/workflows/android.yml`, `offline.html`, `icons/android/`). To build one by hand: **Actions → Build Android APK → Run workflow**, then pick `preview` or `prod`.
 
 ### Android signing (one time)
 

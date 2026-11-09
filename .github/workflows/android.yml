@@ -1,25 +1,40 @@
-# Builds the Android APK from the same web app GitHub Pages serves, and publishes it as a GitHub Release.
-# Signing: add repository secrets KEYSTORE_B64, KEYSTORE_PASSWORD and KEY_ALIAS for a release-signed APK
-# (needed so each new APK installs as an update). Without them it builds a debug APK for testing.
+# Builds the Android app. The app is a thin shell that opens the web app on GitHub Pages, so web changes
+# reach phones without a new APK. A new APK is only needed for Android-level changes (permissions, icon).
+#
+# Two channels:
+#   preview: "Fuel Preview" (own app id, installs beside Fuel), opens .../preview/. Run it by hand
+#            (Actions → Build Android APK → Run workflow → preview). Published as a pre-release.
+#   prod:    "Fuel", opens the live site. Built on pushes to main that change the app shell, or by hand.
+#
+# Signing: repository secrets KEYSTORE_B64, KEYSTORE_PASSWORD and KEY_ALIAS give a release-signed APK
+# that installs as an update. Without them it builds a debug APK.
 name: Build Android APK
 
 on:
   push:
     branches: [main]
-    paths-ignore: ['README.md', 'mockup/**', 'tools/**', 'preview/**']
+    paths: ['.github/workflows/android.yml', 'offline.html', 'icons/android/**']
   workflow_dispatch:
+    inputs:
+      channel:
+        description: Which app to build
+        type: choice
+        options: [preview, prod]
+        default: preview
 
 permissions:
   contents: write
 
 concurrency:
-  group: android-apk
+  group: android-apk-${{ inputs.channel || 'prod' }}
   cancel-in-progress: true
 
 jobs:
   apk:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      CHANNEL: ${{ inputs.channel || 'prod' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -32,17 +47,42 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Collect the web app
+      - name: Channel settings
+        run: |
+          if [ "$CHANNEL" = "preview" ]; then
+            echo "APP_NAME=Fuel Preview" >> $GITHUB_ENV
+            echo "APP_ID=com.hugostv.fuel.preview" >> $GITHUB_ENV
+            echo "APP_URL=https://hugo-stv.github.io/Calorie-Tracker/preview/" >> $GITHUB_ENV
+            echo "FILE=Fuel-Preview-1.0.${{ github.run_number }}" >> $GITHUB_ENV
+            echo "TAG=preview-${{ github.run_number }}" >> $GITHUB_ENV
+          else
+            echo "APP_NAME=Fuel" >> $GITHUB_ENV
+            echo "APP_ID=com.hugostv.fuel" >> $GITHUB_ENV
+            echo "APP_URL=https://hugo-stv.github.io/Calorie-Tracker/" >> $GITHUB_ENV
+            echo "FILE=Fuel-1.0.${{ github.run_number }}" >> $GITHUB_ENV
+            echo "TAG=build-${{ github.run_number }}" >> $GITHUB_ENV
+          fi
+
+      - name: Shell files (offline fallback page and icons)
         run: |
           mkdir -p shell/www
-          cp -r index.html sw.js manifest.json foods-db.json app vendor icons shell/www/
+          sed "s#__APP_URL__#$APP_URL#" offline.html > shell/www/offline.html
+          cp shell/www/offline.html shell/www/index.html
+          cp -r icons shell/www/
 
       - name: Create the Android project (Capacitor)
         working-directory: shell
         run: |
           npm init -y > /dev/null
           npm install --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
-          npx cap init "Fuel" "com.hugostv.fuel" --web-dir www
+          npx cap init "$APP_NAME" "$APP_ID" --web-dir www
+          node -e '
+            const fs = require("fs");
+            const cfg = { appId: process.env.APP_ID, appName: process.env.APP_NAME, webDir: "www",
+              server: { url: process.env.APP_URL, errorPath: "offline.html", androidScheme: "https" } };
+            fs.writeFileSync("capacitor.config.json", JSON.stringify(cfg, null, 2));
+            for (const f of ["capacitor.config.ts", "capacitor.config.js"]) if (fs.existsSync(f)) fs.unlinkSync(f);'
+          cat capacitor.config.json
           npx cap add android
           npx cap sync android
 
@@ -55,7 +95,7 @@ jobs:
           for f in $(find app/src/main/res -name 'splash.png'); do cp ../www/icons/android/splash.png "$f"; done
           if [ -f app/src/main/res/values/ic_launcher_background.xml ]; then sed -i 's/#[0-9A-Fa-f]\{6\}/#0E1013/' app/src/main/res/values/ic_launcher_background.xml; fi
           sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"1.0.${{ github.run_number }}\"/" app/build.gradle
-          grep -n 'versionCode\|versionName' app/build.gradle
+          grep -n 'versionCode\|versionName\|applicationId' app/build.gradle
 
       - name: Build APK
         working-directory: shell/android
@@ -72,26 +112,27 @@ jobs:
               -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
               -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
               -Pandroid.injected.signing.key.password="$KEYSTORE_PASSWORD"
-            cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/Fuel-1.0.${{ github.run_number }}.apk"
+            cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/$FILE.apk"
           else
             echo "::warning::No signing secrets set: building a debug APK. Add KEYSTORE_B64, KEYSTORE_PASSWORD, KEY_ALIAS so updates install over the old app."
             ./gradlew --no-daemon assembleDebug
-            cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/Fuel-1.0.${{ github.run_number }}-debug.apk"
+            cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/$FILE-debug.apk"
           fi
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Fuel-apk
+          name: ${{ env.FILE }}
           path: Fuel-*.apk
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: build-${{ github.run_number }}
-          name: Fuel 1.0.${{ github.run_number }}
+          tag_name: ${{ env.TAG }}
+          name: ${{ env.APP_NAME }} 1.0.${{ github.run_number }}
           body: |
-            Android app built from commit ${{ github.sha }}.
+            ${{ env.APP_NAME }} for Android, built from commit ${{ github.sha }}.
+            It opens ${{ env.APP_URL }}, so changes to the app arrive by themselves; you only need a new APK when this page says so.
             Install: open this page on your phone, tap the .apk below, and allow installing from your browser if asked.
-            Web version: https://hugo-stv.github.io/Calorie-Tracker/
           files: Fuel-*.apk
-          make_latest: true
+          prerelease: ${{ env.CHANNEL == 'preview' }}
+          make_latest: ${{ env.CHANNEL == 'prod' }}

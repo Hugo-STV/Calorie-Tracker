@@ -1,41 +1,32 @@
-// v4 — force cache bust
-const CACHE = 'caltrack-v4';
-const ASSETS = [
-  '/Calorie-Tracker/',
-  '/Calorie-Tracker/index.html',
-  '/Calorie-Tracker/manifest.json',
-  '/Calorie-Tracker/icon-192.png',
-  '/Calorie-Tracker/icon-512.png'
-];
+// Fuel offline cache: app files and the food database are cached so search and logging work offline.
+// Pages and scripts: network first (updates show right away), cache fallback. Database and scanner: cache first.
+const CACHE = 'fuel-v1';
+const CORE = ['./', './index.html', './manifest.json', './app/runtime.js', './app/fuel.js', './vendor/preact.min.umd.js', './icons/icon-192.png', './icons/icon-512.png'];
+const HEAVY = ['./foods-db.json', './vendor/zxing-reader.js', './vendor/zxing_reader.wasm'];
 
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
-  self.skipWaiting();
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE.map((a) => new Request(a, { cache: 'reload' })))
+    .then(() => c.addAll(HEAVY).catch(() => {}))).then(() => self.skipWaiting()));
 });
-
-self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(keys =>
-    Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-  ));
-  self.clients.claim();
+self.addEventListener('activate', (e) => {
+  e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
 });
-
-self.addEventListener('fetch', e => {
-  const url = new URL(e.request.url);
-  if (url.hostname.includes('openfoodfacts') ||
-      url.hostname.includes('nal.usda') ||
-      url.hostname.includes('upcitemdb') ||
-      url.hostname.includes('cdnjs') ||
-      url.hostname.includes('jsdelivr')) {
-    e.respondWith(fetch(e.request).catch(() => new Response('', {status: 503})));
+self.addEventListener('fetch', (e) => {
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  const u = new URL(req.url);
+  if (u.origin !== location.origin) {
+    // fonts are cached once fetched; Firebase and Open Food Facts always go to the network
+    if (u.hostname.includes('fonts.g')) e.respondWith(caches.match(req).then((r) => r || fetch(req).then((res) => { const cp = res.clone(); caches.open(CACHE).then((c) => c.put(req, cp)); return res; })));
     return;
   }
-  // Network first for the app shell so updates always come through
-  e.respondWith(
-    fetch(e.request).then(res => {
-      const clone = res.clone();
-      caches.open(CACHE).then(c => c.put(e.request, clone));
-      return res;
-    }).catch(() => caches.match(e.request))
-  );
+  const heavy = /foods-db\.json$|zxing/.test(u.pathname);
+  if (heavy) {
+    e.respondWith(caches.match(req, { ignoreSearch: true }).then((r) => r || fetch(req).then((res) => { if (res.ok) { const cp = res.clone(); caches.open(CACHE).then((c) => c.put(req, cp)); } return res; })));
+    return;
+  }
+  e.respondWith(fetch(u.href, { cache: 'no-store', credentials: 'same-origin' }).then((res) => {
+    if (res.ok) { const cp = res.clone(); caches.open(CACHE).then((c) => c.put(req, cp)); }
+    return res;
+  }).catch(() => caches.match(req, { ignoreSearch: true }).then((r) => r || (req.mode === 'navigate' ? caches.match('./index.html') : undefined))));
 });

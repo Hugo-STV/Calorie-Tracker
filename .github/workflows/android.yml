@@ -1,0 +1,97 @@
+# Builds the Android APK from the same web app GitHub Pages serves, and publishes it as a GitHub Release.
+# Signing: add repository secrets KEYSTORE_B64, KEYSTORE_PASSWORD and KEY_ALIAS for a release-signed APK
+# (needed so each new APK installs as an update). Without them it builds a debug APK for testing.
+name: Build Android APK
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['README.md', 'mockup/**', 'tools/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-apk
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Collect the web app
+        run: |
+          mkdir -p shell/www
+          cp -r index.html sw.js manifest.json foods-db.json app vendor icons shell/www/
+
+      - name: Create the Android project (Capacitor)
+        working-directory: shell
+        run: |
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
+          npx cap init "Fuel" "com.hugostv.fuel" --web-dir www
+          npx cap add android
+          npx cap sync android
+
+      - name: Camera permission, icon, version
+        working-directory: shell/android
+        run: |
+          sed -i 's#<uses-permission android:name="android.permission.INTERNET" />#<uses-permission android:name="android.permission.INTERNET" />\n    <uses-permission android:name="android.permission.CAMERA" />\n    <uses-feature android:name="android.hardware.camera" android:required="false" />#' app/src/main/AndroidManifest.xml
+          grep -q 'android.permission.CAMERA' app/src/main/AndroidManifest.xml
+          cp -r ../www/icons/android/mipmap-* app/src/main/res/
+          for f in $(find app/src/main/res -name 'splash.png'); do cp ../www/icons/android/splash.png "$f"; done
+          if [ -f app/src/main/res/values/ic_launcher_background.xml ]; then sed -i 's/#[0-9A-Fa-f]\{6\}/#0E1013/' app/src/main/res/values/ic_launcher_background.xml; fi
+          sed -i "s/versionCode [0-9]*/versionCode ${{ github.run_number }}/; s/versionName \"[^\"]*\"/versionName \"1.0.${{ github.run_number }}\"/" app/build.gradle
+          grep -n 'versionCode\|versionName' app/build.gradle
+
+      - name: Build APK
+        working-directory: shell/android
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        run: |
+          chmod +x gradlew
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/fuel.jks"
+            ./gradlew --no-daemon assembleRelease \
+              -Pandroid.injected.signing.store.file="$RUNNER_TEMP/fuel.jks" \
+              -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
+              -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
+              -Pandroid.injected.signing.key.password="$KEYSTORE_PASSWORD"
+            cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/Fuel-1.0.${{ github.run_number }}.apk"
+          else
+            echo "::warning::No signing secrets set: building a debug APK. Add KEYSTORE_B64, KEYSTORE_PASSWORD, KEY_ALIAS so updates install over the old app."
+            ./gradlew --no-daemon assembleDebug
+            cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/Fuel-1.0.${{ github.run_number }}-debug.apk"
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Fuel-apk
+          path: Fuel-*.apk
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Fuel 1.0.${{ github.run_number }}
+          body: |
+            Android app built from commit ${{ github.sha }}.
+            Install: open this page on your phone, tap the .apk below, and allow installing from your browser if asked.
+            Web version: https://hugo-stv.github.io/Calorie-Tracker/
+          files: Fuel-*.apk
+          make_latest: true

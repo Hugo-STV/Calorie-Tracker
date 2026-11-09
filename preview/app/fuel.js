@@ -51,6 +51,13 @@
       } while (token);
       return out;
     },
+    // documents in a collection changed after a time (keeps reads low as the history grows)
+    async listSince(a, coll, since) {
+      const body = { structuredQuery: { from: [{ collectionId: coll }], where: { fieldFilter: { field: { fieldPath: 'updatedAt' }, op: 'GREATER_THAN', value: { integerValue: String(Math.max(0, since)) } } } } };
+      const r = await fetch(FS + '/users/' + a.uid + ':runQuery', { method: 'POST', headers: { Authorization: 'Bearer ' + a.idToken, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error('QUERY ' + r.status);
+      return (await r.json()).filter((x) => x.document).map((x) => Object.assign({ id: x.document.name.split('/').pop() }, this.unpack(x.document)));
+    },
     // Peak's workouts: users/{uid}/w/{id}, each with the workout as JSON in field "j" (read only)
     async workouts(a) {
       const out = []; let token = '';
@@ -119,7 +126,7 @@
   class App extends Component { // Component: the screen logic from the mockup (global class)
     constructor(props) {
       super(props);
-      this.DB_URL = '../foods-db.json';
+      this.DB_URL = './foods-db.json';
       this.acct = ls.get('fuel:acct');
       this.loadLocal();
       this._lastView = this.state.view;
@@ -245,18 +252,21 @@
       try {
         const a = await this.token();
         const prof = await CLOUD.get(a, 'fuel/profile');
-        const days = await CLOUD.list(a, 'fuelDays').catch(() => []);
+        // only days changed since the last pull (a day of margin for clocks that differ between devices)
+        const since = ls.get('fuel:daysAt:' + a.uid) || 0, started = Date.now();
+        const days = await (since && CLOUD.listSince ? CLOUD.listSince(a, 'fuelDays', since - 864e5).catch(() => CLOUD.list(a, 'fuelDays')) : CLOUD.list(a, 'fuelDays')).catch(() => null);
+        if (days) ls.set('fuel:daysAt:' + a.uid, started);
         let changed = false;
         const S = this.state;
         const merged = Object.assign({}, S.days || {});
-        days.forEach((d) => { const k = keyOfIso(d.id); if (d.data && !merged[k]) { merged[k] = d.data; changed = true; } });
+        (days || []).forEach((d) => { const k = keyOfIso(d.id); if (d.data && !merged[k]) { merged[k] = d.data; changed = true; } });
         if (prof && prof.data && prof.data.state && (prof.data.updatedAt || 0) > (S.updatedAt || 0)) {
           this.state = Object.assign({}, this.state, revive(prof.data.state), { days: merged, view: S.view, tab: S.tab, updatedAt: prof.data.updatedAt });
           this._savedJson = null; changed = true;
         } else if (changed) this.state = Object.assign({}, this.state, { days: merged });
         if (changed) { this.rollover(); this.saveNow(); this.forceUpdate(); }
         const sent = ls.get('fuel:sentDays:' + a.uid) || {};
-        days.forEach((d) => { if (d.data) sent[keyOfIso(d.id)] = JSON.stringify(d.data).length + ':' + d.data.kcal; });
+        (days || []).forEach((d) => { if (d.data) sent[keyOfIso(d.id)] = JSON.stringify(d.data).length + ':' + d.data.kcal; });
         ls.set('fuel:sentDays:' + a.uid, sent);
         this.status('Synced ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }));
         return !!(prof && prof.data);
@@ -267,7 +277,7 @@
     async peakPull(force) {
       const S = this.state;
       if (!this.acct || !S.peakOn || !navigator.onLine || this.peakBusy) return false;
-      if (!force && S.peakAt && Date.now() - S.peakAt < 10 * 60000) return false;
+      if (!force && S.peakAt && Date.now() - S.peakAt < 20 * 60000) return false;
       this.peakBusy = true; this.setState({ peakBusy: true });
       try {
         const a = await this.token();

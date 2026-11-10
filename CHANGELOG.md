@@ -4,6 +4,11 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.4.1 — 2026-11-09
+- Fix: meal scan showed sample guesses on top of the camera before any photo, hiding Take photo.
+  Cause: a broken tag in v1.4.0's photo thumbnail. The build now refuses malformed screens, and the
+  plate test checks nothing covers the camera before a photo.
+
 ## v1.4.0 — 2026-11-09
 - **Plate scan works:** a photo of your plate gives the 5 most likely dishes from Google's free AIY food
   recognizer (2,023 dishes), run on the phone; your photo shows next to the guesses. Pick one to log a

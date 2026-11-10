@@ -161,6 +161,27 @@ L = once(L, "scanStatus: S.scanning ? 'Reading barcode…' : 'Point the camera a
 L = once(L, "emailLine: S.email || 'Not signed in · prototype'", "emailLine: this.acct ? this.acct.email : 'Not signed in'", 'profile email')
 
 # ---- assemble -------------------------------------------------------------------------------
+# ---------- check the screens are well-formed (a broken tag shows hidden screens on top of others)
+from html.parser import HTMLParser
+class _Check(HTMLParser):
+    VOID = {'img', 'input', 'br', 'hr', 'meta', 'link', 'source', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'ellipse'}
+    def __init__(self):
+        super().__init__(); self.stack = []; self.errors = []
+    def handle_starttag(self, tag, attrs):
+        if tag not in self.VOID: self.stack.append((tag, self.getpos()[0]))
+    def handle_startendtag(self, tag, attrs): pass
+    def handle_endtag(self, tag):
+        if tag in self.VOID: return
+        if not self.stack or self.stack[-1][0] != tag:
+            self.errors.append('line %d: </%s> closes <%s>' % (self.getpos()[0], tag, self.stack[-1][0] if self.stack else 'nothing')); 
+            while self.stack and self.stack[-1][0] != tag: self.stack.pop()
+        if self.stack: self.stack.pop()
+    def handle_data(self, data):
+        if re.search(r'(^|\s)(div|span|button) style="', data): self.errors.append('line %d: tag missing its "<": %s' % (self.getpos()[0], data.strip()[:60]))
+_c = _Check(); _c.feed(t); _c.close()
+if _c.errors or _c.stack:
+    sys.exit('The mockup\'s screens are not well-formed:\n  ' + '\n  '.join(_c.errors[:10] + ['unclosed <%s> from line %d' % x for x in _c.stack[:5]]))
+
 html = f'''<!doctype html>
 <html lang="en">
 <head>

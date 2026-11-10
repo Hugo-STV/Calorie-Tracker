@@ -3,7 +3,7 @@
 // Downloaded once (about 30 MB with the runner), then cached; photos never leave the phone.
 (function (root) {
   if (typeof document === 'undefined') return;
-  const base = '../'; const _unused = document.currentScript && /app\/plate\.js/.test(document.currentScript.src) ? document.currentScript.src.replace(/app\/plate\.js.*$/, '') : location.href.replace(/[^/]*$/, '');
+  const base = document.currentScript && /app\/plate\.js/.test(document.currentScript.src) ? document.currentScript.src.replace(/app\/plate\.js.*$/, '') : location.href.replace(/[^/]*$/, '');
   const V = base + 'vendor/';
   let ready = null;
   const script = (src) => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => no(new Error('plate-load ' + src)); document.head.appendChild(s); });

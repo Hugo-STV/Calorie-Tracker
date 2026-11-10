@@ -12,6 +12,14 @@ const SHOTS = process.env.SHOTS || 'test-shots'; fs.mkdirSync(SHOTS, { recursive
   await page.waitForFunction(() => DC.comp.state.dbReady, null, { timeout: 20000 });
   await page.evaluate(() => DC.comp.setState({ mode: 'app', view: 'log' })); await page.waitForTimeout(200);
   await page.getByRole('button', { name: /Meal scan/ }).first().click();
+  // before any photo: camera and buttons, no guesses on screen
+  await page.waitForTimeout(800);
+  expect(!(await page.locator('text=Best guesses').isVisible()), 'no guesses before a photo is taken');
+  expect(await page.getByRole('button', { name: 'Take photo' }).isVisible(), 'Take photo is visible');
+  expect(await page.getByRole('button', { name: 'Choose from gallery' }).isVisible(), 'Choose from gallery is visible');
+  await page.getByRole('tab', { name: 'Nutrition label' }).click(); await page.waitForTimeout(200);
+  expect(!(await page.locator('text=Review and save').isVisible()), 'no label values before a photo is taken');
+  await page.getByRole('tab', { name: 'Plate' }).click(); await page.waitForTimeout(200);
   for (const [file, want] of [['pad-thai.jpg', /pad thai/i], ['hamburger.jpg', /burger/i], ['pizza.jpg', /pizza/i]]) {
     await page.evaluate(() => DC.comp.setState({ msMode: 'plate', msStep: 'camera' })); await page.waitForTimeout(200);
     const chooser = page.waitForEvent('filechooser');
@@ -24,6 +32,7 @@ const SHOTS = process.env.SHOTS || 'test-shots'; fs.mkdirSync(SHOTS, { recursive
     expect(want.test(v.matches[0].name), file + ' top guess matches (got ' + v.matches[0].name + ')');
     expect(v.matches[0].foods.length > 0, file + ' offers database foods for the top guess');
     expect(!!v.photo, file + ' shows the photo');
+    expect(await page.locator('text=Best guesses').isVisible() && !(await page.getByRole('button', { name: 'Take photo' }).isVisible()), file + ' guesses replace the camera');
     if (file === 'pizza.jpg') expect(v.matches[0].foods.some((f) => /pizza/i.test(f.name)), 'pizza guess offers pizza, not pepperoni sausage');
     if (file === 'pad-thai.jpg') await page.screenshot({ path: SHOTS + '/plate-result.png' });
   }

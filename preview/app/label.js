@@ -110,7 +110,7 @@
 (function (root) {
   if (typeof document === 'undefined') return;
   // vendor/ next to the app/ folder this script came from (works for the live site and /preview/)
-  const base = document.currentScript && /app\/label\.js/.test(document.currentScript.src) ? document.currentScript.src.replace(/app\/label\.js.*$/, '') : location.href.replace(/[^/]*$/, '');
+  const base = '../'; const _unused = document.currentScript && /app\/label\.js/.test(document.currentScript.src) ? document.currentScript.src.replace(/app\/label\.js.*$/, '') : location.href.replace(/[^/]*$/, '');
   let worker = null;
   async function getWorker(onStatus) {
     if (worker) return worker;

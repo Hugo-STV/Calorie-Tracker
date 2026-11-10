@@ -68,8 +68,9 @@ def same_as_live(paths):
     return True
 
 big_vendor = list_files('vendor/tesseract') + list_files('vendor/tflite') + list_files('vendor/foodmodel')
-share_vendor = ref is not None and same_as_live(big_vendor) or (ref is None and False)
-share_db = ref is not None and same_as_live(['foods-db.json'])
+# from the working tree the files are the live ones by definition
+share_vendor = ref is None or same_as_live(big_vendor)
+share_db = ref is None or same_as_live(['foods-db.json'])
 
 for path in ['app/label.js', 'app/plate.js']:
     try:

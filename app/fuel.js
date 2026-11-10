@@ -107,7 +107,7 @@
   // ---- persistence helpers ---------------------------------------------------------------
   const TRANSIENT = ['view', 'sheet', 'fab', 'toast', 'scanning', 'scanMissing', 'scanErr', 'query', 'sel', 'prod', 'form', 'exMenu', 'mealMenu', 'builder', 'rbuild', 'wPend', 'wIn', 'code',
     'prevView', 'prodPrev', 'targetPrev', 'waterPrev', 'wPrev', 'exPrev', 'builderBack', 'recipeBack', 'planView', 'browseCat', 'recipeId', 'nutriOpen', 'exSel', 'multi', 'multiSel', 'exQ', 'rtSel',
-    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy'];
+    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'msStep', 'msBusyText'];
   const persistable = (S) => { const o = {}; for (const k in S) if (!TRANSIENT.includes(k)) o[k] = S[k]; return o; };
   const revive = (o) => {
     if (o.weights) o.weights = o.weights.map((w) => Object.assign({}, w, { at: new Date(w.at) }));
@@ -271,6 +271,34 @@
         this.status('Synced ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }));
         return !!(prof && prof.data);
       } catch (e) { console.warn('[Fuel] pull failed', e); this.status(String(e.message).includes('403') ? 'Sync blocked: check Firestore rules' : 'Sync failed · will retry'); return false; }
+    }
+    // ---- Meal scan: real photos, read on the phone ----
+    // Label: Tesseract reads the panel, app/label.js turns the text into values for Create a food.
+    // Plate: the dish recognizer arrives in a later update; until then Fuel says so instead of guessing.
+    mealShoot() {
+      const mode = this.state.msMode === 'label' ? 'label' : 'plate';
+      const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*';
+      inp.onchange = () => { const f = inp.files && inp.files[0]; if (f) this.mealPhoto(mode, f); };
+      inp.click();
+    }
+    async mealPhoto(mode, file) {
+      if (mode === 'plate') {
+        this.flash('Plate recognition is coming in the next update. For now, use Nutrition label or search.');
+        return;
+      }
+      this.setState({ msStep: 'busy', msBusyText: 'Reading the label…' });
+      try {
+        if (!window.readLabel) throw new Error('reader-missing');
+        const r = await window.readLabel(file, (st, p) => { if (/loading|initializ/i.test(st)) this.setState({ msBusyText: 'Getting the label reader ready (first time only)…' }); });
+        console.log('[Fuel] label text\n' + r.text);
+        if (!r.ok) { this.setState({ msStep: 'camera' }); this.flash('Couldn\'t read that label. Fill the frame with the panel, flat, in good light.'); return; }
+        this._labelRead = { name: '', serving: r.serving, grams: r.grams, kcal: r.kcal, f: r.f, sat: r.sat, c: r.c, sug: r.sug, fib: r.fib, p: r.p, na: r.na, flags: r.flags.concat(r.flags.includes('serving') ? ['serving'] : []) };
+        this.setState({ msStep: 'result' });
+      } catch (e) {
+        console.warn('[Fuel] label reader', e);
+        this.setState({ msStep: 'camera' });
+        this.flash(navigator.onLine ? 'The label reader couldn\'t start. Try again.' : 'The label reader needs a connection the first time.');
+      }
     }
     // ---- Peak workouts: read from the shared account, keep the last 3 weeks on the phone ----
     peakList(S) { return (S.peakRaw || []).filter((w) => w && w.start && !w.del); }

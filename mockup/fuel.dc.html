@@ -2484,7 +2484,7 @@ class Component extends DCLogic {
   mealShoot(i) {
     // mockup: pretend to take the photo
     if (this.state.msMode === 'plate') this._plateRead = this.mealSamples()[i || 0]; else this._labelRead = this.labelSample();
-    this.setState({ msStep: 'busy', msPick: i || 0, msSel: 0, msDone: [] });
+    this.setState({ msStep: 'busy', msPick: i || 0, msSel: 0, msDone: [], msBusyText: '' });
     setTimeout(() => this.setState({ msStep: 'result' }), 1100);
   }
   mealVals(S) {
@@ -2498,7 +2498,7 @@ class Component extends DCLogic {
       shoot: () => this.mealShoot(S.msMode === 'label' ? 0 : (S.msPick + 1) % 3), gallery: () => this.mealShoot(S.msMode === 'label' ? 0 : (S.msPick + 1) % 3),
       samples: plate ? this.mealSamples().map((x, i) => ({ label: x.label, pick: () => this.mealShoot(i) })) : [{ label: 'Bakery oat cookie label', pick: () => this.mealShoot(0) }],
       privacy: 'Recognition runs on your phone: photos are not uploaded or kept, and it works without signal once set up.',
-      busyText: plate ? 'Looking at your plate…' : 'Reading the label…',
+      busyText: S.msBusyText || (plate ? 'Looking at your plate…' : 'Reading the label…'),
       blobs: (R || this.mealSamples()[S.msPick || 0]).blobs,
       retake: () => this.setState({ msStep: 'camera' }),
       searchAll: () => this.setState({ view: 'log', prevView: 'mealscan', query: '' }) };
@@ -2516,7 +2516,7 @@ class Component extends DCLogic {
           search: () => this.setState({ view: 'log', prevView: 'mealscan', query: q }) }; });
     } else {
       const fl = (k) => (L.flags || []).includes(k), v = (x, u) => x == null ? '—' : x + (u ? ' ' + u : '');
-      mz.read = [['Serving size', L.serving + (L.grams ? ' (' + L.grams + ' g)' : ''), 'serving'], ['Calories', v(L.kcal), 'kcal'], ['Fat', v(L.f, 'g'), 'f'], ['  Saturated', v(L.sat, 'g'), 'sat'], ['Carbohydrates', v(L.c, 'g'), 'c'], ['  Sugars', v(L.sug, 'g'), 'sug'], ['  Fiber', v(L.fib, 'g'), 'fib'], ['Protein', v(L.p, 'g'), 'p'], ['Sodium', v(L.na, 'mg'), 'na']]
+      mz.read = [['Serving size', (L.serving || '—') + (L.grams ? ' (' + L.grams + ' g)' : ''), 'serving'], ['Calories', v(L.kcal), 'kcal'], ['Fat', v(L.f, 'g'), 'f'], ['  Saturated', v(L.sat, 'g'), 'sat'], ['Carbohydrates', v(L.c, 'g'), 'c'], ['  Sugars', v(L.sug, 'g'), 'sug'], ['  Fiber', v(L.fib, 'g'), 'fib'], ['Protein', v(L.p, 'g'), 'p'], ['Sodium', v(L.na, 'mg'), 'na']]
         .map(([l, val, k]) => ({ l: l.trim(), v: val, flag: fl(k) || val === '—', pad: l.startsWith('  ') ? 14 : 0, lc: l.startsWith('  ') ? '#9AA3AF' : '#F2F4F7' }));
       const st = (x) => x == null ? '' : String(x);
       mz.review = () => this.openForm('create', { _ocr: true, name: L.name || '', serving: L.serving || '', grams: st(L.grams), kcal: st(L.kcal), p: st(L.p), c: st(L.c), f: st(L.f), fib: st(L.fib), sug: st(L.sug), sat: st(L.sat), na: st(L.na), code: S.msCode || '' });

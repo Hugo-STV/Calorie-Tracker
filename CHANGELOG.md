@@ -4,6 +4,15 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.6.0 — 2026-11-10
+- **Progress overview charts rebuilt.** Full-width 7-day bars with the value on each bar, a dashed goal
+  line and colours (calories: under / on target ±10% / over; protein: under / hit 90%+; carbs and fat:
+  within / over by 15%+). Today is highlighted, days with nothing logged show a dash, and a legend sits
+  under each chart. Calories shows the average of the days logged, today's total against the goal and
+  how many days are logged. Macros list Protein first with today's amount. The old bars could draw
+  empty on some phones.
+- The build now refuses screen logic that doesn't compile.
+
 ## v1.5.3 — 2026-11-10
 - **Fix data loss after reinstalling / signing in.** While signing in, a fresh install saved its empty
   state, which then looked newer than the account and was uploaded over it. Now nothing is saved or

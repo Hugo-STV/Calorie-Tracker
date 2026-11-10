@@ -161,6 +161,14 @@ L = once(L, "scanStatus: S.scanning ? 'Reading barcode…' : 'Point the camera a
 L = once(L, "emailLine: S.email || 'Not signed in · prototype'", "emailLine: this.acct ? this.acct.email : 'Not signed in'", 'profile email')
 
 # ---- assemble -------------------------------------------------------------------------------
+# ---------- check the screen logic compiles (a typo here leaves a blank app)
+import subprocess, tempfile
+with tempfile.NamedTemporaryFile('w', suffix='.js', delete=False) as _f:
+    _f.write('class DCLogic {}\n' + logic + '\n')
+_r = subprocess.run(['node', '--check', _f.name], capture_output=True, text=True)
+if _r.returncode:
+    sys.exit('The mockup\'s logic does not compile:\n' + (_r.stderr or _r.stdout)[-1500:])
+
 # ---------- check the screens are well-formed (a broken tag shows hidden screens on top of others)
 from html.parser import HTMLParser
 class _Check(HTMLParser):

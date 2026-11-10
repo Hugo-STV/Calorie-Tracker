@@ -6,6 +6,7 @@ on:
   push:
     branches: [data-sources]
     paths: ['.github/workflows/food-model.yml']
+
   workflow_dispatch:
 
 permissions:
@@ -31,6 +32,14 @@ jobs:
           if [ -n "$f" ]; then mkdir -p out/tflite && cp "$f" out/tflite/food_v1.tflite; fi
           [ -s raw/labelmap.csv ] && cp raw/labelmap.csv out/ && head -5 out/labelmap.csv && wc -l out/labelmap.csv
           true
+          # a few freely licensed food photos from Wikimedia Commons, to test recognition
+          mkdir -p out/testphotos
+          for t in "Pizza" "Spaghetti bolognese" "Caesar salad" "Hamburger" "Pad thai" "Butter chicken" "Poutine" "Pancakes" "Sushi" "Fried rice"; do
+            q=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))" "$t")
+            url=$(curl -fsSL -A "$UA" "https://en.wikipedia.org/w/api.php?action=query&titles=$q&prop=pageimages&piprop=thumbnail&pithumbsize=640&format=json&redirects=1" | python3 -c "import json,sys; d=json.load(sys.stdin); p=list(d['query']['pages'].values())[0]; print(p.get('thumbnail',{}).get('source',''))")
+            n=$(echo "$t" | tr ' A-Z' '-a-z'); [ -n "$url" ] && curl -fsSL -A "$UA" -o "out/testphotos/$n.jpg" "$url" && echo "$n <- $url" >> out/testphotos/SOURCES.txt || echo "no photo for $t"
+          done
+          ls -la out/testphotos
 
       - name: Push to the food-model branch
         env:

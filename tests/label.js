@@ -33,10 +33,6 @@ const SHOTS = process.env.SHOTS || 'test-shots'; fs.mkdirSync(SHOTS, { recursive
   console.log('form', JSON.stringify(form));
   for (const [k, v] of Object.entries({ kcal: '190', f: '9', sat: '4.5', c: '25', sug: '12', fib: '2', p: '3', na: '140', grams: '40' })) expect(form[k] === v, 'label ' + k + ' = ' + v + ' (got ' + form[k] + ')');
   expect(/cookie/.test(form.serving), 'serving read as 1 cookie');
-  // plate mode says it's coming rather than guessing
-  await page.keyboard.press('Escape'); await page.evaluate(() => DC.comp.setState({ sheet: null, form: null, view: 'mealscan', msMode: 'plate', msStep: 'camera' })); await page.waitForTimeout(200);
-  await page.evaluate(() => DC.comp.mealPhoto('plate', new Blob())); await page.waitForTimeout(200);
-  expect(/coming in the next update/.test(await page.evaluate(() => DC.comp.state.toast || '')), 'plate mode explains it is coming');
   expect(!errs.length, 'no page errors: ' + errs.join(' | '));
   await b.close(); if (fails.length) process.exit(1); console.log('all checks passed');
 })().catch((e) => { console.error('TEST FAILED', String(e).slice(0, 300)); process.exit(1); });

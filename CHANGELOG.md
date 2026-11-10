@@ -4,6 +4,14 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.4.0 — 2026-11-09
+- **Plate scan works:** a photo of your plate gives the 5 most likely dishes from Google's free AIY food
+  recognizer (2,023 dishes), run on the phone; your photo shows next to the guesses. Pick one to log a
+  matching database food (e.g. Pad Thai, 1 typical serving 200 g), then set the amount.
+  On test photos: burger, pad thai, pancakes and sushi named first; butter chicken and fried rice in the
+  top 3; mixed plates are weaker, so "None of these · search" stays. First use downloads about 30 MB once.
+- The label reader, dish recognizer and food database are kept for offline use after first download.
+
 ## v1.3.1 — 2026-11-09
 - Meal scan: **Take photo** now uses a live camera view inside the frame (like the barcode scanner)
   instead of opening the gallery. **Choose from gallery** is for saved pictures. The camera turns off

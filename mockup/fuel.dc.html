@@ -1483,8 +1483,10 @@ a{color:#C8F25C}a:hover{color:#E2FF9A}
   </sc-if>
 
   <sc-if value="{{mz.plateRes}}" hint-placeholder-val="{{ false }}">
-    <div class="row" style="gap: 14px; justify-content: flex-start"><div style="width: 72px; height: 72px; border-radius: 50%; background: #E9E4DA; box-shadow: inset 0 0 0 5px #F7F4EE; position: relative; overflow: hidden; flex: none" aria-hidden="true"><sc-for list="{{mz.blobs}}" as="b" hint-placeholder-count="3"><span style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: {{b.w}}%; height: {{b.h}}%; border-radius: {{b.r}}; background: {{b.c}}"></span></sc-for></div>
-      <div style="min-width: 0"><div style="font-weight: 700; font-size: 16px">Best guesses</div><div class="muted small" style="margin-top: 2px; line-height: 1.45">Pick what's on your plate. You set the amount next. Several things on the plate? Add each one.</div></div>
+    <div class="row" style="gap: 14px; justify-content: flex-start">
+      <sc-if value="{{mz.photo}}" hint-placeholder-val="{{ false }}"><img src="{{mz.photo}}" alt="Your plate" style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex: none"></sc-if>
+      <sc-if value="{{mz.noPhoto}}" hint-placeholder-val="{{ true }}">div style="width: 72px; height: 72px; border-radius: 50%; background: #E9E4DA; box-shadow: inset 0 0 0 5px #F7F4EE; position: relative; overflow: hidden; flex: none" aria-hidden="true"><sc-for list="{{mz.blobs}}" as="b" hint-placeholder-count="3"><span style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: {{b.w}}%; height: {{b.h}}%; border-radius: {{b.r}}; background: {{b.c}}"></span></sc-for></div></sc-if>
+      <div style="min-width: 0"><div style="font-weight: 700; font-size: 16px">Best guesses</div><div class="muted small" style="margin-top: 2px; line-height: 1.45">{{mz.guessNote}}</div></div>
     </div>
     <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px">
       <sc-for list="{{mz.matches}}" as="m" hint-placeholder-count="5">
@@ -2502,7 +2504,8 @@ class Component extends DCLogic {
       samples: plate ? this.mealSamples().map((x, i) => ({ label: x.label, pick: () => this.mealShoot(i) })) : [{ label: 'Bakery oat cookie label', pick: () => this.mealShoot(0) }],
       privacy: 'Recognition runs on your phone: photos are not uploaded or kept, and it works without signal once set up.',
       busyText: S.msBusyText || (plate ? 'Looking at your plate…' : 'Reading the label…'),
-      blobs: (R || this.mealSamples()[S.msPick || 0]).blobs,
+      blobs: (R && R.blobs) || this.mealSamples()[S.msPick || 0].blobs, photo: (R && R.photo) || '', noPhoto: !(R && R.photo),
+      guessNote: R && R.unsure ? 'Not sure about this one: pick the closest, or search instead. You set the amount next.' : 'Pick what\'s on your plate. You set the amount next. Several things on the plate? Add each one.',
       retake: () => this.setState({ msStep: 'camera' }),
       searchAll: () => this.setState({ view: 'log', prevView: 'mealscan', query: '' }) };
     if (plate) {

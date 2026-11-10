@@ -53,8 +53,8 @@ def list_files(folder):
         return [x for x in out.split('\n') if x]
     return [os.path.relpath(os.path.join(d, f), ROOT) for d, _, fs in os.walk(os.path.join(ROOT, folder)) for f in fs]
 
-# the label reader and its engine go with the preview (the live site may not have them yet)
-for path in ['app/label.js'] + list_files('vendor/tesseract'):
+# the label reader, dish recognizer and their engines go with the preview (the live site may not have them yet)
+for path in ['app/label.js', 'app/plate.js'] + list_files('vendor/tesseract') + list_files('vendor/tflite') + list_files('vendor/foodmodel'):
     try:
         data = read_bytes(path)
     except subprocess.CalledProcessError:

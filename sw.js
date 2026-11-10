@@ -1,6 +1,6 @@
 // Fuel offline cache: app files and the food database are cached so search and logging work offline.
 // Pages and scripts: network first (updates show right away), cache fallback. Database and scanner: cache first.
-const CACHE = 'fuel-v3';
+const CACHE = 'fuel-v4';
 const CORE = ['./', './index.html', './manifest.json', './app/runtime.js', './app/fuel.js', './vendor/preact.min.umd.js', './icons/icon-192.png', './icons/icon-512.png'];
 const HEAVY = ['./foods-db.json', './vendor/zxing-reader.js', './vendor/zxing_reader.wasm'];
 
@@ -20,7 +20,8 @@ self.addEventListener('fetch', (e) => {
     if (u.hostname.includes('fonts.g')) e.respondWith(caches.match(req).then((r) => r || fetch(req).then((res) => { const cp = res.clone(); caches.open(CACHE).then((c) => c.put(req, cp)); return res; })));
     return;
   }
-  const heavy = /foods-db\.json$|zxing/.test(u.pathname);
+  // big files that rarely change: food database, scanner, label reader, dish recognizer
+  const heavy = /foods-db\.json$|zxing|\/vendor\/(tesseract|tflite|foodmodel)\//.test(u.pathname);
   if (heavy) {
     e.respondWith(caches.match(req, { ignoreSearch: true }).then((r) => r || fetch(req).then((res) => { if (res.ok) { const cp = res.clone(); caches.open(CACHE).then((c) => c.put(req, cp)); } return res; })));
     return;

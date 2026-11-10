@@ -309,7 +309,21 @@
     }
     async mealPhoto(mode, file) {
       if (mode === 'plate') {
-        this.flash('Plate recognition is coming in the next update. For now, use Nutrition label or search.');
+        this.setState({ msStep: 'busy', msBusyText: 'Looking at your plate…' });
+        try {
+          if (!window.guessDish) throw new Error('recognizer-missing');
+          const g = await window.guessDish(file, (t) => this.setState({ msBusyText: t }));
+          if (this._platePhoto) URL.revokeObjectURL(this._platePhoto);
+          this._platePhoto = URL.createObjectURL(file);
+          // a few model names mean a dish, not the ingredient ("Pepperoni" is the pizza)
+          const DISH = { Pepperoni: ['Pepperoni pizza', 'pizza pepperoni'], Margherita: ['Margherita pizza', 'pizza cheese'], Hawaiian: ['Hawaiian pizza', 'pizza ham pineapple'], 'Neapolitan pizza': ['Neapolitan pizza', 'pizza cheese'], Patty: ['Burger patty', 'beef patty'], Chips: ['Fries', 'french fries'] };
+          this._plateRead = { photo: this._platePhoto, unsure: !g.length || g[0].p < 0.25, matches: g.map((x) => { const d = DISH[x.name]; return [d ? d[0] : x.name, x.p, d ? d[1] : x.name.toLowerCase(), null]; }) };
+          this.setState({ msStep: 'result', msSel: 0, msDone: [] });
+        } catch (e) {
+          console.warn('[Fuel] dish recognizer', e);
+          this.setState({ msStep: 'camera' });
+          this.flash(navigator.onLine ? 'The dish recognizer couldn\'t start. Try again.' : 'The dish recognizer needs a connection the first time (about 30 MB).');
+        }
         return;
       }
       this.setState({ msStep: 'busy', msBusyText: 'Reading the label…' });

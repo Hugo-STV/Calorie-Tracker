@@ -195,6 +195,7 @@ input,textarea,button{{font-size:16px}}
 {L.strip()}
 </script>
 <script src="app/label.js"></script>
+<script src="app/plate.js"></script>
 <script src="app/fuel.js"></script>
 </body>
 </html>

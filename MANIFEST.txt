@@ -1,0 +1,14 @@
+34210	out/labelmap.csv
+21151551	out/tflite/food_v1.tflite
+2243	out/testphotos/SOURCES.txt
+136101	out/testphotos/hamburger.jpg
+111360	out/testphotos/poutine.jpg
+128673	out/testphotos/caesar-salad.jpg
+186996	out/testphotos/pancakes.jpg
+342410	out/testphotos/butter-chicken.jpg
+146177	out/testphotos/fried-rice.jpg
+231668	out/testphotos/pizza.jpg
+194721	out/testphotos/spaghetti-bolognese.jpg
+292170	out/testphotos/sushi.jpg
+253806	out/testphotos/pad-thai.jpg
+0	out/MANIFEST.txt

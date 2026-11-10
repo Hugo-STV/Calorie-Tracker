@@ -41,6 +41,26 @@ js = swap(read('app/fuel.js'), [
 ], 'app/fuel.js')
 
 os.makedirs(os.path.join(ROOT, 'preview', 'app'), exist_ok=True)
+
+def read_bytes(path):
+    if ref:
+        return subprocess.run(['git', 'show', f'{ref}:{path}'], cwd=ROOT, check=True, capture_output=True).stdout
+    return open(os.path.join(ROOT, path), 'rb').read()
+
+def list_files(folder):
+    if ref:
+        out = subprocess.run(['git', 'ls-tree', '-r', '--name-only', ref, folder], cwd=ROOT, capture_output=True, text=True).stdout
+        return [x for x in out.split('\n') if x]
+    return [os.path.relpath(os.path.join(d, f), ROOT) for d, _, fs in os.walk(os.path.join(ROOT, folder)) for f in fs]
+
+# the label reader and its engine go with the preview (the live site may not have them yet)
+for path in ['app/label.js'] + list_files('vendor/tesseract'):
+    try:
+        data = read_bytes(path)
+    except subprocess.CalledProcessError:
+        continue
+    dst = os.path.join(ROOT, 'preview', path); os.makedirs(os.path.dirname(dst), exist_ok=True)
+    open(dst, 'wb').write(data)
 # the preview carries its own food database, so a new database can be tried before it goes live
 for path, text in [('preview/index.html', html), ('preview/app/fuel.js', js), ('preview/app/runtime.js', read('app/runtime.js')), ('preview/foods-db.json', read('foods-db.json'))]:
     open(os.path.join(ROOT, path), 'w', encoding='utf-8').write(text)

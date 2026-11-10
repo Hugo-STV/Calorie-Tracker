@@ -147,17 +147,39 @@ a{color:#C8F25C}a:hover{color:#E2FF9A}
       <input id="wt" class="inp" inputmode="decimal" value="{{weight}}" onChange="{{onWeight}}" placeholder="{{wUnit}}">
     </sc-if>
     <sc-if value="{{s6}}" hint-placeholder-val="{{ false }}">
-      <h1 class="h1">{{targetTitle}}</h1>
-      <p class="sub">{{targetSub}}</p>
-      <sc-if value="{{showGoalWeight}}" hint-placeholder-val="{{ true }}">
-        <label class="lbl" for="gw">Goal weight ({{wUnit}}) — optional</label>
-        <input id="gw" class="inp" inputmode="decimal" value="{{goalWeight}}" onChange="{{onGoalWeight}}" placeholder="{{wUnit}}">
+      <h1 class="h1">{{pz.title}}</h1>
+      <p class="sub">{{pz.sub}}</p>
+      <div role="radiogroup" aria-label="Goal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-bottom: 14px">
+        <sc-for list="{{pz.goals}}" as="gq" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{gq.on}}" onClick="{{gq.pick}}" style="min-height: 44px; padding: 6px 4px; border-radius: 12px; border: 1.5px solid {{gq.border}}; background: {{gq.bg}}; color: {{gq.fg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; line-height: 1.15">{{gq.label}}</button></sc-for>
+      </div>
+      <div class="card" style="padding: 18px 16px">
+        <div class="row" style="align-items: flex-end">
+          <div><div class="muted" style="font-size: 13px; font-weight: 600">Daily target</div><div style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: #C8F25C; line-height: 1.1">{{pz.cal}}<span style="font-size: 16px; color: #9AA3AF; font-weight: 600"> kcal</span></div></div>
+          <div style="text-align: right"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: {{pz.rateColor}}">{{pz.rate}}</div><div class="muted small">{{pz.rateSub}}</div></div>
+        </div>
+        <div style="position: relative; height: 10px; border-radius: 99px; background: #23272E; margin: 14px 0 6px; overflow: hidden"><span style="position: absolute; left: 0; top: 0; bottom: 0; width: {{pz.barW}}%; background: {{pz.barC}}; border-radius: 99px"></span></div>
+        <div class="row muted small"><span>{{pz.eq}}</span><span>{{pz.eqRight}}</span></div>
+        <sc-for list="{{pz.facts}}" as="fa" hint-placeholder-count="2"><div class="row" style="padding: 10px 0 0; margin-top: 10px; border-top: 1px solid #23272E; font-size: 14px; gap: 12px"><span class="muted">{{fa.l}}</span><span style="font-weight: 600; text-align: right">{{fa.v}}</span></div></sc-for>
+      </div>
+      <sc-if value="{{pz.warn}}" hint-placeholder-val="{{ false }}">
+        <div class="card" style="margin-top: 10px; border-color: {{pz.warnBorder}}; background: {{pz.warnBg}}"><p style="margin: 0; font-size: 14px; line-height: 1.5">{{pz.warnText}}</p></div>
       </sc-if>
       <sc-if value="{{showPace}}" hint-placeholder-val="{{ true }}">
-        <span class="lbl">Pace</span>
-        <sc-for list="{{paceOpts}}" as="o" hint-placeholder-count="3">
-          <button type="button" class="{{o.cls}}" onClick="{{o.pick}}"><span>{{o.label}}<small>{{o.sub}}</small></span><span class="dot"></span></button>
+        <div class="card" style="margin-top: 14px; border-color: {{pz.recBorder}}">
+          <div class="muted" style="font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase">Recommended for you</div>
+          <div class="row" style="margin-top: 6px; align-items: flex-end"><div style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">{{pz.recLabel}}</div><div style="font-weight: 600; color: #C8F25C">{{pz.recCal}}</div></div>
+          <div class="muted small" style="margin-top: 2px">{{pz.recPct}}</div>
+          <ul style="margin: 10px 0 12px; padding-left: 18px; font-size: 13px; line-height: 1.5; color: #C9D0D8"><sc-for list="{{pz.recWhy}}" as="w" hint-placeholder-count="2"><li>{{w.t}}</li></sc-for></ul>
+          <button type="button" class="{{pz.recBtnCls}}" style="width: 100%" onClick="{{pz.useRec}}">{{pz.recBtn}}</button>
+        </div>
+        <span class="lbl">Or pick a different pace</span>
+        <sc-for list="{{pz.paces}}" as="o" hint-placeholder-count="4">
+          <button type="button" class="{{o.cls}}" onClick="{{o.pick}}"><span>{{o.label}}<sc-if value="{{o.rec}}" hint-placeholder-val="{{ false }}"><span style="margin-left: 8px; padding: 1px 7px; border-radius: 6px; background: #1F2A12; color: #C8F25C; font-size: 11px; font-weight: 700; vertical-align: 2px">FOR YOU</span></sc-if><small>{{o.sub}}</small></span><span class="dot"></span></button>
         </sc-for>
+        <div class="{{pz.customCls}}" style="cursor: default">
+          <label for="pc" style="flex: 1">Custom<small>{{pz.customSub}}</small></label>
+          <span style="display: flex; align-items: center; gap: 6px"><input id="pc" class="inp" inputmode="decimal" value="{{pz.customVal}}" onChange="{{pz.onCustom}}" placeholder="{{pz.customPh}}" style="width: 70px; margin: 0; text-align: right; font-weight: 700"><span class="muted small">{{pz.customUnit}}</span></span>
+        </div>
       </sc-if>
       <sc-if value="{{showSurplus}}" hint-placeholder-val="{{ false }}">
         <span class="lbl">Surplus</span>
@@ -165,6 +187,11 @@ a{color:#C8F25C}a:hover{color:#E2FF9A}
           <button type="button" class="{{o.cls}}" onClick="{{o.pick}}"><span>{{o.label}}<small>{{o.sub}}</small></span><span class="dot"></span></button>
         </sc-for>
       </sc-if>
+      <sc-if value="{{showGoalWeight}}" hint-placeholder-val="{{ true }}">
+        <label class="lbl" for="gw">Goal weight ({{wUnit}}) — optional, for an arrival date</label>
+        <input id="gw" class="inp" inputmode="decimal" value="{{goalWeight}}" onChange="{{onGoalWeight}}" placeholder="{{wUnit}}">
+      </sc-if>
+      <p class="muted small" style="margin-top: 14px; line-height: 1.5">{{pz.note}}</p>
     </sc-if>
     <sc-if value="{{s7}}" hint-placeholder-val="{{ false }}">
       <h1 class="h1">How do you like to split your macros?</h1>
@@ -2012,6 +2039,34 @@ class Component extends DCLogic {
     if (g.includes('recomp')) return 'recomp';
     return 'lean';
   }
+  // weekly pace in kg; the old default 0.5 kg shows as exactly 1 lb for imperial users
+  paceKg(S, maint) {
+    if (!S.paceSet) return this.paceRec(S, maint).kg; // until you pick, Fuel uses its recommendation
+    return S.units === 'imperial' && Math.abs(S.pace - 0.5) < 1e-9 ? 1 / 2.20462 : S.pace;
+  }
+  // recommended loss per week from your numbers: about 0.5% of body weight when lean, up to 1% with more to lose;
+  // slower close to your goal weight and from 60 on, to keep muscle
+  paceRec(S, maint) {
+    const imp = S.units === 'imperial', kg = this.kgNow(S);
+    const cm = (imp ? (this.num(S.ft) * 12 + this.num(S.inch)) * 2.54 : this.num(S.cm)) || 178, age = this.num(S.age) || 30;
+    const bmi = kg / Math.pow(cm / 100, 2);
+    let pct = bmi >= 35 ? 1 : bmi >= 30 ? 0.85 : bmi >= 27 ? 0.7 : bmi >= 25 ? 0.6 : 0.5;
+    const why = [];
+    why.push('BMI ' + (Math.round(bmi * 10) / 10) + (bmi >= 30 ? ': more to lose, so a faster pace is fine' : bmi >= 25 ? ': a moderate pace keeps muscle' : ': already lean, so slower protects muscle'));
+    const gw = this.num(S.goalWeight) ? this.num(S.goalWeight) * (imp ? 0.4536 : 1) : 0;
+    if (gw && gw < kg) { const left = (kg - gw) / kg * 100; if (left < 5) { pct = Math.min(pct, 0.5); why.push('Close to your goal: the last pounds come off slower'); } else why.push(Math.round((kg - gw) * (imp ? 2.20462 : 1)) + (imp ? ' lb' : ' kg') + ' to your goal weight'); }
+    if (age >= 60) { pct = Math.min(pct, 0.6); why.push('Age ' + age + ': a gentler pace keeps more muscle'); }
+    let k = kg * pct / 100, atLimit = false;
+    // never more than the safety limit allows (30% below maintenance, not under the calorie floor)
+    if (maint) {
+      const floor = S.sex === 'female' ? 1200 : 1500, maxK = Math.max(0, Math.min(maint * 0.30, maint - floor)) * 7 / 7700;
+      if (k > maxK) { k = maxK; atLimit = true; why.push('Held to what your calories safely allow'); }
+    }
+    // round to a quarter pound (or 0.05 kg); round down when at the limit so it stays reachable
+    const step = imp ? 1 / (4 * 2.20462) : 0.05, r = atLimit ? Math.floor(k / step + 1e-9) : Math.round(k / step);
+    k = Math.max(1, r) * step;
+    return { kg: k, pct: k / kg * 100, why };
+  }
   computePlan() {
     const S = this.state;
     const base = this.planCore(S, null);
@@ -2034,9 +2089,10 @@ class Component extends DCLogic {
     const maint = (tdeeOverride != null ? tdeeOverride : formula) + train;
     const goal = this.primaryGoal();
     const minor = age < 18;
-    const paceTxt = imp ? (S.pace * 2) + ' lb' : S.pace + ' kg';
+    const pk0 = this.paceKg(S, maint);
+    const paceTxt = imp ? (Math.round(pk0 * 2.20462 * 100) / 100) + ' lb' : (Math.round(pk0 * 100) / 100) + ' kg';
     let adj = 0, adjLabel = 'Goal: stay lean (maintenance)', capped = false;
-    if (goal === 'lose' && !minor) { const want = S.pace * 7700 / 7; const cap = maint * 0.25; capped = want > cap; adj = -Math.min(want, cap); adjLabel = 'Goal: lose ' + paceTxt + ' a week'; }
+    if (goal === 'lose' && !minor) { const want = pk0 * 7700 / 7; const cap = maint * 0.30; capped = want > cap; adj = -Math.min(want, cap); adjLabel = 'Goal: lose ' + paceTxt + ' a week'; }
     if (goal === 'recomp' && !minor) { adj = -maint * 0.1; adjLabel = 'Goal: recomp (10% deficit)'; }
     if (goal === 'muscle') { adj = S.surplus; adjLabel = 'Goal: build muscle (lean surplus)'; }
     if (minor && goal !== 'muscle') adjLabel = 'Under 18: maintenance only';
@@ -2315,6 +2371,62 @@ class Component extends DCLogic {
       add: () => this.setState({ sel: P, servings: 1, selUnit: 0, selG: '', sheet: 'food' })
     } };
   }
+  // ---- Onboarding pace step: goal switch, live target, weekly pace with calories and honest warnings ----
+  paceVals(S, plan, imp, wUnit) {
+    const fmt = (n) => Math.round(n).toLocaleString('en-US'), kg = plan.kg, maint = plan.maint, floor = plan.floor, g = plan.goal, M = plan.tdee;
+    const LB = 2.20462, toU = (k) => imp ? k * LB : k, u = imp ? 'lb' : 'kg';
+    const r2 = (x) => Math.round(x * 100) / 100, rnd = (x) => String(Math.round(x * 100) / 100), rnd1 = (x) => String(Math.round(x * 10) / 10);
+    // what a pace (kg a week) gives: the deficit is capped at 30% of maintenance and the calorie floor
+    const at = (pace) => { const want = pace * 7700 / 7, cap = maint * 0.30, d = Math.min(want, cap); const cal = Math.max(floor, Math.round((maint - d) / 10) * 10); return { cal, def: maint - cal, capped: want > cap + 25 || cal === floor && maint - want < floor, real: (maint - cal) * 7 / 7700 }; };
+    const pctBw = (pace) => pace / kg * 100;
+    const tone = (pct) => pct <= 0.5 ? ['Steady', 'easiest to keep muscle and stick to'] : pct <= 0.75 ? ['Faster', 'still sustainable for most people'] : pct <= 1 ? ['Aggressive', 'best in short phases of 8 to 12 weeks'] : ['Very aggressive', 'hungrier, more muscle loss risk, not recommended for long'];
+    const REC = this.paceRec(S, maint);
+    let steps = imp ? [0.5, 1, 1.5, 2].map((lb) => lb / LB) : [0.25, 0.5, 0.75, 1];
+    if (!steps.some((v) => Math.abs(v - REC.kg) < 0.001)) steps = steps.concat([REC.kg]).sort((a, b) => a - b);
+    const P = this.paceKg(S, maint);
+    const isStep = steps.some((v) => Math.abs(v - P) < 0.001);
+    const recV = steps.find((v) => Math.abs(v - REC.kg) < 0.001);
+    const paces = steps.map((v) => { const a = at(v), t = tone(pctBw(v));
+      const rel = v === recV ? '' : v < REC.kg ? 'Gentler · ' : 'Harder · ';
+      return { cls: 'opt' + (Math.abs(v - P) < 0.001 ? ' on' : ''), rec: v === recV, pick: () => this.setState({ pace: v, paceCustom: '', paceSet: true }),
+        label: rnd(toU(v)) + ' ' + u + ' a week',
+        sub: rel + fmt(a.cal) + ' kcal a day · ' + fmt(M - a.cal) + ' below maintenance · ' + rnd1(pctBw(v)) + '% of body weight · ' + t[0] + (a.capped ? ' · limited by the safety cap' : '') }; });
+    const goals = [['lose', 'Lose fat'], ['recomp', 'Recomp'], ['lean', 'Maintain'], ['muscle', 'Build muscle']].map(([id, label]) => { const on = g === id;
+      return { label, on, border: on ? '#C8F25C' : '#262B33', bg: on ? '#1F2A12' : '#171A1F', fg: on ? '#C8F25C' : '#C9D0D8',
+        pick: () => this.setState({ goals: [id].concat(S.goals.filter((x) => !['lose', 'lean', 'muscle', 'recomp'].includes(x))) }) }; });
+    const weekly = (plan.cal - maint) * 7 / 7700, wk = toU(Math.abs(weekly));
+    const goalKg = this.num(S.goalWeight) ? this.num(S.goalWeight) / (imp ? LB : 1) : 0;
+    const facts = [{ l: 'Maintenance (what you burn)', v: fmt(M) + ' kcal' }, { l: 'Protein to keep muscle', v: plan.p + ' g a day' }];
+    if (goalKg && Math.abs(weekly) > 0.01 && Math.sign(goalKg - kg) === Math.sign(weekly)) {
+      const weeks = Math.abs(goalKg - kg) / Math.abs(weekly), d = new Date(Date.now() + weeks * 7 * 864e5);
+      facts.push({ l: 'Reach ' + rnd(toU(goalKg)) + ' ' + u, v: 'around ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' (' + Math.round(weeks) + ' weeks)' });
+    }
+    const pct = pctBw(P), a = at(P), t = tone(pct);
+    const lose = g === 'lose' && !plan.minor;
+    let warn = '', warnBad = false;
+    if (lose && a.capped) { warn = 'That pace needs a bigger deficit than Fuel allows (30% below maintenance, never under ' + fmt(floor) + ' kcal). Your target is set at the safe limit, which works out to about ' + rnd(toU(a.real)) + ' ' + u + ' a week.'; warnBad = true; }
+    else if (lose && pct > 1) { warn = 'Very aggressive: over 1% of your body weight a week. Expect more hunger and some muscle loss. Keep protein high, keep lifting, and plan a maintenance break after 6 to 8 weeks.'; warnBad = true; }
+    else if (lose && pct > 0.75) warn = 'Aggressive: good for a short push of 8 to 12 weeks. Keep protein at ' + plan.p + ' g and keep training so the weight you lose is fat, not muscle.';
+    const cv = S.paceCustom != null && S.paceCustom !== '' ? S.paceCustom : (!isStep && lose ? String(rnd(toU(P))) : '');
+    return { pz: {
+      title: { lose: 'How fast do you want to lose?', muscle: 'How fast do you want to gain?', recomp: 'Recomp', lean: 'Maintain' }[g],
+      sub: plan.minor ? 'Under 18, Fuel sets maintenance targets only.' : { lose: 'Pick a weekly pace. Slower keeps more muscle; faster gets there sooner. You can change it any time.', muscle: 'A small surplus keeps fat gain low.', recomp: 'A small 10% deficit with high protein: lose fat and build muscle slowly.', lean: 'Fuel targets your maintenance calories. Want to drop a few pounds first? Pick Lose fat.' }[g],
+      goals, cal: fmt(plan.cal),
+      rate: Math.abs(weekly) < 0.02 ? 'Hold weight' : (weekly < 0 ? '−' : '+') + (Math.abs(wk - Math.round(wk * 4) / 4) < 0.04 ? String(Math.round(wk * 4) / 4) : rnd1(wk)) + ' ' + u + '/wk', rateColor: weekly < -0.02 ? '#7BD88F' : weekly > 0.02 ? '#FFA866' : '#F2F4F7',
+      rateSub: Math.abs(weekly) < 0.02 ? 'maintenance' : rnd1(Math.abs(weekly) / kg * 100) + '% of body weight',
+      barW: Math.max(4, Math.min(100, plan.cal / maint * 100)), barC: weekly < -0.02 ? '#7BD88F' : weekly > 0.02 ? '#FFA866' : '#C8F25C',
+      eq: plan.cal === M ? 'Maintenance: ' + fmt(M) + ' kcal' : fmt(M) + (plan.cal < M ? ' − ' + fmt(M - plan.cal) : ' + ' + fmt(plan.cal - M)) + ' = ' + fmt(plan.cal) + ' kcal', eqRight: Math.round(plan.cal / M * 100) + '% of maintenance',
+      facts, warn: !!warn, warnText: warn, warnBorder: warnBad ? '#5A2E22' : '#3A3420', warnBg: warnBad ? '#22140F' : '#1E1B12',
+      rec: lose, recLabel: rnd(toU(REC.kg)) + ' ' + u + ' a week', recCal: fmt(at(REC.kg).cal) + ' kcal a day', recPct: rnd1(REC.pct) + '% of your body weight a week',
+      recWhy: REC.why.map((t) => ({ t })), recOn: Math.abs(P - REC.kg) < 0.001,
+      recBorder: Math.abs(P - REC.kg) < 0.001 ? '#C8F25C' : '#262B33',
+      recBtn: Math.abs(P - REC.kg) < 0.001 ? 'Using this pace ✓' : 'Use this pace', recBtnCls: Math.abs(P - REC.kg) < 0.001 ? 'chip on' : 'btn',
+      useRec: () => this.setState({ pace: REC.kg, paceCustom: '', paceSet: false }),
+      paces, customCls: 'opt' + (!isStep && lose ? ' on' : ''), customVal: cv, customPh: imp ? 'lb' : 'kg', customUnit: u + '/wk',
+      customSub: !isStep && lose ? fmt(a.cal) + ' kcal a day · ' + rnd1(pct) + '% of body weight · ' + t[0] : 'Any pace, e.g. ' + (imp ? '1.25' : '0.6'),
+      onCustom: (e) => { const v = e.target.value.replace(/[^\d.,]/g, '').replace(',', '.'); const n = parseFloat(v); const patch = { paceCustom: v }; if (n > 0 && n <= (imp ? 3 : 1.4)) { patch.pace = imp ? n / LB : n; patch.paceSet = true; } this.setState(patch); },
+      note: 'Maintenance comes from your BMR × activity. After 14 days of logging and a few weigh-ins, Fuel checks your real results and adjusts it, so the pace you see is the pace you get.' } };
+  }
   targetVals(S, plan, imp, wUnit, budget) {
     const fmt = (n) => Math.round(n).toLocaleString('en-US');
     const sg = (n) => (n > 0 ? '+' : n < 0 ? '−' : '') + fmt(Math.abs(n));
@@ -2332,7 +2444,7 @@ class Component extends DCLogic {
     if (plan.train) { row('Workouts built in', S.trainDays + ' sessions × ' + S.sessKcal + ' kcal ÷ 7 days', sg(plan.train), '#F2F4F7', cur, cur + plan.train, '#D4B2FF'); cur += plan.train; }
     row('Maintenance', 'What you can eat to hold your weight', fmt(plan.tdee), '#F2F4F7', 0, plan.tdee, '#9AA3AF', true);
     const goalAdj = plan.raw - plan.tdee;
-    row(plan.adjLabel, plan.goal === 'lose' && !plan.minor ? (plan.capped ? 'Capped at 25% below maintenance to protect muscle' : '1 kg of fat ≈ 7,700 kcal, spread over the week') : plan.goal === 'muscle' ? 'Small surplus keeps fat gain low' : plan.goal === 'recomp' ? 'Slow fat loss while high protein builds muscle' : 'No deficit or surplus',
+    row(plan.adjLabel, plan.goal === 'lose' && !plan.minor ? (plan.capped ? 'Capped at 30% below maintenance to protect muscle' : '1 kg of fat ≈ 7,700 kcal, spread over the week') : plan.goal === 'muscle' ? 'Small surplus keeps fat gain low' : plan.goal === 'recomp' ? 'Slow fat loss while high protein builds muscle' : 'No deficit or surplus',
       sg(goalAdj), goalAdj < 0 ? '#7BD88F' : goalAdj > 0 ? '#FFA866' : '#F2F4F7', plan.tdee, plan.raw, goalAdj < 0 ? '#7BD88F' : '#FFA866');
     if (plan.floored) row('Safety floor', 'Never below ' + fmt(plan.floor) + ' kcal a day', sg(plan.rec.cal - plan.raw), '#F2F4F7', plan.raw, plan.rec.cal, '#F2F4F7');
     if (S.override) row('Your custom macros', 'Calories from the grams you set', sg(plan.cal - plan.rec.cal), '#F2F4F7', plan.rec.cal, plan.cal, '#C9D0D8');
@@ -3026,7 +3138,7 @@ class Component extends DCLogic {
       goalOpts, barrierOpts, activityOpts, sexOpts, countryOpts, paceOpts, surplusOpts, macroOpts,
       imperial: imp, metric: !imp, wUnit, unitImpCls: chip(imp), unitMetCls: chip(!imp),
       setImperial: () => this.setState({ units: 'imperial' }), setMetric: () => this.setState({ units: 'metric' }),
-      targetTitle, targetSub,
+      targetTitle, targetSub, ...this.paceVals(S, plan, imp, wUnit),
       showGoalWeight: g !== 'lean' && g !== 'recomp', showPace: g === 'lose' && !plan.minor, showSurplus: g === 'muscle',
       plan, planMacros: pm, planLine,
       showBack: S.step > 0, nextDisabled: !this.stepValid(),

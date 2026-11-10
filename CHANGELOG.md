@@ -4,6 +4,16 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.5.0 — 2026-11-09
+- **Pace step rebuilt:** goal switch (Lose fat / Recomp / Maintain / Build muscle) right on the step, so
+  "Stay lean" is no longer an empty page. Live summary: daily target, weekly change and % of body weight,
+  maintenance − deficit = target, protein, and an arrival date from your goal weight.
+- **Recommended for you:** a pace from your numbers (about 0.5–1% of body weight a week by BMI, slower near
+  your goal and from age 60, never past the safety limit), preselected, with the reasons. 0.5 / 1 / 1.5 / 2 lb
+  (0.25–1 kg) and a custom pace stay available, marked Gentler or Harder, each with its calories.
+- Safety limit raised from 25% to 30% below maintenance (1,500 / 1,200 kcal floors unchanged).
+- 1 lb a week now means exactly 1 lb (500 kcal a day); it was 1.1 lb.
+
 ## v1.4.1 — 2026-11-09
 - Fix: meal scan showed sample guesses on top of the camera before any photo, hiding Take photo.
   Cause: a broken tag in v1.4.0's photo thumbnail. The build now refuses malformed screens, and the

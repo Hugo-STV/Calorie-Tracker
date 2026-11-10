@@ -2147,10 +2147,12 @@ class Component extends DCLogic {
     clearTimeout(this._t);
     this._t = setTimeout(() => this.setState({ toast: '' }), 1900);
   }
+  // every logged item has an id, so two copies of the day (phone and cloud) can be merged safely
+  newEntry(food, servings) { return { id: 'e' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7), food, servings, at: Date.now() }; }
   logFood(food, servings, meal) {
     const S = this.state;
     const m = meal || S.addMeal;
-    const log = { ...S.log, [m]: S.log[m].concat([{ food, servings }]) };
+    const log = { ...S.log, [m]: S.log[m].concat([this.newEntry(food, servings)]) };
     const history = [food.id].concat(S.history.filter((x) => x !== food.id)).slice(0, 12);
     this.setState({ log, history });
     this.flash('Added ' + food.name + ' to ' + m);
@@ -2565,7 +2567,7 @@ class Component extends DCLogic {
     return { vPeak: S.view === 'peak', pk: { on: !!S.peakOn, ...sw(!!S.peakOn),
       back: () => this.setState({ view: S.peakPrev || 'tabs', peakOpen: null }),
       toggle: () => this.setState({ peakOn: !S.peakOn }),
-      status: !S.peakOn ? 'Off. Peak workouts are not counted.' : S.peakRaw ? 'Same account as Peak · ' + (ago == null ? 'not checked yet' : ago < 1 ? 'checked just now' : 'checked ' + ago + ' min ago') : 'Sample workouts in this mockup',
+      status: S.peakErr ? '⚠ ' + S.peakErr : !S.peakOn ? 'Off. Peak workouts are not counted.' : S.peakRaw ? 'Same account as Peak · ' + (ago == null ? 'not checked yet' : ago < 1 ? 'checked just now' : 'checked ' + ago + ' min ago') : 'Sample workouts in this mockup',
       checkLabel: S.peakBusy ? 'Checking Peak…' : 'Check for new workouts', check: () => this.peakCheck(),
       todayCounted: D.counted, todayLine: D.list.length ? D.list.length + (D.list.length === 1 ? ' workout' : ' workouts') + ' · ' + D.burned + ' kcal burned' + (pct < 100 ? ' · counting ' + pct + '%' : '') + (S.trainMode === 'avg' ? ' · not added (built into target)' : ' · added to today\'s budget') : 'No Peak workout today yet',
       pctOpts: [100, 75, 50].map((n) => ({ label: n + '%', cls: 'chip' + (pct === n ? ' on' : ''), pick: () => this.setState({ peakPct: n }) })),
@@ -3002,7 +3004,7 @@ class Component extends DCLogic {
         kc += kcal; eat.kcal += kcal; eat.p += e.food.p * m; eat.c += e.food.c * m; eat.f += e.food.f * m; itemCount++;
         ['fib', 'sug', 'sat', 'na', 'ch', 'po'].forEach((k) => { if (e.food[k] != null) { eat.mic = eat.mic || { fib: 0, sug: 0, sat: 0, na: 0, ch: 0, po: 0 }; eat.mic[k] += e.food[k] * m; } });
         return { name: e.food.name, kcal, detail: (m === 1 ? '' : m + ' × ') + e.food.serving,
-          remove: () => this.setState({ log: { ...S.log, [k]: S.log[k].filter((_, j) => j !== i) } }) };
+          remove: () => this.setState({ log: { ...S.log, [k]: S.log[k].filter((_, j) => j !== i) }, logDel: (S.logDel || []).concat(e.id ? [e.id] : []) }) };
       });
       return { label: mealNames[k], icon: mealIcons[k], kcal: kc, items, has: items.length > 0, count: items.length + (items.length === 1 ? ' item' : ' items'), add: () => this.openLog(k) };
     });
@@ -3191,7 +3193,7 @@ class Component extends DCLogic {
       openQuick: () => this.openForm('quick'), openCreateFood: () => this.openForm('create'), openCreateMeal: () => this.openForm('meal'),
       copyYesterday: () => this.flash('Nothing logged yesterday to copy'),
       myMeals: S.myMeals.map((m) => ({ name: m.name, sub: m.items.length + ' items · ' + Math.round(m.items.reduce((a, e) => a + e.food.kcal * e.servings, 0)) + ' cal',
-        log: () => { const log = { ...S.log, [meal]: S.log[meal].concat(m.items) }; this.setState({ log }); this.flash('Logged ' + m.name + ' to ' + meal); } })),
+        log: () => { const log = { ...S.log, [meal]: S.log[meal].concat(m.items.map((it) => this.newEntry(it.food, it.servings))) }; this.setState({ log }); this.flash('Logged ' + m.name + ' to ' + meal); } })),
       noMyMeals: !S.myMeals.length, myFoods: S.myFoods.map(wrap), noMyFoods: !S.myFoods.length,
 
       backFromScan: () => this.setState({ view: S.prevView, scanning: false }),

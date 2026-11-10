@@ -107,7 +107,7 @@
   // ---- persistence helpers ---------------------------------------------------------------
   const TRANSIENT = ['view', 'sheet', 'fab', 'toast', 'scanning', 'scanMissing', 'scanErr', 'query', 'sel', 'prod', 'form', 'exMenu', 'mealMenu', 'builder', 'rbuild', 'wPend', 'wIn', 'code',
     'prevView', 'prodPrev', 'targetPrev', 'waterPrev', 'wPrev', 'exPrev', 'builderBack', 'recipeBack', 'planView', 'browseCat', 'recipeId', 'nutriOpen', 'exSel', 'multi', 'multiSel', 'exQ', 'rtSel',
-    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'msStep', 'msBusyText', 'msCamErr'];
+    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'peakErr', 'msStep', 'msBusyText', 'msCamErr'];
   const persistable = (S) => { const o = {}; for (const k in S) if (!TRANSIENT.includes(k)) o[k] = S[k]; return o; };
   const revive = (o) => {
     if (o.weights) o.weights = o.weights.map((w) => Object.assign({}, w, { at: new Date(w.at) }));
@@ -118,9 +118,41 @@
   const keyOfIso = (iso) => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d).toDateString(); };
   const ls = { get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }, del(k) { try { localStorage.removeItem(k); } catch (e) { /* ignore */ } } };
 
+  // ---- merging two copies of the data (this phone and the account) ----
+  const entryId = (e, meal, i) => e.id || ('L:' + meal + ':' + (e.food && (e.food.id || e.food.name)) + ':' + e.servings + ':' + i);
+  function mergeLogs(a, b, del) {
+    const out = {}, gone = new Set(del || []);
+    for (const meal of ['breakfast', 'lunch', 'dinner', 'snacks']) {
+      const seen = new Set(), list = [];
+      [(a || {})[meal] || [], (b || {})[meal] || []].forEach((arr) => arr.forEach((e, i) => { const id = entryId(e, meal, i); if (seen.has(id) || gone.has(id)) return; seen.add(id); list.push(e); }));
+      out[meal] = list.sort((x, y) => (x.at || 0) - (y.at || 0));
+    }
+    return out;
+  }
+  const unionBy = (a, b, key) => { const m = new Map(); (b || []).forEach((x) => m.set(key(x), x)); (a || []).forEach((x) => m.set(key(x), x)); return [...m.values()]; };
+  const hasData = (S) => Object.values(S.log || {}).some((x) => (x || []).length) || Object.keys(S.days || {}).length || (S.weights || []).length || (S.myFoods || []).length || (S.exLog || []).length;
+  // the newer copy decides settings; logs, days, weights, foods and workouts are combined, so nothing is lost
+  function mergeStates(local, remote, remoteAt) {
+    if (!hasData(local) && hasData(remote)) return Object.assign({}, remote, { updatedAt: remoteAt });
+    const newer = (remoteAt || 0) > (local.updatedAt || 0) ? remote : local, older = newer === remote ? local : remote;
+    const m = Object.assign({}, older, newer);
+    const del = [...new Set((local.logDel || []).concat(remote.logDel || []))];
+    if (local.logDay === remote.logDay) { m.log = mergeLogs(newer.log, older.log, del); m.logDel = del; }
+    else { m.logDay = newer.logDay; m.log = newer.log; m.logDel = newer.logDel || []; }
+    m.days = Object.assign({}, older.days || {}, newer.days || {});
+    m.weights = unionBy(newer.weights, older.weights, (w) => +new Date(w.at) + ':' + w.val).sort((x, y) => new Date(x.at) - new Date(y.at));
+    if (local.logDay === remote.logDay) { m.exLog = unionBy(newer.exLog, older.exLog, (e) => e.id || +new Date(e.at)); m.exercise = Math.max(newer.exercise || 0, older.exercise || 0); m.water = Math.max(newer.water || 0, older.water || 0); }
+    for (const k of ['myFoods', 'myMeals', 'userRecipes', 'saved', 'myRoutines']) m[k] = unionBy(newer[k], older[k], (x) => x.id || JSON.stringify(x));
+    m.peakRaw = unionBy(newer.peakRaw, older.peakRaw, (w) => w.id);
+    m.peakSkip = [...new Set((newer.peakSkip || []).concat(older.peakSkip || []))];
+    m.scanCache = Object.assign({}, older.scanCache || {}, newer.scanCache || {});
+    m.updatedAt = Math.max(local.updatedAt || 0, remoteAt || 0);
+    return m;
+  }
+
   const FRESH = { mode: 'onb', step: 0, name: '', goals: [], barriers: [], activity: '', sex: '', age: '', country: '', units: 'imperial', ft: '', inch: '', cm: '', weight: '', goalWeight: '',
     pace: 0.5, surplus: 200, macro: 'high', email: '', agree: true, reminders: true, tab: 'today', view: 'tabs',
-    log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, history: [], myFoods: [], myMeals: [], water: 0, weights: [], exercise: 0, exLog: [], exCount: 0, steps: [],
+    log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, logDel: [], history: [], myFoods: [], myMeals: [], water: 0, weights: [], exercise: 0, exLog: [], exCount: 0, steps: [],
     saved: [], userRecipes: [], myRoutines: [], override: null, days: {}, scanCache: {}, acctMode: 'create', acctFrom: 'onb' };
 
   class App extends Component { // Component: the screen logic from the mockup (global class)
@@ -169,6 +201,7 @@
     }
     saveSoon() { clearTimeout(this._saveT); this._saveT = setTimeout(() => this.saveNow(), 400); }
     saveNow() {
+      if (this.restoring) return; // the account's data is still loading: never save an empty copy over it
       const p = persistable(this.state); delete p.updatedAt;
       const json = JSON.stringify(p);
       if (json === this._savedJson) return;
@@ -186,7 +219,7 @@
       const sum = this.daySummary(S);
       const days = Object.assign({}, S.days || {});
       if (sum.kcal > 0 || sum.ex > 0 || sum.water > 0) days[S.logDay] = sum;
-      this.state = Object.assign({}, S, { days, logDay: today, log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, water: 0, exercise: 0, exLog: [], wPend: [] });
+      this.state = Object.assign({}, S, { days, logDay: today, log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, logDel: [], water: 0, exercise: 0, exLog: [], wPend: [] });
       this.saveSoon();
     }
     daySummary(S) {
@@ -216,6 +249,8 @@
       window.addEventListener('online', () => this.pushSoon(0));
       setInterval(() => { const d = this.state.logDay; this.rollover(); if (d !== this.state.logDay) this.forceUpdate(); }, 60000);
       if (this.acct) this.pull().then(() => this.peakPull());
+      // keep a few days of backups in the account (one copy a day, last 7 days)
+      setTimeout(() => this.dailyBackup(), 20000);
     }
 
     // ---- accounts & sync -------------------------------------------------------------------
@@ -226,7 +261,7 @@
     }
     pushSoon(ms) { if (!this.acct) return; clearTimeout(this._pushT); this._pushT = setTimeout(() => this.push(), ms == null ? 3000 : ms); }
     async push() {
-      if (!this.acct || this.syncing) return;
+      if (!this.acct || this.syncing || this.restoring) return;
       if (!navigator.onLine) { this.status('Offline · will sync later'); return; }
       this.syncing = true;
       try {
@@ -234,6 +269,10 @@
         const p = persistable(this.state); const days = p.days || {}; delete p.days;
         await CLOUD.put(a, 'fuel/profile', { state: p, updatedAt: this.state.updatedAt });
         const sent = ls.get('fuel:sentDays:' + a.uid) || {};
+        // today: summary plus the full log, so the day survives even if this phone's copy is lost
+        const live = Object.assign(this.daySummary(this.state), { live: true, log: this.state.log, logDel: this.state.logDel || [] });
+        const liveSig = JSON.stringify(live).length + ':' + live.kcal + ':' + this.state.logDay;
+        if (sent['live:' + this.state.logDay] !== liveSig && (live.items.length || (this.state.logDel || []).length)) { await CLOUD.put(a, 'fuelDays/' + isoOf(this.state.logDay), live); sent['live:' + this.state.logDay] = liveSig; }
         for (const k of Object.keys(days)) {
           const sig = JSON.stringify(days[k]).length + ':' + days[k].kcal;
           if (sent[k] === sig) continue;
@@ -248,6 +287,18 @@
         this.pushSoon(30000);
       } finally { this.syncing = false; }
     }
+    async dailyBackup() {
+      if (!this.acct || this.restoring || !navigator.onLine) return;
+      const day = new Date().toDateString(), k = 'fuel:backupDay:' + this.acct.uid;
+      if (ls.get(k) === day) return;
+      try {
+        const a = await this.token(), p = persistable(this.state);
+        const hasData = Object.values(p.log || {}).some((x) => x.length) || Object.keys(p.days || {}).length || (p.weights || []).length;
+        if (!hasData) return; // never back up an empty copy
+        await CLOUD.put(a, 'fuel/backup-' + new Date().getDay(), { state: p, updatedAt: this.state.updatedAt, at: Date.now() });
+        ls.set(k, day);
+      } catch (e) { console.warn('[Fuel] backup failed', e); }
+    }
     async pull() {
       if (!this.acct || !navigator.onLine) return false;
       try {
@@ -260,11 +311,24 @@
         let changed = false;
         const S = this.state;
         const merged = Object.assign({}, S.days || {});
-        (days || []).forEach((d) => { const k = keyOfIso(d.id); if (d.data && !merged[k]) { merged[k] = d.data; changed = true; } });
-        if (prof && prof.data && prof.data.state && (prof.data.updatedAt || 0) > (S.updatedAt || 0)) {
-          this.state = Object.assign({}, this.state, revive(prof.data.state), { days: merged, view: S.view, tab: S.tab, updatedAt: prof.data.updatedAt });
-          this._savedJson = null; changed = true;
+        (days || []).forEach((d) => {
+          const k = keyOfIso(d.id); if (!d.data || k === S.logDay) return;
+          const r = Object.assign({}, d.data); delete r.log; delete r.logDel; delete r.live;
+          const l = merged[k];
+          if (!l || (r.items || []).length > (l.items || []).length || (!l.kcal && r.kcal)) { merged[k] = r; changed = true; }
+        });
+        // today's live record (full log) from another device or an earlier install
+        const todayDoc = (days || []).find((d) => keyOfIso(d.id) === S.logDay && d.data && d.data.log);
+        if (prof && prof.data && prof.data.state) {
+          const before = JSON.stringify([S.log, S.days, S.exLog, S.weights, S.peakRaw]);
+          const m = mergeStates(S, revive(prof.data.state), prof.data.updatedAt || 0);
+          this.state = Object.assign({}, this.state, m, { days: Object.assign({}, m.days || {}, merged), view: S.view, tab: S.tab, sheet: S.sheet });
+          if (JSON.stringify([this.state.log, this.state.days, this.state.exLog, this.state.weights, this.state.peakRaw]) !== before || (prof.data.updatedAt || 0) > (S.updatedAt || 0)) { this._savedJson = null; changed = true; }
         } else if (changed) this.state = Object.assign({}, this.state, { days: merged });
+        if (todayDoc) {
+          const S2 = this.state, log = mergeLogs(S2.log, todayDoc.data.log, (S2.logDel || []).concat(todayDoc.data.logDel || []));
+          if (JSON.stringify(log) !== JSON.stringify(S2.log)) { this.state = Object.assign({}, S2, { log }); this._savedJson = null; changed = true; }
+        }
         if (changed) { this.rollover(); this.saveNow(); this.forceUpdate(); }
         const sent = ls.get('fuel:sentDays:' + a.uid) || {};
         (days || []).forEach((d) => { if (d.data) sent[keyOfIso(d.id)] = JSON.stringify(d.data).length + ':' + d.data.kcal; });
@@ -352,11 +416,12 @@
         const since = Date.now() - 21 * 864e5;
         const list = (await CLOUD.workouts(a)).filter((w) => w.start >= since)
           .map((w) => ({ id: w.id, name: w.name, start: w.start, end: w.end, quick: !!w.quick, exercises: (w.exercises || []).map((e) => ({ exId: e.exId, sets: (e.sets || []).map((x) => ({ type: x.type, w: x.w, r: x.r, t: x.t, d: x.d })) })) }));
-        this.setState({ peakRaw: list, peakAt: Date.now(), peakBusy: false });
+        this.setState({ peakRaw: list, peakAt: Date.now(), peakBusy: false, peakErr: '' });
         return true;
       } catch (e) {
         console.warn('[Fuel] Peak pull failed', e);
-        this.setState({ peakBusy: false });
+        const m = String(e.message);
+        this.setState({ peakBusy: false, peakErr: m.includes('403') ? 'Peak workouts are blocked by your Firebase rules (users/{uid}/w)' : m.includes('401') ? 'Sign in again to read Peak workouts' : 'Couldn\'t reach Peak: ' + m });
         if (force) this.flash(String(e.message).includes('403') ? 'Peak workouts blocked: check Firestore rules' : 'Couldn\'t reach Peak. Try again online.');
         return false;
       } finally { this.peakBusy = false; }
@@ -373,6 +438,7 @@
       this.setState({ acctBusy: true, acctErr: '', acctInfo: '' });
       try {
         const sess = S.acctMode === 'signin' ? await CLOUD.signIn(email, pw) : await CLOUD.signUp(email, pw);
+        clearTimeout(this._saveT); clearTimeout(this._pushT); this.restoring = true;
         const local = persistable(this.state);
         this.acct = sess; ls.set('fuel:acct', sess);
         // switch to this account's storage; keep onboarding answers if the account is new
@@ -380,7 +446,9 @@
         if (mine && mine.state) { this.state = Object.assign({}, this.state, revive(mine.state), { updatedAt: mine.updatedAt || 0 }); }
         else { this.state = Object.assign({}, this.state, local, { updatedAt: 0 }); }
         this._savedJson = null;
-        const hadRemote = await this.pull();
+        let hadRemote = false;
+        try { hadRemote = await this.pull(); } finally { this.restoring = false; this._savedJson = null; }
+        this.saveNow();
         this.peakPull(true);
         const from = this.state.acctFrom;
         if (hadRemote) this.setState({ mode: 'app', view: 'tabs', tab: from === 'more' ? 'more' : 'today', acctBusy: false, pw: '', email: sess.email });

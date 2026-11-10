@@ -4,6 +4,18 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.5.3 — 2026-11-10
+- **Fix data loss after reinstalling / signing in.** While signing in, a fresh install saved its empty
+  state, which then looked newer than the account and was uploaded over it. Now nothing is saved or
+  uploaded until the account's data has loaded, and the phone and account copies are merged (logs,
+  days, weigh-ins, foods, recipes, Peak workouts) instead of one replacing the other. Deleted items stay
+  deleted. Each logged item has an id.
+- **Today is backed up as you go:** today's full log is saved as its own day record in the account, not
+  only at midnight, so a lost phone copy can't take the current day with it.
+- **Daily backups:** one copy a day of your data in the account (last 7 days).
+- **Peak errors stay visible** on the Peak workouts screen instead of flashing past.
+- tests/sync.js replays the reinstall with a slow network; it fails on v1.5.2 and passes now.
+
 ## v1.5.2 — 2026-11-09
 - Welcome screen shows the actual logo image (104 px) instead of a redrawn badge.
 

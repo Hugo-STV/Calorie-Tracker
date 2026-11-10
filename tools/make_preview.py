@@ -41,6 +41,8 @@ js = swap(read('app/fuel.js'), [
 ], 'app/fuel.js')
 
 os.makedirs(os.path.join(ROOT, 'preview', 'app'), exist_ok=True)
+for path, text in [('preview/index.html', html), ('preview/app/fuel.js', js), ('preview/app/runtime.js', read('app/runtime.js'))]:
+    open(os.path.join(ROOT, path), 'w', encoding='utf-8').write(text)
 
 def read_bytes(path):
     if ref:
@@ -87,6 +89,8 @@ if not share_vendor:
     for path in big_vendor:
         dst = os.path.join(ROOT, 'preview', path); os.makedirs(os.path.dirname(dst), exist_ok=True)
         open(dst, 'wb').write(read_bytes(path))
+if not share_db:
+    open(os.path.join(ROOT, 'preview', 'foods-db.json'), 'wb').write(read_bytes('foods-db.json'))
 if share_db:
     if os.path.exists(os.path.join(ROOT, 'preview', 'foods-db.json')):
         os.remove(os.path.join(ROOT, 'preview', 'foods-db.json'))

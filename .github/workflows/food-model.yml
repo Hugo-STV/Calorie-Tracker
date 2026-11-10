@@ -24,30 +24,13 @@ jobs:
           try labelmap.csv "https://www.gstatic.com/aihub/tfhub/labelmaps/aiy_food_V1_labelmap.csv"
           try food.tflite "https://tfhub.dev/google/lite-model/aiy/vision/classifier/food_V1/1?lite-format=tflite"
           try kaggle-tflite.tar.gz "https://www.kaggle.com/api/v1/models/google/aiy/tfLite/vision-classifier-food-v1/1/download"
-          try kaggle-tf1.tar.gz "https://www.kaggle.com/api/v1/models/google/aiy/tensorFlow1/vision-classifier-food-v1/1/download"
-          try kaggle-meta.json "https://www.kaggle.com/api/v1/models/google/aiy"
           ls -la raw
-          for t in raw/*.tar.gz; do [ -s "$t" ] && mkdir -p "raw/x-$(basename $t .tar.gz)" && tar -xzf "$t" -C "raw/x-$(basename $t .tar.gz)" && find "raw/x-$(basename $t .tar.gz)" -type f -exec ls -la {} \; ; done
+          for t in raw/*.tar.gz; do [ -s "$t" ] || continue; mkdir -p "raw/x-$(basename $t .tar.gz)"; tar -xzf "$t" -C "raw/x-$(basename $t .tar.gz)" || true; find "raw/x-$(basename $t .tar.gz)" -type f -exec ls -la {} \; ; done
           # pick a tflite file
           f=$(find raw -name '*.tflite' -size +100k | head -1); [ -z "$f" ] && [ -s raw/food.tflite ] && f=raw/food.tflite
           if [ -n "$f" ]; then mkdir -p out/tflite && cp "$f" out/tflite/food_v1.tflite; fi
           [ -s raw/labelmap.csv ] && cp raw/labelmap.csv out/ && head -5 out/labelmap.csv && wc -l out/labelmap.csv
-          [ -s raw/kaggle-meta.json ] && cp raw/kaggle-meta.json out/
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Convert the TF1 hub module to TensorFlow.js
-        continue-on-error: true
-        run: |
-          d=$(find raw -name 'saved_model.pb' -o -name 'tfhub_module.pb' | head -1 | xargs -r dirname)
-          echo "module dir: $d"; [ -n "$d" ] || exit 0
-          pip install -q "tensorflowjs==4.22.0" > /dev/null 2>&1 || pip install -q tensorflowjs
-          mkdir -p out/tfjs
-          tensorflowjs_converter --input_format=tf_hub --quantize_uint8 "$d" out/tfjs 2>&1 | tail -20 || \
-          tensorflowjs_converter --input_format=tf_saved_model --quantize_uint8 "$d" out/tfjs 2>&1 | tail -20
-          ls -la out/tfjs
+          true
 
       - name: Push to the food-model branch
         env:

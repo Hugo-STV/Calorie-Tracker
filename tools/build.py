@@ -82,13 +82,13 @@ t = once(t, '    <div class="lbl">Travel and data</div>', '''    <div class="lbl
 t = once_re(t, r'<button type="button" class="lt" onClick="\{\{soon\}\}">Export my data \(CSV\)(<svg.*?</svg>)</button>',
             r'<button type="button" class="lt" onClick="{{acct.exportData}}">Export a backup\1</button>\n      <button type="button" class="lt" onClick="{{acct.importData}}">Import a backup\1</button>', 'backup rows')
 t = once(t, 'Fuel · prototype v5 · food data from Open Food Facts and USDA in production',
-         'Fuel ' + VERSION + ' · foods: USDA, BLS 4.0 (CC BY 4.0), TempoLife (CC BY 4.0) · packaged products: Open Food Facts (ODbL)', 'footer')
+         'Fuel ' + VERSION + ' · foods: USDA SR28 and FNDDS (public domain); Canadian Nutrient File, Health Canada (Open Government Licence – Canada); McCance and Widdowson’s CoFID (contains public sector information licensed under the Open Government Licence v3.0); Australian Food Composition Database © FSANZ (CC BY 2.5 AU); Ciqual © ANSES (Licence Ouverte); BLS 4.0 and TempoLife (CC BY 4.0) · packaged products: Open Food Facts (ODbL)', 'footer')
 
-# no meal scan in this build (needs an AI vision service)
-t = once_re(t, r'\n\s*<button type="button" class="bigtile"[^\n]*onClick="\{\{fabMealScan\}\}">.*?</button>', '', 'remove fab meal scan')
-t = once_re(t, r'\n\s*<button type="button" class="tile" onClick="\{\{goMealScan\}\}">.*?</button>', '', 'remove log meal scan')
+# meal scan: no sample photos in the app
+t = once_re(t, r'\n\s*<span class="lbl">Try a sample \(mockup\)</span>\s*<div[^\n]*\{\{mz\.samples\}\}[^\n]*</div>', '', 'meal scan samples')
 t = once(t, '<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">\n      <button type="button" class="tile" onClick="{{goScanFromLog}}">',
          '<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">\n      <button type="button" class="tile" onClick="{{goScanFromLog}}">', 'log tiles to 2 columns')
+
 
 # scanner screen: real camera
 t = once_re(t, r'<p class="sub">UPC \(US, Canada\) and EAN.*?</p>', '<p class="sub">UPC (US, Canada) and EAN (UK, France, Australia) barcodes. Products come from Open Food Facts and are saved on your phone after the first scan.</p>', 'scan subtitle')
@@ -146,8 +146,8 @@ __RESULT_ROW__
 # ---- logic patches -------------------------------------------------------------------------
 L = logic
 L = once_re(L, r"this\.DB_URL = '/_blob/[0-9a-f]+';", "this.DB_URL = './foods-db.json';", 'database url')
-L = once(L, "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: S.exercise, mic: eat.mic, micro: !!eat.mic });",
-         "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: S.exercise, mic: eat.mic, micro: !!eat.mic });\n    else if (ago > 0 && S.days && S.days[key] && S.days[key].kcal > 0) { const a = S.days[key]; Object.assign(d, { logged: true, kcal: a.kcal, p: a.p, c: a.c, f: a.f, ex: a.ex || 0, mic: a.mic || null, micro: !!a.mic }); }",
+L = once(L, "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: this.exToday(S), mic: eat.mic, micro: !!eat.mic });",
+         "} else if (ago === 0 && eat.kcal > 0) Object.assign(d, { logged: true, kcal: eat.kcal, p: eat.p, c: eat.c, f: eat.f, ex: this.exToday(S), mic: eat.mic, micro: !!eat.mic });\n    else if (ago > 0 && S.days && S.days[key] && S.days[key].kcal > 0) { const a = S.days[key]; Object.assign(d, { logged: true, kcal: a.kcal, p: a.p, c: a.c, f: a.f, ex: a.ex || 0, mic: a.mic || null, micro: !!a.mic }); }",
          'saved days in charts')
 L = once(L, "let c = e.food.cat;", "let c = e.food.cat || (this.catOf ? this.catOf(e.food) : '');", 'food category')
 L = once(L, "    if (S.demo) lg.filter((d) => !(d.ago === 0 && eat.kcal > 0)).forEach((d) => {",
@@ -194,6 +194,7 @@ input,textarea,button{{font-size:16px}}
 <script>
 {L.strip()}
 </script>
+<script src="app/label.js"></script>
 <script src="app/fuel.js"></script>
 </body>
 </html>

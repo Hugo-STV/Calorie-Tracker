@@ -1,6 +1,6 @@
 // Fuel offline cache: app files and the food database are cached so search and logging work offline.
 // Pages and scripts: network first (updates show right away), cache fallback. Database and scanner: cache first.
-const CACHE = 'fuel-v2';
+const CACHE = 'fuel-v3';
 const CORE = ['./', './index.html', './manifest.json', './app/runtime.js', './app/fuel.js', './vendor/preact.min.umd.js', './icons/icon-192.png', './icons/icon-512.png'];
 const HEAVY = ['./foods-db.json', './vendor/zxing-reader.js', './vendor/zxing_reader.wasm'];
 

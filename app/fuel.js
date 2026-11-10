@@ -51,6 +51,26 @@
       } while (token);
       return out;
     },
+    // documents in a collection changed after a time (keeps reads low as the history grows)
+    async listSince(a, coll, since) {
+      const body = { structuredQuery: { from: [{ collectionId: coll }], where: { fieldFilter: { field: { fieldPath: 'updatedAt' }, op: 'GREATER_THAN', value: { integerValue: String(Math.max(0, since)) } } } } };
+      const r = await fetch(FS + '/users/' + a.uid + ':runQuery', { method: 'POST', headers: { Authorization: 'Bearer ' + a.idToken, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error('QUERY ' + r.status);
+      return (await r.json()).filter((x) => x.document).map((x) => Object.assign({ id: x.document.name.split('/').pop() }, this.unpack(x.document)));
+    },
+    // Peak's workouts: users/{uid}/w/{id}, each with the workout as JSON in field "j" (read only)
+    async workouts(a) {
+      const out = []; let token = '';
+      do {
+        const r = await fetch(this.url(a, 'w') + '?pageSize=300' + (token ? '&pageToken=' + encodeURIComponent(token) : ''), { headers: { Authorization: 'Bearer ' + a.idToken } });
+        if (r.status === 404) return out;
+        if (!r.ok) throw new Error('PEAK ' + r.status);
+        const j = await r.json();
+        (j.documents || []).forEach((d) => { const f = d.fields || {}; if (f.del && f.del.booleanValue) return; try { const w = JSON.parse(f.j ? f.j.stringValue : 'null'); if (w && w.start) out.push(w); } catch (e) { /* skip a damaged workout */ } });
+        token = j.nextPageToken || '';
+      } while (token);
+      return out;
+    },
     unpack(d) {
       const f = d.fields || {};
       let data = null; try { data = JSON.parse(f.json ? f.json.stringValue : 'null'); } catch (e) { data = null; }
@@ -87,7 +107,7 @@
   // ---- persistence helpers ---------------------------------------------------------------
   const TRANSIENT = ['view', 'sheet', 'fab', 'toast', 'scanning', 'scanMissing', 'scanErr', 'query', 'sel', 'prod', 'form', 'exMenu', 'mealMenu', 'builder', 'rbuild', 'wPend', 'wIn', 'code',
     'prevView', 'prodPrev', 'targetPrev', 'waterPrev', 'wPrev', 'exPrev', 'builderBack', 'recipeBack', 'planView', 'browseCat', 'recipeId', 'nutriOpen', 'exSel', 'multi', 'multiSel', 'exQ', 'rtSel',
-    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit'];
+    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'msStep', 'msBusyText'];
   const persistable = (S) => { const o = {}; for (const k in S) if (!TRANSIENT.includes(k)) o[k] = S[k]; return o; };
   const revive = (o) => {
     if (o.weights) o.weights = o.weights.map((w) => Object.assign({}, w, { at: new Date(w.at) }));
@@ -123,7 +143,29 @@
     }
 
     // every state change is saved locally, then synced
-    setState(patch) { super.setState(patch); this.saveSoon(); }
+    setState(patch) {
+      super.setState(patch);
+      // Peak settings changed: past days' exercise follows
+      if (patch && ('peakRaw' in patch || 'peakPct' in patch || 'peakSkip' in patch || 'peakOn' in patch)) this.peakDays();
+      this.saveSoon();
+    }
+    // Put Peak calories on the right past days, even when Fuel wasn't opened that day.
+    // Each saved day keeps exFuel (exercise logged in Fuel) so the Peak part can be redone any time.
+    peakDays() {
+      const S = this.state, days = Object.assign({}, S.days || {}), today = new Date().toDateString();
+      const keys = new Set(Object.keys(days));
+      this.peakList(S).forEach((w) => keys.add(new Date(w.start).toDateString()));
+      let changed = false;
+      keys.forEach((k) => {
+        if (k === today || Date.now() - new Date(k).getTime() > 22 * 864e5) return;
+        const d = days[k], fuelEx = d ? (d.exFuel != null ? d.exFuel : d.ex || 0) : 0, ex = fuelEx + this.peakDay(S, k).counted;
+        if (d && d.ex === ex && d.exFuel != null) return;
+        if (!d && !ex) return;
+        days[k] = Object.assign(d ? {} : { kcal: 0, p: 0, c: 0, f: 0, mic: null, water: 0, items: [] }, d || {}, { ex, exFuel: fuelEx });
+        changed = true;
+      });
+      if (changed) { this.state.days = days; this.pushSoon && this.pushSoon(2000); }
+    }
     saveSoon() { clearTimeout(this._saveT); this._saveT = setTimeout(() => this.saveNow(), 400); }
     saveNow() {
       const p = persistable(this.state); delete p.updatedAt;
@@ -147,7 +189,7 @@
       this.saveSoon();
     }
     daySummary(S) {
-      const t = { kcal: 0, p: 0, c: 0, f: 0, mic: null, ex: S.exercise || 0, water: S.water || 0, items: [] };
+      const t = { kcal: 0, p: 0, c: 0, f: 0, mic: null, ex: (S.exercise || 0) + this.peakDay(S, S.logDay).counted, exFuel: S.exercise || 0, water: S.water || 0, items: [] };
       Object.keys(S.log || {}).forEach((meal) => (S.log[meal] || []).forEach((e) => {
         const m = e.servings || 1, fd = e.food;
         t.kcal += fd.kcal * m; t.p += (fd.p || 0) * m; t.c += (fd.c || 0) * m; t.f += (fd.f || 0) * m;
@@ -169,10 +211,10 @@
 
     componentDidMount() {
       super.componentDidMount();
-      document.addEventListener('visibilitychange', () => { if (!document.hidden) { this.rollover(); this.forceUpdate(); this.pull(); } else this.saveNow(); });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) { this.rollover(); this.forceUpdate(); this.pull(); this.peakPull(); } else this.saveNow(); });
       window.addEventListener('online', () => this.pushSoon(0));
       setInterval(() => { const d = this.state.logDay; this.rollover(); if (d !== this.state.logDay) this.forceUpdate(); }, 60000);
-      if (this.acct) this.pull();
+      if (this.acct) this.pull().then(() => this.peakPull());
     }
 
     // ---- accounts & sync -------------------------------------------------------------------
@@ -210,22 +252,78 @@
       try {
         const a = await this.token();
         const prof = await CLOUD.get(a, 'fuel/profile');
-        const days = await CLOUD.list(a, 'fuelDays').catch(() => []);
+        // only days changed since the last pull (a day of margin for clocks that differ between devices)
+        const since = ls.get('fuel:daysAt:' + a.uid) || 0, started = Date.now();
+        const days = await (since && CLOUD.listSince ? CLOUD.listSince(a, 'fuelDays', since - 864e5).catch(() => CLOUD.list(a, 'fuelDays')) : CLOUD.list(a, 'fuelDays')).catch(() => null);
+        if (days) ls.set('fuel:daysAt:' + a.uid, started);
         let changed = false;
         const S = this.state;
         const merged = Object.assign({}, S.days || {});
-        days.forEach((d) => { const k = keyOfIso(d.id); if (d.data && !merged[k]) { merged[k] = d.data; changed = true; } });
+        (days || []).forEach((d) => { const k = keyOfIso(d.id); if (d.data && !merged[k]) { merged[k] = d.data; changed = true; } });
         if (prof && prof.data && prof.data.state && (prof.data.updatedAt || 0) > (S.updatedAt || 0)) {
           this.state = Object.assign({}, this.state, revive(prof.data.state), { days: merged, view: S.view, tab: S.tab, updatedAt: prof.data.updatedAt });
           this._savedJson = null; changed = true;
         } else if (changed) this.state = Object.assign({}, this.state, { days: merged });
         if (changed) { this.rollover(); this.saveNow(); this.forceUpdate(); }
         const sent = ls.get('fuel:sentDays:' + a.uid) || {};
-        days.forEach((d) => { if (d.data) sent[keyOfIso(d.id)] = JSON.stringify(d.data).length + ':' + d.data.kcal; });
+        (days || []).forEach((d) => { if (d.data) sent[keyOfIso(d.id)] = JSON.stringify(d.data).length + ':' + d.data.kcal; });
         ls.set('fuel:sentDays:' + a.uid, sent);
         this.status('Synced ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }));
         return !!(prof && prof.data);
       } catch (e) { console.warn('[Fuel] pull failed', e); this.status(String(e.message).includes('403') ? 'Sync blocked: check Firestore rules' : 'Sync failed · will retry'); return false; }
+    }
+    // ---- Meal scan: real photos, read on the phone ----
+    // Label: Tesseract reads the panel, app/label.js turns the text into values for Create a food.
+    // Plate: the dish recognizer arrives in a later update; until then Fuel says so instead of guessing.
+    mealShoot() {
+      const mode = this.state.msMode === 'label' ? 'label' : 'plate';
+      const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*';
+      inp.onchange = () => { const f = inp.files && inp.files[0]; if (f) this.mealPhoto(mode, f); };
+      inp.click();
+    }
+    async mealPhoto(mode, file) {
+      if (mode === 'plate') {
+        this.flash('Plate recognition is coming in the next update. For now, use Nutrition label or search.');
+        return;
+      }
+      this.setState({ msStep: 'busy', msBusyText: 'Reading the label…' });
+      try {
+        if (!window.readLabel) throw new Error('reader-missing');
+        const r = await window.readLabel(file, (st, p) => { if (/loading|initializ/i.test(st)) this.setState({ msBusyText: 'Getting the label reader ready (first time only)…' }); });
+        console.log('[Fuel] label text\n' + r.text);
+        if (!r.ok) { this.setState({ msStep: 'camera' }); this.flash('Couldn\'t read that label. Fill the frame with the panel, flat, in good light.'); return; }
+        this._labelRead = { name: '', serving: r.serving, grams: r.grams, kcal: r.kcal, f: r.f, sat: r.sat, c: r.c, sug: r.sug, fib: r.fib, p: r.p, na: r.na, flags: r.flags.concat(r.flags.includes('serving') ? ['serving'] : []) };
+        this.setState({ msStep: 'result' });
+      } catch (e) {
+        console.warn('[Fuel] label reader', e);
+        this.setState({ msStep: 'camera' });
+        this.flash(navigator.onLine ? 'The label reader couldn\'t start. Try again.' : 'The label reader needs a connection the first time.');
+      }
+    }
+    // ---- Peak workouts: read from the shared account, keep the last 3 weeks on the phone ----
+    peakList(S) { return (S.peakRaw || []).filter((w) => w && w.start && !w.del); }
+    async peakPull(force) {
+      const S = this.state;
+      if (!this.acct || !S.peakOn || !navigator.onLine || this.peakBusy) return false;
+      if (!force && S.peakAt && Date.now() - S.peakAt < 20 * 60000) return false;
+      this.peakBusy = true; this.setState({ peakBusy: true });
+      try {
+        const a = await this.token();
+        const since = Date.now() - 21 * 864e5;
+        const list = (await CLOUD.workouts(a)).filter((w) => w.start >= since)
+          .map((w) => ({ id: w.id, name: w.name, start: w.start, end: w.end, quick: !!w.quick, exercises: (w.exercises || []).map((e) => ({ exId: e.exId, sets: (e.sets || []).map((x) => ({ type: x.type, w: x.w, r: x.r, t: x.t, d: x.d })) })) }));
+        this.setState({ peakRaw: list, peakAt: Date.now(), peakBusy: false });
+        return true;
+      } catch (e) {
+        console.warn('[Fuel] Peak pull failed', e);
+        this.setState({ peakBusy: false });
+        if (force) this.flash(String(e.message).includes('403') ? 'Peak workouts blocked: check Firestore rules' : 'Couldn\'t reach Peak. Try again online.');
+        return false;
+      } finally { this.peakBusy = false; }
+    }
+    async peakCheck() {
+      if (!this.acct) { this.flash('Sign in with your Peak email to import workouts'); return; }
+      if (await this.peakPull(true)) { const n = this.peakDay(this.state, new Date().toDateString()).list.length; this.flash(n ? 'Up to date · ' + n + (n === 1 ? ' workout' : ' workouts') + ' today' : 'Up to date · no Peak workout today yet'); }
     }
     status(t) { this.state.syncStatus = t; this.forceUpdate(); }
 
@@ -243,6 +341,7 @@
         else { this.state = Object.assign({}, this.state, local, { updatedAt: 0 }); }
         this._savedJson = null;
         const hadRemote = await this.pull();
+        this.peakPull(true);
         const from = this.state.acctFrom;
         if (hadRemote) this.setState({ mode: 'app', view: 'tabs', tab: from === 'more' ? 'more' : 'today', acctBusy: false, pw: '', email: sess.email });
         else if (from === 'more' || this.state.mode === 'app') this.setState({ mode: 'app', view: 'tabs', tab: 'more', acctBusy: false, pw: '', email: sess.email });

@@ -1,0 +1,41 @@
+# Runs the app's end-to-end tests on every push, so a change that breaks logging, scanning, sync,
+# Peak workouts or portions is caught before it reaches the preview or the live app.
+name: Tests
+
+on:
+  push:
+    branches-ignore: [food-sources]
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: index.html matches the mockup
+        run: |
+          python3 tools/build.py
+          git diff --stat --exit-code index.html || (echo "::error::index.html is out of date: run python3 tools/build.py and commit it" && exit 1)
+      - name: Install the test browser
+        run: |
+          npm install --no-audit --no-fund --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Run the tests
+        env:
+          SHOTS: test-shots
+        run: |
+          python3 -m http.server 8765 > /dev/null 2>&1 &
+          sleep 1
+          status=0
+          for t in tests/*.js; do echo "::group::$t"; node "$t" || status=1; echo "::endgroup::"; done
+          exit $status
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-screenshots
+          path: test-shots
+          if-no-files-found: ignore

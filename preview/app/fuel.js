@@ -107,7 +107,7 @@
   // ---- persistence helpers ---------------------------------------------------------------
   const TRANSIENT = ['view', 'sheet', 'fab', 'toast', 'scanning', 'scanMissing', 'scanErr', 'query', 'sel', 'prod', 'form', 'exMenu', 'mealMenu', 'builder', 'rbuild', 'wPend', 'wIn', 'code',
     'prevView', 'prodPrev', 'targetPrev', 'waterPrev', 'wPrev', 'exPrev', 'builderBack', 'recipeBack', 'planView', 'browseCat', 'recipeId', 'nutriOpen', 'exSel', 'multi', 'multiSel', 'exQ', 'rtSel',
-    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'msStep', 'msBusyText'];
+    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'msStep', 'msBusyText', 'msCamErr'];
   const persistable = (S) => { const o = {}; for (const k in S) if (!TRANSIENT.includes(k)) o[k] = S[k]; return o; };
   const revive = (o) => {
     if (o.weights) o.weights = o.weights.map((w) => Object.assign({}, w, { at: new Date(w.at) }));
@@ -145,6 +145,7 @@
     // every state change is saved locally, then synced
     setState(patch) {
       super.setState(patch);
+      if (patch && ('view' in patch || 'msStep' in patch || 'msMode' in patch)) requestAnimationFrame(() => this.mealCamSync());
       // Peak settings changed: past days' exercise follows
       if (patch && ('peakRaw' in patch || 'peakPct' in patch || 'peakSkip' in patch || 'peakOn' in patch)) this.peakDays();
       this.saveSoon();
@@ -211,7 +212,7 @@
 
     componentDidMount() {
       super.componentDidMount();
-      document.addEventListener('visibilitychange', () => { if (!document.hidden) { this.rollover(); this.forceUpdate(); this.pull(); this.peakPull(); } else this.saveNow(); });
+      document.addEventListener('visibilitychange', () => { this.mealCamSync(); if (!document.hidden) { this.rollover(); this.forceUpdate(); this.pull(); this.peakPull(); } else this.saveNow(); });
       window.addEventListener('online', () => this.pushSoon(0));
       setInterval(() => { const d = this.state.logDay; this.rollover(); if (d !== this.state.logDay) this.forceUpdate(); }, 60000);
       if (this.acct) this.pull().then(() => this.peakPull());
@@ -275,9 +276,34 @@
     // ---- Meal scan: real photos, read on the phone ----
     // Label: Tesseract reads the panel, app/label.js turns the text into values for Create a food.
     // Plate: the dish recognizer arrives in a later update; until then Fuel says so instead of guessing.
-    mealShoot() {
+    // live camera in the meal-scan frame while that screen is open
+    mealCamSync() {
+      const S = this.state, want = S.view === 'mealscan' && (S.msStep || 'camera') === 'camera' && !document.hidden;
+      if (!want) { if (this.mealStream) { this.mealStream.getTracks().forEach((t) => t.stop()); this.mealStream = null; } return; }
+      const v = document.getElementById('msvid');
+      if (this.mealStream) { if (v && v.srcObject !== this.mealStream) { v.srcObject = this.mealStream; v.play().catch(() => {}); } return; }
+      if (this.mealStarting || !this.canScan()) { if (!this.canScan() && !S.msCamErr) this.setState({ msCamErr: 'No camera here: use Choose from gallery' }); return; }
+      this.mealStarting = true;
+      navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1440 } } })
+        .then((st) => {
+          this.mealStarting = false;
+          const S2 = this.state; if (!(S2.view === 'mealscan' && (S2.msStep || 'camera') === 'camera')) { st.getTracks().forEach((t) => t.stop()); return; }
+          this.mealStream = st; if (S2.msCamErr) this.setState({ msCamErr: '' }); this.mealCamSync();
+        })
+        .catch((e) => { this.mealStarting = false; console.warn('[Fuel] meal camera', e); this.setState({ msCamErr: /NotAllowed|Permission/i.test(e.name + e.message) ? 'Camera blocked: allow it in your phone settings, or use Choose from gallery' : 'Camera unavailable: use Choose from gallery' }); });
+    }
+    // Take photo: a full-resolution frame from the live camera (gallery only if there's no camera)
+    async mealShoot() {
+      const mode = this.state.msMode === 'label' ? 'label' : 'plate', v = document.getElementById('msvid');
+      if (!this.mealStream || !v || !v.videoWidth) { this.mealGallery(true); return; }
+      const c = document.createElement('canvas'); c.width = v.videoWidth; c.height = v.videoHeight; c.getContext('2d').drawImage(v, 0, 0);
+      const blob = await new Promise((ok) => c.toBlob(ok, 'image/jpeg', 0.92));
+      this.mealPhoto(mode, blob);
+    }
+    // Choose from gallery (or the phone's camera app when the live camera isn't available)
+    mealGallery(camera) {
       const mode = this.state.msMode === 'label' ? 'label' : 'plate';
-      const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*';
+      const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; if (camera === true) inp.capture = 'environment';
       inp.onchange = () => { const f = inp.files && inp.files[0]; if (f) this.mealPhoto(mode, f); };
       inp.click();
     }

@@ -4,6 +4,11 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.3.1 — 2026-11-09
+- Meal scan: **Take photo** now uses a live camera view inside the frame (like the barcode scanner)
+  instead of opening the gallery. **Choose from gallery** is for saved pictures. The camera turns off
+  when you leave the screen or after the photo.
+
 ## v1.3.0 — 2026-11-09
 - **Label scan:** photograph a nutrition panel and Fuel reads it on the phone (Tesseract, no upload),
   then fills in Create a food. Canadian bilingual and US labels read best; UK/EU grid tables are less reliable.

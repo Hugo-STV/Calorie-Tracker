@@ -126,7 +126,7 @@
   class App extends Component { // Component: the screen logic from the mockup (global class)
     constructor(props) {
       super(props);
-      this.DB_URL = './foods-db.json';
+      this.DB_URL = '../foods-db.json';
       this.acct = ls.get('fuel:acct');
       this.loadLocal();
       this._lastView = this.state.view;

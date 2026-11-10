@@ -53,15 +53,43 @@ def list_files(folder):
         return [x for x in out.split('\n') if x]
     return [os.path.relpath(os.path.join(d, f), ROOT) for d, _, fs in os.walk(os.path.join(ROOT, folder)) for f in fs]
 
-# the label reader, dish recognizer and their engines go with the preview (the live site may not have them yet)
-for path in ['app/label.js', 'app/plate.js'] + list_files('vendor/tesseract') + list_files('vendor/tflite') + list_files('vendor/foodmodel'):
+# Big files (food database, label reader, dish recognizer) are shared with the live site when they are
+# identical, so the site stays small enough for GitHub Pages to publish. Otherwise the preview gets its own.
+def same_as_live(paths):
+    for path in paths:
+        live = os.path.join(ROOT, path)
+        if not os.path.exists(live):
+            return False
+        try:
+            if read_bytes(path) != open(live, 'rb').read():
+                return False
+        except subprocess.CalledProcessError:
+            return False
+    return True
+
+big_vendor = list_files('vendor/tesseract') + list_files('vendor/tflite') + list_files('vendor/foodmodel')
+share_vendor = ref is not None and same_as_live(big_vendor) or (ref is None and False)
+share_db = ref is not None and same_as_live(['foods-db.json'])
+
+for path in ['app/label.js', 'app/plate.js']:
     try:
-        data = read_bytes(path)
+        text = read_bytes(path).decode('utf-8')
     except subprocess.CalledProcessError:
         continue
-    dst = os.path.join(ROOT, 'preview', path); os.makedirs(os.path.dirname(dst), exist_ok=True)
-    open(dst, 'wb').write(data)
-# the preview carries its own food database, so a new database can be tried before it goes live
-for path, text in [('preview/index.html', html), ('preview/app/fuel.js', js), ('preview/app/runtime.js', read('app/runtime.js')), ('preview/foods-db.json', read('foods-db.json'))]:
-    open(os.path.join(ROOT, path), 'w', encoding='utf-8').write(text)
-print('preview/ updated from', ref or 'working tree')
+    if share_vendor:  # load the engines from the live site's vendor/ folder
+        text = text.replace("const base = document.currentScript", "const base = '../'; const _unused = document.currentScript", 1)
+    open(os.path.join(ROOT, 'preview', path), 'w', encoding='utf-8').write(text)
+import shutil
+for d in ['vendor']:
+    shutil.rmtree(os.path.join(ROOT, 'preview', d), ignore_errors=True)
+if not share_vendor:
+    for path in big_vendor:
+        dst = os.path.join(ROOT, 'preview', path); os.makedirs(os.path.dirname(dst), exist_ok=True)
+        open(dst, 'wb').write(read_bytes(path))
+if share_db:
+    if os.path.exists(os.path.join(ROOT, 'preview', 'foods-db.json')):
+        os.remove(os.path.join(ROOT, 'preview', 'foods-db.json'))
+    for f in ['preview/index.html', 'preview/app/fuel.js']:
+        fp = os.path.join(ROOT, f); t = open(fp, encoding='utf-8').read()
+        open(fp, 'w', encoding='utf-8').write(t.replace("this.DB_URL = './foods-db.json'", "this.DB_URL = '../foods-db.json'"))
+print('shared with live:', 'engines' if share_vendor else '-', 'database' if share_db else '-')

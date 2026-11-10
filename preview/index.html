@@ -1750,7 +1750,7 @@ class Component extends DCLogic {
     super(props);
     const v = (id, name, serving, kcal, p, c, f, cat) => ({ id, name, serving, kcal, p, c, f, region: 'INTL', code: '—', verified: true, cat: cat || '' });
     this.suggestIds = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8'];
-    this.DB_URL = './foods-db.json';
+    this.DB_URL = '../foods-db.json';
     this.foods = [
       v('g1', 'Blueberries', '1 cup (148 g)', 84, 1.1, 21, 0.5, 'fruit'),
       v('g2', 'Avocado', '1 medium (150 g)', 240, 3, 13, 22, 'fruit'),

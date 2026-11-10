@@ -1,6 +1,6 @@
 # Changelog
 
-Every release that goes live gets a version number here, a matching git tag (`v1.3.0`), and stays
+Every release that goes live gets a version number here, a matching restore branch (`release/v1.3.0`), and stays
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 

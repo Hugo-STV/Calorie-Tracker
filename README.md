@@ -43,11 +43,11 @@ A free, private macro and calorie tracker. It runs in your browser and as an And
 
 ### Versions and rolling back
 
-Each release that goes live bumps `VERSION`, gets an entry in `CHANGELOG.md` and a git tag (`v1.3.0`). To go back to an earlier version if something breaks:
+Each release that goes live bumps `VERSION`, gets an entry in `CHANGELOG.md` and a restore branch (`release/v1.3.0`). To go back to an earlier version if something breaks:
 
 ```
 git checkout main
-git checkout v1.1.0 -- index.html sw.js manifest.json foods-db.json app vendor icons VERSION
+git checkout origin/release/v1.1.0 -- index.html sw.js manifest.json foods-db.json app vendor icons VERSION
 git commit -m "Roll back the live app to v1.1.0" && git push
 ```
 

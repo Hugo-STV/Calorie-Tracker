@@ -4,6 +4,11 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.5.1 — 2026-11-09
+- **New logo:** lime disc with a black bolt. App icon (web and Android, including adaptive and round
+  launcher icons on a lime background), splash screen, browser and iPhone home-screen icons, and the
+  welcome screen badge. The Android launcher icon needs the new APK; everything else updates by itself.
+
 ## v1.5.0 — 2026-11-09
 - **Pace step rebuilt:** goal switch (Lose fat / Recomp / Maintain / Build muscle) right on the step, so
   "Stay lean" is no longer an empty page. Live summary: daily target, weekly change and % of body weight,

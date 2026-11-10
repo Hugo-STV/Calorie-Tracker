@@ -4,6 +4,9 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.5.2 — 2026-11-09
+- Welcome screen shows the actual logo image (104 px) instead of a redrawn badge.
+
 ## v1.5.1 — 2026-11-09
 - **New logo:** lime disc with a black bolt. App icon (web and Android, including adaptive and round
   launcher icons on a lime background), splash screen, browser and iPhone home-screen icons, and the

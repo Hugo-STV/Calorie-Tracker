@@ -4,6 +4,14 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.9.0 — 2026-11-11
+- **Workout fuel** on Plan: Before / After picks for your training. After a finished Peak workout (or
+  exercise logged in Fuel) it shows After, otherwise Before; tap either. Before: easy carbs, low in fat,
+  1–3 hours ahead, about 10% of your target (150–400 cal). After: 20 g+ protein plus carbs within
+  2 hours, about 15% (200–550 cal). Chosen from each recipe's nutrition (44 before, 166 after), with your
+  eating style, photos first and your portion. Recipe pages show a Before / After a workout tag, and the
+  Recipes browser has a row for each.
+
 ## v1.8.0 — 2026-11-11
 - **Recipe photos:** recipes show a real photo of the dish on Plan, Saved ideas, the Recipes browser and
   the recipe page (freely licensed from Wikimedia Commons, credited and linked). Your own recipes can get

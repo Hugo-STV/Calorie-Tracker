@@ -22,7 +22,7 @@ const SHOTS = process.env.SHOTS || 'test-shots'; require('fs').mkdirSync(SHOTS, 
   // every idea has a photo file and a credit
   const ideas = await page.evaluate(() => DC.comp.ideas.map((r) => ({ id: r.id, photo: r.photo, credit: r.credit })));
   const withPhoto = ideas.filter((r) => r.photo);
-  expect(ideas.length >= 100 && withPhoto.length >= 100 && withPhoto.every((r) => /CC|Public/.test(r.credit)), withPhoto.length + ' of ' + ideas.length + ' recipes have a photo, each with a licence credit');
+  expect(ideas.length >= 380 && withPhoto.length >= 220 && withPhoto.every((r) => /CC|Public/.test(r.credit)), withPhoto.length + ' of ' + ideas.length + ' recipes have a photo, each with a licence credit');
   const files = await page.evaluate(async (list) => { const bad = []; for (const f of list) { const r = await fetch(f); if (!r.ok) bad.push(f); } return bad; }, withPhoto.map((r) => r.photo));
   expect(!files.length, 'every recipe photo file exists ' + files.join(' '));
   // recipe page: big photo + credit link

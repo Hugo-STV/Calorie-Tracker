@@ -41,8 +41,10 @@ const SHOTS = process.env.SHOTS || 'test-shots'; require('fs').mkdirSync(SHOTS, 
   await page.screenshot({ path: SHOTS + '/picks-snacks.png' });
   // open a pick: portion carried over, numbers and amounts scale, logging uses the portion
   await page.getByRole('button', { name: 'Lunch & dinner', exact: true }).click(); await page.waitForTimeout(150);
-  const first = (await get()).picks[0];
-  await page.evaluate(() => DC.comp.renderVals().ideas[0].open()); await page.waitForTimeout(250);
+  const all = (await get()).picks;
+  const idx = Math.max(0, await page.evaluate(() => DC.comp.renderVals().ideas.findIndex((x) => x.serves === 1)));
+  const first = all[idx];
+  await page.evaluate((i) => DC.comp.renderVals().ideas[i].open(), idx); await page.waitForTimeout(250);
   let rc = await page.evaluate(() => { const r = DC.comp.renderVals().rc; return { kcal: r.kcal, label: r.portionLabel, line: r.lines[0].t, k: DC.comp.state.portion }; });
   expect(rc.label === first.portion.replace('Your portion: ', '') && rc.kcal === parseInt(first.fit, 10), 'recipe page opens with your portion (' + rc.label + ', ' + rc.kcal + ' cal)');
   await page.screenshot({ path: SHOTS + '/recipe-portion.png' });

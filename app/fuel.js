@@ -107,7 +107,7 @@
   // ---- persistence helpers ---------------------------------------------------------------
   const TRANSIENT = ['view', 'sheet', 'fab', 'toast', 'scanning', 'scanMissing', 'scanErr', 'query', 'sel', 'prod', 'form', 'exMenu', 'mealMenu', 'builder', 'rbuild', 'wPend', 'wIn', 'code',
     'prevView', 'prodPrev', 'targetPrev', 'waterPrev', 'wPrev', 'exPrev', 'builderBack', 'recipeBack', 'planView', 'browseCat', 'recipeId', 'nutriOpen', 'exSel', 'multi', 'multiSel', 'exQ', 'rtSel',
-    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'peakErr', 'viewDay', 'mealOpen', 'msStep', 'msBusyText', 'msCamErr', 'pickSlot', 'portion'];
+    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'peakErr', 'viewDay', 'mealOpen', 'msStep', 'msBusyText', 'msCamErr', 'pickSlot', 'portion', 'recipeQ'];
   const persistable = (S) => { const o = {}; for (const k in S) if (!TRANSIENT.includes(k)) o[k] = S[k]; return o; };
   const revive = (o) => {
     if (o.weights) o.weights = o.weights.map((w) => Object.assign({}, w, { at: new Date(w.at) }));

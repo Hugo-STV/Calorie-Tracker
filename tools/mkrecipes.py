@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Turn recipes/mealplan-src.json into the recipe list inside mockup/fuel.dc.html.
+"""Turn recipes/mealplan-src.json and recipes/cookbooks-src.json into the recipe list inside mockup/fuel.dc.html.
 
 Each ingredient line names a food in foods-db.json and a weight, so a recipe's calories and macros
 come from the same official tables as the rest of the app. Photos and credits come from
@@ -13,7 +13,8 @@ db = json.load(open(os.path.join(ROOT, 'foods-db.json')))
 by_name = {}
 for f in db['foods']:
     by_name.setdefault(f[0], f)
-src = json.load(open(os.path.join(ROOT, 'recipes', 'mealplan-src.json')))
+src = [dict(r, source='Promealplan sample menus') for r in json.load(open(os.path.join(ROOT, 'recipes', 'mealplan-src.json')))]
+src += json.load(open(os.path.join(ROOT, 'recipes', 'cookbooks-src.json')))
 credits = json.load(open(os.path.join(ROOT, 'photos', 'credits.json')))
 r1 = lambda v: round(v, 1)
 out = []
@@ -25,7 +26,8 @@ for r in src:
             sys.exit(f"{r['id']}: food not in database: {l['food']}")
         k = (lambda i: (f[i] or 0) * l['g'] / 100) if f else (lambda i: 0)
         lines.append([l['t'], r1(k(4)), r1(k(5)), r1(k(6)), r1(k(7))])
-    kc = sum(l[1] for l in lines); p = sum(l[2] for l in lines); c = sum(l[3] for l in lines); fat = sum(l[4] for l in lines)
+    n = r.get('serves', 1)
+    kc = sum(l[1] for l in lines) / n; p = sum(l[2] for l in lines) / n; c = sum(l[3] for l in lines) / n; fat = sum(l[4] for l in lines) / n
     tags = []
     if p * 4 / max(kc, 1) >= 0.30: tags.append('hp')
     if c <= 20: tags.append('lowcarb')
@@ -34,7 +36,7 @@ for r in src:
     cats += [t for t in tags]
     cats += r['diets']
     if kc < 500: cats.append('u500')
-    o = {'id': r['id'], 'title': r['title'], 'time': r['time'], 'mins': r['mins'], 'slots': r['slots'], 'goals': r['goals'], 'diets': r['diets'], 'cats': cats, 'lines': lines, 'steps': r['steps']}
+    o = {'id': r['id'], 'title': r['title'], 'time': r['time'], 'mins': r['mins'], 'serves': n, 'source': r.get('source', ''), 'slots': r['slots'], 'goals': r['goals'], 'diets': r['diets'], 'cats': cats, 'lines': lines, 'steps': r['steps']}
     c2 = credits.get(r['id'])
     if c2:
         o['photo'] = 'photos/' + r['id'] + '.jpg'

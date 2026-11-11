@@ -83,5 +83,5 @@ Every row is checked: stated calories must agree with protein, carbs and fat (al
 - Bundeslebensmittelschlüssel (BLS) 4.0, Max Rubner-Institut, via [@thereforejs/foods](https://github.com/thereforejs/foods), CC BY 4.0 (not published by the Max Rubner-Institut); food nutrition data from TempoLife (tempolife.app), CC BY 4.0.
 - A few regional dishes no official table covers are typical estimates and are labelled *Estimate* in the app.
 - Packaged products: [Open Food Facts](https://openfoodfacts.org), Open Database License; product images CC BY-SA.
-- Libraries: [Preact](https://preactjs.com) (MIT), [zxing-wasm](https://github.com/Sec-ant/zxing-wasm) (MIT).
-- Additive risk levels are a starter list based on EFSA and IARC reviews, not medical advice.
+- Recipe photos: freely licensed photos from [Wikimedia Commons](https://commons.wikimedia.org), cropped to 4:3. Each recipe page credits its photographer and licence; the full list (file, author, licence, link) is in `photos/credits.json`.
+- 108 recipes are adapted from Promealplan sample menus: the ingredients and amounts are kept, nutrition is recalculated from the food tables above, and the directions are written for Fuel (`recipes/mealplan-src.json`, built into the app by `tools/mkrecipes.py`).

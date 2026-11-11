@@ -1,0 +1,75 @@
+INFDSTAG,ORIGCPCD,const_nom_fr
+ENERC,327,"Energie, Règlement UE N° 1169/2011 (kJ/100 g)"
+ENERC,328,"Energie, Règlement UE N° 1169/2011 (kcal/100 g)"
+ENERC,332,"Energie, N x facteur Jones, avec fibres (kJ/100 g)"
+ENERC,333,"Energie, N x facteur Jones, avec fibres (kcal/100 g)"
+WATER,400,Eau (g/100 g)
+ASH,10000,Cendres (g/100 g)
+,10004,Sel chlorure de sodium (g/100 g)
+NA,10110,Sodium (mg/100 g)
+MG,10120,Magnésium (mg/100 g)
+P,10150,Phosphore (mg/100 g)
+CLD,10170,Chlorure (mg/100 g)
+K,10190,Potassium (mg/100 g)
+CA,10200,Calcium (mg/100 g)
+MN,10251,Manganèse (mg/100 g)
+FE,10260,Fer (mg/100 g)
+CU,10290,Cuivre (mg/100 g)
+ZN,10300,Zinc (mg/100 g)
+SE,10340,Sélénium (µg/100 g)
+"ID",10530,Iode (µg/100 g)
+PROCNT,25000,"Protéines, N x facteur de Jones (g/100 g)"
+PROCNT,25003,"Protéines, N x 6.25 (g/100 g)"
+CHOAVL,31000,Glucides (g/100 g)
+SUGAR,32000,Sucres (g/100 g)
+FRUS,32210,Fructose (g/100 g)
+GALS,32220,Galactose (g/100 g)
+GLUS,32250,Glucose (g/100 g)
+LACS,32410,Lactose (g/100 g)
+MALS,32430,Maltose (g/100 g)
+SUCS,32480,Saccharose (g/100 g)
+STARCH,33110,Amidon (g/100 g)
+POLYL,34000,Polyols totaux (g/100 g)
+FIB-,34100,Fibres alimentaires (g/100 g)
+FAT,40000,Lipides (g/100 g)
+FASAT,40302,AG saturés (g/100 g)
+FAMS,40303,AG monoinsaturés (g/100 g)
+FAPU,40304,AG polyinsaturés (g/100 g)
+F4D0,40400,"AG 4:0, butyrique (g/100 g)"
+F6D0,40600,"AG 6:0, caproïque (g/100 g)"
+F8D0,40800,"AG 8:0, caprylique (g/100 g)"
+F10D0,41000,"AG 10:0, caprique (g/100 g)"
+F12D0,41200,"AG 12:0, laurique (g/100 g)"
+F14D0,41400,"AG 14:0, myristique (g/100 g)"
+F16D0,41600,"AG 16:0, palmitique (g/100 g)"
+F18D0,41800,"AG 18:0, stéarique (g/100 g)"
+F18D1CN9,41819,"AG 18:1 9c (n-9), oléique (g/100 g)"
+F18D2CN6,41826,"AG 18:2 9c,12c (n-6), linoléique (g/100 g)"
+F18D3N3,41833,"AG 18:3 c9,c12,c15 (n-3), alpha-linolénique (g/100 g)"
+F20D4N6,42046,"AG 20:4 5c,8c,11c,14c (n-6), arachidonique (g/100 g)"
+F20D5N3,42053,"AG 20:5 5c,8c,11c,14c,17c (n-3) EPA (g/100 g)"
+F22D6N3,42263,"AG 22:6 4c,7c,10c,13c,16c,19c (n-3) DHA (g/100 g)"
+RAE,51104,"Activité vitaminique A, équivalents rétinol (µg/100 g)"
+RETOL,51200,Rétinol (µg/100 g)
+CARTB,51330,Beta-Carotène (µg/100 g)
+VITD-,52100,Vitamine D (µg/100 g)
+ERGCAL,52200,Vitamine D2 (ergocalciférol) (µg/100 g)
+CHOCAL,52300,Vitamine D3 (cholécalciférol) (µg/100 g)
+VITE-,53100,Vitamine E (mg/100 g)
+VITK1,54101,Vitamine K1 (µg/100 g)
+VITK2,54104,Vitamine K2 (µg/100 g)
+VITC,55100,Vitamine C (mg/100 g)
+THIA,56100,Vitamine B1 ou Thiamine (mg/100 g)
+RIBF,56200,Vitamine B2 ou Riboflavine (mg/100 g)
+NIA,56310,Vitamine B3 ou PP ou Niacine (mg/100 g)
+PANTAC,56400,Vitamine B5 ou Acide pantothénique (mg/100 g)
+VITB6-,56500,Vitamine B6 (mg/100 g)
+VITB12,56600,Vitamine B12 (µg/100 g)
+FOL,56700,Vitamine B9 ou Folates totaux (µg/100 g)
+FOLDFE,56702,"Vitamine B9 ou Folates totaux, équivalents folates alimentaires, DFE (µg/100 g)"
+FOLFD,56704,Folates intrinsèques (µg/100 g)
+FOLAC,56708,Acide folique (enrichissement) (µg/100 g)
+ALC,60000,Alcool (éthanol) (g/100 g)
+OA,65000,Acides organiques (g/100 g)
+TOCPHA,71010,Alpha-tocophérol (vitamine E) (mg/100 g)
+CHOL-,75100,Cholestérol (mg/100 g)

@@ -1,0 +1,14 @@
+,Release 3 - Nutrient profiles - Content summary,,
+,Field,Description,
+,Public food key,A unique alpha-numeric identification code assigned to each food and consistent across our food composition publications.,
+,Classification,"2-, 3-, or 5-digit numeric classification code which aligns with those used in the AUSNUT 2023 dataset.
+
+",
+,Derivation,"Indicates how the majority of nutrient data, or data for key nutrients, were sourced.
+
+",
+,Food name,A semi-structured naming system which highlights the key features of each food.,
+,Nutrient name (units),Describes the full name of each of the nutrients e.g. 'Protein' and includes the units the nutrient is presented in e.g. '(g)' for grams. A value is then provided for each food and nutrient on a per 100 g basis.,
+,All solid and liquid foods reported per 100 g,,
+,Liquid* foods only reported per 100 mL,,
+,"* Liquid foods refers to all foods in the database which have been assigned a specific gravity. This includes beverages, soups, sauces, yoghurts, custards, oils, etc.   ",,

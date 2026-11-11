@@ -1,0 +1,54 @@
+26	out/FAILED.txt
+0	out/MANIFEST.txt
+337	out/ciqual-files.txt
+1581031	out/ciqual/ciqual-new-alim_2025_11_03.xml
+80421	out/ciqual/ciqual-new-alim_grp_2025_11_03.xml
+893270	out/cnf/CNF 2015 Database structure EN .pdf
+972920	out/cnf/CNF 2015 database structure FR .pdf
+1665394	out/cnf/CNF 2015 users_guide EN.pdf
+1637393	out/cnf/CNF 2015 users_guide FR.pdf
+578264	out/cnf/CONVERSION FACTOR.csv
+1155	out/cnf/FOOD GROUP.csv
+761846	out/cnf/FOOD NAME.csv
+2850	out/cnf/FOOD SOURCE.csv
+50521	out/cnf/MEASURE NAME.csv
+16257583	out/cnf/NUTRIENT AMOUNT.csv
+12740	out/cnf/NUTRIENT NAME.csv
+2229	out/cnf/NUTRIENT SOURCE.csv
+162305	out/cnf/REFUSE AMOUNT.csv
+4196317	out/cnf/REFUSE NAME.csv
+40265	out/cnf/YIELD AMOUNT.csv
+4193826	out/cnf/YIELD NAME.csv
+1470	out/fndds/LISTING.txt
+480475	out/fndds/food.csv
+19047892	out/fndds/food_nutrient.csv
+1692573	out/fndds/food_portion.csv
+1982818	out/fndds/input_food.csv
+1955	out/fndds/measure_unit.csv
+21566	out/fndds/nutrient.csv
+293397	out/fndds/survey_fndds_food.csv
+5119	out/fndds/wweia_food_category.csv
+3337	out/xlsx/afcd-details__Contents.csv
+1149468	out/xlsx/afcd-details__Food_details.csv
+1110	out/xlsx/afcd-groups__Contents.csv
+1684833	out/xlsx/afcd-groups__Food_group_information.csv
+950716	out/xlsx/afcd-nutrients__All_solids_liquids_per_100_g.csv
+1036	out/xlsx/afcd-nutrients__Contents.csv
+95249	out/xlsx/afcd-nutrients__Liquids_only_per_100_mL.csv
+3154	out/xlsx/ciqual-new-Table_Ciqual_2025_FR_2025_11_03__codes_INFOODS.csv
+1666885	out/xlsx/ciqual-new-Table_Ciqual_2025_FR_2025_11_03__composition_nutritionnelle.csv
+616640	out/xlsx/cofid__1.10_MUFA_per_100gFood_.csv
+618420	out/xlsx/cofid__1.11_PUFA_per_100gFA_.csv
+623221	out/xlsx/cofid__1.12_PUFA_per_100gFood_.csv
+579746	out/xlsx/cofid__1.13_Phytosterols.csv
+572654	out/xlsx/cofid__1.14_Organic_Acids.csv
+906	out/xlsx/cofid__1.1_Notes.csv
+593579	out/xlsx/cofid__1.2_Factors.csv
+841529	out/xlsx/cofid__1.3_Proximates.csv
+660476	out/xlsx/cofid__1.4_Inorganics.csv
+696253	out/xlsx/cofid__1.5_Vitamins.csv
+586174	out/xlsx/cofid__1.6_Vitamin_Fractions.csv
+621729	out/xlsx/cofid__1.7_SFA_per_100gFA_.csv
+619079	out/xlsx/cofid__1.8_SFA_per_100gFood_.csv
+618791	out/xlsx/cofid__1.9_MUFA_per_100FA_.csv
+463	out/xlsx/cofid__List_of_tables.csv

@@ -1,0 +1,266 @@
+### out/cnf/CONVERSION
+
+### FACTOR.csv
+
+### out/cnf/FOOD
+
+### GROUP.csv
+
+### out/cnf/FOOD
+
+### NAME.csv
+
+### out/cnf/FOOD
+
+### SOURCE.csv
+
+### out/cnf/MEASURE
+
+### NAME.csv
+
+### out/cnf/NUTRIENT
+
+### AMOUNT.csv
+
+### out/cnf/NUTRIENT
+
+### NAME.csv
+
+### out/cnf/NUTRIENT
+
+### SOURCE.csv
+
+### out/cnf/REFUSE
+
+### AMOUNT.csv
+
+### out/cnf/REFUSE
+
+### NAME.csv
+
+### out/cnf/YIELD
+
+### AMOUNT.csv
+
+### out/cnf/YIELD
+
+### NAME.csv
+
+### out/fndds/food.csv
+"fdc_id","data_type","description","food_category_id","publication_date"
+"2705383","survey_fndds_food","Milk, human","9602","2022-10-28"
+"2705384","survey_fndds_food","Milk, NFS","1004","2022-10-28"
+"2705385","survey_fndds_food","Milk, whole","1002","2022-10-28"
+"2705386","survey_fndds_food","Milk, reduced fat (2%)","1004","2022-10-28"
+"2705387","survey_fndds_food","Milk, low fat (1%)","1006","2022-10-28"
+
+### out/fndds/food_nutrient.csv
+"id","fdc_id","nutrient_id","amount","data_points","derivation_id","min","max","median","footnote","min_year_acquired"
+"34136169","2705384","301","125","","","","","","",""
+"34136178","2705384","319","57","","","","","","",""
+"34136185","2705384","337","0","","","","","","",""
+"34136218","2705384","628","0.002","","","","","","",""
+"34136219","2705384","629","0","","","","","","",""
+
+### out/fndds/food_portion.csv
+"id","fdc_id","seq_num","amount","measure_unit_id","portion_description","modifier","gram_weight","data_points","footnote","min_year_acquired"
+"290506","2705383","1","","9999","1 cup","10205","246.0","","",""
+"290507","2705383","2","","9999","Quantity not specified","90000","0.0","","",""
+"290508","2705383","3","","9999","1 fl oz","30000","30.8","","",""
+"290513","2705384","5","","9999","Guideline amount per cup of hot cereal","63546","61.0","","",""
+"290511","2705384","3","","9999","1 individual school container","64294","244.0","","",""
+
+### out/fndds/input_food.csv
+"id","fdc_id","fdc_of_input_food","seq_num","amount","sr_code","sr_description","unit","portion_code","portion_description","gram_weight","retention_code"
+"124268","2705384","","1","40.0","1077","Milk, whole, 3.25% milkfat, with added vitamin D","GM","0","NONE","40.0","0"
+"124271","2705384","","4","8.0","1085","Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)","GM","0","NONE","8.0","0"
+"124270","2705384","","3","14.0","1082","Milk, lowfat, fluid, 1% milkfat, with added vitamin A and vitamin D","GM","0","NONE","14.0","0"
+"124269","2705384","","2","38.0","1079","Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D","GM","0","NONE","38.0","0"
+"124272","2705385","","1","100.0","1077","Milk, whole, 3.25% milkfat, with added vitamin D","GM","0","NONE","100.0","0"
+
+### out/fndds/measure_unit.csv
+"id","name"
+"1000","cup"
+"1001","tablespoon"
+"1002","teaspoon"
+"1003","liter"
+"1004","milliliter"
+
+### out/fndds/nutrient.csv
+"id","name","unit_name","nutrient_nbr","rank"
+"2047","Energy (Atwater General Factors)","KCAL","957","280.0"
+"2048","Energy (Atwater Specific Factors)","KCAL","958","290.0"
+"1001","Solids","G","201","200.0"
+"1002","Nitrogen","G","202","500.0"
+"1003","Protein","G","203","600.0"
+
+### out/fndds/survey_fndds_food.csv
+"fdc_id","food_code","wweia_category_number","start_date","end_date"
+"2705383","11000000","9602","2021-01-01","2023-12-31"
+"2705384","11100000","1004","2021-01-01","2023-12-31"
+"2705385","11111000","1002","2021-01-01","2023-12-31"
+"2705386","11112110","1004","2021-01-01","2023-12-31"
+"2705387","11112210","1006","2021-01-01","2023-12-31"
+
+### out/fndds/wweia_food_category.csv
+"wweia_food_category","wweia_food_category_description"
+"1002","Milk, whole"
+"1004","Milk, reduced fat"
+"1006","Milk, lowfat"
+"1008","Milk, nonfat"
+"1202","Flavored milk, whole"
+
+### out/xlsx/afcd-details__Contents.csv
+Release 3 - Food details - Content summary,,,
+Field,Description,,
+Public food key,"A unique alpha-numeric identification code assigned to each food. The key remains the same for each equivalent food across our food composition publications, allowing easy comparison of food profiles across datasets.",,
+Classification,"2-, 3-, or 5-digit numeric classification code which aligns with those used in the AUSNUT 2023 dataset.
+
+",,
+
+### out/xlsx/afcd-details__Food_details.csv
+Release 3 - Food details,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Public Food Key,Classification,Derivation,Food Name,Food Description,Sampling Details,Nitrogen Factor,Fat Factor,Specific Gravity,Analysed Portion,Unanalysed Portion,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+F002258,31302,Borrowed,"Cardamom seed, dried, ground","Ground spice commonly used in Indian cooking and drinks, in Middle Eastern cooking and in Scandinavian baking","The majority of nutrient data were borrowed from USDA SR Legacy, FDC ID 170919 - Spices, cardamom. Proximates (starch, sugars), vitamins (alpha-tocopherol, beta-carotene, folate) and Se were borrowed from Indian Food Composition Tables 2017, G020 - Cardamom, green. Dry matter adjustment was applied to starch and sugar. Tryptophan was imputed from dried fenugreek seed. Alcohol, vitamins (B12, folic acid, retinol, D), I, caffeine and cholesterol were imputed zero. Note low sum of proximates - data should be used with caution.",6.25,0.956,0,100%,0%,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+F002963,31302,Borrowed,"Cinnamon, dried, ground","Dried and ground bark or quills of Cinnamomum verum, C. zeylanicum or C. aromaticum, used as a spice.","The majority of nutrient data were borrowed from USDA SR Legacy, FDC ID 171320 - Spices, cinnamon, ground. Iodine was borrowed from NZ Food Composition Database, ID P29 Spice, cinnamon, ground. Alcohol, vitamins (B12, folic acid, retinol, D), caffeine and cholesterol were imp
+### out/xlsx/afcd-groups__Contents.csv
+Release 3 - Food group information - Content summary,,,,,,,
+Field,Description,,,,,,
+Food group ID and name,"A 2-digit identification code and name assigned to each food group based on key ingredients such as beverages, cereals, meat, dairy and fruit. Groups align with those used in the AUSNUT 2023 dataset.	",,,,,,
+Inclusions,"Lists the more detailed 3-digit food groups within each of the 2-digit food groups. For example, Berries and Citrus within the Fruit group.",,,,,,
+Number of foods in Release 3,Count of the number of foods in the 2-digit group for this release.,,,,,,
+Data sources,"Summary of data sources for foods within the group. May include key information such as age of analytical data, major contributors to FSANZ data holdings, or time points for signficiant changes to nutrient profiles such as reformulation or fortification projects.",,,,,,
+
+### out/xlsx/afcd-groups__Food_group_information.csv
+Release 3 - Food group information,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+### out/xlsx/afcd-nutrients__All_solids_liquids_per_100_g.csv
+Release 3 - Nutrient profiles (per 100 g),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Public Food Key,Classification,Derivation,Food Name,"Energy with dietary fibre, equated 
+(kJ)","Energy, without dietary fibre, equated 
+(kJ)","Moisture (water) 
+(g)","Protein 
+(g)","Nitrogen 
+
+### out/xlsx/afcd-nutrients__Contents.csv
+,Release 3 - Nutrient profiles - Content summary,,
+,Field,Description,
+,Public food key,A unique alpha-numeric identification code assigned to each food and consistent across our food composition publications.,
+,Classification,"2-, 3-, or 5-digit numeric classification code which aligns with those used in the AUSNUT 2023 dataset.
+
+",
+
+### out/xlsx/afcd-nutrients__Liquids_only_per_100_mL.csv
+Release 3 - Nutrient profiles (per 100 mL),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Public Food Key,Classification,Derivation,Food Name,"Energy with dietary fibre, equated
+(kJ)","Energy, without dietary fibre, equated  
+(kJ)","Moisture (water) 
+(g)","Protein 
+(g)","Nitrogen 
+
+### out/xlsx/ciqual-new-Table_Ciqual_2025_FR_2025_11_03__codes_INFOODS.csv
+INFDSTAG,ORIGCPCD,const_nom_fr
+ENERC,327,"Energie, Règlement UE N° 1169/2011 (kJ/100 g)"
+ENERC,328,"Energie, Règlement UE N° 1169/2011 (kcal/100 g)"
+ENERC,332,"Energie, N x facteur Jones, avec fibres (kJ/100 g)"
+ENERC,333,"Energie, N x facteur Jones, avec fibres (kcal/100 g)"
+WATER,400,Eau (g/100 g)
+
+### out/xlsx/ciqual-new-Table_Ciqual_2025_FR_2025_11_03__composition_nutritionnelle.csv
+alim_grp_code,alim_ssgrp_code,alim_ssssgrp_code,alim_grp_nom_fr,alim_ssgrp_nom_fr,alim_ssssgrp_nom_fr,alim_code,alim_nom_fr,alim_nom_sci,"Energie,
+Règlement
+UE N°
+1169
+2011 (kJ
+100 g)","Energie,
+
+### out/xlsx/cofid__1.10_MUFA_per_100gFood_.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,C10:1 /100g food (g),cis C10:1 /100g food (g),C12:1 /100g food (g),cis C12:1 /100g food (g),C14:1 /100g food (g),cis C14:1 /100g food (g),C15:1 /100g food (g),cis C15:1 /100g food (g),C16:1 /100g food (g),cis C16:1 /100g food (g),C17:1 /100g food (g),cis C17:1 /100g food (g),C18:1 /100g food (g),cis C18:1 /100g food (g),cis/trans C18:1n-9 /100g food (g),cis/trans C18:1n-7 /100g food (g),C20:1 /100g food (g),cis C20:1 /100g food (g),C22:1 /100g food (g),cis C22:1 /100g food (g),cis/trans C22:1n-11 /100g food (g),cis/trans C22:1n-9 /100g food (g),C24:1 /100g food (g),cis C24:1 /100g food (g),trans monounsaturated /100g food (g),,,,,,,,,,,,,,,
+,,,,,,,FOD10:1,FOD10:1c,FOD12:1,FOD12:1c,FOD14:1,FOD14:1c,FOD15:1,FOD15:1c,FOD16:1,FOD16:1c,FOD17:1,FOD17:1c,FOD18:1,FOD18:1c,FOD18:1n9,FOD18:1n7,FOD20:1,FOD20:1c,FOD22:1,FOD22:1c,FOD22:1n11,FOD22:1n9,FOD24:1,FOD24:1c,MONOFODtr,,,,,,,,,,,,,,,
+,,,,,,,Decenoic acid per 100g food,cis Decenoic acid per 100g food,Dodecenoic acid per 100g food,cis Dodecenoic acid per 100g food,Tetradecenoic acid per 100g food,cis Tetradecenoic acid per 100g food,Pentadecenoic acid per 100g food,cis Pentadecenoic acid per 100g food,Hexadecenoic acid per 100g food,cis Hexadecenoic acid per 100g food,Heptadecenoic acid per 100g food,cis Heptadecenoic acid per 100g food,Octadecenoic acid per 100g food,cis Octadecenoic acid per 100g food,n-9 Octadecenoic acid per 100g food,n-7 Octadecenoic a
+### out/xlsx/cofid__1.11_PUFA_per_100gFA_.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,C16:2 /100g FA (g),cis C16:2 /100g FA (g),cis C16:3 /100g FA (g),C16:4 /100g FA (g),cis C16:4 /100g FA (g),unknown C16 poly /100g FA (g),C18:2 /100g FA (g),cis n-6 C18:2 /100g FA (g),C18:3 /100g FA (g),cis n-3 C18:3 /100g FA (g),cis n-6 C18:3 /100g FA (g),C18:4 /100g FA (g),cis n-3 C18:4 /100g FA (g),unknown C18 poly /100g FA (g),C20:2 /100g FA (g),cis n-6 C20:2 /100g FA (g),C20:3 /100g FA (g),cis n-6 C20:3 /100g FA (g),C20:4 /100g FA (g),cis n-6 C20:4 /100g FA (g),C20:5 /100g FA (g),cis n-3 C20:5 /100g FA (g),unknown C20 poly /100 FA (g),C21:5 /100g FA (g),cis n-3 C21:5 /100g FA (g),C22:2 /100g FA (g),cis n-6 C22:2 /100g FA (g),cis n-6 C22:3 /100g FA (g),C22:4 /100g FA (g),cis n-6 C22:4 /100g FA (g),C22:5 /100g FA (g),cis n-3 C22:5 /100g FA (g),C22:6 /100g FA (g),cis n-3 C22:6 /100g FA (g),unknown C22 poly /100g FA (g),trans poly /100g FA (g),,,,,,
+,,,,,,,FAC16:2,FAC16:2c,FAC16:3c,FAC16:4,FAC16:4c,FAC16 poly,FAC18:2,FAC18:2cn6,FAC18:3,FAC18:3cn3,FAC18:3cn6,FAC18:4,FAC18:4cn3,FAC18 poly,FAC20:2,FAC20:2cn6,FAC20:3,FAC20:3cn6,FAC20:4,FAC20:4cn6,FAC20:5,FAC20:5cn3,FAC20 poly,FAC21:5,FAC21:5cn3,FAC22:2,FAC22:2cn6,FAC22:3cn6,FAC22:4,FAC22:4cn6,FAC22:5,FAC22:5cn3,FAC22:6,FAC22:6cn3,FAC22 poly,POLYFACtr,,,,,,
+,,,,,,,Hexadecadienoic acid per 100g fatty acids,cis Hexadecadienoic acid per 100g fatty acids,cis Hexadecatrienoic acid per 100g fatty acids,Hexadecatetraenoic acid per 100g fatty acids, cis Hexadecat
+### out/xlsx/cofid__1.12_PUFA_per_100gFood_.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,C16:2 /100g food (g),cis C16:2 /100g food (g),C16:3 /100g food (g),C16:4 /100g food (g),cis C16:4 /100g food (g),unknown C16 poly /100g food (g),C18:2 /100g food (g),cis n-6 C18:2 /100g food (g),C18:3 /100g food (g),cis n-3 C18:3 /100g food (g),cis n-6 C18:3 /100g food (g),C18:4 /100g food (g),cis n-3 C18:4 /100g food (g),unknown C18 poly /100g food (g),C20:2 /100g food (g),cis n-6 C20:2 /100g food (g),C20:3 /100g food (g),cis n-6 C20:3 /100g food (g),C20:4 /100g food (g),cis n-6 C20:4 /100g food (g),C20:5 /100g food (g),cis n-3 C20:5 /100g food (g),unknown C20 poly /100g food (g),C21:5 /100g food (g),cis n-3 C21:5 /100g food (g),C22:2 /100g food (g),cis n-6 C22:2 /100g food (g),cis n-6 C22:3 /100g food (g),C22:4 /100g food (g),cis n-6 C22:4 /100g food (g),C22:5 /100g food (g),cis n-3 C22:5 /100g food (g),C22:6 /100g food (g),cis n-3 C22:6 /100g food (g),unknown C22 poly /100g food (g),trans poly /100g food (g),,,,,,,,
+,,,,,,,FOD16:2,FOD16:2c,FOD16:3,FOD16:4,FOD16:4c,FOD16 poly,FOD18:2,FOD18:2cn6,FOD18:3,FOD18:3cn3,FOD18:3cn6,FOD18:4,FOD18:4cn3,FOD18 poly,FOD20:2,FOD20:2cn6,FOD20:3,FOD20:3cn6,FOD20:4,FOD20:4cn6,FOD20:5,FOD20:5cn3,FOD20 poly,FOD21:5,FOD21:5cn3,FOD22:2,FOD22:2cn6,FOD22:3cn6,FOD22:4,FOD22:4cn6,FOD22:5,FOD22:5cn3,FOD22:6,FOD22:6cn3,FOD22 poly,POLYFODtr,,,,,,,,
+,,,,,,,Hexadecadienoic acid per 100g food,cis Hexadecadienoic acid per 100g food,Hexadecatrienoic acid per 100g food,Hexadecatetr
+### out/xlsx/cofid__1.13_Phytosterols.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,Total Phytosterols (mg),Other Cholesterol and Phytosterols (mg),Phytosterol (mg),Beta-sitosterol (mg),Brassicasterol (mg),Campesterol (mg),Delta-5-avenasterol (mg),Delta-7-avenasterol (mg),Delta-7-stigmastenol (mg),Stigmasterol (mg),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,Total PHYTO,Other CHOL and PHYTO,PHYTO,BSITPHYTO,BRASPHYTO,CAMPHYTO,D5AVEN,D7AVEN,D7STIG,STIGPHYTO,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,Total Phytosterols,Other Cholesterol and Phytosterols,Phytosterol,Beta-sitosterol,Brassicasterol,Campesterol,Delta-5-avenasterol,Delta-7-avenasterol,Delta-7-stigmastenol,Stigmasterol,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-145,"Ackee, canned, drained",8 cans,DG,554,"MW4, 1978; and Vegetables, Herbs and Spices Supplement, 1991",,17.9,0.8,N,4.8,0.0,0.3,0.0,,,12.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-146,"Agar, dried",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,,,Tr,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-147,"Agar, dried, soaked and drained",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,,,Tr,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+### out/xlsx/cofid__1.14_Organic_Acids.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,Citric acid (g),Malic acid (g),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,CITA,MALA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,Citric acid,Malic acid,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-145,"Ackee, canned, drained",8 cans,DG,554,"MW4, 1978; and Vegetables, Herbs and Spices Supplement, 1991",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-146,"Agar, dried",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-147,"Agar, dried, soaked and drained",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+### out/xlsx/cofid__1.1_Notes.csv
+Notes 
+The following notes apply to the data values:
+ 
+·  nutrient values are expressed per 100g of the food except in the case of alcoholic beverages which are presented per 100ml and some fatty acids tabs that are per 100g Fatty Acid (FA) however most users require the fatty acid tabs with data per 100g Food.
+·  a trace value for a nutrient is represented by Tr
+"· where a nutrient is present in significant quantities, but there is no reliable information on the amount, the value is represented by N"
+
+### out/xlsx/cofid__1.2_Factors.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,Edible proportion,Specific gravity,Total solids,Nitrogen conversion factor ,Glycerol conversion factor,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-145,"Ackee, canned, drained",8 cans,DG,554,"MW4, 1978; and Vegetables, Herbs and Spices Supplement, 1991",,N,,,,0.800,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-146,"Agar, dried",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,1.00,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-147,"Agar, dried, soaked and drained",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,1.00,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-148,"Alfalfa sprouts, raw",Analytical and literature sources,DG,,"Vegetables, Herbs and Spices Supplement, 1991",,1.00,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-801,"Allspice, ground",Literature sources,H,,"Marsh et al. (1977) Composition of foods: spices and herbs, raw, processed and prepared, Agriculture Handbook No. 8-2",,1.00,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+### out/xlsx/cofid__1.3_Proximates.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,Water (g),Total nitrogen (g),Protein (g),Fat (g),Carbohydrate (g),Energy (kcal) (kcal),Energy (kJ) (kJ),Starch (g),Oligosaccharide (g),Total sugars (g),Glucose (g),Galactose (g),Fructose (g),Sucrose (g),Maltose (g),Lactose (g),Alcohol (g),NSP (g),AOAC fibre (g),Satd FA /100g FA (g),Satd FA /100g fd (g),n-6 poly /100g FA (g),n-6 poly /100g food (g),n-3 poly /100g FA (g),n-3 poly /100g food (g),cis-Mono FA /100g FA (g),cis-Mono FA /100g Food (g),Mono FA/ 100g FA (g),Mono FA /100g food (g),cis-Polyu FA /100g FA (g),cis-Poly FA /100g Food (g),Poly FA /100g FA (g),Poly FA /100g food (g),Sat FA excl Br /100g FA (g),Sat FA excl Br /100g food (g),Branched chain FA /100g FA (g),Branched chain FA /100g food (g),Trans FAs /100g FA (g),Trans FAs /100g food (g),Cholesterol (mg),,,,,,,,,
+,,,,,,,WATER,TOTNIT,PROT,FAT,CHO,KCALS,KJ,STAR,OLIGO,TOTSUG,GLUC,GALACT,FRUCT,SUCR,MALT,LACT,ALCO,ENGFIB,AOACFIB,SATFAC,SATFOD,TOTn6PFAC,TOTn6PFOD,TOTn3PFAC,TOTn3PFOD,MONOFACc,MONOFODc,MONOFAC,MONOFOD,POLYFACc,POLYFODc,POLYFAC,POLYFOD,SATFACx6,SATFODx6,TOTBRFAC,TOTBRFOD,FACTRANS,FODTRANS,CHOL,,,,,,,,,
+,,,,,,,Water,Total nitrogen,Protein,Fat,Carbohydrate,kcal,kJ,Starch,Oligosaccharide,Total sugars,Glucose,Galactose,Fructose,Sucrose,Maltose,Lactose,Alcohol,Non-starch polysaccharide,AOAC fibre,Saturated fatty acids per 100g fatty acids,Saturated fatty acids per 100g food,Total n-6 polyunsaturated fatty acids per 100g fatty acid,Total
+### out/xlsx/cofid__1.4_Inorganics.csv
+ ,Food Name,Description,Group,Previous,Main data references,Footnote,Sodium (mg),Potassium (mg),Calcium (mg),Magnesium (mg),Phosphorus (mg),Iron (mg),Copper (mg),Zinc (mg),Chloride (mg),Manganese (mg),Selenium (µg),Iodine (µg),,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,NA,K,CA,MG,P,FE,CU,ZN,CL,MN,SE,I,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,Sodium,Potassium,Calcium,Magnesium,Phosphorus,Iron,Copper,Zinc,Chloride,Manganese,Selenium,Iodine,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-145,"Ackee, canned, drained",8 cans,DG,554,"MW4, 1978; and Vegetables, Herbs and Spices Supplement, 1991",,240,270,35,40,47,0.70,0.27,0.6,340,N,N,Tr,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-146,"Agar, dried",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,110,110,760,620,50,20.60,N,14.4,N,4.30,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-147,"Agar, dried, soaked and drained",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,10,20,110,75,8,3.50,N,2.5,N,0.40,N,N,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+### out/xlsx/cofid__1.5_Vitamins.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,Retinol (µg),Carotene (µg),Retinol Equivalent (µg),Vitamin D (µg),Vitamin E (mg),Vitamin K1 (µg),Thiamin (mg),Riboflavin (mg),Niacin (mg),Tryptophan/60 (mg),Niacin equivalent (mg),Vitamin B6 (mg),Vitamin B12 (µg),Folate (µg),Pantothenate (mg),Biotin (µg),Vitamin C (mg),,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,RET,CAREQU,RETEQU,VITD,VITE,VITK1,THIA,RIBO,NIAC,TRYP60,NIACEQU,VITB6,VITB12,FOLT,PANTO,BIOT,VITC,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,Retinol,Carotene,Total retinol equivalent,Total Vitamin D,Total Vitamin E,Phylloquinone,Thiamin,Riboflavin,Niacin,Tryptophan divided by 60,Niacin equivalent,Vitamin B6,Vitamin B12,Folate,Pantothenate,Biotin,Vitamin C,,,,,,,,,,,,,,,,,,,,,,,
+13-145,"Ackee, canned, drained",8 cans,DG,554,"MW4, 1978; and Vegetables, Herbs and Spices Supplement, 1991",,0,N,N,0.0,N,,0.03,0.07,0.6,0.5,1.1,0.06,0.0,41,N,N,30,,,,,,,,,,,,,,,,,,,,,,,
+13-146,"Agar, dried",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,0,0,0,0.0,Tr,,0.01,0.22,0.2,N,N,Tr,0.0,0,Tr,Tr,0,,,,,,,,,,,,,,,,,,,,,,,
+13-147,"Agar, dried, soaked and drained",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,0,0,0,0.0,Tr,,0.01,0.04,0.1,N,N,Tr,0.0,0,Tr,Tr,0,,,,,,,,,,,,,,,,,,,,,,,
+
+### out/xlsx/cofid__1.6_Vitamin_Fractions.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,All-trans-retinol (µg),13-cis-retinol (µg),Dehydroretinol (µg),Retinaldehyde (µg),Alpha-carotene (µg),Beta-carotene (µg),Cryptoxanthins (µg),Lutein (µg),Lycopene (µg),25-hydroxy vitamin D3 (µg),Cholecalciferol (µg),5-mehtyl folate (µg),Alpha-tocopherol (mg),Beta-tocopherol (mg),Delta-tocopherol (mg),Gamma-tocopherol (mg),Alpha-tocotrienol (mg),Gamma-tocotrienol (mg),,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,ALTRET,13CISRET,DEHYRET,RETALD,ACAR,BCAR,CRYPT,LUT,LYCO,25OHD3,VITD3,5METHF,ATOPH,BTOPH,DTOPH,GTOPH,ATOTR,GTOTR,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,All-trans-retinol,13-cis-retinol,Dehydroretinol,Retinaldehyde,Alpha-carotene,Beta-carotene,Cryptoxanthins,Lutein,Lycopene,25-hydroxy vitamin D3,Cholecalciferol,5-methyl folate,Alpha-tocopherol,Beta-tocopherol,Delta-tocopherol,Gamma-tocopherol,Alpha-tocotrienol,Gamma-tocotrienol,,,,,,,,,,,,,,,,,,,,,,
+13-145,"Ackee, canned, drained",8 cans,DG,554,"MW4, 1978; and Vegetables, Herbs and Spices Supplement, 1991",,,,,,0,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-146,"Agar, dried",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,,,,,0,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+13-147,"Agar, dried, soaked and drained",Literature sources,DG,,"Wu Leung et al. (1972) Food composition table for use in East Asia, Food and Agriculature Organization and US Department of Health",,,
+### out/xlsx/cofid__1.7_SFA_per_100gFA_.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,C4:0 /100g FA (g),C6:0 /100g FA (g),C8:0 /100g FA (g),C10:0 /100g FA (g),C11:0 ex Br /100g FA (g),C12:0 /100g FA (g),C12:0 ex Br /100g FA (g),C13:0 /100g FA (g),C13:0 ex Br /100g FA (g),C14:0 /100g FA (g),C14:0 ex Br /100g FA (g),C15:0 /100g FA (g),C15:0 ex Br /100g FA (g),C16:0 /100g FA (g),C16:0 ex Br /100g FA (g),C17:0 /100g FA (g),C17:0 ex Br /100g FA (g),C18:0 /100g FA (g),C18:0 ex Br /100g FA (g),C19:0 /100g FA (g),C20:0 /100g FA (g),C20:0 ex Br /100g FA (g),C22:0 /100g FA (g),C22:0 ex Br /100g FA (g),C24:0 /100g FA (g),C24:0 ex Br /100g FA (g),C25:0 ex Br /100g FA (g),,,,,,,,,,,,,
+,,,,,,,FAC4:0,FAC6:0,FAC8:0,FAC10:0,FAC11:0xb,FAC12:0,FAC12:0xb,FAC13:0,FAC13:0xb,FAC14:0,FAC14:0xb,FAC15:0,FAC15:0xb,FAC16:0,FAC16:0xb,FAC17:0,FAC17:0xb,FAC18:0,FAC18:0xb,FAC19:0,FAC20:0,FAC20:0xb,FAC22:0,FAC22:0xb,FAC24:0,FAC24:0xb,FAC25:0xb,,,,,,,,,,,,,
+,,,,,,,Butanoic acid per 100g fatty acids,Hexanoic acid per 100g fatty acids,Octanoic acid per 100g fatty acids,Decanoic acid per 100g fatty acids,,Dodecanoic acid per 100g fatty acids,ex Br Dodecanoic acid per 100g fatty acids,Tridecanoic acid per 100g fatty acids,ex Br Tridecanoic acid per 100g fatty acids,Tetradecanoic acid per 100g fatty acids,ex Br Tetradecanoic acid per 100g fatty acids,Pentadecanoic acid per 100g fatty acids,ex Br Pentadecanoic acid per 100g fatty acids,Hexadecanoic acid per 100g fatty acids,ex Br Hexadecanoic acid per 100g fatty acids,Hepta
+### out/xlsx/cofid__1.8_SFA_per_100gFood_.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,C4:0 /100g food (g),C6:0 /100g food (g),C8:0 /100g food (g),C10:0 /100g food (g),C11:0 ex Br /100g food (g),C12:0 /100g food (g),C12:0 ex Br /100g food (g),C13:0 /100g food (g),C13:0 ex Br /100g food (g),C14:0 /100g food (g),C14:0 ex Br /100g food (g),C15:0 /100g food (g),C15:0 ex Br /100g food (g),C16:0 /100g food (g),C16:0 ex Br /100g food (g),C17:0 /100g food (g),C17:0 ex Br /100g food (g),C18:0 /100g food (g),C18:0 ex Br /100g food (g),C19:0 /100g food (g),C20:0 /100g food (g),C20:0 ex Br /100g food (g),C22:0 /100g food (g),C22:0 ex Br /100g food (g),C24:0 /100g food (g),C24:0 ex Br /100g food (g),C25:0 ex Br /100g food (g),,,,,,,,,,,,,
+,,,,,,,FOD4:0,FOD6:0,FOD8:0,FOD10:0,FOD11:0xb,FOD12:0,FOD12:0xb,FOD13:0,FOD13:0xb,FOD14:0,FOD14:0xb,FOD15:0,FOD15:0xb,FOD16:0,FOD16:0xb,FOD17:0,FOD17:0xb,FOD18:0,FOD18:0xb,FOD19:0,FOD20:0,FOD20:0xb,FOD22:0,FOD22:0xb,FOD24:0,FOD24:0xb,FOD25:0xb,,,,,,,,,,,,,
+,,,,,,,Butanoic acid per 100g food,Hexanoic acid per 100g food,Octanoic acid per 100g food,Decanoic acid per 100g food,,Dodecanoic acid per 100g food,ex Br Dodecanoic acid per 100g food,Tridecanoic acid per 100g food,ex Br Tridecanoic acid per 100g food,Tetradecanoic acid per 100g food,ex Br Tetradecanoic acid per 100g food,Pentadecanoic acid per 100g food,ex Br Pentadecanoic acid per 100g food,Hexadecanoic acid per 100g food,ex Br Hexadecanoic acid per 100g food,Heptadecanoic acid per 100g food,ex Br Heptadecan
+### out/xlsx/cofid__1.9_MUFA_per_100FA_.csv
+Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,C10:1 /100g FA (g),cis C10:1 /100g FA (g),C12:1 /100g FA (g),cis C12:1 /100g FA (g),C14:1 /100g FA (g),cis C14:1 /100g FA (g),C15:1 /100g FA (g),cis C15:1 /100g FA (g),C16:1 /100g FA (g),cis C16:1 /100g FA (g),C17:1 /100g FA (g),cis C17:1 /100g FA (g),C18:1 /100g FA (g),cis C18:1 /100g FA (g),cis/trans C18:1n-9 /100g FA (g),cis/trans C18:1n-7 /100g FA (g),C20:1 /100g FA (g),cis C20:1 /100g FA (g),C22:1 /100g FA (g),cis C22:1 /100g FA (g),cis/trans C22:1n-11 /100g FA (g),cis/trans C22:1n-9 /100g FA (g),C24:1 /100g FA (g),cis C24:1 /100g FA (g),trans monounsaturated /100g FA (g),,,,,,,,,,,,,,,
+,,,,,,,FAC10:1,FAC10:1c,FAC12:1,FAC12:1c,FAC14:1,FAC14:1c,FAC15:1,FAC15:1c,FAC16:1,FAC16:1c,FAC17:1,FAC17:1c,FAC18:1,FAC18:1c,FAC18:1n9,FAC18:1n7,FAC20:1,FAC20:1c,FAC22:1,FAC22:1c,FAC22:1n11,FAC22:1n9,FAC24:1,FAC24:1c,MONOFACtr,,,,,,,,,,,,,,,
+,,,,,,,Decenoic acid per 100g fatty acids,cisDecenoic acid per 100g fatty acids,Dodecenoic acid per 100g fatty acids,cisDodecenoic acid per 100g fatty acids,Tetradecenoic acid per 100g fatty acids,cisTetradecenoic acid per 100g fatty acids,Pentadecenoic acid per 100g fatty acids,cisPentadecenoic acid per 100g fatty acids,Hexadecenoic acid per 100g fatty acids,cisHexadecenoic acid per 100g fatty acids,Heptadecenoic acid per 100g fatty acids,cisHeptadecenoic acid per 100g fatty acids,Octadecenoic acid per 100g fatty acids,cisOctadecenoic acid per 100g fatty acids,n-9 Octadecen
+### out/xlsx/cofid__List_of_tables.csv
+List of tables in CoFID 2021,
+1.1,Notes on tables
+1.2,Factors
+1.3,	Proximates
+1.4,	Inorganics
+1.5,	Vitamins
+

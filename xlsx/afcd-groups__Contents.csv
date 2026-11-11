@@ -1,0 +1,7 @@
+Release 3 - Food group information - Content summary,,,,,,,
+Field,Description,,,,,,
+Food group ID and name,"A 2-digit identification code and name assigned to each food group based on key ingredients such as beverages, cereals, meat, dairy and fruit. Groups align with those used in the AUSNUT 2023 dataset.	",,,,,,
+Inclusions,"Lists the more detailed 3-digit food groups within each of the 2-digit food groups. For example, Berries and Citrus within the Fruit group.",,,,,,
+Number of foods in Release 3,Count of the number of foods in the 2-digit group for this release.,,,,,,
+Data sources,"Summary of data sources for foods within the group. May include key information such as age of analytical data, major contributors to FSANZ data holdings, or time points for signficiant changes to nutrient profiles such as reformulation or fortification projects.",,,,,,
+Foods updated in Release 3,Identifies foods which have been directly updated with new analytical data in this release of AFCD. Additional foods may have been indirectly updated if those foods were used as ingredients in recipe calculations. ,,,,,,

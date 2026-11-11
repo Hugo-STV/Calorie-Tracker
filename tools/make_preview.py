@@ -83,6 +83,11 @@ for path in ['app/label.js', 'app/plate.js']:
         text = text.replace("const base = document.currentScript", "const base = '../'; const _unused = document.currentScript", 1)
     open(os.path.join(ROOT, 'preview', path), 'w', encoding='utf-8').write(text)
 import shutil
+# recipe photos are small: the preview always gets its own copy
+shutil.rmtree(os.path.join(ROOT, 'preview', 'photos'), ignore_errors=True)
+for path in list_files('photos'):
+    dst = os.path.join(ROOT, 'preview', path); os.makedirs(os.path.dirname(dst), exist_ok=True)
+    open(dst, 'wb').write(read_bytes(path))
 for d in ['vendor']:
     shutil.rmtree(os.path.join(ROOT, 'preview', d), ignore_errors=True)
 if not share_vendor:

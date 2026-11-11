@@ -107,7 +107,7 @@
   // ---- persistence helpers ---------------------------------------------------------------
   const TRANSIENT = ['view', 'sheet', 'fab', 'toast', 'scanning', 'scanMissing', 'scanErr', 'query', 'sel', 'prod', 'form', 'exMenu', 'mealMenu', 'builder', 'rbuild', 'wPend', 'wIn', 'code',
     'prevView', 'prodPrev', 'targetPrev', 'waterPrev', 'wPrev', 'exPrev', 'builderBack', 'recipeBack', 'planView', 'browseCat', 'recipeId', 'nutriOpen', 'exSel', 'multi', 'multiSel', 'exQ', 'rtSel',
-    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'peakErr', 'msStep', 'msBusyText', 'msCamErr'];
+    'dbReady', 'dbFail', 'pw', 'demo', 'acctErr', 'acctBusy', 'acctInfo', 'offRes', 'offBusy', 'offErr', 'offQ', 'syncStatus', 'digOff', 'weekOff', 'servings', 'selUnit', 'peakOpen', 'peakPrev', 'peakBusy', 'peakErr', 'viewDay', 'mealOpen', 'msStep', 'msBusyText', 'msCamErr'];
   const persistable = (S) => { const o = {}; for (const k in S) if (!TRANSIENT.includes(k)) o[k] = S[k]; return o; };
   const revive = (o) => {
     if (o.weights) o.weights = o.weights.map((w) => Object.assign({}, w, { at: new Date(w.at) }));
@@ -140,6 +140,7 @@
     if (local.logDay === remote.logDay) { m.log = mergeLogs(newer.log, older.log, del); m.logDel = del; }
     else { m.logDay = newer.logDay; m.log = newer.log; m.logDel = newer.logDel || []; }
     m.days = Object.assign({}, older.days || {}, newer.days || {});
+    m.dayLogs = Object.assign({}, older.dayLogs || {}, newer.dayLogs || {});
     m.weights = unionBy(newer.weights, older.weights, (w) => +new Date(w.at) + ':' + w.val).sort((x, y) => new Date(x.at) - new Date(y.at));
     if (local.logDay === remote.logDay) { m.exLog = unionBy(newer.exLog, older.exLog, (e) => e.id || +new Date(e.at)); m.exercise = Math.max(newer.exercise || 0, older.exercise || 0); m.water = Math.max(newer.water || 0, older.water || 0); }
     for (const k of ['myFoods', 'myMeals', 'userRecipes', 'saved', 'myRoutines']) m[k] = unionBy(newer[k], older[k], (x) => x.id || JSON.stringify(x));
@@ -219,7 +220,11 @@
       const sum = this.daySummary(S);
       const days = Object.assign({}, S.days || {});
       if (sum.kcal > 0 || sum.ex > 0 || sum.water > 0) days[S.logDay] = sum;
-      this.state = Object.assign({}, S, { days, logDay: today, log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, logDel: [], water: 0, exercise: 0, exLog: [], wPend: [] });
+      // keep the finished day's full log (last 3 weeks) so it can be opened and edited from the week strip
+        const dayLogs = Object.assign({}, S.dayLogs || {});
+        if (Object.values(S.log || {}).some((x) => (x || []).length)) dayLogs[S.logDay] = S.log;
+        for (const k of Object.keys(dayLogs)) if (Date.now() - new Date(k).getTime() > 22 * 864e5) delete dayLogs[k];
+        this.state = Object.assign({}, S, { days, dayLogs, viewDay: null, logDay: today, log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, logDel: [], water: 0, exercise: 0, exLog: [], wPend: [] });
       this.saveSoon();
     }
     daySummary(S) {

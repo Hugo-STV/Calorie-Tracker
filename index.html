@@ -272,17 +272,24 @@ input,textarea,button{font-size:16px}
 
   <sc-if value="{{tToday}}" hint-placeholder-val="{{ true }}">
     <div class="row" style="margin-bottom: 18px">
-      <h1 class="h1" style="font-size: 32px; margin: 0">Today</h1>
+      <h1 class="h1" style="font-size: 32px; margin: 0">{{dayTitle}}</h1>
       <div style="display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 15px" title="Day streak"><svg width="18" height="18" viewBox="0 0 24 24" fill="#C8F25C" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg>{{streak}}<span class="muted small" style="font-weight: 500">day streak</span></div>
     </div>
     <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center; margin-bottom: 18px">
       <sc-for list="{{week}}" as="d" hint-placeholder-count="7">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <button type="button" onClick="{{d.pick}}" disabled="{{d.off}}" aria-label="{{d.aria}}" aria-pressed="{{d.sel}}" style="display: flex; flex-direction: column; align-items: center; gap: 6px; border: 0; background: none; padding: 0; font: inherit; cursor: {{d.cursor}}; min-height: 64px">
           <span style="font-size: 12px; font-weight: 600; color: {{d.color}}">{{d.l}}</span>
-          <div class="{{d.cls}}"></div>
-        </div>
+          <span style="display: block; padding: 3px; border-radius: 50%; box-shadow: {{d.ring}}"><span class="{{d.cls}}" style="display: block"></span></span>
+          <span style="font-size: 10px; color: {{d.color}}">{{d.num}}</span>
+        </button>
       </sc-for>
     </div>
+    <sc-if value="{{isPast}}" hint-placeholder-val="{{ false }}">
+      <div class="card row" style="margin-bottom: 12px; padding: 10px 12px 10px 16px; background: #1C2114; border-color: #33401C">
+        <span style="font-size: 14px; line-height: 1.4">{{pastNote}}</span>
+        <button type="button" class="chip on" style="flex: none; min-height: 36px; padding: 6px 12px; font-size: 13px" onClick="{{backToday}}">Back to today</button>
+      </div>
+    </sc-if>
     <div class="card">
       <div class="row" style="margin-bottom: 4px"><span style="font-size: 14px; font-weight: 600">Calories</span><button type="button" onClick="{{openTarget}}" style="min-height: 36px; border: 0; background: none; color: #C8F25C; font: inherit; font-size: 13px; font-weight: 600; padding: 0; cursor: pointer">How it's set ›</button></div>
       <div class="row" style="align-items: baseline">
@@ -308,27 +315,27 @@ input,textarea,button{font-size:16px}
     <sc-for list="{{meals}}" as="meal" hint-placeholder-count="4">
       <div class="card" style="margin-bottom: 10px; padding: 12px 12px 12px 16px">
         <div class="row">
-          <div style="display: flex; align-items: center; gap: 14px; min-width: 0">
+          <button type="button" onClick="{{meal.toggle}}" aria-expanded="{{meal.open}}" disabled="{{meal.noToggle}}" style="display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1; min-height: 44px; border: 0; background: none; padding: 0; color: #F2F4F7; font: inherit; text-align: left; cursor: pointer">
             <span style="color: #C8F25C; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{meal.icon}}"></path></svg></span>
-            <div><div style="font-size: 16px; font-weight: 600">{{meal.label}}</div><sc-if value="{{meal.has}}" hint-placeholder-val="{{ false }}"><div class="muted small">{{meal.kcal}} kcal · {{meal.count}}</div></sc-if></div>
-          </div>
-          <button type="button" class="chip" style="background: #1F2A12; border-color: #1F2A12; color: #C8F25C; min-width: 64px" onClick="{{meal.add}}">Log</button>
+            <span style="min-width: 0"><span style="display: block; font-size: 16px; font-weight: 600">{{meal.label}}</span><sc-if value="{{meal.has}}" hint-placeholder-val="{{ false }}"><span class="muted small" style="display: flex; align-items: center; gap: 4px">{{meal.kcal}} kcal · {{meal.count}} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AF" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; transform: rotate({{meal.rot}}deg); transition: transform .15s"><path d="m6 9 6 6 6-6"></path></svg></span></sc-if></span>
+          </button>
+          <sc-if value="{{meal.canAdd}}" hint-placeholder-val="{{ true }}"><button type="button" class="chip" style="background: #1F2A12; border-color: #1F2A12; color: #C8F25C; min-width: 64px" onClick="{{meal.add}}">Log</button></sc-if>
         </div>
-        <sc-for list="{{meal.items}}" as="it" hint-placeholder-count="0">
+        <sc-for list="{{meal.shown}}" as="it" hint-placeholder-count="0">
           <div class="row" style="padding: 8px 0 0 36px">
             <div style="min-width: 0"><div style="font-size: 14px">{{it.name}}</div><div class="muted small">{{it.detail}}</div></div>
-            <div style="display: flex; align-items: center"><span style="font-size: 14px; font-weight: 600">{{it.kcal}}</span>
-              <button type="button" aria-label="Remove {{it.name}}" onClick="{{it.remove}}" style="width: 44px; height: 44px; border: 0; background: none; color: #8A93A0; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></div>
+            <div style="display: flex; align-items: center; min-height: 44px"><span style="font-size: 14px; font-weight: 600; padding-right: {{it.padR}}px">{{it.kcal}}</span>
+              <sc-if value="{{it.canRemove}}" hint-placeholder-val="{{ true }}"><button type="button" aria-label="Remove {{it.name}}" onClick="{{it.remove}}" style="width: 44px; height: 44px; border: 0; background: none; color: #8A93A0; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></sc-if></div>
           </div>
         </sc-for>
       </div>
     </sc-for>
     <div class="card" style="margin-bottom: 10px; padding: 12px 12px 12px 16px">
       <div class="row">
-        <div style="display: flex; align-items: center; gap: 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFA866" aria-hidden="true"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-3 2-5 3-6 0 2 1 3 2 3 0-4 1-6 1-9z"></path></svg><div><div style="font-size: 16px; font-weight: 600">Exercise</div><sc-if value="{{hasExLog}}" hint-placeholder-val="{{ false }}"><div class="muted small">{{exTodayLine}}</div></sc-if></div></div>
+        <div style="display: flex; align-items: center; gap: 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFA866" aria-hidden="true"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-3 2-5 3-6 0 2 1 3 2 3 0-4 1-6 1-9z"></path></svg><button type="button" onClick="{{exToggle}}" aria-expanded="{{exOpen}}" style="border: 0; background: none; padding: 0; color: #F2F4F7; font: inherit; text-align: left; cursor: pointer; min-height: 44px"><span style="display: block; font-size: 16px; font-weight: 600">Exercise</span><sc-if value="{{hasExLog}}" hint-placeholder-val="{{ false }}"><span class="muted small" style="display: flex; align-items: center; gap: 4px">{{exTodayLine}} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AF" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; transform: rotate({{exRot}}deg); transition: transform .15s"><path d="m6 9 6 6 6-6"></path></svg></span></sc-if></button></div>
         <button type="button" class="chip" style="background: #1F2A12; border-color: #1F2A12; color: #C8F25C; min-width: 64px" onClick="{{openExercise}}">Log</button>
       </div>
-      <sc-for list="{{exToday}}" as="it" hint-placeholder-count="0">
+      <sc-for list="{{exShown}}" as="it" hint-placeholder-count="0">
         <div class="row" style="padding: 8px 0 0 36px">
           <button type="button" onClick="{{it.open}}" style="min-width: 0; flex: 1; min-height: 44px; border: 0; background: none; padding: 0; color: #F2F4F7; font: inherit; text-align: left; cursor: pointer"><div style="font-size: 14px">{{it.name}}<sc-if value="{{it.peak}}" hint-placeholder-val="{{ false }}"><span style="margin-left: 6px; padding: 1px 6px; border-radius: 6px; background: #2A2016; color: #FFA866; font-size: 11px; font-weight: 700">PEAK</span></sc-if></div><div class="muted small">{{it.detail}}</div></button>
           <div style="display: flex; align-items: center"><span style="font-size: 14px; font-weight: 600; color: #FFA866">−{{it.kcal}}</span>
@@ -1930,7 +1937,7 @@ class Component extends DCLogic {
       log: { breakfast: [], lunch: [], dinner: [], snacks: [] }, history: [], myFoods: [], myMeals: [],
       water: 0, weights: [], exercise: 0,
       query: '', region: 'ALL', sel: null, servings: 1, code: '', scanning: false, scanMissing: false,
-      sheet: null, form: {}, toast: '', saved: [], recipes: [], userRecipes: [], steps: [], dbReady: false, dbFail: false, prod: null, prodPrev: 'tabs', selUnit: 0, selG: '', selGU: 'g', msMode: 'plate', msStep: 'camera', msPick: 0, msSel: 0, msDone: [], msCode: '', peakOn: true, peakPct: 100, peakSkip: [], peakRaw: null, peakAt: null, peakOpen: null, peakPrev: 'tabs', adaptive: true, trainMode: 'log', trainDays: 4, sessKcal: 300, targetPrev: 'tabs', wPend: [], wIn: '', wAgo: 0, exMenu: false, exLog: [], myEx: [], myRoutines: [], exType: 'cardio', exTab: 'browse', exQ: '', multi: false, multiSel: [], exSel: null, exMin: 30, exSets: 3, exReps: 10, exWt: '', rtTab: 'explore', rtSel: null, rbuild: null, digOff: 0, digVote: null, exCount: 0, stepGoal: 8000, joined: new Date().toISOString(), nutriTab: 'cal', nutriNet: true, weekOff: 0, span: 'week', metric: 'weight', mRange: 7, demo: false, range: 'week', override: null, waterGoal: 2500, weekendFlex: false, synced: false, builder: null, planView: 'home', browseCat: null, savedOnly: false, recipeId: null, recipeBack: 'tabs', nutriOpen: false
+      sheet: null, form: {}, toast: '', saved: [], recipes: [], userRecipes: [], steps: [], dbReady: false, dbFail: false, prod: null, prodPrev: 'tabs', selUnit: 0, selG: '', selGU: 'g', viewDay: null, mealOpen: {}, dayLogs: {}, msMode: 'plate', msStep: 'camera', msPick: 0, msSel: 0, msDone: [], msCode: '', peakOn: true, peakPct: 100, peakSkip: [], peakRaw: null, peakAt: null, peakOpen: null, peakPrev: 'tabs', adaptive: true, trainMode: 'log', trainDays: 4, sessKcal: 300, targetPrev: 'tabs', wPend: [], wIn: '', wAgo: 0, exMenu: false, exLog: [], myEx: [], myRoutines: [], exType: 'cardio', exTab: 'browse', exQ: '', multi: false, multiSel: [], exSel: null, exMin: 30, exSets: 3, exReps: 10, exWt: '', rtTab: 'explore', rtSel: null, rbuild: null, digOff: 0, digVote: null, exCount: 0, stepGoal: 8000, joined: new Date().toISOString(), nutriTab: 'cal', nutriNet: true, weekOff: 0, span: 'week', metric: 'weight', mRange: 7, demo: false, range: 'week', override: null, waterGoal: 2500, weekendFlex: false, synced: false, builder: null, planView: 'home', browseCat: null, savedOnly: false, recipeId: null, recipeBack: 'tabs', nutriOpen: false
     };
   }
 
@@ -2239,9 +2246,29 @@ class Component extends DCLogic {
   }
   // every logged item has an id, so two copies of the day (phone and cloud) can be merged safely
   newEntry(food, servings) { return { id: 'e' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7), food, servings, at: Date.now() }; }
+  // totals for a day's log, the same shape the app saves for past days
+  sumLog(log) {
+    const t = { kcal: 0, p: 0, c: 0, f: 0, mic: null, items: [] };
+    Object.keys(log || {}).forEach((meal) => (log[meal] || []).forEach((e) => { const m = e.servings || 1, fd = e.food;
+      t.kcal += fd.kcal * m; t.p += (fd.p || 0) * m; t.c += (fd.c || 0) * m; t.f += (fd.f || 0) * m;
+      ['fib', 'sug', 'sat', 'na', 'ch', 'po'].forEach((k) => { if (fd[k] != null) { t.mic = t.mic || { fib: 0, sug: 0, sat: 0, na: 0, ch: 0, po: 0 }; t.mic[k] += fd[k] * m; } });
+      t.items.push({ n: fd.name, c: fd.cat || (this.catOf ? this.catOf(fd) : ''), k: Math.round(fd.kcal * m), meal }); }));
+    t.kcal = Math.round(t.kcal); ['p', 'c', 'f'].forEach((k) => { t[k] = Math.round(t[k] * 10) / 10; });
+    return t;
+  }
+  // change an earlier day's food: keep its full log and update its totals
+  setDayLog(key, log) {
+    const S = this.state, prev = (S.days || {})[key] || { ex: 0, water: 0 };
+    this.setState({ dayLogs: { ...(S.dayLogs || {}), [key]: log }, days: { ...(S.days || {}), [key]: Object.assign({}, prev, this.sumLog(log), { edited: Date.now() }) } });
+  }
   logFood(food, servings, meal) {
     const S = this.state;
     const m = meal || S.addMeal;
+    const vd = S.viewDay && S.viewDay !== new Date().toDateString() ? S.viewDay : null;
+    if (vd && (S.dayLogs || {})[vd]) {
+      const L = S.dayLogs[vd]; this.setDayLog(vd, { ...L, [m]: (L[m] || []).concat([this.newEntry(food, servings)]) });
+      this.flash('Added ' + food.name + ' to ' + m + ', ' + new Date(vd).toLocaleDateString('en-US', { weekday: 'long' })); return;
+    }
     const log = { ...S.log, [m]: S.log[m].concat([this.newEntry(food, servings)]) };
     const history = [food.id].concat(S.history.filter((x) => x !== food.id)).slice(0, 12);
     this.setState({ log, history });
@@ -2891,11 +2918,15 @@ class Component extends DCLogic {
     }
     const exTot = S.exLog.reduce((a, e) => a + e.kcal, 0), PD = this.peakDay(S, new Date().toDateString());
     const openPeak = () => this.setState({ view: 'peak', peakPrev: S.view === 'peak' ? S.peakPrev : S.view, peakOpen: null });
-    return { ex, xe, rt, rm, rb,
+    const R = { ex, xe, rt, rm, rb,
       goCardio: goEx('cardio'), goStrength: goEx('strength'), goRoutines,
       vExList: S.view === 'exlist', vRoutines: S.view === 'routines', vRBuild: S.view === 'rbuild' && !!B,
       vWater: S.view === 'water', vWeightLog: S.view === 'weight',
       shEx: S.sheet === 'exentry' && !!X, shRt: S.sheet === 'rtmenu' && !!sel,
+      ...(() => { const vd2 = S.viewDay && S.viewDay !== new Date().toDateString() ? S.viewDay : null, ps = vd2 ? (S.days || {})[vd2] : null, open = !!(S.mealOpen || {}).ex;
+        if (vd2) { const ex = (ps && ps.ex) || 0, list = ex ? [{ name: 'Exercise that day', detail: 'Logged and Peak workouts', kcal: ex, peak: false, open: () => {}, remove: () => {} }] : [];
+          return { exPast: true, exOpen: open, exRot: open ? 180 : 0, exToggle: () => this.setState({ mealOpen: { ...(S.mealOpen || {}), ex: !open } }), exShown: open ? list : [], exPastHas: !!ex, exPastLine: ex + ' kcal burned' }; }
+        return { exPast: false, exOpen: open, exRot: open ? 180 : 0, exToggle: () => this.setState({ mealOpen: { ...(S.mealOpen || {}), ex: !open } }) }; })(),
       hasExLog: S.exLog.length + PD.list.length > 0, exTodayLine: (exTot + PD.counted) + ' kcal burned · ' + (S.exLog.length + PD.list.length) + (S.exLog.length + PD.list.length === 1 ? ' entry' : ' entries'),
       exToday: PD.list.map((x) => ({ name: x.w.name || 'Workout', peak: true, open: openPeak,
         detail: x.skip ? 'Not counted · tap to change' : x.est.min + ' min · ' + x.est.sets + (x.est.sets === 1 ? ' set' : ' sets') + ((S.peakPct || 100) < 100 ? ' · counting ' + S.peakPct + '%' : ''),
@@ -2903,6 +2934,9 @@ class Component extends DCLogic {
         remove: () => { this.setState({ peakSkip: x.skip ? S.peakSkip.filter((i) => i !== x.w.id) : (S.peakSkip || []).concat([x.w.id]) }); if (!x.skip) this.flash('Not counting ' + (x.w.name || 'that workout') + '. Tap it to count it again.'); } }))
         .concat(S.exLog.map((e) => ({ name: e.name, detail: e.detail, kcal: e.kcal, peak: false, open: () => {}, remove: () => this.setState({ exLog: S.exLog.filter((x) => x.id !== e.id), exercise: Math.max(0, S.exercise - e.kcal) }) })))
     };
+    if (R.exPast) { R.hasExLog = R.exPastHas; R.exTodayLine = R.exPastLine; }
+    else R.exShown = R.exOpen ? R.exToday : [];
+    return R;
   }
   digestVals(S, plan, eat, imp) {
     const fmt = (n) => Math.round(n).toLocaleString('en-US');
@@ -3098,29 +3132,53 @@ class Component extends DCLogic {
       { label: 'Fat', g: plan.f, color: '#D4B2FF', pct: Math.round(plan.f * 9 / plan.cal * 100) }
     ];
 
-    // today
+    // today, or an earlier day picked in the week strip
+    const todayKey = new Date().toDateString();
+    const vd = S.viewDay && S.viewDay !== todayKey ? S.viewDay : null;
+    const pastLog = vd ? (S.dayLogs || {})[vd] || null : null, pastSum = vd ? (S.days || {})[vd] || null : null;
+    const srcLog = vd ? pastLog : S.log;
     const eat = { kcal: 0, p: 0, c: 0, f: 0 };
     let itemCount = 0;
+    const mealOpen = S.mealOpen || {};
     const meals = Object.keys(mealNames).map((k) => {
       let kc = 0;
-      const items = S.log[k].map((e, i) => {
+      // a day saved before full logs were kept: names and calories only
+      if (!srcLog) {
+        const items = ((pastSum && pastSum.items) || []).filter((it) => it.meal === k).map((it) => { kc += it.k || 0; itemCount++; return { name: it.n, kcal: it.k, detail: '', canRemove: false, padR: 12, remove: () => {} }; });
+        const open = !!mealOpen[k];
+        return { label: mealNames[k], icon: mealIcons[k], kcal: kc, items, shown: open ? items : [], open, rot: open ? 180 : 0, noToggle: !items.length, toggle: () => this.setState({ mealOpen: { ...mealOpen, [k]: !open } }), has: items.length > 0, canAdd: false, count: items.length + (items.length === 1 ? ' item' : ' items'), add: () => {} };
+      }
+      const items = (srcLog[k] || []).map((e, i) => {
         const m = e.servings;
         const kcal = Math.round(e.food.kcal * m);
         kc += kcal; eat.kcal += kcal; eat.p += e.food.p * m; eat.c += e.food.c * m; eat.f += e.food.f * m; itemCount++;
         ['fib', 'sug', 'sat', 'na', 'ch', 'po'].forEach((k) => { if (e.food[k] != null) { eat.mic = eat.mic || { fib: 0, sug: 0, sat: 0, na: 0, ch: 0, po: 0 }; eat.mic[k] += e.food[k] * m; } });
-        return { name: e.food.name, kcal, detail: (m === 1 ? '' : m + ' × ') + e.food.serving,
-          remove: () => this.setState({ log: { ...S.log, [k]: S.log[k].filter((_, j) => j !== i) }, logDel: (S.logDel || []).concat(e.id ? [e.id] : []) }) };
+        return { name: e.food.name, kcal, detail: (m === 1 ? '' : m + ' × ') + e.food.serving, canRemove: true, padR: 0,
+          remove: () => vd ? this.setDayLog(vd, { ...srcLog, [k]: srcLog[k].filter((_, j) => j !== i) }) : this.setState({ log: { ...S.log, [k]: S.log[k].filter((_, j) => j !== i) }, logDel: (S.logDel || []).concat(e.id ? [e.id] : []) }) };
       });
-      return { label: mealNames[k], icon: mealIcons[k], kcal: kc, items, has: items.length > 0, count: items.length + (items.length === 1 ? ' item' : ' items'), add: () => this.openLog(k) };
+      const open = !!mealOpen[k];
+      return { label: mealNames[k], icon: mealIcons[k], kcal: kc, items, shown: open ? items : [], open, rot: open ? 180 : 0, noToggle: !items.length, toggle: () => this.setState({ mealOpen: { ...mealOpen, [k]: !open } }),
+        has: items.length > 0, canAdd: true, count: items.length + (items.length === 1 ? ' item' : ' items'), add: () => this.openLog(k) };
     });
-    const budget = plan.cal + (S.trainMode === 'avg' ? 0 : this.exToday(S));
+    // a summary-only day still has its totals
+    if (vd && !srcLog && pastSum) Object.assign(eat, { kcal: pastSum.kcal || 0, p: pastSum.p || 0, c: pastSum.c || 0, f: pastSum.f || 0, mic: pastSum.mic || null });
+    const budget = plan.cal + (S.trainMode === 'avg' ? 0 : vd ? ((pastSum && pastSum.ex) || 0) : this.exToday(S));
     const remain = budget - eat.kcal;
     const over = remain < 0;
     const today = new Date();
     const dow = today.getDay();
     const letters = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-    const week = letters.map((l, i) => ({ l, color: i === dow ? '#F2F4F7' : '#8A93A0',
-      cls: 'dayc' + (i === dow ? (itemCount ? ' done' : ' today') : '') }));
+    // this week, Sunday to Saturday: past days open that day; today goes back to today
+    const week = letters.map((l, i) => {
+      const d = new Date(today); d.setDate(today.getDate() - dow + i); const key = d.toDateString();
+      const isToday = i === dow, future = i > dow, sel = vd ? key === vd : isToday;
+      const has = isToday ? Object.values(S.log).some((x) => x.length) : !!((S.days || {})[key] && ((S.days[key].items || []).length || S.days[key].kcal));
+      return { l, num: d.getDate(), color: sel ? '#F2F4F7' : future ? '#4A515C' : '#8A93A0', off: future, cursor: future ? 'default' : 'pointer', sel,
+        ring: sel ? '0 0 0 2px #C8F25C' : 'none', cls: 'dayc' + (has ? ' done' : isToday ? ' today' : ''),
+        aria: d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + (has ? ', logged' : ''),
+        pick: future ? () => {} : () => this.setState({ viewDay: isToday ? null : key, mealOpen: {} }) };
+    });
+    const vdDate = vd ? new Date(vd) : null;
     const bar = (label, got, tgt, color) => ({ label, color, got: Math.round(got), tgt, pct: Math.min(100, Math.round(got / Math.max(1, tgt) * 100)) });
 
     // log screen
@@ -3256,7 +3314,10 @@ class Component extends DCLogic {
       goToday: () => this.setState({ tab: 'today' }), goPlan: () => this.setState({ tab: 'plan' }),
       goProgress: () => this.setState({ tab: 'progress' }), goMore: () => this.setState({ tab: 'more' }),
       streak: itemCount ? 1 : 0,
-      week, targetStr: budget.toLocaleString('en-US'), eatenStr: eat.kcal.toLocaleString('en-US'),
+      week, isPast: !!vd, backToday: () => this.setState({ viewDay: null, mealOpen: {} }),
+      dayTitle: vd ? vdDate.toLocaleDateString('en-US', { weekday: 'long' }) : 'Today',
+      pastNote: vd ? vdDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) + (srcLog ? ' · add or remove food here' : ' · view only') : '',
+      targetStr: budget.toLocaleString('en-US'), eatenStr: eat.kcal.toLocaleString('en-US'),
       remainStr: Math.abs(remain).toLocaleString('en-US'), remainLabel: over ? 'over' : 'left', leftColor: over ? '#FFA866' : '#F2F4F7',
       calPct: Math.min(100, Math.round(eat.kcal / budget * 100)), calColor: over ? '#FFA866' : '#C8F25C',
       hasExercise: this.exToday(S) > 0 || S.trainMode === 'avg', exerciseKcal: this.exToday(S),

@@ -55,6 +55,9 @@ require('fs').mkdirSync(SHOT, { recursive: true });
   const shot = (n) => page.screenshot({ path: SHOT + n, deviceScaleFactor: 2 });
   console.log('exercise card:', JSON.stringify(await page.evaluate(() => { const v = DC.comp.renderVals(); return { line: v.exTodayLine, rows: v.exToday.map((x) => [x.name, x.detail, x.kcal, x.peak]), budgetEx: DC.comp.exToday(DC.comp.state), raw: (DC.comp.state.peakRaw || []).map((w) => w.id) }; })));
   expect(await page.evaluate(() => DC.comp.exToday(DC.comp.state)) === 325, 'Peak push day counts 325 kcal today');
+  // Exercise is folded: open it to see the Peak workouts
+  expect(await page.evaluate(() => DC.comp.renderVals().exShown.length === 0), 'Exercise starts folded');
+  await page.getByRole('button', { name: /^Exercise/ }).click(); await page.waitForTimeout(200);
   await page.locator('text=PEAK').first().scrollIntoViewIfNeeded(); await shot('30-today-peak.png');
   await page.getByText('Push day').first().click(); await page.waitForSelector('text=Peak workouts');
   await page.getByRole('button', { name: /Push day/ }).click(); await page.waitForTimeout(200); await shot('31-peak.png');

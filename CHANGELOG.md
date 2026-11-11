@@ -4,6 +4,12 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.7.0 — 2026-11-11
+- **Earlier days:** tap any day in the week strip to see its calories, macros, meals and exercise, with
+  "Back to today". Finished days now keep their full log for 3 weeks and can be edited (Log adds to that
+  day, removing updates its total). Days saved before this version are view only (names and calories).
+- **Meals fold to one line** ("300 kcal · 2 items ⌄"); tap to open the list. Exercise too.
+
 ## v1.6.0 — 2026-11-10
 - **Progress overview charts rebuilt.** Full-width 7-day bars with the value on each bar, a dashed goal
   line and colours (calories: under / on target ±10% / over; protein: under / hit 90%+; carbs and fat:

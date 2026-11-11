@@ -3022,7 +3022,9 @@ class Component extends DCLogic {
       .map((r) => { const pd = r.p * 4 / r.kcal, fit = Math.abs(Math.log(B / r.kcal));
         const goalFit = r.goals.includes(want[0]) ? 2 : r.goals.some((x) => want.includes(x)) ? 1 : 0;
         return { r, score: goalFit * 1.5 + pd * (g === 'lose' || g === 'recomp' ? 8 : 4) - fit * 2 + hash(r.id + day) * 0.8 }; })
-      .sort((a, b) => b.score - a.score).slice(0, n || 8).map((x) => x.r);
+      .sort((a, b) => b.score - a.score).map((x) => x.r)
+      // recipes with a photo of the dish come first; ones still waiting for a photo only fill gaps
+      .reduce((acc, r) => (acc[r.photo ? 0 : 1].push(r), acc), [[], []]).flat().slice(0, n || 8);
   }
   portionText(k) { return ({ 0.5: '½', 0.75: '¾', 1: '1', 1.25: '1¼', 1.5: '1½', 1.75: '1¾', 2: '2' })[k] || String(k); }
   // scale the amounts in an ingredient line ("99 g (3.5 oz) chicken", "3/4 zucchini (150 g)")

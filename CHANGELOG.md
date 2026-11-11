@@ -4,6 +4,19 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.8.0 — 2026-11-11
+- **Recipe photos:** recipes show a real photo of the dish on Plan, Saved ideas, the Recipes browser and
+  the recipe page (freely licensed from Wikimedia Commons, credited and linked). Your own recipes can get
+  a photo from the camera or gallery; My created recipes rows show it.
+- **404 recipes** (was 10): 108 adapted from 12 Promealplan sample meal plans and 286 from 14 cookbooks,
+  duplicates dropped. Ingredients and amounts kept, directions rewritten, nutrition recalculated from the
+  food database, source shown on each recipe. 235 have a photo.
+- **Picked for you** on Plan: recipes ranked for your goal and calorie target, by meal and eating style
+  (vegetarian, vegan, low carb, lactose-free), rotating daily, photos first, each with your portion (½–2 servings).
+  The recipe page has a portion − / + that scales nutrition and amounts, and Add to diary logs it.
+- **Recipe search** by name or ingredient; browse rows show 12 with a count and View more.
+- Fixed: created-recipe rows were missing their name.
+
 ## v1.7.0 — 2026-11-11
 - **Earlier days:** tap any day in the week strip to see its calories, macros, meals and exercise, with
   "Back to today". Finished days now keep their full log for 3 weeks and can be edited (Log adds to that

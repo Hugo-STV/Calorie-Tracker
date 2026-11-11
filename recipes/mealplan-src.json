@@ -1,0 +1,5931 @@
+[
+ {
+  "id": "m0",
+  "title": "Asian Caramelized Chicken and Zucchini",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 99.2
+   },
+   {
+    "t": "3/4 zucchini (150 g)",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "g": 150.3
+   },
+   {
+    "t": "43 g (1.5 oz) white rice (dry)",
+    "food": "Rice, white, long-grain, regular, raw, enriched",
+    "g": 42.5
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "1/2 tsp brown sugar",
+    "food": "Sugars, brown",
+    "g": 2.8
+   },
+   {
+    "t": "1/2 onion (75 g)",
+    "food": "Onions, raw",
+    "g": 73.7
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   },
+   {
+    "t": "1 tsp soy sauce",
+    "food": "Soy sauce made from soy (tamari)",
+    "g": 6.1
+   }
+  ],
+  "steps": [
+   "Start the rice in a pot of boiling water and cook it as the package says.",
+   "Warm the oil in a nonstick pan over medium heat. Add the zucchini (diced), onion (sliced) and garlic (minced) and cook 3 to 4 minutes.",
+   "Pour in the soy sauce, brown sugar and a splash of water. Leave it alone until it turns sticky and glossy.",
+   "Stir, add the chicken in thin strips and cook about 5 minutes until no pink is left. Season.",
+   "Serve over the drained rice."
+  ]
+ },
+ {
+  "id": "m1",
+  "title": "Bagel with Tofu and Cucumber",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "3/4 cucumber (265 g)",
+    "food": "Cucumber, with peel, raw",
+    "g": 263.7
+   },
+   {
+    "t": "55 g (2 oz) smoked tofu",
+    "food": "Tofu, smoked, prepacked",
+    "g": 56.7
+   },
+   {
+    "t": "28 g (1 oz) vegan cream cheese",
+    "food": "Plant-based soft cream cheese alternative, almond-based, vegan",
+    "g": 28.4
+   },
+   {
+    "t": "1 bagel (85 g)",
+    "food": "Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",
+    "g": 85.1
+   }
+  ],
+  "steps": [
+   "Split the bagel and toast it if you like.",
+   "Spread the vegan cream cheese on both halves.",
+   "Layer on sliced cucumber and the smoked tofu, then close it or eat it open."
+  ]
+ },
+ {
+  "id": "m2",
+  "title": "Baked Pork Chop with Butternut Squash",
+  "time": "30 min",
+  "mins": 30,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "150 g (5.25 oz) boneless pork chop",
+    "food": "Pork, fresh, loin, center loin (chops), boneless, separable lean only, raw",
+    "g": 148.8
+   },
+   {
+    "t": "150 g (5.25 oz) butternut squash",
+    "food": "Squash, winter, butternut, raw",
+    "g": 148.8
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "2 tbsp Dijon mustard (31 g)",
+    "food": "Mustard, prepared, yellow",
+    "g": 31.2
+   },
+   {
+    "t": "2 tsp dried thyme",
+    "food": null,
+    "g": 0.0
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F (200°C) and line a tray with parchment.",
+   "Coat the pork chop with mustard and thyme. Toss the squash cubes with the oil, salt and pepper.",
+   "Put both on the tray and roast 20 to 25 minutes, turning the chop once, until the pork is cooked and the squash is soft and browned."
+  ]
+ },
+ {
+  "id": "m3",
+  "title": "Banana Cocoa Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2.5 banana (300 g)",
+    "food": "Bananas, raw",
+    "g": 300.5
+   },
+   {
+    "t": "2 tbsp unsweetened cocoa powder (11 g)",
+    "food": "Cocoa, dry powder, unsweetened",
+    "g": 11.3
+   },
+   {
+    "t": "250 ml (8.5 fl oz) lactose-free 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 258.9
+   },
+   {
+    "t": "2 tsp honey or agave",
+    "food": "Honey",
+    "g": 14.2
+   },
+   {
+    "t": "300 g (10.5 oz) plain soy yogurt",
+    "food": "Plant-based yogurt alternative, made from soya, unsweetened",
+    "g": 297.7
+   }
+  ],
+  "steps": [
+   "Put everything in a blender (a frozen banana makes it thicker; otherwise add a couple of ice cubes).",
+   "Blend until smooth, thinning with a little water if needed, and drink right away."
+  ]
+ },
+ {
+  "id": "m4",
+  "title": "Banana Matcha Protein Smoothie",
+  "time": "3 min",
+  "mins": 3,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lean",
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 banana (120 g)",
+    "food": "Bananas, raw",
+    "g": 119.1
+   },
+   {
+    "t": "1 tsp matcha powder",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "250 ml (8.5 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 258.9
+   },
+   {
+    "t": "1/2 tbsp vanilla protein powder (6 g)",
+    "food": "Beverages, Protein powder whey based",
+    "g": 5.7
+   },
+   {
+    "t": "1 tbsp sliced almonds (9 g)",
+    "food": "Nuts, almonds",
+    "g": 8.5
+   }
+  ],
+  "steps": [
+   "Blend the milk, protein powder, matcha and banana until smooth (frozen banana or ice for a colder shake).",
+   "Pour into a glass and scatter the sliced almonds on top."
+  ]
+ },
+ {
+  "id": "m5",
+  "title": "Basque-Style Chicken with Pasta and Piperade",
+  "time": "35 min",
+  "mins": 35,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "140 g (5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 141.8
+   },
+   {
+    "t": "1.5 tomato (225 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 224.0
+   },
+   {
+    "t": "1 tbsp oil (14 g)",
+    "food": "Oil, olive, salad or cooking",
+    "g": 13.6
+   },
+   {
+    "t": "80 g (2.75 oz) dry pasta",
+    "food": "Pasta, dry, enriched",
+    "g": 78.0
+   },
+   {
+    "t": "1 bell pepper (180 g)",
+    "food": "Peppers, sweet, red, raw",
+    "g": 178.6
+   },
+   {
+    "t": "1/4 onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Boil the pasta, drain and keep warm.",
+   "Slice the onion, garlic and pepper into strips; dice the tomato.",
+   "Soften the onion and garlic in half the oil, add the pepper and cook 10 minutes. Add the tomato, season and simmer 5 minutes.",
+   "In another pan, cook the chicken in the rest of the oil, 5 to 6 minutes a side.",
+   "Spoon the pepper sauce over the chicken, simmer 2 minutes together and serve on the pasta."
+  ]
+ },
+ {
+  "id": "m6",
+  "title": "Beef and Cheddar Avocado Rolls",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": true,
+  "lines": [
+   {
+    "t": "14 g (1/2 oz) baby spinach",
+    "food": "Spinach, raw",
+    "g": 14.2
+   },
+   {
+    "t": "1/2 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 2.8
+   },
+   {
+    "t": "90 g (3.25 oz) sliced roast beef",
+    "food": "Deli-meat, roast beef, cooked, sliced",
+    "g": 92.1
+   },
+   {
+    "t": "1/4 avocado (50 g)",
+    "food": "Avocados, raw, all commercial varieties",
+    "g": 51.0
+   },
+   {
+    "t": "21 g (3/4 oz) cheddar",
+    "food": "Cheese, cheddar",
+    "g": 21.3
+   }
+  ],
+  "steps": [
+   "Lay the roast beef slices flat and brush each with a little mustard.",
+   "Put spinach, avocado slices and cheddar at one end of each slice.",
+   "Roll up tightly; use a toothpick if they won't stay closed."
+  ]
+ },
+ {
+  "id": "m7",
+  "title": "Beef Stir-Fry with Broccoli and Sesame Seeds",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": true,
+  "lines": [
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "14 g (1/2 oz) sesame seeds",
+    "food": "Seeds, sesame seeds, whole, dried",
+    "g": 14.2
+   },
+   {
+    "t": "170 g (6 oz) 95% lean ground beef",
+    "food": "Beef, ground, 95% lean meat / 5% fat, raw",
+    "g": 170.1
+   },
+   {
+    "t": "2 garlic cloves (9 g)",
+    "food": "Garlic, raw",
+    "g": 8.5
+   },
+   {
+    "t": "170 g (6 oz) broccoli",
+    "food": "Broccoli, raw",
+    "g": 170.1
+   },
+   {
+    "t": "3 tbsp soy sauce (46 g)",
+    "food": "Soy sauce made from soy (tamari)",
+    "g": 45.7
+   }
+  ],
+  "steps": [
+   "Blanch the broccoli in boiling water 3 to 4 minutes and drain.",
+   "Brown the beef in the oil in a hot nonstick pan.",
+   "Add the garlic, soy sauce and broccoli and toss over high heat for a minute.",
+   "Finish with the sesame seeds."
+  ]
+ },
+ {
+  "id": "m8",
+  "title": "Beef Taco-Style Lettuce Wraps",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 tomato (300 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 300.5
+   },
+   {
+    "t": "70 g (2.5 oz) canned red kidney beans, drained",
+    "food": "Beans, kidney, red, mature seeds, canned, drained solids",
+    "g": 70.9
+   },
+   {
+    "t": "70 g (2.5 oz) lettuce",
+    "food": "Lettuce, green leaf, raw",
+    "g": 70.9
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "70 g (2.5 oz) canned corn, drained",
+    "food": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+    "g": 70.9
+   },
+   {
+    "t": "115 g (4 oz) 95% lean ground beef",
+    "food": "Beef, ground, 95% lean meat / 5% fat, raw",
+    "g": 113.4
+   },
+   {
+    "t": "2 tsp taco seasoning",
+    "food": null,
+    "g": 5.7
+   },
+   {
+    "t": "2.5 tbsp Greek yogurt (45 g)",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 45.4
+   }
+  ],
+  "steps": [
+   "Brown the beef in the oil over medium heat, 5 to 6 minutes, breaking it up.",
+   "Stir in the taco seasoning for a minute, then the corn and beans until hot.",
+   "Spoon into lettuce leaves and top with diced tomato and a spoon of Greek yogurt."
+  ]
+ },
+ {
+  "id": "m9",
+  "title": "Beef with Garlic Potatoes and Green Beans",
+  "time": "27 min",
+  "mins": 27,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp fresh herbs",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "4 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 19.0
+   },
+   {
+    "t": "1 tsp lemon juice",
+    "food": "Lemon juice, raw",
+    "g": 6.1
+   },
+   {
+    "t": "150 g (5.25 oz) beef steak",
+    "food": "Beef, loin, top sirloin steak, boneless, lean, raw",
+    "g": 148.8
+   },
+   {
+    "t": "200 g (7 oz) green beans",
+    "food": "Beans, snap, green, raw",
+    "g": 198.5
+   },
+   {
+    "t": "300 g (10.5 oz) potatoes",
+    "food": "Potatoes, flesh and skin, raw",
+    "g": 297.7
+   },
+   {
+    "t": "2 garlic cloves (9 g)",
+    "food": "Garlic, raw",
+    "g": 8.5
+   }
+  ],
+  "steps": [
+   "Cut the potatoes into small cubes.",
+   "Heat the oil with the garlic in a large nonstick pan, add the potatoes and cook about 10 minutes, stirring.",
+   "Push the potatoes aside and add the steak and green beans. Cook the steak 3 to 4 minutes a side, stirring the vegetables now and then.",
+   "Season with salt, pepper, herbs and a squeeze of lemon, and serve."
+  ]
+ },
+ {
+  "id": "m10",
+  "title": "Plant-Based Blanquette with Sweet Potato",
+  "time": "45 min",
+  "mins": 45,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) bouquet garni",
+    "food": null,
+    "g": 99.2
+   },
+   {
+    "t": "1/2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 2.7
+   },
+   {
+    "t": "43 g (1.5 oz) mushrooms",
+    "food": "Mushrooms, white, raw",
+    "g": 42.5
+   },
+   {
+    "t": "1/4 onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "1 tsp flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 2.8
+   },
+   {
+    "t": "1 vegetable bouillon cube (11 g)",
+    "food": "Soup, bouillon cubes and granules, low sodium, dry",
+    "g": 11.3
+   },
+   {
+    "t": "1.5 tbsp light sour cream (24 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 23.7
+   },
+   {
+    "t": "100 g (3.5 oz) soy chunks (TVP)",
+    "food": "Soy protein, textured, rehydrated",
+    "g": 99.2
+   },
+   {
+    "t": "120 g (4.25 oz) sweet potato",
+    "food": "Sweet potato, raw, unprepared",
+    "g": 120.5
+   },
+   {
+    "t": "1 carrots (60 g)",
+    "food": "Carrots, raw",
+    "g": 59.5
+   }
+  ],
+  "steps": [
+   "Dice the onion and sweet potato, slice the carrot and mushrooms.",
+   "Brown the mushrooms in a nonstick pot and set aside. Cook the onion, carrot, sweet potato and plant-based chunks in the oil for 5 to 7 minutes.",
+   "Add the broth cube dissolved in the water and the bouquet garni. Cover and simmer 20 minutes, adding water if it gets dry.",
+   "Stir the flour into the sour cream, add to the pot and stir until it thickens. Return the mushrooms, simmer 5 minutes and season."
+  ]
+ },
+ {
+  "id": "m11",
+  "title": "Bowl Cake with a Melting Jam Center",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "6 tbsp rolled oats (60 g)",
+    "food": "Cereals, oats, regular and quick, not fortified, dry",
+    "g": 59.5
+   },
+   {
+    "t": "3 tsp jam",
+    "food": "Jams and preserves",
+    "g": 17.0
+   },
+   {
+    "t": "2 tsp baking powder",
+    "food": null,
+    "g": 8.5
+   },
+   {
+    "t": "80 ml (2.75 fl oz) lactose-free 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 83.8
+   },
+   {
+    "t": "2 eggs (100 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 99.2
+   }
+  ],
+  "steps": [
+   "Beat the eggs and milk in a microwave-safe bowl.",
+   "Mix in the oats and baking powder.",
+   "Press the jam into the middle of the batter.",
+   "Microwave about 2 minutes. Eat warm or cold."
+  ]
+ },
+ {
+  "id": "m12",
+  "title": "Buckwheat Galette with Smoked Salmon",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": true,
+  "lines": [
+   {
+    "t": "170 g (6 oz) smoked salmon",
+    "food": "Fish, salmon, chinook, smoked",
+    "g": 170.1
+   },
+   {
+    "t": "2 tbsp lactose-free light sour cream (30 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 30.5
+   },
+   {
+    "t": "1 buckwheat crepes (50 g)",
+    "food": "Buckwheat crepe, plain, to be filled, prepacked",
+    "g": 51.0
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1 tsp lemon juice",
+    "food": "Lemon juice, raw",
+    "g": 6.1
+   },
+   {
+    "t": "2 eggs (100 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 99.2
+   },
+   {
+    "t": "1 tsp fresh dill",
+    "food": null,
+    "g": 0.0
+   }
+  ],
+  "steps": [
+   "Stir the lemon juice into the sour cream.",
+   "Warm the galette in a nonstick pan 2 to 3 minutes and set it aside.",
+   "Fry the eggs in the oil until the whites are set.",
+   "Spread the lemon cream on the galette, add the eggs and smoked salmon, season, add dill and fold."
+  ]
+ },
+ {
+  "id": "m13",
+  "title": "Buckwheat Galette Wrap with Creamy Salmon",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 buckwheat crepes (100 g)",
+    "food": "Buckwheat crepe, plain, to be filled, prepacked",
+    "g": 99.2
+   },
+   {
+    "t": "150 g (5.25 oz) 2% Greek yogurt",
+    "food": "Yogurt, Greek, plain, lowfat",
+    "g": 148.8
+   },
+   {
+    "t": "2 tsp lemon juice",
+    "food": "Lemon juice, raw",
+    "g": 9.1
+   },
+   {
+    "t": "3 slices smoked salmon (105 g)",
+    "food": "Fish, salmon, chinook, smoked",
+    "g": 104.9
+   },
+   {
+    "t": "2 carrots (120 g)",
+    "food": "Carrots, raw",
+    "g": 119.1
+   }
+  ],
+  "steps": [
+   "Mix the yogurt with the lemon juice, salt and pepper.",
+   "Spread it over the galettes.",
+   "Add grated carrot and the smoked salmon, season, roll up tightly and serve."
+  ]
+ },
+ {
+  "id": "m14",
+  "title": "Buckwheat Wrap with Turkey and Avocado",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lose",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 buckwheat crepes (100 g)",
+    "food": "Buckwheat crepe, plain, to be filled, prepacked",
+    "g": 99.2
+   },
+   {
+    "t": "150 g (5.25 oz) sliced deli turkey",
+    "food": "Turkey breast, sliced, prepackaged",
+    "g": 148.8
+   },
+   {
+    "t": "2 tbsp hummus (37 g)",
+    "food": "Hummus, commercial",
+    "g": 36.9
+   },
+   {
+    "t": "1/4 avocado (50 g)",
+    "food": "Avocados, raw, all commercial varieties",
+    "g": 51.0
+   }
+  ],
+  "steps": [
+   "Spread hummus over the crêpes.",
+   "Add the turkey and sliced avocado, season.",
+   "Roll up tightly and serve."
+  ]
+ },
+ {
+  "id": "m15",
+  "title": "Chaffle",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": true,
+  "lines": [
+   {
+    "t": "1 tsp fresh herbs",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "1 eggs (50 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 51.0
+   },
+   {
+    "t": "90 g (3.25 oz) cheddar",
+    "food": "Cheese, cheddar",
+    "g": 92.1
+   }
+  ],
+  "steps": [
+   "Beat the egg and stir in the grated cheddar, herbs, salt and pepper.",
+   "Cook in a hot waffle iron 3 to 5 minutes until golden and crisp.",
+   "Eat hot or cold; they keep well for later."
+  ]
+ },
+ {
+  "id": "m16",
+  "title": "Chia Pudding with Jam",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "4 tbsp chia seeds (48 g)",
+    "food": "Seeds, chia seeds, dried",
+    "g": 48.2
+   },
+   {
+    "t": "2 tsp jam",
+    "food": "Jams and preserves",
+    "g": 11.3
+   },
+   {
+    "t": "150 ml (5 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 152.3
+   },
+   {
+    "t": "1 tsp honey or agave",
+    "food": "Honey",
+    "g": 5.7
+   },
+   {
+    "t": "5 tbsp Greek yogurt (90 g)",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 90.7
+   }
+  ],
+  "steps": [
+   "Stir the chia seeds, milk, yogurt and honey together in a jar until there are no clumps.",
+   "Cover and chill at least 4 hours.",
+   "Spoon the jam on top before eating."
+  ]
+ },
+ {
+  "id": "m17",
+  "title": "Chicken and Asparagus Risotto",
+  "time": "35 min",
+  "mins": 35,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 99.2
+   },
+   {
+    "t": "100 g (3.5 oz) asparagus",
+    "food": "Asparagus, raw",
+    "g": 99.2
+   },
+   {
+    "t": "1 tbsp grated Parmesan (6 g)",
+    "food": "Cheese, parmesan, grated",
+    "g": 5.7
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "70 g (2.5 oz) arborio rice",
+    "food": "Rice, white, medium-grain, raw, unenriched",
+    "g": 70.9
+   },
+   {
+    "t": "1 vegetable bouillon cube (11 g)",
+    "food": "Soup, bouillon cubes and granules, low sodium, dry",
+    "g": 11.3
+   }
+  ],
+  "steps": [
+   "Dissolve the broth cube in about 2 cups of hot water and keep it warm.",
+   "Cut the asparagus into short pieces.",
+   "Toast the rice in the oil until it looks glassy, then add the asparagus.",
+   "Add the hot broth a ladle at a time, letting each one soak in before the next.",
+   "Halfway through, stir in the chicken in small cubes so it cooks with the rice.",
+   "When the rice is creamy and tender, top with the Parmesan and serve."
+  ]
+ },
+ {
+  "id": "m18",
+  "title": "Chicken Pasta Salad",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 99.2
+   },
+   {
+    "t": "50 g (1.75 oz) dry pasta",
+    "food": "Pasta, dry, enriched",
+    "g": 49.6
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "70 g (2.5 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 70.9
+   },
+   {
+    "t": "1 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 5.7
+   },
+   {
+    "t": "1 tsp mayonnaise",
+    "food": "Salad dressing, mayonnaise, regular",
+    "g": 5.7
+   },
+   {
+    "t": "28 g (1 oz) Emmental",
+    "food": "Cheese, swiss",
+    "g": 28.4
+   },
+   {
+    "t": "2 tbsp 2% Greek yogurt (31 g)",
+    "food": "Yogurt, Greek, plain, lowfat",
+    "g": 31.2
+   }
+  ],
+  "steps": [
+   "Cook the pasta, then rinse under cold water and drain.",
+   "Cook the diced chicken in the oil until done, 6 to 8 minutes.",
+   "Whisk the mayonnaise, yogurt, mustard, salt and pepper into a dressing.",
+   "Toss the pasta with the tomatoes, diced Emmental and chicken, then pour on the dressing."
+  ]
+ },
+ {
+  "id": "m19",
+  "title": "Chickpea Cookie Dough",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "3 tbsp rolled oats (31 g)",
+    "food": "Cereals, oats, regular and quick, not fortified, dry",
+    "g": 31.2
+   },
+   {
+    "t": "100 g (3.5 oz) canned chickpeas, drained",
+    "food": "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained, rinsed in tap water",
+    "g": 99.2
+   },
+   {
+    "t": "1 tbsp dark chocolate chips (14 g)",
+    "food": "Chocolate, dark, 60-69% cacao solids",
+    "g": 14.2
+   },
+   {
+    "t": "3 tsp unsweetened soy milk",
+    "food": "Soymilk, original and vanilla, unfortified",
+    "g": 15.2
+   },
+   {
+    "t": "3 tsp honey or agave",
+    "food": "Honey",
+    "g": 19.8
+   },
+   {
+    "t": "1 tsp vanilla extract",
+    "food": null,
+    "g": 5.7
+   },
+   {
+    "t": "3 tsp peanut butter",
+    "food": "Peanut butter, smooth style, without salt",
+    "g": 17.0
+   }
+  ],
+  "steps": [
+   "Blitz the oats in a food processor until floury.",
+   "Add the chickpeas, honey, peanut butter, vanilla, a pinch of salt and some of the milk.",
+   "Blend to a smooth dough, adding milk a little at a time if needed.",
+   "Fold in the chocolate chips."
+  ]
+ },
+ {
+  "id": "m20",
+  "title": "Chickpea Omelette with Hummus and Tomatoes",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "5 cherry tomatoes (90 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 90.7
+   },
+   {
+    "t": "1/2 tsp fresh parsley",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "1/2 tsp garlic powder",
+    "food": "Spices, garlic powder",
+    "g": 0.0
+   },
+   {
+    "t": "1/2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 2.7
+   },
+   {
+    "t": "55 g (2 oz) chickpea flour",
+    "food": "Chickpea flour (besan)",
+    "g": 56.7
+   },
+   {
+    "t": "1 tbsp hummus (17 g)",
+    "food": "Hummus, commercial",
+    "g": 17.0
+   }
+  ],
+  "steps": [
+   "Whisk the chickpea flour, garlic powder, water and oil into a smooth batter.",
+   "Pour into a hot nonstick pan, spread it out and lower the heat.",
+   "When the edges firm up, flip and cook until set.",
+   "Top with hummus, halved cherry tomatoes and parsley."
+  ]
+ },
+ {
+  "id": "m21",
+  "title": "Chickpea Salad with Mushrooms and Soft-Boiled Eggs",
+  "time": "16 min",
+  "mins": 16,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "155 g (5.5 oz) canned chickpeas, drained",
+    "food": "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained, rinsed in tap water",
+    "g": 155.9
+   },
+   {
+    "t": "2.5 tbsp balsamic vinegar (40 g)",
+    "food": "Vinegar, balsamic",
+    "g": 39.6
+   },
+   {
+    "t": "2 endive (300 g)",
+    "food": "Endive, raw",
+    "g": 300.5
+   },
+   {
+    "t": "2.5 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 10.9
+   },
+   {
+    "t": "100 g (3.5 oz) mushrooms",
+    "food": "Mushrooms, white, raw",
+    "g": 99.2
+   },
+   {
+    "t": "28 g (1 oz) walnuts",
+    "food": "Nuts, walnuts, english",
+    "g": 28.4
+   },
+   {
+    "t": "3 eggs (150 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 150.3
+   }
+  ],
+  "steps": [
+   "Boil the eggs 6 minutes, then cool them in ice water.",
+   "Cut the endive into strips and slice the mushrooms thinly.",
+   "Add the drained chickpeas and chopped walnuts.",
+   "Whisk the vinegar and oil with salt and pepper, toss with the salad and top with the halved eggs."
+  ]
+ },
+ {
+  "id": "m22",
+  "title": "Chili Sin Carne",
+  "time": "35 min",
+  "mins": 35,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "55 g (2 oz) canned red kidney beans, drained",
+    "food": "Beans, kidney, red, mature seeds, canned, drained solids",
+    "g": 56.7
+   },
+   {
+    "t": "2 tbsp tomato paste (31 g)",
+    "food": "Tomato products, canned, paste, without salt added",
+    "g": 31.2
+   },
+   {
+    "t": "1 tsp fresh cilantro",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "43 g (1.5 oz) white rice (dry)",
+    "food": "Rice, white, long-grain, regular, raw, enriched",
+    "g": 42.5
+   },
+   {
+    "t": "55 g (2 oz) rehydrated TVP",
+    "food": "Soy protein, textured, rehydrated",
+    "g": 56.7
+   },
+   {
+    "t": "150 g (5.25 oz) crushed tomatoes",
+    "food": "Tomatoes, crushed, canned",
+    "g": 148.8
+   },
+   {
+    "t": "55 g (2 oz) canned corn, drained",
+    "food": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+    "g": 56.7
+   },
+   {
+    "t": "1 tsp paprika",
+    "food": "Spices, paprika",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Cook the rice until tender, 15 to 20 minutes.",
+   "Brown the rehydrated TVP in a nonstick pan, 5 to 7 minutes.",
+   "Add the crushed tomatoes, tomato paste, paprika, corn and beans and simmer 10 to 15 minutes. Season.",
+   "Serve over the rice with cilantro."
+  ]
+ },
+ {
+  "id": "m23",
+  "title": "Chocolate and Red Bean Brownie",
+  "time": "7 min",
+  "mins": 7,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "21 g (3/4 oz) honey or agave",
+    "food": "Honey",
+    "g": 21.3
+   },
+   {
+    "t": "21 g (3/4 oz) unsweetened cocoa powder",
+    "food": "Cocoa, dry powder, unsweetened",
+    "g": 21.3
+   },
+   {
+    "t": "1 tsp 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 6.1
+   },
+   {
+    "t": "21 g (3/4 oz) walnuts",
+    "food": "Nuts, walnuts, english",
+    "g": 21.3
+   },
+   {
+    "t": "55 g (2 oz) cooked red kidney beans",
+    "food": "Beans, kidney, red, mature seeds, cooked, boiled, without salt",
+    "g": 56.7
+   }
+  ],
+  "steps": [
+   "Rinse and drain the beans.",
+   "Blend the beans, cocoa, honey and milk until completely smooth.",
+   "Pour into a ramekin and top with chopped walnuts.",
+   "Microwave 1½ to 2 minutes (or bake about 15 minutes at 350°F / 175°C). Let cool a little."
+  ]
+ },
+ {
+  "id": "m24",
+  "title": "Chocolate Protein Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tbsp unsweetened cocoa powder (6 g)",
+    "food": "Cocoa, dry powder, unsweetened",
+    "g": 5.7
+   },
+   {
+    "t": "105 ml (3.5 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 106.6
+   },
+   {
+    "t": "1 tsp honey or agave",
+    "food": "Honey",
+    "g": 5.7
+   },
+   {
+    "t": "5 tbsp Greek yogurt (90 g)",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 90.7
+   },
+   {
+    "t": "28 g (1 oz) protein powder",
+    "food": "Beverages, Protein powder whey based",
+    "g": 28.4
+   }
+  ],
+  "steps": [
+   "Blend everything with an ice cube or two until smooth.",
+   "Add a little water if it's too thick and drink right away."
+  ]
+ },
+ {
+  "id": "m25",
+  "title": "Cloud Bread Ham and Cheese Sandwich",
+  "time": "40 min",
+  "mins": 40,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "55 g (2 oz) cooked ham",
+    "food": "Ham, sliced, regular (approximately 11% fat)",
+    "g": 56.7
+   },
+   {
+    "t": "43 g (1.5 oz) cream cheese",
+    "food": "Cheese, cream",
+    "g": 42.5
+   },
+   {
+    "t": "2 eggs (100 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 99.2
+   },
+   {
+    "t": "28 g (1 oz) cheddar",
+    "food": "Cheese, cheddar",
+    "g": 28.4
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F (175°C) and line a tray.",
+   "Separate the eggs. Beat the whites to stiff peaks.",
+   "Mix the yolks with the cream cheese and a pinch of salt, then gently fold into the whites.",
+   "Spoon into two rounds and bake 20 to 25 minutes.",
+   "Once cool, fill with the ham and cheddar."
+  ]
+ },
+ {
+  "id": "m26",
+  "title": "Coconut Mango Quinoa Porridge",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "120 g (4.25 oz) quinoa (dry)",
+    "food": "Quinoa, uncooked",
+    "g": 120.5
+   },
+   {
+    "t": "3 tsp unsweetened shredded coconut",
+    "food": "Nuts, coconut meat, dried (desiccated), not sweetened",
+    "g": 5.7
+   },
+   {
+    "t": "200 ml (6.75 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 205.6
+   },
+   {
+    "t": "3 tsp honey or agave",
+    "food": "Honey",
+    "g": 19.8
+   },
+   {
+    "t": "150 g (5.25 oz) mango",
+    "food": "Mangos, raw",
+    "g": 148.8
+   }
+  ],
+  "steps": [
+   "Rinse the quinoa.",
+   "Simmer it in the milk over low heat 12 to 15 minutes until creamy, adding a splash of liquid if needed.",
+   "Sweeten with the honey, top with diced mango and coconut. Warm or cold."
+  ]
+ },
+ {
+  "id": "m27",
+  "title": "Coconut Rice with Chicken and Green Beans",
+  "time": "40 min",
+  "mins": 40,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "120 g (4.25 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 120.5
+   },
+   {
+    "t": "1/2 tbsp honey or agave (11 g)",
+    "food": "Honey",
+    "g": 11.3
+   },
+   {
+    "t": "43 g (1.5 oz) white rice (dry)",
+    "food": "Rice, white, long-grain, regular, raw, enriched",
+    "g": 42.5
+   },
+   {
+    "t": "2 tbsp coconut milk (30 g)",
+    "food": "Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+    "g": 30.5
+   },
+   {
+    "t": "100 g (3.5 oz) green beans",
+    "food": "Beans, snap, green, raw",
+    "g": 99.2
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   },
+   {
+    "t": "1 tbsp soy sauce (15 g)",
+    "food": "Soy sauce made from soy (tamari)",
+    "g": 15.2
+   },
+   {
+    "t": "1 tsp sesame oil",
+    "food": "Oil, sesame, salad or cooking",
+    "g": 5.4
+   }
+  ],
+  "steps": [
+   "Mix the soy sauce, sesame oil, garlic and pepper and coat the chicken cubes (marinate a couple of hours if you can).",
+   "Bake the chicken on a lined tray at 350°F (180°C) about 10 minutes, until golden and cooked.",
+   "Rinse the rice, then bring it to a boil with the coconut milk, the same amount of water, the honey and a pinch of salt. Cover and simmer on low 15 minutes, then let it rest.",
+   "Warm the green beans in a pan and serve everything together."
+  ]
+ },
+ {
+  "id": "m28",
+  "title": "Cottage Cheese and Applesauce",
+  "time": "3 min",
+  "mins": 3,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp honey or agave",
+    "food": "Honey",
+    "g": 5.7
+   },
+   {
+    "t": "200 g (7 oz) 2% cottage cheese",
+    "food": "Cheese, cottage, lowfat, 2% milkfat",
+    "g": 198.5
+   },
+   {
+    "t": "150 g (5.25 oz) fruit compote",
+    "food": "Applesauce, canned, sweetened",
+    "g": 148.8
+   },
+   {
+    "t": "1 tsp cinnamon",
+    "food": "Spices, cinnamon, ground",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Spoon the applesauce into a glass or jar.",
+   "Add the cottage cheese on top.",
+   "Drizzle with honey and dust with cinnamon."
+  ]
+ },
+ {
+  "id": "m29",
+  "title": "Creamy Chicken and Pea Pasta",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "150 g (5.25 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 148.8
+   },
+   {
+    "t": "80 g (2.75 oz) cooked green peas",
+    "food": "Peas, green, frozen, cooked, boiled, drained, without salt",
+    "g": 78.0
+   },
+   {
+    "t": "90 g (3.25 oz) dry pasta",
+    "food": "Pasta, dry, enriched",
+    "g": 92.1
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "1/2 onion (75 g)",
+    "food": "Onions, raw",
+    "g": 73.7
+   },
+   {
+    "t": "3 tbsp light sour cream (44 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 44.4
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   },
+   {
+    "t": "1/2 tsp fresh dill",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "1/2 lemon (50 g)",
+    "food": "Lemons, raw, without peel",
+    "g": 51.0
+   }
+  ],
+  "steps": [
+   "Cook the pasta in salted water.",
+   "Soften the sliced onion in the oil, 5 to 7 minutes.",
+   "Add the garlic and chicken and cook through, 8 to 10 minutes.",
+   "Stir in the sour cream, lemon juice and peas until hot.",
+   "Toss in the drained pasta, the dill and some lemon zest."
+  ]
+ },
+ {
+  "id": "m30",
+  "title": "Creamy Curry Pasta with Ground Beef",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp curry powder",
+    "food": "Spices, curry powder",
+    "g": 2.8
+   },
+   {
+    "t": "43 g (1.5 oz) dry pasta",
+    "food": "Pasta, dry, enriched",
+    "g": 42.5
+   },
+   {
+    "t": "1/2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 2.7
+   },
+   {
+    "t": "1/4 onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "100 g (3.5 oz) 95% lean ground beef",
+    "food": "Beef, ground, 95% lean meat / 5% fat, raw",
+    "g": 99.2
+   },
+   {
+    "t": "2 tbsp light sour cream (30 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 29.6
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   },
+   {
+    "t": "100 g (3.5 oz) broccoli",
+    "food": "Broccoli, raw",
+    "g": 99.2
+   }
+  ],
+  "steps": [
+   "Cook the pasta with the broccoli florets 8 to 10 minutes and drain.",
+   "Fry the onion and garlic in the oil until golden, 3 to 4 minutes.",
+   "Add the beef and brown it, breaking it up.",
+   "Stir in the pasta, broccoli, sour cream and curry powder, season, and simmer 2 to 3 minutes with a splash of water."
+  ]
+ },
+ {
+  "id": "m31",
+  "title": "Creamy Tuna Bowl with Wasa Crispbread",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 rye crispbread (20 g)",
+    "food": "Crackers, crispbread, rye",
+    "g": 19.8
+   },
+   {
+    "t": "1/2 cucumber (175 g)",
+    "food": "Cucumber, with peel, raw",
+    "g": 175.8
+   },
+   {
+    "t": "80 g (2.75 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 78.0
+   },
+   {
+    "t": "1/2 tsp sliced almonds",
+    "food": "Nuts, almonds",
+    "g": 2.8
+   },
+   {
+    "t": "100 g (3.5 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 99.2
+   },
+   {
+    "t": "1 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 5.7
+   },
+   {
+    "t": "1 tbsp fresh parsley",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "100 g (3.5 oz) Greek yogurt",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 99.2
+   }
+  ],
+  "steps": [
+   "Mix the yogurt, drained tuna and mustard.",
+   "Fold in quartered cherry tomatoes and diced cucumber; season.",
+   "Top with parsley and the almonds and eat with the crispbreads."
+  ]
+ },
+ {
+  "id": "m32",
+  "title": "Seared Duck with Roasted Sweet Potatoes",
+  "time": "50 min",
+  "mins": 50,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 tsp fresh thyme",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "3/4 red onion (115 g)",
+    "food": "Onions, raw",
+    "g": 113.4
+   },
+   {
+    "t": "120 g (4.25 oz) mushrooms",
+    "food": "Mushrooms, white, raw",
+    "g": 120.5
+   },
+   {
+    "t": "2.5 tsp olive oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 10.9
+   },
+   {
+    "t": "300 g (10.5 oz) sweet potato",
+    "food": "Sweet potato, raw, unprepared",
+    "g": 297.7
+   },
+   {
+    "t": "140 g (5 oz) duck breast strips",
+    "food": "Duck, domesticated, meat only, raw",
+    "g": 141.8
+   },
+   {
+    "t": "1.5 garlic cloves (6 g)",
+    "food": "Garlic, raw",
+    "g": 5.7
+   }
+  ],
+  "steps": [
+   "Heat the oven to 390°F (200°C).",
+   "Toss the sweet potato cubes, sliced onion and mushrooms, garlic and thyme with the olive oil on a lined tray. Season.",
+   "Roast about 35 minutes, stirring now and then, until the sweet potato is soft and crisp at the edges.",
+   "At the end, sear the duck strips in a hot nonstick pan, about 2 minutes a side. Season and serve with the vegetables."
+  ]
+ },
+ {
+  "id": "m33",
+  "title": "Easy Tuna and Parmesan Wrap",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "3 tbsp grated Parmesan (14 g)",
+    "food": "Cheese, parmesan, grated",
+    "g": 14.2
+   },
+   {
+    "t": "50 g (1.75 oz) lettuce",
+    "food": "Lettuce, green leaf, raw",
+    "g": 49.6
+   },
+   {
+    "t": "1/4 red onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "2 large tortilla (125 g)",
+    "food": "Tortillas, ready-to-bake or -fry, flour, refrigerated",
+    "g": 124.7
+   },
+   {
+    "t": "1/2 cucumber (175 g)",
+    "food": "Cucumber, with peel, raw",
+    "g": 175.8
+   },
+   {
+    "t": "200 g (7 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 198.5
+   },
+   {
+    "t": "4 tbsp Greek yogurt (70 g)",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 70.9
+   }
+  ],
+  "steps": [
+   "Drain and flake the tuna.",
+   "Mix in diced cucumber, chopped red onion, the yogurt and Parmesan.",
+   "Lay lettuce on the tortillas, spoon the tuna over and roll up tightly."
+  ]
+ },
+ {
+  "id": "m34",
+  "title": "English Muffin Egg-Bacon",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "goals": [
+   "lean",
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 back bacon (23 g)",
+    "food": "Canadian bacon, unprepared",
+    "g": 22.7
+   },
+   {
+    "t": "1 English muffins (60 g)",
+    "food": "English muffins, whole-wheat",
+    "g": 59.5
+   },
+   {
+    "t": "1 eggs (50 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 51.0
+   },
+   {
+    "t": "21 g (3/4 oz) Emmental",
+    "food": "Cheese, swiss",
+    "g": 21.3
+   }
+  ],
+  "steps": [
+   "Split and toast the muffin.",
+   "Crisp the bacon in a nonstick pan and set it aside.",
+   "Scramble the egg in the same pan and season.",
+   "Fill the muffin with the cheese, egg and bacon."
+  ]
+ },
+ {
+  "id": "m35",
+  "title": "Fish Skewers with Tomato, Olives, and Basil",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "15 cherry tomatoes (270 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 269.3
+   },
+   {
+    "t": "2 tsp fresh basil",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "2 tsp garlic powder",
+    "food": "Spices, garlic powder",
+    "g": 5.7
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "200 g (7 oz) white fish fillet (cod)",
+    "food": "Fish, cod, Atlantic, raw",
+    "g": 198.5
+   },
+   {
+    "t": "80 g (2.75 oz) pitted olives",
+    "food": "Olives, ripe, canned (small-extra large)",
+    "g": 78.0
+   },
+   {
+    "t": "2 tbsp lemon juice (30 g)",
+    "food": "Lemon juice, raw",
+    "g": 30.5
+   }
+  ],
+  "steps": [
+   "Cut the fish into 1-inch cubes and thread onto skewers (or leave loose).",
+   "Brown the fish in the oil over medium-high heat, 3 to 4 minutes, and set aside.",
+   "In the same pan, cook the tomatoes, olives, lemon juice, garlic powder and basil 4 to 6 minutes until the tomatoes soften.",
+   "Put the fish back in, toss gently and serve."
+  ]
+ },
+ {
+  "id": "m36",
+  "title": "Garlic Tomato Cod with Quinoa",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean",
+   "lose",
+   "muscle"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "90 g (3.25 oz) quinoa (dry)",
+    "food": "Quinoa, uncooked",
+    "g": 92.1
+   },
+   {
+    "t": "3 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 13.6
+   },
+   {
+    "t": "140 g (5 oz) white fish fillet (cod)",
+    "food": "Fish, cod, Atlantic, raw",
+    "g": 141.8
+   },
+   {
+    "t": "250 g (8.75 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 248.1
+   },
+   {
+    "t": "2 garlic cloves (9 g)",
+    "food": "Garlic, raw",
+    "g": 8.5
+   },
+   {
+    "t": "1 tbsp fresh parsley",
+    "food": null,
+    "g": 0.0
+   }
+  ],
+  "steps": [
+   "Cook the quinoa about 10 minutes until tender and drain.",
+   "Chop the garlic, halve the tomatoes and chop the parsley.",
+   "Pat the fish dry and season it.",
+   "Cook the garlic and tomatoes in the oil for a few minutes, then add the fish and cook 2 to 3 minutes a side.",
+   "Serve with the quinoa and parsley."
+  ]
+ },
+ {
+  "id": "m37",
+  "title": "Greek Yogurt with Honey",
+  "time": "2 min",
+  "mins": 2,
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "345 g (12.25 oz) 2% Greek yogurt",
+    "food": "Yogurt, Greek, plain, lowfat",
+    "g": 347.3
+   },
+   {
+    "t": "3.5 tsp honey or agave",
+    "food": "Honey",
+    "g": 25.5
+   }
+  ],
+  "steps": [
+   "Spoon the yogurt into a bowl and drizzle with the honey or agave."
+  ]
+ },
+ {
+  "id": "m38",
+  "title": "Green Quinoa with Chicken",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "muscle"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "150 g (5.25 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 148.8
+   },
+   {
+    "t": "1 tsp basil pesto",
+    "food": "Sauce, pesto, ready-to-serve, refrigerated",
+    "g": 5.7
+   },
+   {
+    "t": "55 g (2 oz) quinoa (dry)",
+    "food": "Quinoa, uncooked",
+    "g": 56.7
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "150 g (5.25 oz) green beans",
+    "food": "Beans, snap, green, raw",
+    "g": 148.8
+   },
+   {
+    "t": "3 tbsp light sour cream (44 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 44.4
+   },
+   {
+    "t": "150 g (5.25 oz) broccoli",
+    "food": "Broccoli, raw",
+    "g": 148.8
+   }
+  ],
+  "steps": [
+   "Cook the quinoa with the broccoli florets in boiling water 12 to 15 minutes and drain.",
+   "Brown the chicken pieces in the oil, 6 to 8 minutes, until cooked.",
+   "Steam or boil the green beans until tender.",
+   "Mix the sour cream with the pesto.",
+   "Plate the quinoa, broccoli and beans, add the chicken and spoon the pesto cream over."
+  ]
+ },
+ {
+  "id": "m39",
+  "title": "Green Spinach and Grape Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 banana (120 g)",
+    "food": "Bananas, raw",
+    "g": 119.1
+   },
+   {
+    "t": "80 g (2.75 oz) grapes",
+    "food": "Grapes, red or green (European type, such as Thompson seedless), raw",
+    "g": 78.0
+   },
+   {
+    "t": "28 g (1 oz) baby spinach",
+    "food": "Spinach, raw",
+    "g": 28.4
+   },
+   {
+    "t": "4 tbsp protein powder (37 g)",
+    "food": "Beverages, Protein powder whey based",
+    "g": 36.9
+   },
+   {
+    "t": "100 g (3.5 oz) Greek yogurt",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 99.2
+   },
+   {
+    "t": "2 tsp chia seeds",
+    "food": "Seeds, chia seeds, dried",
+    "g": 8.5
+   }
+  ],
+  "steps": [
+   "Put the grapes, banana, spinach, chia, water and a few ice cubes in a blender.",
+   "Add the protein powder and yogurt.",
+   "Blend until smooth, adding water if needed."
+  ]
+ },
+ {
+  "id": "m40",
+  "title": "Grilled Chicken and Hummus Wrap",
+  "time": "18 min",
+  "mins": 18,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 99.2
+   },
+   {
+    "t": "1.5 tbsp grated Parmesan (9 g)",
+    "food": "Cheese, parmesan, grated",
+    "g": 8.5
+   },
+   {
+    "t": "28 g (1 oz) lettuce",
+    "food": "Lettuce, green leaf, raw",
+    "g": 28.4
+   },
+   {
+    "t": "1 large tortilla (60 g)",
+    "food": "Tortillas, ready-to-bake or -fry, flour, refrigerated",
+    "g": 62.4
+   },
+   {
+    "t": "1 tbsp Greek yogurt (17 g)",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 17.0
+   },
+   {
+    "t": "2 tbsp hummus (37 g)",
+    "food": "Hummus, commercial",
+    "g": 36.9
+   },
+   {
+    "t": "1.5 carrots (90 g)",
+    "food": "Carrots, raw",
+    "g": 90.7
+   }
+  ],
+  "steps": [
+   "Cook the sliced chicken in a nonstick pan until done, 6 to 8 minutes.",
+   "Spread hummus on the tortilla, leaving a border.",
+   "Add lettuce, grated carrot and the chicken, a spoon of yogurt and the Parmesan. Season.",
+   "Fold in the sides, roll up and cut in half. Eat cold or warm it in a pan."
+  ]
+ },
+ {
+  "id": "m41",
+  "title": "Honey Mustard Chicken with Quinoa",
+  "time": "30 min",
+  "mins": 30,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "165 g (5.75 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 163.0
+   },
+   {
+    "t": "1 tbsp oil (14 g)",
+    "food": "Oil, olive, salad or cooking",
+    "g": 13.6
+   },
+   {
+    "t": "1 zucchini (200 g)",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "g": 201.3
+   },
+   {
+    "t": "70 g (2.5 oz) quinoa (dry)",
+    "food": "Quinoa, uncooked",
+    "g": 70.9
+   },
+   {
+    "t": "2 tbsp honey (43 g)",
+    "food": "Honey",
+    "g": 42.5
+   },
+   {
+    "t": "2 vegetable bouillon cube (20 g)",
+    "food": "Soup, bouillon cubes and granules, low sodium, dry",
+    "g": 19.8
+   },
+   {
+    "t": "2 tbsp Dijon mustard (31 g)",
+    "food": "Mustard, prepared, yellow",
+    "g": 31.2
+   }
+  ],
+  "steps": [
+   "Rinse the quinoa and cook it in water with the broth cube, covered, until the liquid is absorbed. Fluff with a fork.",
+   "Slice the zucchini and brown it in a little of the oil. Season and set aside.",
+   "Mix the mustard and honey (a splash of water if it's thick).",
+   "Cook the chicken in the rest of the oil 6 to 8 minutes a side, brushing on the honey mustard near the end.",
+   "Serve with the quinoa and zucchini."
+  ]
+ },
+ {
+  "id": "m42",
+  "title": "Air-Dried Beef and Cheese Crispbreads",
+  "time": "3 min",
+  "mins": 3,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "4 rye crispbread (40 g)",
+    "food": "Crackers, crispbread, rye",
+    "g": 39.7
+   },
+   {
+    "t": "55 g (2 oz) air-dried beef",
+    "food": "Viande des Grisons or dried beef meat",
+    "g": 56.7
+   },
+   {
+    "t": "3 tbsp cancoillotte (or light cheese spread) (45 g)",
+    "food": "Cancoillotte (processed cheese), from cow's milk",
+    "g": 45.4
+   }
+  ],
+  "steps": [
+   "Spread the cheese over the crispbreads.",
+   "Lay the dried beef on top."
+  ]
+ },
+ {
+  "id": "m43",
+  "title": "Ground Beef Stuffed Bell Pepper",
+  "time": "60 min",
+  "mins": 60,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 tbsp shredded Emmental (17 g)",
+    "food": "Cheese, swiss",
+    "g": 17.0
+   },
+   {
+    "t": "1 bell pepper (180 g)",
+    "food": "Peppers, sweet, red, raw",
+    "g": 178.6
+   },
+   {
+    "t": "55 g (2 oz) white rice (dry)",
+    "food": "Rice, white, long-grain, regular, raw, enriched",
+    "g": 56.7
+   },
+   {
+    "t": "100 g (3.5 oz) crushed tomatoes",
+    "food": "Tomatoes, crushed, canned",
+    "g": 99.2
+   },
+   {
+    "t": "14 g (1/2 oz) tomato paste",
+    "food": "Tomato products, canned, paste, without salt added",
+    "g": 14.2
+   },
+   {
+    "t": "1 onion (150 g)",
+    "food": "Onions, raw",
+    "g": 150.3
+   },
+   {
+    "t": "2 tsp olive oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "140 g (5 oz) 95% lean ground beef",
+    "food": "Beef, ground, 95% lean meat / 5% fat, raw",
+    "g": 141.8
+   },
+   {
+    "t": "1/2 tsp paprika",
+    "food": "Spices, paprika",
+    "g": 0.0
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Cook the rice. Heat the oven to 375°F (190°C). Cut the top off the pepper, scoop out the seeds and stand it in a small oiled dish.",
+   "Soften the onion in the olive oil, add the garlic for 30 seconds, then brown the beef.",
+   "Stir in the cooked rice, crushed tomatoes, tomato paste and paprika, season and simmer 3 to 5 minutes.",
+   "Pack the filling into the pepper, cover with foil and bake 30 minutes.",
+   "Uncover, add the cheese and bake 8 to 10 minutes more until melted."
+  ]
+ },
+ {
+  "id": "m44",
+  "title": "Ham and Cheese Rolls",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": true,
+  "lines": [
+   {
+    "t": "175 g (6.25 oz) cooked ham",
+    "food": "Ham, sliced, regular (approximately 11% fat)",
+    "g": 177.2
+   },
+   {
+    "t": "80 g (2.75 oz) cream cheese",
+    "food": "Cheese, cream",
+    "g": 78.0
+   }
+  ],
+  "steps": [
+   "Spread cream cheese over each slice of ham.",
+   "Roll each one up tightly."
+  ]
+ },
+ {
+  "id": "m45",
+  "title": "Herb and Feta Omelet",
+  "time": "9 min",
+  "mins": 9,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": true,
+  "lines": [
+   {
+    "t": "28 g (1 oz) feta",
+    "food": "Cheese, feta",
+    "g": 28.4
+   },
+   {
+    "t": "2 tbsp fresh herbs (9 g)",
+    "food": null,
+    "g": 8.5
+   },
+   {
+    "t": "1 tbsp olive oil (14 g)",
+    "food": "Oil, olive, salad or cooking",
+    "g": 13.6
+   },
+   {
+    "t": "3 tbsp whole milk (46 g)",
+    "food": "Milk, whole, 3.25% milkfat, with added vitamin D",
+    "g": 45.7
+   },
+   {
+    "t": "2 eggs (100 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 99.2
+   }
+  ],
+  "steps": [
+   "Chop the herbs.",
+   "Beat the eggs with the milk, herbs, salt and pepper.",
+   "Pour into the hot olive oil in a nonstick pan and let it set 2 to 3 minutes without stirring.",
+   "Crumble the feta over, fold the omelet and give it one more minute."
+  ]
+ },
+ {
+  "id": "m46",
+  "title": "High-Protein Chicken, Egg and Spinach Bagel",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "breakfast",
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "28 g (1 oz) baby spinach",
+    "food": "Spinach, raw",
+    "g": 28.4
+   },
+   {
+    "t": "2 eggs (100 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 99.2
+   },
+   {
+    "t": "1 sliced deli chicken (34 g)",
+    "food": "Chicken breast, oven-roasted, fat-free, sliced",
+    "g": 34.0
+   },
+   {
+    "t": "1 tbsp soft goat cheese (17 g)",
+    "food": "Cheese, goat, soft type",
+    "g": 17.0
+   },
+   {
+    "t": "1 bagel (85 g)",
+    "food": "Bagels, plain, enriched, with calcium propionate (includes onion, poppy, sesame)",
+    "g": 85.1
+   }
+  ],
+  "steps": [
+   "Hard-boil the eggs (10 minutes), cool in cold water, peel and slice.",
+   "Split and toast the bagel, then spread both halves with the goat cheese and season.",
+   "Layer spinach, chicken and egg slices on the bottom half and close."
+  ]
+ },
+ {
+  "id": "m47",
+  "title": "High-Protein Crêpes with Jam",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "2 tsp baking powder",
+    "food": null,
+    "g": 8.5
+   },
+   {
+    "t": "75 ml (2.5 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 76.1
+   },
+   {
+    "t": "175 g (6.25 oz) plain skyr",
+    "food": "Skyr Icelandic style strained yogurt < 10 % fat in dry matter",
+    "g": 177.2
+   },
+   {
+    "t": "55 g (2 oz) flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 56.7
+   },
+   {
+    "t": "4 tbsp jam (70 g)",
+    "food": "Jams and preserves",
+    "g": 68.0
+   },
+   {
+    "t": "3 eggs (150 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 150.3
+   }
+  ],
+  "steps": [
+   "Beat the eggs with the skyr.",
+   "Whisk in the flour, milk, baking powder and a pinch of salt until smooth. Rest 10 minutes.",
+   "Wipe a nonstick pan with the oil, pour in a ladle of batter and swirl it thin.",
+   "Cook 1 to 2 minutes a side until golden. Repeat, and serve with the jam."
+  ]
+ },
+ {
+  "id": "m49",
+  "title": "Hummus and Tuna Sandwich",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 slices whole wheat bread (65 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 65.2
+   },
+   {
+    "t": "5 pitted olives (26 g)",
+    "food": "Olives, ripe, canned (small-extra large)",
+    "g": 25.5
+   },
+   {
+    "t": "140 g (5 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 141.8
+   },
+   {
+    "t": "3 tbsp hummus (55 g)",
+    "food": "Hummus, commercial",
+    "g": 53.9
+   },
+   {
+    "t": "1.5 carrots (90 g)",
+    "food": "Carrots, raw",
+    "g": 90.7
+   }
+  ],
+  "steps": [
+   "Toast the bread if you like. Grate the carrot and chop the olives.",
+   "Mix the hummus, drained tuna, olives and a spice you like.",
+   "Spread on one slice, add the carrot and close the sandwich."
+  ]
+ },
+ {
+  "id": "m50",
+  "title": "Mackerel and Celeriac Salad",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": true,
+  "lines": [
+   {
+    "t": "170 g (6 oz) mackerel fillet",
+    "food": "Fish, mackerel, Atlantic, raw",
+    "g": 170.1
+   },
+   {
+    "t": "2 tsp fresh parsley",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "170 g (6 oz) celery",
+    "food": "Celery, raw",
+    "g": 170.1
+   },
+   {
+    "t": "2 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 11.3
+   },
+   {
+    "t": "2 tbsp lemon juice (30 g)",
+    "food": "Lemon juice, raw",
+    "g": 30.5
+   },
+   {
+    "t": "50 g (1.75 oz) walnuts",
+    "food": "Nuts, walnuts, english",
+    "g": 49.6
+   },
+   {
+    "t": "55 g (2 oz) plain soy yogurt",
+    "food": "Plant-based yogurt alternative, made from soya, unsweetened",
+    "g": 56.7
+   }
+  ],
+  "steps": [
+   "Whisk the yogurt, mustard, lemon juice, salt and pepper into a dressing.",
+   "Grate the celery (or celeriac) and coat it in the dressing.",
+   "Flake the mackerel over the top, then add walnuts and parsley just before eating."
+  ]
+ },
+ {
+  "id": "m51",
+  "title": "Marinated Seitan and Potatoes",
+  "time": "30 min",
+  "mins": 30,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 tbsp balsamic vinegar (30 g)",
+    "food": "Vinegar, balsamic",
+    "g": 30.5
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "100 g (3.5 oz) seitan",
+    "food": "Seitan, prepacked",
+    "g": 99.2
+   },
+   {
+    "t": "2 tsp honey or agave",
+    "food": "Honey",
+    "g": 14.2
+   },
+   {
+    "t": "225 g (8 oz) potatoes",
+    "food": "Potatoes, flesh and skin, raw",
+    "g": 226.8
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   },
+   {
+    "t": "2 tbsp soy sauce (30 g)",
+    "food": "Soy sauce made from soy (tamari)",
+    "g": 30.5
+   },
+   {
+    "t": "70 g (2.5 oz) mixed salad greens",
+    "food": "Lettuce, green leaf, raw",
+    "g": 70.9
+   }
+  ],
+  "steps": [
+   "Whisk the soy sauce, oil, vinegar, honey and garlic. Add the seitan pieces and marinate (an hour if you can).",
+   "Boil the potatoes until tender, 15 to 20 minutes.",
+   "Brown the seitan in a hot nonstick pan, 5 to 7 minutes.",
+   "Serve with the potatoes and salad, with the leftover marinade spooned over."
+  ]
+ },
+ {
+  "id": "m52",
+  "title": "Mediterranean Chicken and Chickpea Salad",
+  "time": "18 min",
+  "mins": 18,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "150 g (5.25 oz) canned chickpeas, drained",
+    "food": "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained, rinsed in tap water",
+    "g": 148.8
+   },
+   {
+    "t": "150 g (5.25 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 148.8
+   },
+   {
+    "t": "2 tbsp balsamic vinegar (30 g)",
+    "food": "Vinegar, balsamic",
+    "g": 30.5
+   },
+   {
+    "t": "1 tsp fresh parsley",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "1/4 red onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "200 g (7 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 198.5
+   },
+   {
+    "t": "1 tbsp lemon juice (15 g)",
+    "food": "Lemon juice, raw",
+    "g": 15.2
+   }
+  ],
+  "steps": [
+   "Slice the chicken into strips and cook in the oil 6 to 8 minutes until done. Season.",
+   "Whisk the vinegar and lemon juice with salt and pepper.",
+   "Combine halved tomatoes, diced red onion, parsley, chickpeas and the chicken.",
+   "Pour on the dressing, toss, and let it sit a few minutes before eating."
+  ]
+ },
+ {
+  "id": "m53",
+  "title": "Mediterranean Tuna and Quinoa Salad",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tomato (150 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 150.3
+   },
+   {
+    "t": "55 g (2 oz) quinoa (dry)",
+    "food": "Quinoa, uncooked",
+    "g": 56.7
+   },
+   {
+    "t": "1.5 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "1/4 onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "1 tbsp apple cider vinegar (15 g)",
+    "food": "Vinegar, cider",
+    "g": 15.2
+   },
+   {
+    "t": "140 g (5 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 141.8
+   },
+   {
+    "t": "150 g (5.25 oz) canned green beans",
+    "food": "Beans, snap, green, canned, regular pack, drained solids",
+    "g": 148.8
+   },
+   {
+    "t": "1/2 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 2.8
+   },
+   {
+    "t": "28 g (1 oz) pitted olives",
+    "food": "Olives, ripe, canned (small-extra large)",
+    "g": 28.4
+   },
+   {
+    "t": "1 tsp fresh dill",
+    "food": null,
+    "g": 0.0
+   }
+  ],
+  "steps": [
+   "Cook the quinoa in salted water 8 to 10 minutes, then rinse cold and drain well.",
+   "Whisk the vinegar, oil and mustard.",
+   "Combine the quinoa, green beans, chopped onion and tomato, tuna, olives and dill.",
+   "Dress, season, toss and serve."
+  ]
+ },
+ {
+  "id": "m54",
+  "title": "Baked Chicken with Polenta and Ratatouille",
+  "time": "35 min",
+  "mins": 35,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "140 g (5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 141.8
+   },
+   {
+    "t": "1.5 tomato (225 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 224.0
+   },
+   {
+    "t": "1 tbsp oil (14 g)",
+    "food": "Oil, olive, salad or cooking",
+    "g": 13.6
+   },
+   {
+    "t": "1 zucchini (200 g)",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "g": 201.3
+   },
+   {
+    "t": "80 g (2.75 oz) polenta (dry)",
+    "food": "Cornmeal, degermed, enriched, yellow",
+    "g": 78.0
+   },
+   {
+    "t": "2 tbsp vegan shredded cheese (17 g)",
+    "food": "Plant-based cheese alternative, vegetable fat based, vegan",
+    "g": 17.0
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F (200°C).",
+   "Dice the zucchini and tomato and cook in part of the oil with salt and pepper, then simmer 15 minutes.",
+   "Put the chicken in a baking dish, rub with the rest of the oil, season and bake 12 to 15 minutes.",
+   "Bring the water to a boil, whisk in the polenta and stir over low heat until thick. Stir in the cheese and season.",
+   "Serve the polenta with the chicken and vegetables."
+  ]
+ },
+ {
+  "id": "m55",
+  "title": "Pasta with Seitan and Leeks with Emmental",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "70 g (2.5 oz) dry pasta",
+    "food": "Pasta, dry, enriched",
+    "g": 70.9
+   },
+   {
+    "t": "1 tbsp shredded Emmental (9 g)",
+    "food": "Cheese, swiss",
+    "g": 8.5
+   },
+   {
+    "t": "3 tbsp plant-based cooking cream (45 g)",
+    "food": "Plant-based cream alternative, made from soya (for boiling and refining)",
+    "g": 45.4
+   },
+   {
+    "t": "2.5 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 10.9
+   },
+   {
+    "t": "150 g (5.25 oz) seitan",
+    "food": "Seitan, prepacked",
+    "g": 148.8
+   },
+   {
+    "t": "1.5 leeks (300 g)",
+    "food": "Leek, raw",
+    "g": 300.5
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Cook the pasta and drain.",
+   "Warm the oil, add the garlic for a minute, then the sliced leeks. Cook until soft, adding a splash of water if they catch.",
+   "Add the diced seitan and brown it.",
+   "Stir in the pasta and cream, season, and top with the cheese."
+  ]
+ },
+ {
+  "id": "m56",
+  "title": "Pink Hard-Boiled Egg",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg",
+   "lf"
+  ],
+  "keto": true,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) cooked beets",
+    "food": "Beets, cooked, boiled, drained",
+    "g": 99.2
+   },
+   {
+    "t": "4 tbsp apple cider vinegar (60 g)",
+    "food": "Vinegar, cider",
+    "g": 60.9
+   },
+   {
+    "t": "4 eggs (200 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 201.3
+   }
+  ],
+  "steps": [
+   "Hard-boil the eggs 9 to 10 minutes, cool and peel.",
+   "Blend the beet with the vinegar and enough water to cover the eggs.",
+   "Sit the eggs in the pink liquid in the fridge for at least an hour (overnight for deeper color)."
+  ]
+ },
+ {
+  "id": "m57",
+  "title": "Pork with Mustard and Tomato Gnocchi",
+  "time": "22 min",
+  "mins": 22,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean",
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "120 g (4.25 oz) potato gnocchi",
+    "food": "Gnocchi raw",
+    "g": 120.5
+   },
+   {
+    "t": "1/2 onion (75 g)",
+    "food": "Onions, raw",
+    "g": 73.7
+   },
+   {
+    "t": "200 g (7 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 198.5
+   },
+   {
+    "t": "29 ml (1 fl oz) light sour cream",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 29.6
+   },
+   {
+    "t": "1 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 5.7
+   },
+   {
+    "t": "130 g (4.5 oz) pork cutlet",
+    "food": "Pork, fresh, loin, tenderloin, separable lean only, raw",
+    "g": 127.6
+   }
+  ],
+  "steps": [
+   "Halve the tomatoes and slice the onion. Brush the pork with mustard and season.",
+   "Soften the onion in the oil 3 to 4 minutes, add the tomatoes for 2 to 3 minutes, then the gnocchi and sour cream.",
+   "Heat through 3 to 4 minutes, season and plate.",
+   "In the same pan, sear the pork 2 minutes a side and serve alongside."
+  ]
+ },
+ {
+  "id": "m58",
+  "title": "Protein Banana Oat Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1.5 tbsp rolled oats (14 g)",
+    "food": "Cereals, oats, regular and quick, not fortified, dry",
+    "g": 14.2
+   },
+   {
+    "t": "1/2 banana (60 g)",
+    "food": "Bananas, raw",
+    "g": 59.5
+   },
+   {
+    "t": "175 ml (6 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 182.7
+   },
+   {
+    "t": "1 tsp honey or agave",
+    "food": "Honey",
+    "g": 5.7
+   },
+   {
+    "t": "1/2 scoop protein powder (14 g)",
+    "food": "Beverages, Protein powder whey based",
+    "g": 14.2
+   }
+  ],
+  "steps": [
+   "Blend everything (frozen banana works best) until smooth, adding water if it's too thick."
+  ]
+ },
+ {
+  "id": "m59",
+  "title": "Protein Cheesecake with Red Berries",
+  "time": "30 min",
+  "mins": 30,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) frozen mixed berries",
+    "food": "Blueberries, frozen, unsweetened",
+    "g": 99.2
+   },
+   {
+    "t": "3 tsp honey or agave",
+    "food": "Honey",
+    "g": 19.8
+   },
+   {
+    "t": "2 tsp cornstarch",
+    "food": "Cornstarch",
+    "g": 5.7
+   },
+   {
+    "t": "2 eggs (100 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 99.2
+   },
+   {
+    "t": "300 g (10.5 oz) plain soy yogurt",
+    "food": "Plant-based yogurt alternative, made from soya, unsweetened",
+    "g": 297.7
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F (175°C).",
+   "Whisk the yogurt, cornstarch, eggs and honey until smooth.",
+   "Fold in the berries and pour into a small baking dish.",
+   "Bake about 20 minutes, then chill at least 2 hours."
+  ]
+ },
+ {
+  "id": "m60",
+  "title": "Protein Fruity Ice Cream with Cottage Cheese",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lean",
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "300 g (10.5 oz) frozen fruit",
+    "food": "Strawberries, frozen, unsweetened",
+    "g": 297.7
+   },
+   {
+    "t": "2 tsp honey or agave",
+    "food": "Honey",
+    "g": 14.2
+   },
+   {
+    "t": "250 g (8.75 oz) 2% cottage cheese",
+    "food": "Cheese, cottage, lowfat, 2% milkfat",
+    "g": 248.1
+   }
+  ],
+  "steps": [
+   "Blend the frozen fruit, cottage cheese and honey until smooth.",
+   "Freeze in a container for at least 2 hours.",
+   "If it turns icy, blend again just before serving."
+  ]
+ },
+ {
+  "id": "m61",
+  "title": "Protein Oat Pancakes",
+  "time": "11 min",
+  "mins": 11,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "3 tsp maple syrup",
+    "food": "Syrups, maple",
+    "g": 19.5
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1 tsp baking powder",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "55 g (2 oz) oat flour",
+    "food": "Oat flour, partially debranned",
+    "g": 56.7
+   },
+   {
+    "t": "50 ml (1.75 fl oz) unsweetened soy milk",
+    "food": "Soymilk, original and vanilla, unfortified",
+    "g": 53.3
+   },
+   {
+    "t": "1 eggs (50 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 51.0
+   },
+   {
+    "t": "2 tbsp protein powder (17 g)",
+    "food": "Beverages, Protein powder whey based",
+    "g": 17.0
+   },
+   {
+    "t": "3 egg whites (100 g)",
+    "food": "Egg, white, raw, fresh",
+    "g": 99.2
+   }
+  ],
+  "steps": [
+   "Mix everything except the maple syrup into a batter; add milk until it pours slowly.",
+   "Heat the oil in a nonstick pan, then lower the heat.",
+   "Cook small pancakes about 2 minutes, flip and give them 1 more.",
+   "Drizzle with the maple syrup."
+  ]
+ },
+ {
+  "id": "m62",
+  "title": "Overnight Porridge with Pear and Chocolate",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "5 tbsp rolled oats (50 g)",
+    "food": "Cereals, oats, regular and quick, not fortified, dry",
+    "g": 51.0
+   },
+   {
+    "t": "1/2 pear (85 g)",
+    "food": "Pears, raw",
+    "g": 85.1
+   },
+   {
+    "t": "140 ml (4.75 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 144.7
+   },
+   {
+    "t": "1 tbsp dark chocolate chips (14 g)",
+    "food": "Chocolate, dark, 60-69% cacao solids",
+    "g": 14.2
+   },
+   {
+    "t": "1 tsp honey or agave",
+    "food": "Honey",
+    "g": 5.7
+   },
+   {
+    "t": "1/2 scoop protein powder (14 g)",
+    "food": "Beverages, Protein powder whey based",
+    "g": 14.2
+   },
+   {
+    "t": "6 almonds (9 g)",
+    "food": "Nuts, almonds",
+    "g": 8.5
+   }
+  ],
+  "steps": [
+   "Mix the milk, oats, protein powder and honey in a jar.",
+   "Chill at least 2 hours or overnight.",
+   "Top with diced pear, almonds and chocolate chips. Loosen with water, or warm it if you prefer."
+  ]
+ },
+ {
+  "id": "m63",
+  "title": "Protein Yogurt with Granola and Fruits",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "goals": [
+   "lean",
+   "lose",
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "21 g (3/4 oz) granola",
+    "food": "Cereals ready-to-eat, granola, homemade",
+    "g": 21.3
+   },
+   {
+    "t": "140 g (5 oz) 2% Greek yogurt",
+    "food": "Yogurt, Greek, plain, lowfat",
+    "g": 141.8
+   },
+   {
+    "t": "1 tsp honey or agave",
+    "food": "Honey",
+    "g": 5.7
+   },
+   {
+    "t": "150 g (5.25 oz) fresh fruit",
+    "food": "Apples, raw, with skin",
+    "g": 148.8
+   },
+   {
+    "t": "1.5 tbsp vanilla protein powder (14 g)",
+    "food": "Beverages, Protein powder whey based",
+    "g": 14.2
+   }
+  ],
+  "steps": [
+   "Cut the fruit into pieces.",
+   "Stir the honey and protein powder into the yogurt.",
+   "Top with the granola and fruit."
+  ]
+ },
+ {
+  "id": "m64",
+  "title": "Protein-Rich Hazelnut Skyr Parfait",
+  "time": "11 min",
+  "mins": 11,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 Weetabix (17 g)",
+    "food": "Cereals ready-to-eat, WEETABIX whole grain cereal",
+    "g": 17.0
+   },
+   {
+    "t": "7 g (1/4 oz) 70% dark chocolate",
+    "food": "Chocolate, dark, 70-85% cacao solids",
+    "g": 7.1
+   },
+   {
+    "t": "105 ml (3.5 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 106.6
+   },
+   {
+    "t": "7 g (1/4 oz) hazelnuts",
+    "food": "Nuts, hazelnuts or filberts",
+    "g": 7.1
+   },
+   {
+    "t": "14 g (1/2 oz) protein powder",
+    "food": "Beverages, Protein powder whey based",
+    "g": 14.2
+   },
+   {
+    "t": "150 g (5.25 oz) plain skyr",
+    "food": "Skyr Icelandic style strained yogurt < 10 % fat in dry matter",
+    "g": 148.8
+   }
+  ],
+  "steps": [
+   "Crumble the Weetabix into a container, pour over half the milk and mash into a base.",
+   "Mix the skyr with the protein powder and spread it over.",
+   "Melt the chocolate (30 to 60 seconds in the microwave), stir in the rest of the milk and the crushed hazelnuts, and spread on top.",
+   "Chill a few hours."
+  ]
+ },
+ {
+  "id": "m65",
+  "title": "Quinoa Chicken Salad with Cranberries and Feta",
+  "time": "35 min",
+  "mins": 35,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "28 g (1 oz) feta",
+    "food": "Cheese, feta",
+    "g": 28.4
+   },
+   {
+    "t": "100 g (3.5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 99.2
+   },
+   {
+    "t": "1 tbsp balsamic vinegar (15 g)",
+    "food": "Vinegar, balsamic",
+    "g": 15.2
+   },
+   {
+    "t": "28 g (1 oz) lettuce",
+    "food": "Lettuce, green leaf, raw",
+    "g": 28.4
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1/2 cucumber (175 g)",
+    "food": "Cucumber, with peel, raw",
+    "g": 175.8
+   },
+   {
+    "t": "1 tbsp lemon juice (15 g)",
+    "food": "Lemon juice, raw",
+    "g": 15.2
+   },
+   {
+    "t": "6 tbsp quinoa (dry) (70 g)",
+    "food": "Quinoa, uncooked",
+    "g": 70.9
+   },
+   {
+    "t": "1 tbsp dried cranberries (11 g)",
+    "food": "Cranberries, dried, sweetened",
+    "g": 11.3
+   }
+  ],
+  "steps": [
+   "Cook the quinoa 12 to 15 minutes, then rinse cold and drain. Cook the chicken in the oil 6 to 8 minutes a side.",
+   "Combine lettuce, diced cucumber and cranberries with the quinoa.",
+   "Slice the chicken and add it with the crumbled feta.",
+   "Whisk the vinegar and lemon juice, toss everything and season."
+  ]
+ },
+ {
+  "id": "m66",
+  "title": "Quinoa with Mushrooms and Chicken",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "150 g (5.25 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 148.8
+   },
+   {
+    "t": "2.5 tbsp plant-based cooking cream (37 g)",
+    "food": "Plant-based cream alternative, made from soya (for boiling and refining)",
+    "g": 36.9
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "200 g (7 oz) mushrooms",
+    "food": "Mushrooms, white, raw",
+    "g": 198.5
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   },
+   {
+    "t": "5 tbsp quinoa (dry) (60 g)",
+    "food": "Quinoa, uncooked",
+    "g": 59.5
+   }
+  ],
+  "steps": [
+   "Cook the quinoa.",
+   "Cook the garlic and sliced mushrooms in the oil and season.",
+   "Push the mushrooms aside and cook the chicken in the same pan until golden and done.",
+   "Stir the cream into the mushrooms for 2 minutes and spoon over the quinoa and chicken."
+  ]
+ },
+ {
+  "id": "m67",
+  "title": "Refreshing Tuna and Red Bean Salad",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "28 g (1 oz) canned red kidney beans, drained",
+    "food": "Beans, kidney, red, mature seeds, canned, drained solids",
+    "g": 28.4
+   },
+   {
+    "t": "50 g (1.75 oz) lettuce",
+    "food": "Lettuce, green leaf, raw",
+    "g": 49.6
+   },
+   {
+    "t": "1/4 red onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "43 g (1.5 oz) canned corn, drained",
+    "food": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+    "g": 42.5
+   },
+   {
+    "t": "140 g (5 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 141.8
+   },
+   {
+    "t": "2 tbsp Greek yogurt (37 g)",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 36.9
+   },
+   {
+    "t": "1 tbsp lemon juice (15 g)",
+    "food": "Lemon juice, raw",
+    "g": 15.2
+   },
+   {
+    "t": "1/2 avocado (100 g)",
+    "food": "Avocados, raw, all commercial varieties",
+    "g": 99.2
+   },
+   {
+    "t": "1 tbsp fresh cilantro (3 g)",
+    "food": null,
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Combine the lettuce, beans, flaked tuna and corn.",
+   "Add chopped red onion and avocado.",
+   "Mix the yogurt with lemon juice, salt and pepper, pour over and finish with cilantro."
+  ]
+ },
+ {
+  "id": "m68",
+  "title": "Rice Paper Egg Galette",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": true,
+  "lines": [
+   {
+    "t": "3 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 13.6
+   },
+   {
+    "t": "28 g (1 oz) shredded Emmental",
+    "food": "Cheese, swiss",
+    "g": 28.4
+   },
+   {
+    "t": "2 tbsp lemon juice (30 g)",
+    "food": "Lemon juice, raw",
+    "g": 30.5
+   },
+   {
+    "t": "3 tsp fresh chives",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "2 rice paper sheets (20 g)",
+    "food": "Rice paper",
+    "g": 19.8
+   },
+   {
+    "t": "4 eggs (200 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 201.3
+   },
+   {
+    "t": "70 g (2.5 oz) mixed salad greens",
+    "food": "Lettuce, green leaf, raw",
+    "g": 70.9
+   }
+  ],
+  "steps": [
+   "Beat the eggs with chives, salt and pepper.",
+   "Heat a little oil in a nonstick pan on low. Lay a dry rice paper sheet in the pan.",
+   "Pour the eggs over it right away and spread them to the edges.",
+   "Cook 2 to 3 minutes until crisp underneath and set on top. Add the cheese and fold.",
+   "Serve with the salad dressed in lemon juice and the rest of the oil."
+  ]
+ },
+ {
+  "id": "m69",
+  "title": "Roasted Chicken Thigh with Potatoes and Carrots",
+  "time": "60 min",
+  "mins": 60,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "175 g (6.25 oz) skinless chicken thighs",
+    "food": "Chicken, broilers or fryers, dark meat, thigh, meat only, raw",
+    "g": 177.2
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "2 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 11.3
+   },
+   {
+    "t": "150 g (5.25 oz) potatoes",
+    "food": "Potatoes, flesh and skin, raw",
+    "g": 148.8
+   },
+   {
+    "t": "2 garlic cloves (9 g)",
+    "food": "Garlic, raw",
+    "g": 8.5
+   },
+   {
+    "t": "100 g (3.5 oz) carrots",
+    "food": "Carrots, raw",
+    "g": 99.2
+   },
+   {
+    "t": "2 tsp dried thyme",
+    "food": null,
+    "g": 0.0
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F (200°C).",
+   "Cut the potatoes and carrots into chunks and put them in a dish with the crushed garlic.",
+   "Toss with half the oil, thyme, salt and pepper.",
+   "Mix the rest of the oil with the mustard, brush it over the chicken, season and set it on the vegetables.",
+   "Roast 40 to 45 minutes, stirring the vegetables halfway, until the chicken is golden and cooked through."
+  ]
+ },
+ {
+  "id": "m70",
+  "title": "Savory Crêpes with Plant-Based Ham and Hummus",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tbsp flaxseeds (9 g)",
+    "food": "Seeds, flaxseed",
+    "g": 8.5
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "55 g (2 oz) oat flour",
+    "food": "Oat flour, partially debranned",
+    "g": 56.7
+   },
+   {
+    "t": "80 g (2.75 oz) plant-based ham slices",
+    "food": "Plant-based ham, prepacked",
+    "g": 78.0
+   },
+   {
+    "t": "120 ml (4 fl oz) unsweetened soy milk",
+    "food": "Soymilk, original and vanilla, unfortified",
+    "g": 121.8
+   },
+   {
+    "t": "2 tbsp hummus (37 g)",
+    "food": "Hummus, commercial",
+    "g": 36.9
+   }
+  ],
+  "steps": [
+   "Stir the flaxseeds into a few spoons of water and warm a few seconds to thicken (a flax egg).",
+   "Whisk the oat flour, flax egg, milk and a pinch of salt into a smooth batter.",
+   "Cook ¼-cup portions in a hot nonstick pan until the edges lift, flip and cook 1 to 2 minutes more.",
+   "Spread with hummus, add the plant-based ham and fold."
+  ]
+ },
+ {
+  "id": "m71",
+  "title": "Savory Ham and Emmental Pancakes",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "28 g (1 oz) cooked ham",
+    "food": "Ham, sliced, regular (approximately 11% fat)",
+    "g": 28.4
+   },
+   {
+    "t": "7 g (1/4 oz) shredded Emmental",
+    "food": "Cheese, swiss",
+    "g": 7.1
+   },
+   {
+    "t": "35 g (1.25 oz) flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 35.4
+   },
+   {
+    "t": "1 eggs (50 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 51.0
+   }
+  ],
+  "steps": [
+   "Beat the egg, then whisk in the flour.",
+   "Add the water a little at a time until smooth and thick.",
+   "Stir in the cheese and diced ham.",
+   "Cook small spoonfuls in a lightly oiled pan 1 to 2 minutes a side."
+  ]
+ },
+ {
+  "id": "m72",
+  "title": "Savory Vegan Ham Madeleines",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp fresh herbs",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1 tbsp silken tofu (14 g)",
+    "food": "Tofu, soft, prepared with calcium sulfate and magnesium chloride (nigari)",
+    "g": 14.2
+   },
+   {
+    "t": "7 g (1/4 oz) vegan shredded cheese",
+    "food": "Plant-based cheese alternative, vegetable fat based, vegan",
+    "g": 7.1
+   },
+   {
+    "t": "7 g (1/4 oz) light margarine",
+    "food": "Margarine, tub, hydrogenated, canola oil",
+    "g": 7.1
+   },
+   {
+    "t": "28 g (1 oz) plant-based ham slices",
+    "food": "Plant-based ham, prepacked",
+    "g": 28.4
+   },
+   {
+    "t": "15 ml (1/2 fl oz) unsweetened soy milk",
+    "food": "Soymilk, original and vanilla, unfortified",
+    "g": 15.2
+   },
+   {
+    "t": "50 g (1.75 oz) flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 49.6
+   },
+   {
+    "t": "7 g (1/4 oz) baking powder",
+    "food": null,
+    "g": 7.1
+   }
+  ],
+  "steps": [
+   "Heat the oven to 425°F (220°C) and grease a madeleine or mini-muffin tray with the margarine.",
+   "Dice the plant-based ham.",
+   "Mix the flour and baking powder, then whisk in the tofu, oil and milk until smooth.",
+   "Fold in the ham, cheese, herbs and pepper and fill the molds three-quarters full.",
+   "Bake 4 minutes, then lower to 350°F (180°C) and bake 4 to 6 minutes more until golden."
+  ]
+ },
+ {
+  "id": "m73",
+  "title": "Savory Vegan Ham Pancakes",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "5 tbsp silken tofu (75 g)",
+    "food": "Tofu, soft, prepared with calcium sulfate and magnesium chloride (nigari)",
+    "g": 73.7
+   },
+   {
+    "t": "43 g (1.5 oz) vegan shredded cheese",
+    "food": "Plant-based cheese alternative, vegetable fat based, vegan",
+    "g": 42.5
+   },
+   {
+    "t": "55 g (2 oz) plant-based ham slices",
+    "food": "Plant-based ham, prepacked",
+    "g": 56.7
+   },
+   {
+    "t": "165 ml (5.5 fl oz) unsweetened soy milk",
+    "food": "Soymilk, original and vanilla, unfortified",
+    "g": 167.5
+   },
+   {
+    "t": "65 g (2.25 oz) flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 63.8
+   }
+  ],
+  "steps": [
+   "Whisk the milk and silken tofu into the flour until smooth and fairly thick (add water if needed).",
+   "Stir in the cheese and chopped plant-based ham.",
+   "Cook small ladlefuls in a lightly oiled pan 1 to 2 minutes a side."
+  ]
+ },
+ {
+  "id": "m74",
+  "title": "Savory Pancakes with Smoked Salmon",
+  "time": "11 min",
+  "mins": 11,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "28 g (1 oz) smoked salmon",
+    "food": "Fish, salmon, chinook, smoked",
+    "g": 28.4
+   },
+   {
+    "t": "1/4 tsp baking powder",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "200 ml (6.75 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 205.6
+   },
+   {
+    "t": "1 tbsp light sour cream (15 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 14.8
+   },
+   {
+    "t": "1 tbsp fresh chives (3 g)",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "1 tbsp flour (11 g)",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 11.3
+   },
+   {
+    "t": "1 eggs (50 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 51.0
+   }
+  ],
+  "steps": [
+   "Mix the flour, baking powder and a pinch of salt.",
+   "Whisk in the egg and milk.",
+   "Cook small pancakes in a nonstick pan 2 to 3 minutes a side.",
+   "Top with sour cream, smoked salmon and chives."
+  ]
+ },
+ {
+  "id": "m75",
+  "title": "Savory Skyr with Olives and Walnuts",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "goals": [
+   "lose",
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 slices whole wheat bread (65 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 65.2
+   },
+   {
+    "t": "43 g (1.5 oz) pitted olives",
+    "food": "Olives, ripe, canned (small-extra large)",
+    "g": 42.5
+   },
+   {
+    "t": "200 g (7 oz) plain skyr",
+    "food": "Skyr Icelandic style strained yogurt < 10 % fat in dry matter",
+    "g": 198.5
+   },
+   {
+    "t": "28 g (1 oz) walnuts",
+    "food": "Nuts, walnuts, english",
+    "g": 28.4
+   },
+   {
+    "t": "2 tsp fresh dill",
+    "food": null,
+    "g": 0.0
+   }
+  ],
+  "steps": [
+   "Mix the skyr with chopped olives, walnuts and dill. Season.",
+   "Eat with the bread, toasted if you like."
+  ]
+ },
+ {
+  "id": "m76",
+  "title": "Savory Spinach Waffles",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose",
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp herbes de Provence",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "50 g (1.75 oz) baby spinach",
+    "food": "Spinach, raw",
+    "g": 49.6
+   },
+   {
+    "t": "100 g (3.5 oz) plain skyr",
+    "food": "Skyr Icelandic style strained yogurt < 10 % fat in dry matter",
+    "g": 99.2
+   },
+   {
+    "t": "1/2 tsp nutmeg",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "43 g (1.5 oz) flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 42.5
+   },
+   {
+    "t": "1 eggs (50 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 51.0
+   },
+   {
+    "t": "1 tsp yeast",
+    "food": null,
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Heat the waffle iron and brush it with a little oil if it sticks.",
+   "Chop the spinach and mix it with everything else into a thick batter.",
+   "Cook 3 to 5 minutes until the waffles lift out easily. Eat hot or keep for later."
+  ]
+ },
+ {
+  "id": "m77",
+  "title": "Scrambled Tofu Wrap",
+  "time": "18 min",
+  "mins": 18,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1.5 tomato (225 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 224.0
+   },
+   {
+    "t": "1/2 tsp ground cumin",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "1 tsp turmeric",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "2 tbsp plant-based cooking cream (31 g)",
+    "food": "Plant-based cream alternative, made from soya (for boiling and refining)",
+    "g": 31.2
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1 large tortilla (60 g)",
+    "food": "Tortillas, ready-to-bake or -fry, flour, refrigerated",
+    "g": 62.4
+   },
+   {
+    "t": "1 tsp salad dressing",
+    "food": "Salad dressing, italian, commercial, regular",
+    "g": 6.1
+   },
+   {
+    "t": "43 g (1.5 oz) mixed salad greens",
+    "food": "Lettuce, green leaf, raw",
+    "g": 42.5
+   },
+   {
+    "t": "150 g (5.25 oz) firm tofu",
+    "food": "Tofu, raw, firm, prepared with calcium sulfate",
+    "g": 148.8
+   }
+  ],
+  "steps": [
+   "Crumble the tofu into a nonstick pan with the oil and cook 3 to 4 minutes over medium-low.",
+   "Stir in the cream, turmeric, cumin, salt and pepper.",
+   "Add the diced tomato and cook 2 to 3 minutes.",
+   "Warm the tortilla, fill it with the tofu and serve with the dressed salad."
+  ]
+ },
+ {
+  "id": "m78",
+  "title": "Skyr and Berry Smoothie Bowl",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "225 g (8 oz) frozen mixed berries",
+    "food": "Blueberries, frozen, unsweetened",
+    "g": 226.8
+   },
+   {
+    "t": "3 tbsp honey or agave (60 g)",
+    "food": "Honey",
+    "g": 62.4
+   },
+   {
+    "t": "3.5 tbsp granola (48 g)",
+    "food": "Cereals ready-to-eat, granola, homemade",
+    "g": 48.2
+   },
+   {
+    "t": "1/2 tsp vanilla extract",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "3 tbsp sliced almonds (28 g)",
+    "food": "Nuts, almonds",
+    "g": 28.4
+   },
+   {
+    "t": "240 g (8.5 oz) plain skyr",
+    "food": "Skyr Icelandic style strained yogurt < 10 % fat in dry matter",
+    "g": 241.0
+   }
+  ],
+  "steps": [
+   "Blend the skyr, frozen berries, vanilla and honey until thick and smooth (a few drops of water if needed).",
+   "Pour into a bowl and top with the almonds and granola."
+  ]
+ },
+ {
+  "id": "m79",
+  "title": "Skyr Cheesecake-Style",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp coconut oil",
+    "food": "Oil, coconut",
+    "g": 5.4
+   },
+   {
+    "t": "2 tsp unsweetened applesauce",
+    "food": "Applesauce, canned, unsweetened, without added ascorbic acid (includes USDA commodity)",
+    "g": 11.3
+   },
+   {
+    "t": "28 g (1 oz) speculoos cookies",
+    "food": "Speculoos biscuit",
+    "g": 28.4
+   },
+   {
+    "t": "2 tsp lemon juice",
+    "food": "Lemon juice, raw",
+    "g": 9.1
+   },
+   {
+    "t": "2 tsp honey or agave",
+    "food": "Honey",
+    "g": 14.2
+   },
+   {
+    "t": "150 g (5.25 oz) plain skyr",
+    "food": "Skyr Icelandic style strained yogurt < 10 % fat in dry matter",
+    "g": 148.8
+   }
+  ],
+  "steps": [
+   "Crush the cookies into crumbs, mix with the coconut oil and applesauce and press into the bottom of a jar or ramekin.",
+   "Whisk the skyr, honey and lemon juice until smooth and spread it over the base.",
+   "Chill at least 3 hours. A little lemon zest on top is nice."
+  ]
+ },
+ {
+  "id": "m80",
+  "title": "Smoked Salmon and Plant-Based Yogurt Toast",
+  "time": "8 min",
+  "mins": 8,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 slice whole wheat bread (31 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 31.2
+   },
+   {
+    "t": "80 g (2.75 oz) cucumber",
+    "food": "Cucumber, with peel, raw",
+    "g": 78.0
+   },
+   {
+    "t": "3 slices smoked salmon (105 g)",
+    "food": "Fish, salmon, chinook, smoked",
+    "g": 104.9
+   },
+   {
+    "t": "1 tsp fresh dill",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "4 tbsp plain soy yogurt (60 g)",
+    "food": "Plant-based yogurt alternative, made from soya, unsweetened",
+    "g": 60.9
+   }
+  ],
+  "steps": [
+   "Toast the bread and let it cool a minute.",
+   "Spread with the yogurt, add the smoked salmon, then cucumber slices and dill."
+  ]
+ },
+ {
+  "id": "m81",
+  "title": "Smoked Tofu and Leek Fondue",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp curry powder",
+    "food": "Spices, curry powder",
+    "g": 2.8
+   },
+   {
+    "t": "4 tbsp plant-based cooking cream (60 g)",
+    "food": "Plant-based cream alternative, made from soya (for boiling and refining)",
+    "g": 59.5
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "2 leeks (400 g)",
+    "food": "Leek, raw",
+    "g": 399.7
+   },
+   {
+    "t": "130 g (4.5 oz) smoked tofu",
+    "food": "Tofu, smoked, prepacked",
+    "g": 127.6
+   }
+  ],
+  "steps": [
+   "Brown the cubed smoked tofu in the oil over medium-high heat, 5 to 7 minutes.",
+   "In another pan, cook the sliced leeks until soft, 6 to 8 minutes, with a splash of water if needed.",
+   "Stir the cream and curry powder into the leeks, add the tofu and season."
+  ]
+ },
+ {
+  "id": "m82",
+  "title": "Speculoos Protein Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lean",
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 banana (120 g)",
+    "food": "Bananas, raw",
+    "g": 119.1
+   },
+   {
+    "t": "200 ml (6.75 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 205.6
+   },
+   {
+    "t": "4 tbsp Greek yogurt (70 g)",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 70.9
+   },
+   {
+    "t": "28 g (1 oz) protein powder",
+    "food": "Beverages, Protein powder whey based",
+    "g": 28.4
+   },
+   {
+    "t": "3 speculoos cookies (23 g)",
+    "food": "Speculoos biscuit",
+    "g": 22.7
+   },
+   {
+    "t": "1 tsp cinnamon",
+    "food": "Spices, cinnamon, ground",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Blend everything with an ice cube or two until smooth.",
+   "Thin with water if needed and drink right away."
+  ]
+ },
+ {
+  "id": "m83",
+  "title": "Beef Patty with Fried Eggs and Carrot Salad",
+  "time": "18 min",
+  "mins": 18,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": true,
+  "lines": [
+   {
+    "t": "43 g (1.5 oz) feta",
+    "food": "Cheese, feta",
+    "g": 42.5
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1 tbsp salad dressing (15 g)",
+    "food": "Salad dressing, italian, commercial, regular",
+    "g": 15.2
+   },
+   {
+    "t": "200 g (7 oz) 95% lean ground beef",
+    "food": "Beef, ground, 95% lean meat / 5% fat, raw",
+    "g": 198.5
+   },
+   {
+    "t": "2.5 carrots (150 g)",
+    "food": "Carrots, raw",
+    "g": 150.3
+   },
+   {
+    "t": "2 eggs (100 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 99.2
+   },
+   {
+    "t": "50 g (1.75 oz) mixed salad greens",
+    "food": "Lettuce, green leaf, raw",
+    "g": 49.6
+   }
+  ],
+  "steps": [
+   "Heat the oil in a nonstick pan. Cook the beef patty on one side and fry the eggs on the other, 4 to 6 minutes a side for the patty. Season.",
+   "Toss the grated carrot with the greens, dressing and crumbled feta.",
+   "Serve the patty topped with the eggs, with the salad on the side."
+  ]
+ },
+ {
+  "id": "m84",
+  "title": "Summer Quinoa and Chicken Salad",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "120 g (4.25 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 120.5
+   },
+   {
+    "t": "1 tbsp balsamic vinegar (15 g)",
+    "food": "Vinegar, balsamic",
+    "g": 15.2
+   },
+   {
+    "t": "70 g (2.5 oz) quinoa (dry)",
+    "food": "Quinoa, uncooked",
+    "g": 70.9
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "1/2 cucumber (175 g)",
+    "food": "Cucumber, with peel, raw",
+    "g": 175.8
+   },
+   {
+    "t": "100 g (3.5 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 99.2
+   },
+   {
+    "t": "1/2 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Cook the quinoa and let it cool.",
+   "Cook the chicken pieces in the oil until done and season.",
+   "Dice the cucumber and halve the tomatoes.",
+   "Whisk the vinegar, mustard, salt and pepper, and toss everything together."
+  ]
+ },
+ {
+  "id": "m85",
+  "title": "Summer Salad with Plant-Based Chunks and Quinoa",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tbsp balsamic vinegar (15 g)",
+    "food": "Vinegar, balsamic",
+    "g": 15.2
+   },
+   {
+    "t": "55 g (2 oz) quinoa (dry)",
+    "food": "Quinoa, uncooked",
+    "g": 56.7
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1/2 cucumber (175 g)",
+    "food": "Cucumber, with peel, raw",
+    "g": 175.8
+   },
+   {
+    "t": "100 g (3.5 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 99.2
+   },
+   {
+    "t": "1/2 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 2.8
+   },
+   {
+    "t": "100 g (3.5 oz) soy chunks (TVP)",
+    "food": "Soy protein, textured, rehydrated",
+    "g": 99.2
+   }
+  ],
+  "steps": [
+   "Cook the quinoa and let it cool.",
+   "Brown the plant-based chunks in the oil and season.",
+   "Dice the cucumber and halve the tomatoes.",
+   "Whisk the vinegar, mustard, salt and pepper, and toss everything together."
+  ]
+ },
+ {
+  "id": "m86",
+  "title": "Sweet Potato and Chestnut Gratin",
+  "time": "40 min",
+  "mins": 40,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean",
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "140 g (5 oz) cooked ham",
+    "food": "Ham, sliced, regular (approximately 11% fat)",
+    "g": 141.8
+   },
+   {
+    "t": "14 g (1/2 oz) shredded Emmental",
+    "food": "Cheese, swiss",
+    "g": 14.2
+   },
+   {
+    "t": "90 g (3.25 oz) mushrooms",
+    "food": "Mushrooms, white, raw",
+    "g": 92.1
+   },
+   {
+    "t": "50 g (1.75 oz) cooked chestnuts",
+    "food": "Nuts, chestnuts, european, roasted",
+    "g": 49.6
+   },
+   {
+    "t": "1.5 tbsp light sour cream (24 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 23.7
+   },
+   {
+    "t": "140 g (5 oz) sweet potato",
+    "food": "Sweet potato, raw, unprepared",
+    "g": 141.8
+   }
+  ],
+  "steps": [
+   "Heat the oven to 390°F (200°C).",
+   "Microwave the sweet potato cubes with a splash of water, covered, 5 minutes. Drain.",
+   "Put them in a baking dish with the chestnuts, sliced mushrooms and diced ham.",
+   "Stir in the sour cream, season, top with the cheese and bake 20 minutes."
+  ]
+ },
+ {
+  "id": "m87",
+  "title": "Sweet Potato and Pork Blanquette",
+  "time": "45 min",
+  "mins": 45,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1.5 tbsp lactose-free light sour cream (24 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 24.4
+   },
+   {
+    "t": "100 g (3.5 oz) bouquet garni",
+    "food": null,
+    "g": 99.2
+   },
+   {
+    "t": "1/2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 2.7
+   },
+   {
+    "t": "43 g (1.5 oz) mushrooms",
+    "food": "Mushrooms, white, raw",
+    "g": 42.5
+   },
+   {
+    "t": "1/4 onion (37 g)",
+    "food": "Onions, raw",
+    "g": 36.9
+   },
+   {
+    "t": "1 tsp flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 2.8
+   },
+   {
+    "t": "100 g (3.5 oz) pork tenderloin",
+    "food": "Pork, fresh, loin, tenderloin, separable lean only, raw",
+    "g": 99.2
+   },
+   {
+    "t": "1 vegetable bouillon cube (11 g)",
+    "food": "Soup, bouillon cubes and granules, low sodium, dry",
+    "g": 11.3
+   },
+   {
+    "t": "120 g (4.25 oz) sweet potato",
+    "food": "Sweet potato, raw, unprepared",
+    "g": 120.5
+   },
+   {
+    "t": "1 carrots (60 g)",
+    "food": "Carrots, raw",
+    "g": 59.5
+   }
+  ],
+  "steps": [
+   "Dice the onion, sweet potato and pork; slice the carrot and mushrooms.",
+   "Brown the mushrooms in a nonstick pot and set aside. Cook the onion, carrot, sweet potato and pork in the oil 5 to 7 minutes.",
+   "Add the broth cube dissolved in the water and the bouquet garni. Cover and simmer 20 minutes, adding water if needed.",
+   "Stir the flour into the sour cream, add it to the pot and stir until thick. Return the mushrooms for 5 minutes and season."
+  ]
+ },
+ {
+  "id": "m88",
+  "title": "Tropical Chicken and Mango Salad",
+  "time": "30 min",
+  "mins": 30,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose",
+   "muscle"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "130 g (4.5 oz) chicken breast",
+    "food": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+    "g": 127.6
+   },
+   {
+    "t": "1 tbsp balsamic vinegar (15 g)",
+    "food": "Vinegar, balsamic",
+    "g": 15.2
+   },
+   {
+    "t": "55 g (2 oz) lettuce",
+    "food": "Lettuce, green leaf, raw",
+    "g": 56.7
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "28 g (1 oz) canned corn, drained",
+    "food": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+    "g": 28.4
+   },
+   {
+    "t": "150 g (5.25 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 148.8
+   },
+   {
+    "t": "150 g (5.25 oz) mango",
+    "food": "Mangos, raw",
+    "g": 148.8
+   },
+   {
+    "t": "5 tbsp quinoa (dry) (60 g)",
+    "food": "Quinoa, uncooked",
+    "g": 59.5
+   },
+   {
+    "t": "1 tbsp fresh cilantro (3 g)",
+    "food": null,
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Cook the quinoa 10 to 12 minutes, then rinse cold and drain.",
+   "Cook the chicken in the oil 6 to 7 minutes a side until done, then slice.",
+   "Toss the lettuce, quinoa, diced mango, halved tomatoes and corn.",
+   "Add the chicken and cilantro, drizzle with the vinegar, season and toss gently."
+  ]
+ },
+ {
+  "id": "m89",
+  "title": "Tuna Rillettes and Tomato Toast",
+  "time": "8 min",
+  "mins": 8,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "4 cherry tomatoes (70 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 70.9
+   },
+   {
+    "t": "2 tbsp lactose-free light sour cream (30 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 30.5
+   },
+   {
+    "t": "1.5 slices whole wheat bread (48 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 48.2
+   },
+   {
+    "t": "1/2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 2.7
+   },
+   {
+    "t": "80 g (2.75 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 78.0
+   },
+   {
+    "t": "1 tsp Dijon mustard",
+    "food": "Mustard, prepared, yellow",
+    "g": 5.7
+   }
+  ],
+  "steps": [
+   "Toast the bread.",
+   "Mix the flaked tuna with the sour cream, salt and pepper.",
+   "Spread mustard on the toast, then the tuna and halved tomatoes. Finish with a drizzle of oil."
+  ]
+ },
+ {
+  "id": "m90",
+  "title": "Tuna Rillettes with Carrot Sticks",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle",
+   "recomp"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "5 tbsp plant-based cooking cream (75 g)",
+    "food": "Plant-based cream alternative, made from soya (for boiling and refining)",
+    "g": 73.7
+   },
+   {
+    "t": "2 tsp lemon juice",
+    "food": "Lemon juice, raw",
+    "g": 9.1
+   },
+   {
+    "t": "300 g (10.5 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 297.7
+   },
+   {
+    "t": "1 tbsp Dijon mustard (14 g)",
+    "food": "Mustard, prepared, yellow",
+    "g": 14.2
+   },
+   {
+    "t": "2.25 carrots (135 g)",
+    "food": "Carrots, raw",
+    "g": 136.1
+   }
+  ],
+  "steps": [
+   "Mix the drained tuna with the mustard, lemon juice and cream. Season.",
+   "Serve with carrot sticks to dip."
+  ]
+ },
+ {
+  "id": "m91",
+  "title": "Tuna Stuffed Avocado",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": true,
+  "lines": [
+   {
+    "t": "100 g (3.5 oz) canned tuna in water, drained",
+    "food": "Fish, tuna, light, canned in water, drained solids",
+    "g": 99.2
+   },
+   {
+    "t": "1/2 tbsp lemon juice (9 g)",
+    "food": "Lemon juice, raw",
+    "g": 9.1
+   },
+   {
+    "t": "1/2 avocado (100 g)",
+    "food": "Avocados, raw, all commercial varieties",
+    "g": 99.2
+   },
+   {
+    "t": "2 tbsp 2% Greek yogurt (31 g)",
+    "food": "Yogurt, Greek, plain, lowfat",
+    "g": 31.2
+   }
+  ],
+  "steps": [
+   "Halve and pit the avocado.",
+   "Mix the tuna with the yogurt and lemon juice.",
+   "Scoop out a little avocado to make room, pile in the tuna and eat any extra on the side."
+  ]
+ },
+ {
+  "id": "m92",
+  "title": "Turkey-Stuffed Omelet",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": true,
+  "lines": [
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "200 g (7 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 198.5
+   },
+   {
+    "t": "90 g (3.25 oz) sliced deli turkey",
+    "food": "Turkey breast, sliced, prepackaged",
+    "g": 92.1
+   },
+   {
+    "t": "2 tsp balsamic vinegar",
+    "food": "Vinegar, balsamic",
+    "g": 9.1
+   },
+   {
+    "t": "3 eggs (150 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 150.3
+   },
+   {
+    "t": "50 g (1.75 oz) cheddar",
+    "food": "Cheese, cheddar",
+    "g": 49.6
+   }
+  ],
+  "steps": [
+   "Beat the eggs with salt and pepper and pour into the oil in a nonstick pan over medium heat. Cook 1 to 2 minutes.",
+   "Put the turkey and grated cheese on one half, fold over and cook 1 to 2 minutes more until melted.",
+   "Serve with the halved tomatoes dressed in balsamic."
+  ]
+ },
+ {
+  "id": "m93",
+  "title": "Turmeric Ginger Lemon Apple Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "4 apples (720 g)",
+    "food": "Apples, raw, with skin",
+    "g": 720.1
+   },
+   {
+    "t": "70 g (2.5 oz) fresh ginger",
+    "food": "Ginger root, raw",
+    "g": 70.9
+   },
+   {
+    "t": "7 tsp honey or agave",
+    "food": "Honey",
+    "g": 48.2
+   },
+   {
+    "t": "6 tbsp lemon juice (90 g)",
+    "food": "Lemon juice, raw",
+    "g": 91.4
+   }
+  ],
+  "steps": [
+   "Core and chop the apples and peel the ginger.",
+   "Blend with the lemon juice, honey and an ice cube or two, adding water until it pours. Drink right away."
+  ]
+ },
+ {
+  "id": "m94",
+  "title": "Vanilla Banana Protein Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "breakfast"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1.5 banana (180 g)",
+    "food": "Bananas, raw",
+    "g": 178.6
+   },
+   {
+    "t": "295 ml (10 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 304.6
+   },
+   {
+    "t": "1 tsp honey or agave",
+    "food": "Honey",
+    "g": 5.7
+   },
+   {
+    "t": "1 scoop protein powder (31 g)",
+    "food": "Beverages, Protein powder whey based",
+    "g": 31.2
+   }
+  ],
+  "steps": [
+   "Blend everything (frozen banana or a couple of ice cubes) until smooth.",
+   "Thin with water if needed."
+  ]
+ },
+ {
+  "id": "m95",
+  "title": "Vegan Banana Matcha Protein Smoothie",
+  "time": "3 min",
+  "mins": 3,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 banana (120 g)",
+    "food": "Bananas, raw",
+    "g": 119.1
+   },
+   {
+    "t": "1 tsp matcha powder",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "1 tbsp plant plant protein powder (9 g)",
+    "food": "Beverages, Protein powder soy based",
+    "g": 8.5
+   },
+   {
+    "t": "305 ml (10.25 fl oz) unsweetened soy milk",
+    "food": "Soymilk, original and vanilla, unfortified",
+    "g": 312.2
+   },
+   {
+    "t": "1.5 tbsp sliced almonds (14 g)",
+    "food": "Nuts, almonds",
+    "g": 14.2
+   }
+  ],
+  "steps": [
+   "Blend the plant milk, protein powder, matcha and banana until smooth (frozen banana or ice for a colder shake).",
+   "Pour into a glass and top with the sliced almonds."
+  ]
+ },
+ {
+  "id": "m96",
+  "title": "Vegan Chickpea Flour Spinach Omelette",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 slices whole wheat bread (65 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 65.2
+   },
+   {
+    "t": "1 tbsp plant-based cooking cream (14 g)",
+    "food": "Plant-based cream alternative, made from soya (for boiling and refining)",
+    "g": 14.2
+   },
+   {
+    "t": "2 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "200 g (7 oz) baby spinach",
+    "food": "Spinach, raw",
+    "g": 198.5
+   },
+   {
+    "t": "55 g (2 oz) chickpea flour",
+    "food": "Chickpea flour (besan)",
+    "g": 56.7
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Whisk the chickpea flour with the cream and enough water for a smooth batter. Season.",
+   "Wilt the spinach with the garlic in the oil, 2 to 3 minutes.",
+   "Pour the batter over the spinach, lower the heat and cook undisturbed 5 to 8 minutes until the top is no longer runny.",
+   "Flip and cook 3 to 5 minutes more until golden and firm. Serve with the toast."
+  ]
+ },
+ {
+  "id": "m97",
+  "title": "Vegan Chunk and Cheddar Baguette",
+  "time": "13 min",
+  "mins": 13,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "55 g (2 oz) baguette",
+    "food": "Bread, french or vienna, whole wheat",
+    "g": 56.7
+   },
+   {
+    "t": "1/2 tomato (75 g)",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 73.7
+   },
+   {
+    "t": "21 g (3/4 oz) vegan cheddar",
+    "food": "Plant-based cheese alternative, vegetable fat based, vegan",
+    "g": 21.3
+   },
+   {
+    "t": "1/2 cucumber (175 g)",
+    "food": "Cucumber, with peel, raw",
+    "g": 175.8
+   },
+   {
+    "t": "100 g (3.5 oz) soy chunks (TVP)",
+    "food": "Soy protein, textured, rehydrated",
+    "g": 99.2
+   },
+   {
+    "t": "21 g (3/4 oz) vegan cream cheese",
+    "food": "Plant-based soft cream cheese alternative, almond-based, vegan",
+    "g": 21.3
+   }
+  ],
+  "steps": [
+   "Brown the plant-based chunks in a nonstick pan and season.",
+   "Split the baguette and spread both sides with the vegan cream cheese.",
+   "Layer tomato slices and the vegan cheddar, then the chunks, and close.",
+   "Serve with cucumber sticks."
+  ]
+ },
+ {
+  "id": "m98",
+  "title": "Vegan Quiche with Tomato Salad",
+  "time": "43 min",
+  "mins": 43,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "80 g (2.75 oz) tomato",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 78.0
+   },
+   {
+    "t": "43 g (1.5 oz) rehydrated TVP",
+    "food": "Soy protein, textured, rehydrated",
+    "g": 42.5
+   },
+   {
+    "t": "43 g (1.5 oz) rolled oats",
+    "food": "Cereals, oats, regular and quick, not fortified, dry",
+    "g": 42.5
+   },
+   {
+    "t": "1 tsp fresh herbs",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "4 tbsp silken tofu (60 g)",
+    "food": "Tofu, soft, prepared with calcium sulfate and magnesium chloride (nigari)",
+    "g": 59.5
+   },
+   {
+    "t": "7 g (1/4 oz) vegan shredded cheese",
+    "food": "Plant-based cheese alternative, vegetable fat based, vegan",
+    "g": 7.1
+   },
+   {
+    "t": "21 g (3/4 oz) light margarine",
+    "food": "Margarine, tub, hydrogenated, canola oil",
+    "g": 21.3
+   },
+   {
+    "t": "37 ml (1.25 fl oz) unsweetened soy milk",
+    "food": "Soymilk, original and vanilla, unfortified",
+    "g": 38.1
+   }
+  ],
+  "steps": [
+   "Heat the oven to 350°F (180°C). Rehydrate the TVP in hot water and drain.",
+   "Blitz the oats into a coarse flour and mix with the melted margarine, half the tofu and a pinch of salt into a dough.",
+   "Press into a small greased dish, prick with a fork and bake 8 minutes.",
+   "Whisk the rest of the tofu with the milk, then stir in the TVP, cheese, herbs, salt and pepper.",
+   "Pour into the crust and bake 15 to 20 minutes until set. Serve with sliced tomato."
+  ]
+ },
+ {
+  "id": "m99",
+  "title": "Vegan Zucchini Fritters with Spinach",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "150 g (5.25 oz) zucchini",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "g": 148.8
+   },
+   {
+    "t": "28 g (1 oz) almond flour",
+    "food": "Nuts, almonds, blanched",
+    "g": 28.4
+   },
+   {
+    "t": "1 tbsp fresh dill",
+    "food": null,
+    "g": 0.0
+   },
+   {
+    "t": "28 g (1 oz) baby spinach",
+    "food": "Spinach, raw",
+    "g": 28.4
+   },
+   {
+    "t": "1 tbsp silken tofu (14 g)",
+    "food": "Tofu, soft, prepared with calcium sulfate and magnesium chloride (nigari)",
+    "g": 14.2
+   },
+   {
+    "t": "1/2 tsp baking powder",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "1.25 tbsp olive oil (16 g)",
+    "food": "Oil, olive, salad or cooking",
+    "g": 16.3
+   },
+   {
+    "t": "1 green onion (20 g)",
+    "food": "Onions, spring or scallions (includes tops and bulb), raw",
+    "g": 19.8
+   },
+   {
+    "t": "1 garlic cloves (3 g)",
+    "food": "Garlic, raw",
+    "g": 2.8
+   },
+   {
+    "t": "43 g (1.5 oz) vegan cream cheese",
+    "food": "Plant-based soft cream cheese alternative, almond-based, vegan",
+    "g": 42.5
+   }
+  ],
+  "steps": [
+   "Grate the zucchini and squeeze out as much water as you can in a clean towel.",
+   "Mix with chopped spinach, the vegan cream cheese, dill, tofu, sliced green onion and garlic.",
+   "Stir in the almond flour and baking powder.",
+   "Fry spoonfuls in the olive oil over medium heat, flattening them, 3 to 4 minutes a side until golden.",
+   "Drain on paper towel and serve warm."
+  ]
+ },
+ {
+  "id": "m100",
+  "title": "Vegetable Lasagna with Ham",
+  "time": "35 min",
+  "mins": 35,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "240 g (8.5 oz) cooked ham",
+    "food": "Ham, sliced, regular (approximately 11% fat)",
+    "g": 241.0
+   },
+   {
+    "t": "300 g (10.5 oz) zucchini",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "g": 297.7
+   },
+   {
+    "t": "300 g (10.5 oz) tomato sauce",
+    "food": "Tomato products, canned, sauce",
+    "g": 297.7
+   },
+   {
+    "t": "3 tsp dried oregano",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "3 tbsp garlic powder (20 g)",
+    "food": "Spices, garlic powder",
+    "g": 19.8
+   },
+   {
+    "t": "70 g (2.5 oz) part-skim mozzarella",
+    "food": "Cheese, mozzarella, part skim milk",
+    "g": 70.9
+   }
+  ],
+  "steps": [
+   "Heat the oven to 400°F (200°C).",
+   "Slice the zucchini lengthwise into thin strips.",
+   "Season the tomato sauce with oregano, garlic powder, salt and pepper.",
+   "Layer zucchini, sauce and ham in a small dish, repeat, and finish with zucchini and the mozzarella.",
+   "Bake 25 to 30 minutes until bubbling and golden."
+  ]
+ },
+ {
+  "id": "m101",
+  "title": "Vegetable Lentil Salad",
+  "time": "10 min",
+  "mins": 10,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "80 g (2.75 oz) canned chickpeas, drained",
+    "food": "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained, rinsed in tap water",
+    "g": 78.0
+   },
+   {
+    "t": "150 g (5.25 oz) canned lentils, drained",
+    "food": "Lentils, mature seeds, cooked, boiled, without salt",
+    "g": 148.8
+   },
+   {
+    "t": "2 tbsp plant-based cooking cream (31 g)",
+    "food": "Plant-based cream alternative, made from soya (for boiling and refining)",
+    "g": 31.2
+   },
+   {
+    "t": "1.5 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 8.2
+   },
+   {
+    "t": "80 g (2.75 oz) cooked edamame",
+    "food": "Edamame, frozen, prepared",
+    "g": 78.0
+   },
+   {
+    "t": "28 g (1 oz) canned corn, drained",
+    "food": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+    "g": 28.4
+   },
+   {
+    "t": "1 tbsp lemon juice (15 g)",
+    "food": "Lemon juice, raw",
+    "g": 15.2
+   },
+   {
+    "t": "2 carrots (120 g)",
+    "food": "Carrots, raw",
+    "g": 119.1
+   },
+   {
+    "t": "1 tbsp fresh parsley",
+    "food": null,
+    "g": 0.0
+   }
+  ],
+  "steps": [
+   "Drain the chickpeas, lentils and corn.",
+   "Combine them with the edamame and grated carrot.",
+   "Whisk the oil, lemon juice and cream, pour over and toss.",
+   "Season and finish with parsley."
+  ]
+ },
+ {
+  "id": "m102",
+  "title": "Vegetarian Bean Sauté",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg",
+   "vegan",
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "200 g (7 oz) canned red kidney beans, drained",
+    "food": "Beans, kidney, red, mature seeds, canned, drained solids",
+    "g": 198.5
+   },
+   {
+    "t": "1/4 tsp garlic powder",
+    "food": "Spices, garlic powder",
+    "g": 0.0
+   },
+   {
+    "t": "1 bell pepper (180 g)",
+    "food": "Peppers, sweet, red, raw",
+    "g": 178.6
+   },
+   {
+    "t": "1 slice whole wheat bread (31 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 31.2
+   },
+   {
+    "t": "3 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 13.6
+   },
+   {
+    "t": "28 g (1 oz) canned corn, drained",
+    "food": "Corn, sweet, yellow, canned, whole kernel, drained solids",
+    "g": 28.4
+   },
+   {
+    "t": "3 tbsp tomato sauce (48 g)",
+    "food": "Tomato products, canned, sauce",
+    "g": 48.2
+   }
+  ],
+  "steps": [
+   "Cook the diced pepper in the oil until soft.",
+   "Add the beans, corn, garlic powder and tomato sauce and heat through, about 5 minutes.",
+   "Serve on the toast."
+  ]
+ },
+ {
+  "id": "m103",
+  "title": "Vegetarian Gnocchi with Plant-Based Strips and Leeks",
+  "time": "25 min",
+  "mins": 25,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "100 g (3.5 oz) potato gnocchi",
+    "food": "Gnocchi raw",
+    "g": 99.2
+   },
+   {
+    "t": "1/2 onion (75 g)",
+    "food": "Onions, raw",
+    "g": 73.7
+   },
+   {
+    "t": "1 leeks (200 g)",
+    "food": "Leek, raw",
+    "g": 201.3
+   },
+   {
+    "t": "2 tbsp light sour cream (30 g)",
+    "food": "Cream, sour, reduced fat, cultured",
+    "g": 29.6
+   },
+   {
+    "t": "100 g (3.5 oz) soy chunks (TVP)",
+    "food": "Soy protein, textured, rehydrated",
+    "g": 99.2
+   }
+  ],
+  "steps": [
+   "Slice the leek and chop the onion.",
+   "Soften them in the oil 5 to 7 minutes, with a splash of water if they catch.",
+   "Add the plant-based chunks and brown 3 to 5 minutes.",
+   "Stir in the gnocchi for 2 to 3 minutes, then the sour cream. Season and serve."
+  ]
+ },
+ {
+  "id": "m104",
+  "title": "White Omelet with Salmon and Sautéed Zucchini",
+  "time": "20 min",
+  "mins": 20,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [
+   "lf"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "120 g (4.25 oz) smoked salmon",
+    "food": "Fish, salmon, chinook, smoked",
+    "g": 120.5
+   },
+   {
+    "t": "1 slice whole wheat bread (31 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 31.2
+   },
+   {
+    "t": "1 zucchini (200 g)",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "g": 201.3
+   },
+   {
+    "t": "1 tsp oil",
+    "food": "Oil, olive, salad or cooking",
+    "g": 5.4
+   },
+   {
+    "t": "1 eggs (50 g)",
+    "food": "Egg, whole, raw, fresh",
+    "g": 51.0
+   },
+   {
+    "t": "2 egg whites (65 g)",
+    "food": "Egg, white, raw, fresh",
+    "g": 65.2
+   }
+  ],
+  "steps": [
+   "Sauté the zucchini in the oil until tender.",
+   "Dice the smoked salmon.",
+   "Separate the egg; beat the whites to stiff peaks, then fold in the yolk, a pinch of pepper and the salmon.",
+   "Spread in a lightly oiled nonstick pan over low-medium heat, cover and cook about 5 minutes until set.",
+   "Serve with the zucchini and toast."
+  ]
+ },
+ {
+  "id": "m105",
+  "title": "Whole Grain Toast with Cottage Cheese and Honey or Agave",
+  "time": "3 min",
+  "mins": 3,
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "goals": [
+   "lean"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2.5 slices whole wheat bread (80 g)",
+    "food": "Bread, whole-wheat, commercially prepared",
+    "g": 79.4
+   },
+   {
+    "t": "3 tsp honey or agave",
+    "food": "Honey",
+    "g": 19.8
+   },
+   {
+    "t": "300 g (10.5 oz) 2% cottage cheese",
+    "food": "Cheese, cottage, lowfat, 2% milkfat",
+    "g": 297.7
+   }
+  ],
+  "steps": [
+   "Toast the bread.",
+   "Spread with the cottage cheese and drizzle with honey or agave."
+  ]
+ },
+ {
+  "id": "m106",
+  "title": "Winter Mug Cake with Cinnamon and Applesauce Center",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "2 tbsp 2% milk (30 g)",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 30.5
+   },
+   {
+    "t": "1 tsp baking powder",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "3 tsp honey or agave",
+    "food": "Honey",
+    "g": 19.8
+   },
+   {
+    "t": "70 g (2.5 oz) flour",
+    "food": "Wheat flour, white, all-purpose, enriched, bleached",
+    "g": 70.9
+   },
+   {
+    "t": "6 tbsp unsweetened applesauce (90 g)",
+    "food": "Applesauce, canned, unsweetened, without added ascorbic acid (includes USDA commodity)",
+    "g": 90.7
+   },
+   {
+    "t": "1 tsp cinnamon",
+    "food": "Spices, cinnamon, ground",
+    "g": 2.8
+   }
+  ],
+  "steps": [
+   "Mix everything except 1 tablespoon of the applesauce.",
+   "Pour half the batter into a mug, add the reserved applesauce in the middle and cover with the rest.",
+   "Microwave about 1½ minutes."
+  ]
+ },
+ {
+  "id": "m107",
+  "title": "Yogurt and Matcha Smoothie",
+  "time": "5 min",
+  "mins": 5,
+  "slots": [
+   "snack"
+  ],
+  "goals": [
+   "muscle"
+  ],
+  "diets": [
+   "veg"
+  ],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1 banana (120 g)",
+    "food": "Bananas, raw",
+    "g": 119.1
+   },
+   {
+    "t": "1 tsp matcha powder",
+    "food": null,
+    "g": 2.8
+   },
+   {
+    "t": "120 ml (4 fl oz) 2% milk",
+    "food": "Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+    "g": 121.8
+   },
+   {
+    "t": "1 tbsp honey (20 g)",
+    "food": "Honey",
+    "g": 19.8
+   },
+   {
+    "t": "150 g (5.25 oz) Greek yogurt",
+    "food": "Yogurt, Greek, plain, whole milk",
+    "g": 148.8
+   }
+  ],
+  "steps": [
+   "Blend the yogurt, milk, matcha, banana and honey until smooth (frozen banana makes it creamier)."
+  ]
+ },
+ {
+  "id": "m108",
+  "title": "Zucchini Noodles with Pesto and Turkey Slices",
+  "time": "15 min",
+  "mins": 15,
+  "slots": [
+   "main"
+  ],
+  "goals": [
+   "lose"
+  ],
+  "diets": [],
+  "keto": false,
+  "lines": [
+   {
+    "t": "1.5 zucchini (300 g)",
+    "food": "Squash, summer, zucchini, includes skin, raw",
+    "g": 300.5
+   },
+   {
+    "t": "200 g (7 oz) cherry tomatoes",
+    "food": "Tomatoes, red, ripe, raw, year round average",
+    "g": 198.5
+   },
+   {
+    "t": "100 g (3.5 oz) sliced deli turkey",
+    "food": "Turkey breast, sliced, prepackaged",
+    "g": 99.2
+   },
+   {
+    "t": "1 tbsp basil pesto (14 g)",
+    "food": "Sauce, pesto, ready-to-serve, refrigerated",
+    "g": 14.2
+   },
+   {
+    "t": "70 g (2.5 oz) part-skim mozzarella",
+    "food": "Cheese, mozzarella, part skim milk",
+    "g": 70.9
+   }
+  ],
+  "steps": [
+   "Spiralize or peel the zucchini into noodles. Blanch 2 to 3 minutes if you like, or leave raw.",
+   "Add halved tomatoes and torn mozzarella.",
+   "Toss with the pesto, season, and serve with the turkey."
+  ]
+ }
+]

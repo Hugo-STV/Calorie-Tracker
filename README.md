@@ -83,16 +83,5 @@ Every row is checked: stated calories must agree with protein, carbs and fat (al
 - Bundeslebensmittelschlüssel (BLS) 4.0, Max Rubner-Institut, via [@thereforejs/foods](https://github.com/thereforejs/foods), CC BY 4.0 (not published by the Max Rubner-Institut); food nutrition data from TempoLife (tempolife.app), CC BY 4.0.
 - A few regional dishes no official table covers are typical estimates and are labelled *Estimate* in the app.
 - Packaged products: [Open Food Facts](https://openfoodfacts.org), Open Database License; product images CC BY-SA.
-- Recipe photos from [Wikimedia Commons](https://commons.wikimedia.org), cropped to 4:3 (details in `photos/credits.json`):
-  - Protein overnight oats: [Protein overnight oats.jpg](https://commons.wikimedia.org/wiki/File:Protein_overnight_oats.jpg) by Nervy8924, CC BY-SA 4.0
-  - Egg and veggie muffin bites: [Crepe-crusted mini quiches (8553921148).jpg](https://commons.wikimedia.org/wiki/File:Crepe-crusted_mini_quiches_(8553921148).jpg) by Karen and Brad Emerson, CC BY 2.0
-  - Chicken burrito bowl: [Steak burrito bowl at La Casa Restaurant in Sonoma, California - Sarah Stierch 03.jpg](https://commons.wikimedia.org/wiki/File:Steak_burrito_bowl_at_La_Casa_Restaurant_in_Sonoma,_California_-_Sarah_Stierch_03.jpg) by Sarah Stierch, CC BY 4.0
-  - Hotel room protein plate: [Boiled Eggs and Tomato slices meal.jpg](https://commons.wikimedia.org/wiki/File:Boiled_Eggs_and_Tomato_slices_meal.jpg) by MmaBaggio, CC BY-SA 4.0
-  - Cottage cheese pancakes: [Syrniki.jpg](https://commons.wikimedia.org/wiki/File:Syrniki.jpg) by Juerg Vollmer (cut by Off-shell), CC BY-SA 2.0
-  - Tuna and white bean salad: [Insalata di Fagioli e Tonno – Bohnensalat mit Thunfisch (7327273414).jpg](https://commons.wikimedia.org/wiki/File:Insalata_di_Fagioli_e_Tonno_%E2%80%93_Bohnensalat_mit_Thunfisch_(7327273414).jpg) by Katrin Gilger, CC BY-SA 2.0
-  - Big-batch turkey chili: [Bowl of chili.jpg](https://commons.wikimedia.org/wiki/File:Bowl_of_chili.jpg) by Carstor, CC BY-SA 2.5
-  - Sheet-pan salmon and potatoes: [Grilled Salmon (15950616571).jpg](https://commons.wikimedia.org/wiki/File:Grilled_Salmon_(15950616571).jpg) by Prayitno, CC BY 2.0
-  - Peanut banana protein shake: [Fruit and peanut butter smoothie. 1.jpg](https://commons.wikimedia.org/wiki/File:Fruit_and_peanut_butter_smoothie._1.jpg) by SharonDawn, CC BY-SA 4.0
-  - Beef and broccoli stir-fry: [Beef and broccoli stir fry.jpg](https://commons.wikimedia.org/wiki/File:Beef_and_broccoli_stir_fry.jpg) by Joy, CC BY 2.0
-- Libraries: [Preact](https://preactjs.com) (MIT), [zxing-wasm](https://github.com/Sec-ant/zxing-wasm) (MIT).
-- Additive risk levels are a starter list based on EFSA and IARC reviews, not medical advice.
+- Recipe photos: freely licensed photos from [Wikimedia Commons](https://commons.wikimedia.org), cropped to 4:3. Each recipe page credits its photographer and licence; the full list (file, author, licence, link) is in `photos/credits.json`.
+- 108 recipes are adapted from Promealplan sample menus: the ingredients and amounts are kept, nutrition is recalculated from the food tables above, and the directions are written for Fuel (`recipes/mealplan-src.json`, built into the app by `tools/mkrecipes.py`).

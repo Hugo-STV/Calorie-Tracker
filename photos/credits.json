@@ -4,69 +4,823 @@
   "page": "https://commons.wikimedia.org/wiki/File:Protein_overnight_oats.jpg",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "artist": "Nervy8924"
+  "artist": "Nervy8924",
+  "by": "Nervy8924"
  },
  "i2": {
   "file": "File:Crepe-crusted mini quiches (8553921148).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Crepe-crusted_mini_quiches_(8553921148).jpg",
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "artist": "Karen and Brad Emerson"
+  "artist": "Karen and Brad Emerson",
+  "by": "Karen and Brad Emerson"
  },
  "i3": {
   "file": "File:Steak burrito bowl at La Casa Restaurant in Sonoma, California - Sarah Stierch 03.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Steak_burrito_bowl_at_La_Casa_Restaurant_in_Sonoma,_California_-_Sarah_Stierch_03.jpg",
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "artist": "Missvain"
+  "artist": "Missvain",
+  "by": "Sarah Stierch"
  },
  "i4": {
   "file": "File:Boiled Eggs and Tomato slices meal.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Boiled_Eggs_and_Tomato_slices_meal.jpg",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "artist": "MmaBaggio"
+  "artist": "MmaBaggio",
+  "by": "MmaBaggio"
  },
  "i5": {
   "file": "File:Syrniki.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Syrniki.jpg",
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "artist": "Juerg Vollmer from Z\u00fcrich, Switzerland\u00a0; cut by Off-shell"
+  "artist": "Juerg Vollmer from Zürich, Switzerland ; cut by Off-shell",
+  "by": "Juerg Vollmer"
  },
  "i6": {
-  "file": "File:Insalata di Fagioli e Tonno \u2013 Bohnensalat mit Thunfisch (7327273414).jpg",
+  "file": "File:Insalata di Fagioli e Tonno – Bohnensalat mit Thunfisch (7327273414).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Insalata_di_Fagioli_e_Tonno_%E2%80%93_Bohnensalat_mit_Thunfisch_(7327273414).jpg",
   "license": "CC BY-SA 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "artist": "Katrin Gilger"
+  "artist": "Katrin Gilger",
+  "by": "Katrin Gilger"
  },
  "i7": {
   "file": "File:Bowl of chili.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Bowl_of_chili.jpg",
   "license": "CC BY-SA 2.5",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
-  "artist": "Carstor"
+  "artist": "Carstor",
+  "by": "Carstor"
  },
  "i8": {
   "file": "File:Grilled Salmon (15950616571).jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Grilled_Salmon_(15950616571).jpg",
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "artist": "Prayitno / Thank you for (12 millions +) view from Los Angeles, USA"
+  "artist": "Prayitno / Thank you for (12 millions +) view from Los Angeles, USA",
+  "by": "Prayitno"
  },
  "i9": {
   "file": "File:Fruit and peanut butter smoothie. 1.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Fruit_and_peanut_butter_smoothie._1.jpg",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "artist": "SharonDawn"
+  "artist": "SharonDawn",
+  "by": "SharonDawn"
  },
  "i10": {
   "file": "File:Beef and broccoli stir fry.jpg",
   "page": "https://commons.wikimedia.org/wiki/File:Beef_and_broccoli_stir_fry.jpg",
   "license": "CC BY 2.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-  "artist": "Joy"
+  "artist": "Joy",
+  "by": "Joy"
+ },
+ "m0": {
+  "file": "File:DFC 6162 Sticky-sweet grilled chicken wings caramelized to a perfect char - a mouthwatering street-food favorite from Klet Kaeo Sattahip.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:DFC_6162_Sticky-sweet_grilled_chicken_wings_caramelized_to_a_perfect_char_-_a_mouthwatering_street-food_favorite_from_Klet_Kaeo_Sattahip.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "PattayaPatrol",
+  "by": "PattayaPatrol"
+ },
+ "m1": {
+  "file": "File:Montréal bagel with lox.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Montr%C3%A9al_bagel_with_lox.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Newmila",
+  "by": "Newmila"
+ },
+ "m4": {
+  "file": "File:Matcha-Kari smoothies.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Matcha-Kari_smoothies.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "MatchaKari1",
+  "by": "MatchaKari1"
+ },
+ "m6": {
+  "file": "File:Roast beef dish.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Roast_beef_dish.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Akahito Yamabe",
+  "by": "Akahito Yamabe"
+ },
+ "m7": {
+  "file": "File:Cooking stir fry beef, Terrytown, Louisiana, February 2016 Skillet.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cooking_stir_fry_beef,_Terrytown,_Louisiana,_February_2016_Skillet.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Infrogmation of New Orleans",
+  "by": "Infrogmation of New Orleans"
+ },
+ "m9": {
+  "file": "File:Oksemørbrad med bearnaisesauce, kartoffelpuré, grønne bønner, bagte tomater, hvidløg og brød (5572078688).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Oksem%C3%B8rbrad_med_bearnaisesauce,_kartoffelpur%C3%A9,_gr%C3%B8nne_b%C3%B8nner,_bagte_tomater,_hvidl%C3%B8g_og_br%C3%B8d_(5572078688).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "cyclonebill from Copenhagen, Denmark",
+  "by": "cyclonebill"
+ },
+ "m10": {
+  "file": "File:Blanquette de veau à l'ancienne 01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Blanquette_de_veau_%C3%A0_l%27ancienne_01.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Arnaud 25",
+  "by": "Arnaud 25"
+ },
+ "m12": {
+  "file": "File:Norman buckwheat galette \"Portaise\" & Salad - Le Moulin de la Galette, Bayeux 2025-03-25.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Norman_buckwheat_galette_%22Portaise%22_%26_Salad_-_Le_Moulin_de_la_Galette,_Bayeux_2025-03-25.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m17": {
+  "file": "File:Chicken Marsala With Risotto.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chicken_Marsala_With_Risotto.jpg",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "artist": "IReallyLikeYorhshirePuddding",
+  "by": "IReallyLikeYorhshirePuddding"
+ },
+ "m18": {
+  "file": "File:Plum Pasta Salad.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Plum_Pasta_Salad.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Jeremy Bronson from Grand Rapids",
+  "by": "Jeremy Bronson"
+ },
+ "m20": {
+  "file": "File:Vegetable Omelette with slice of bread and chutney.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Vegetable_Omelette_with_slice_of_bread_and_chutney.JPG",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "TriptaG",
+  "by": "TriptaG"
+ },
+ "m21": {
+  "file": "File:Colorful healthy Chickpea Salad - 49859083608.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Colorful_healthy_Chickpea_Salad_-_49859083608.jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "FitTasteTic",
+  "by": "FitTasteTic"
+ },
+ "m22": {
+  "file": "File:Flickr - cyclonebill - Chili con carne (2).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Chili_con_carne_(2).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "cyclonebill",
+  "by": "cyclonebill"
+ },
+ "m24": {
+  "file": "File:Chocolate Smoothie Recipe By Sonia Goyal.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chocolate_Smoothie_Recipe_By_Sonia_Goyal.jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Sonia Goyal Jaipur",
+  "by": "Sonia Goyal Jaipur"
+ },
+ "m25": {
+  "file": "File:Cloud-bread-3529136.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cloud-bread-3529136.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "bluebudgie",
+  "by": "bluebudgie"
+ },
+ "m32": {
+  "file": "File:Honey Roasted Duck Breast (sizzling) - Siam Siam 2024-07-31.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Honey_Roasted_Duck_Breast_(sizzling)_-_Siam_Siam_2024-07-31.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m34": {
+  "file": "File:Bacon & Egg Muffin, Aroma Café Northbridge, 2026 (01).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bacon_%26_Egg_Muffin,_Aroma_Caf%C3%A9_Northbridge,_2026_(01).jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Bahnfrend",
+  "by": "Bahnfrend"
+ },
+ "m37": {
+  "file": "File:Greek yoghurt with honey.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Greek_yoghurt_with_honey.jpg",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "ProjectManhattan",
+  "by": "ProjectManhattan"
+ },
+ "m38": {
+  "file": "File:Quinoa salad (3329169850).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Quinoa_salad_(3329169850).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Karen and Brad Emerson",
+  "by": "Karen and Brad Emerson"
+ },
+ "m42": {
+  "file": "File:Viande des Grisons 02.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Viande_des_Grisons_02.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Arnaud 25",
+  "by": "Arnaud 25"
+ },
+ "m44": {
+  "file": "File:Ham rolls-01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ham_rolls-01.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "alisonwilley",
+  "by": "alisonwilley"
+ },
+ "m46": {
+  "file": "File:BEC Sandwich on Everything Bagel.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:BEC_Sandwich_on_Everything_Bagel.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Ilikefood",
+  "by": "Ilikefood"
+ },
+ "m47": {
+  "file": "File:Person reaches for a piece of crepe on a plate at home during a meal.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Person_reaches_for_a_piece_of_crepe_on_a_plate_at_home_during_a_meal.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Shixart1985",
+  "by": "Shixart1985"
+ },
+ "m50": {
+  "file": "File:Flickr - cyclonebill - Frikadeller med ristet rugbrød og céleri remoulade.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Frikadeller_med_ristet_rugbr%C3%B8d_og_c%C3%A9leri_remoulade.jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "cyclonebill",
+  "by": "cyclonebill"
+ },
+ "m52": {
+  "file": "File:Mediterranean salad with chicken and watermelon - London, UK.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mediterranean_salad_with_chicken_and_watermelon_-_London,_UK.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Daderot",
+  "by": "Daderot"
+ },
+ "m54": {
+  "file": "File:Gegrilltes Hühnerfilet auf Creme-Polenta mit Blattspinat und getrockneten Tomaten (IMG 20240902 114642).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Gegrilltes_H%C3%BChnerfilet_auf_Creme-Polenta_mit_Blattspinat_und_getrockneten_Tomaten_(IMG_20240902_114642).jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Simon Legner (User:simon04)",
+  "by": "Simon Legner"
+ },
+ "m55": {
+  "file": "File:Pasta with Shiitake and leek - Pasta con Shiitake y puerro (5101726141).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pasta_with_Shiitake_and_leek_-_Pasta_con_Shiitake_y_puerro_(5101726141).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Lablascovegmenu from London",
+  "by": "Lablascovegmenu"
+ },
+ "m56": {
+  "file": "File:Pickled beet eggs large.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pickled_beet_eggs_large.jpg",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "Brianjester",
+  "by": "Brianjester"
+ },
+ "m57": {
+  "file": "File:Gnocchi Salsiccia - Giuseppes 2026-08-17.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Gnocchi_Salsiccia_-_Giuseppes_2026-08-17.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m59": {
+  "file": "File:2023 Sernik z rodzynkami.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:2023_Sernik_z_rodzynkami.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Jacek Halicki",
+  "by": "Jacek Halicki"
+ },
+ "m60": {
+  "file": "File:Strawberry Frozen Yogurt (2552806737).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Strawberry_Frozen_Yogurt_(2552806737).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "thebittenword.com",
+  "by": "thebittenword.com"
+ },
+ "m67": {
+  "file": "File:Salad Nicoise - Flickr - WordRidden.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Salad_Nicoise_-_Flickr_-_WordRidden.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "WordRidden",
+  "by": "WordRidden"
+ },
+ "m69": {
+  "file": "File:Roast Chicken Legs and Thighs (31196736704).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Roast_Chicken_Legs_and_Thighs_(31196736704).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Willis Lam",
+  "by": "Willis Lam"
+ },
+ "m70": {
+  "file": "File:At La Palma 2023 417.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:At_La_Palma_2023_417.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Photograph by Mike Peel (www.mikepeel.net).",
+  "by": "Mike Peel"
+ },
+ "m75": {
+  "file": "File:Yogurt & Olive Oil Dip, Damascus (2254934118).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Yogurt_%26_Olive_Oil_Dip,_Damascus_(2254934118).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Dan from Brussels, Europe",
+  "by": "Dan"
+ },
+ "m76": {
+  "file": "File:Savoury Waffle - Malt Cafe 2025-11-30.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Savoury_Waffle_-_Malt_Cafe_2025-11-30.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m79": {
+  "file": "File:Lyon 7e - Rue de Bonald - Restaurant Kuro Goma, cheese cake au matcha.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lyon_7e_-_Rue_de_Bonald_-_Restaurant_Kuro_Goma,_cheese_cake_au_matcha.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Romainbehar",
+  "by": "Romainbehar"
+ },
+ "m80": {
+  "file": "File:SMOKED SALMON TOAST - 17 GRAMS 2025-09-20.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:SMOKED_SALMON_TOAST_-_17_GRAMS_2025-09-20.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m83": {
+  "file": "File:Oeuf à cheval.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Oeuf_%C3%A0_cheval.JPG",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "Adri08",
+  "by": "Adri08"
+ },
+ "m87": {
+  "file": "File:Blanquette de Veau (3).JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Blanquette_de_Veau_(3).JPG",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "artist": "Dr. Bernd Gross",
+  "by": "Dr. Bernd Gross"
+ },
+ "m89": {
+  "file": "File:Tuna on Toast with Roquette, Tomato and Radish Salad (68119914).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Tuna_on_Toast_with_Roquette,_Tomato_and_Radish_Salad_(68119914).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Alpha from Melbourne, Australia",
+  "by": "Alpha"
+ },
+ "m93": {
+  "file": "File:Apple carrot ginger juice - Lily's Cafe, Brighton 2024-02-03.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Apple_carrot_ginger_juice_-_Lily%27s_Cafe,_Brighton_2024-02-03.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m95": {
+  "file": "File:Matcha tea latte with rosetta latte art.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Matcha_tea_latte_with_rosetta_latte_art.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Irvan Ary Maulana",
+  "by": "Irvan Ary Maulana"
+ },
+ "m97": {
+  "file": "File:Bocadillo Chorizo - Madrid.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Bocadillo_Chorizo_-_Madrid.JPG",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "Tamorlan",
+  "by": "Tamorlan"
+ },
+ "m98": {
+  "file": "File:Quiche and salad at Paris Bakery.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Quiche_and_salad_at_Paris_Bakery.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Ruth Hartnup",
+  "by": "Ruth Hartnup"
+ },
+ "m99": {
+  "file": "File:Zucchini & feta fritters (7804257920).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Zucchini_%26_feta_fritters_(7804257920).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Nicole Bratt from Seattle, WA, USA",
+  "by": "Nicole Bratt"
+ },
+ "m100": {
+  "file": "File:Child Care Recipes (Team Nutiriton) (20212203-FNS-UNC-8847).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Child_Care_Recipes_(Team_Nutiriton)_(20212203-FNS-UNC-8847).jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "USDAgov",
+  "by": "USDAgov"
+ },
+ "m101": {
+  "file": "File:Lentil salad (7668557930).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lentil_salad_(7668557930).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Lablascovegmenu from London",
+  "by": "Lablascovegmenu"
+ },
+ "m103": {
+  "file": "File:Gnocchi Carbonara - Moontone.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Gnocchi_Carbonara_-_Moontone.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m104": {
+  "file": "File:Liat Portal for Foodie Disorder - Israeli omelet with chopped salad and coleslaw.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Israeli_omelet_with_chopped_salad_and_coleslaw.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "HaJunkiyada",
+  "by": "HaJunkiyada"
+ },
+ "m108": {
+  "file": "File:Zoodles - Zucchini Spirals at Noodles and Company (41891311712).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Zoodles_-_Zucchini_Spirals_at_Noodles_and_Company_(41891311712).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Tony Webster from Minneapolis, Minnesota, United States",
+  "by": "Tony Webster"
+ },
+ "m2": {
+  "file": "File:Pork chop at home.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pork_chop_at_home.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Peachyeung316",
+  "by": "Peachyeung316"
+ },
+ "m15": {
+  "file": "File:Ham and Cheese waffle at The Flavour Spot.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ham_and_Cheese_waffle_at_The_Flavour_Spot.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Mike McCune",
+  "by": "Mike McCune"
+ },
+ "m16": {
+  "file": "File:Chia Seed Pudding in a cup.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chia_Seed_Pudding_in_a_cup.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Gogerr",
+  "by": "Gogerr"
+ },
+ "m19": {
+  "file": "File:Cookiedough.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cookiedough.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Geraldine",
+  "by": "Geraldine"
+ },
+ "m27": {
+  "file": "File:Coconut Rice - Easythaiger 2026-04-21.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Coconut_Rice_-_Easythaiger_2026-04-21.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m28": {
+  "file": "File:02. varenyky with cheese - crush cottage cheese.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:02._varenyky_with_cheese_-_crush_cottage_cheese.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Валентина Тимків",
+  "by": "Валентина Тимків"
+ },
+ "m29": {
+  "file": "File:Lemon Pasta with Peas (11667881).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Lemon_Pasta_with_Peas_(11667881).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Charles Haynes",
+  "by": "Charles Haynes"
+ },
+ "m31": {
+  "file": "File:Tuna fish sandwiches for the National School Lunch Program (1).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Tuna_fish_sandwiches_for_the_National_School_Lunch_Program_(1).jpg",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "artist": "U.S. Department of Agriculture",
+  "by": "U.S. Department of Agriculture"
+ },
+ "m33": {
+  "file": "File:Smoked chicken and avocado wrap.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Smoked_chicken_and_avocado_wrap.jpg",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "Takeaway",
+  "by": "Takeaway"
+ },
+ "m35": {
+  "file": "File:Sturgeon Kebab (2887202689).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Sturgeon_Kebab_(2887202689).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "flydime",
+  "by": "flydime"
+ },
+ "m36": {
+  "file": "File:Tomato Thyme Cod.png",
+  "page": "https://commons.wikimedia.org/wiki/File:Tomato_Thyme_Cod.png",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Valeva1010",
+  "by": "Valeva1010"
+ },
+ "m39": {
+  "file": "File:Green smoothie (8222465502).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Green_smoothie_(8222465502).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Lablascovegmenu from London",
+  "by": "Lablascovegmenu"
+ },
+ "m40": {
+  "file": "File:Handmade Chicken Shawarma Wrap - Lavash.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Handmade_Chicken_Shawarma_Wrap_-_Lavash.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Andy Li",
+  "by": "Andy Li"
+ },
+ "m41": {
+  "file": "File:Chicken sausage broiled with honey maple mustard on baguette - Massachusetts.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chicken_sausage_broiled_with_honey_maple_mustard_on_baguette_-_Massachusetts.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Daderot",
+  "by": "Daderot"
+ },
+ "m45": {
+  "file": "File:Vegan Brussel Sprout Feta Tofu Omelette (4267448339).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Vegan_Brussel_Sprout_Feta_Tofu_Omelette_(4267448339).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Vegan Feast Catering",
+  "by": "Vegan Feast Catering"
+ },
+ "m49": {
+  "file": "File:Tuna olive and avocado sandwich.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Tuna_olive_and_avocado_sandwich.jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Richard Masoner",
+  "by": "Richard Masoner"
+ },
+ "m51": {
+  "file": "File:Seitan 20210219 ubt.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Seitan_20210219_ubt.jpg",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "artist": "Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com]",
+  "by": "Tomasz Sienicki"
+ },
+ "m53": {
+  "file": "File:Quinoa Salad (5045982815).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Quinoa_Salad_(5045982815).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Geoff Peters from Vancouver, BC, Canada",
+  "by": "Geoff Peters"
+ },
+ "m58": {
+  "file": "File:Banana Smoothie.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Banana_Smoothie.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Ourlibrary",
+  "by": "Ourlibrary"
+ },
+ "m62": {
+  "file": "File:Muesli.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Muesli.jpg",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "artist": "Original description was: I, VirtualSteve took this photograph on February 19, 2006.",
+  "by": "VirtualSteve"
+ },
+ "m63": {
+  "file": "File:Granola, yogurt, fruit. (16696981528).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Granola,_yogurt,_fruit._(16696981528).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Arnold Gatilao from Oakland, CA, USA",
+  "by": "Arnold Gatilao"
+ },
+ "m66": {
+  "file": "File:Quinoa with mushrooms - Quinoa con champiñones (5168289038).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Quinoa_with_mushrooms_-_Quinoa_con_champi%C3%B1ones_(5168289038).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Lablascovegmenu from London",
+  "by": "Lablascovegmenu"
+ },
+ "m68": {
+  "file": "File:Chive egg pancake.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chive_egg_pancake.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Fumikas Sagisavas",
+  "by": "Fumikas Sagisavas"
+ },
+ "m72": {
+  "file": "File:Madeleines de Commercy.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Madeleines_de_Commercy.jpg",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "artist": "myself (Bernard Leprêtre)",
+  "by": "Bernard Leprêtre"
+ },
+ "m73": {
+  "file": "File:Vegetable pancake.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Vegetable_pancake.jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "stu_spivack",
+  "by": "stu_spivack"
+ },
+ "m74": {
+  "file": "File:Blini with salmon, Saint Petersburg, Russia.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Blini_with_salmon,_Saint_Petersburg,_Russia.JPG",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "User: (WT-shared) Shoestring at  wts wikivoyage",
+  "by": "Shoestring"
+ },
+ "m78": {
+  "file": "File:Green smoothie bowl.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Green_smoothie_bowl.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Miscellaneous contributor",
+  "by": "Miscellaneous contributor"
+ },
+ "m82": {
+  "file": "File:Banana Milkshake with hundreds and thousands.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Banana_Milkshake_with_hundreds_and_thousands.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "MyLifeStory from Bangsar, Malaysia",
+  "by": "MyLifeStory"
+ },
+ "m84": {
+  "file": "File:Liat Portal for Foodie Disorder - Quinoa, Schnitzel and Israeli Salad.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Quinoa,_Schnitzel_and_Israeli_Salad.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "HaJunkiyada",
+  "by": "HaJunkiyada"
+ },
+ "m85": {
+  "file": "File:Summer Quinoa Salad (Vegan) (7475479352).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Summer_Quinoa_Salad_(Vegan)_(7475479352).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Jennifer from Vancouver, Canada",
+  "by": "Jennifer"
+ },
+ "m88": {
+  "file": "File:Chicken breast and pineapple on lettuce, with mango vinaigrette dressing and black pepper - Massachusetts.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chicken_breast_and_pineapple_on_lettuce,_with_mango_vinaigrette_dressing_and_black_pepper_-_Massachusetts.jpg",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "artist": "Daderot",
+  "by": "Daderot"
+ },
+ "m5": {
+  "file": "File:Poulet basquaise 02.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Poulet_basquaise_02.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Arnaud 25",
+  "by": "Arnaud 25"
+ },
+ "m8": {
+  "file": "File:Shanghai lettuce wraps from Auburn Alehouse.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Shanghai_lettuce_wraps_from_Auburn_Alehouse.JPG",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "Ixfd64",
+  "by": "Ixfd64"
+ },
+ "m14": {
+  "file": "File:2019-11-12 02 46 46 A Wawa Turkey, Apple & Cranberry Wrap (Turkey breast with cranberry dill spread) divided into two pieces in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:2019-11-12_02_46_46_A_Wawa_Turkey,_Apple_%26_Cranberry_Wrap_(Turkey_breast_with_cranberry_dill_spread)_divided_into_two_pieces_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Famartin",
+  "by": "Famartin"
+ },
+ "m30": {
+  "file": "File:Pennette with Curry-Masala sauce (3405972805).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pennette_with_Curry-Masala_sauce_(3405972805).jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "homecooked by deedee",
+  "by": "homecooked by deedee"
+ },
+ "m43": {
+  "file": "File:Quinoa stuffed peppers.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Quinoa_stuffed_peppers.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Mark Bonica",
+  "by": "Mark Bonica"
+ },
+ "m64": {
+  "file": "File:Dannon Low Fat Yogurt Parfait 2 (15876174771).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Dannon_Low_Fat_Yogurt_Parfait_2_(15876174771).jpg",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "artist": "Willis Lam",
+  "by": "Willis Lam"
+ },
+ "m77": {
+  "file": "File:Tofu Scramble in New Orleans.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Tofu_Scramble_in_New_Orleans.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Bart Everson",
+  "by": "Bart Everson"
+ },
+ "m91": {
+  "file": "File:Stuffed avocado.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Stuffed_avocado.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Selena N. B. H. from Fayetteville, USA",
+  "by": "Selena N. B. H"
+ },
+ "m92": {
+  "file": "File:Four cheese omelet with EVOO.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Four_cheese_omelet_with_EVOO.jpg",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Philipp Michel Reichold",
+  "by": "Philipp Michel Reichold"
+ },
+ "m102": {
+  "file": "File:Argentine red kidney bean stew with smoked sausage and white rice.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Argentine_red_kidney_bean_stew_with_smoked_sausage_and_white_rice.jpg",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "artist": "Horacio Cambeiro",
+  "by": "Horacio Cambeiro"
+ },
+ "m96": {
+  "file": "File:Socca in Nice.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Socca_in_Nice.jpg",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "Paul Downey from Berkhamsted, UK",
+  "by": "Paul Downey"
  }
 }

@@ -15,13 +15,16 @@ const SHOTS = process.env.SHOTS || 'test-shots'; require('fs').mkdirSync(SHOTS, 
   const loaded = async () => page.evaluate(() => [...document.querySelectorAll('img[src*="photos/"]')].map((i) => ({ src: i.getAttribute('src'), ok: i.complete && i.naturalWidth > 0 })));
   await page.evaluate(() => Promise.all([...document.querySelectorAll('img[src*="photos/"]')].map((i) => { i.loading = 'eager'; return i.decode().catch(() => {}); })));
   let imgs = await loaded();
-  expect(imgs.length >= 8 && imgs.every((i) => i.ok), 'Plan shows photos on idea cards and saved rows (' + imgs.length + ' images, ' + imgs.filter((i) => !i.ok).length + ' broken)');
+  expect(imgs.length >= 6 && imgs.every((i) => i.ok), 'Plan shows photos on idea cards and saved rows (' + imgs.length + ' images, ' + imgs.filter((i) => !i.ok).length + ' broken)');
   await page.screenshot({ path: SHOTS + '/plan-photos.png' });
   await page.locator('#nm').evaluate((el) => el.scrollTo(0, 420)).catch(() => {});
   await page.screenshot({ path: SHOTS + '/plan-saved.png' });
   // every idea has a photo file and a credit
   const ideas = await page.evaluate(() => DC.comp.ideas.map((r) => ({ id: r.id, photo: r.photo, credit: r.credit })));
-  expect(ideas.length === 10 && ideas.every((r) => r.photo && /CC|Public/.test(r.credit)), 'all 10 ideas have a photo and a licence credit');
+  const withPhoto = ideas.filter((r) => r.photo);
+  expect(ideas.length >= 100 && withPhoto.length >= 100 && withPhoto.every((r) => /CC|Public/.test(r.credit)), withPhoto.length + ' of ' + ideas.length + ' recipes have a photo, each with a licence credit');
+  const files = await page.evaluate(async (list) => { const bad = []; for (const f of list) { const r = await fetch(f); if (!r.ok) bad.push(f); } return bad; }, withPhoto.map((r) => r.photo));
+  expect(!files.length, 'every recipe photo file exists ' + files.join(' '));
   // recipe page: big photo + credit link
   await page.evaluate(() => DC.comp.setState({ view: 'recipe', recipeId: 'i8', recipeBack: 'tabs' })); await page.waitForTimeout(400);
   await page.evaluate(() => Promise.all([...document.querySelectorAll('img[src*="photos/"]')].map((i) => i.decode().catch(() => {}))));

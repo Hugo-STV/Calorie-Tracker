@@ -1,0 +1,78 @@
+# Finds freely licensed photos on Wikimedia Commons for Fuel's recipes (several candidates each, with
+# author and licence) and puts them on the "recipe-photos" branch to choose from.
+name: Fetch recipe photos
+
+on:
+  push:
+    branches: [data-sources]
+    paths: ['.github/workflows/recipe-photos.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Search and download
+        run: |
+          mkdir -p out
+          cat > q.json <<'J'
+          {"i1": ["overnight oats", "overnight oats jar", "muesli yogurt jar"],
+           "i2": ["egg muffins", "egg muffin cups vegetables", "frittata muffins"],
+           "i3": ["burrito bowl", "chicken burrito bowl", "rice bowl chicken black beans"],
+           "i4": ["boiled eggs plate", "hard boiled eggs sliced", "snack plate eggs cheese fruit"],
+           "i5": ["syrniki", "cottage cheese pancakes", "tvorog pancakes"],
+           "i6": ["tuna bean salad", "tuna and white bean salad", "white bean salad"],
+           "i7": ["turkey chili", "chili con carne bowl", "chili bowl beans"],
+           "i8": ["baked salmon potatoes", "salmon fillet roasted potatoes", "salmon with potatoes"],
+           "i9": ["banana smoothie", "banana peanut butter smoothie", "smoothie glass banana"],
+           "i10": ["beef and broccoli", "beef broccoli stir fry", "stir fried beef broccoli"]}
+          J
+          python3 - <<'PY'
+          import json, urllib.request, urllib.parse, re, os, time
+          UA = {'User-Agent': 'FuelRecipePhotos/1.0 (https://github.com/Hugo-STV/Calorie-Tracker)'}
+          def get(url):
+              req = urllib.request.Request(url, headers=UA)
+              with urllib.request.urlopen(req, timeout=30) as r: return r.read()
+          OK = re.compile(r'^(CC0|Public domain|PD|CC BY(-SA)? [\d.]+|CC BY(-SA)?|Attribution|GFDL)', re.I)
+          q = json.load(open('q.json')); out = {}
+          for rid, terms in q.items():
+              seen, cands = set(), []
+              for t in terms:
+                  api = 'https://commons.wikimedia.org/w/api.php?' + urllib.parse.urlencode({'action': 'query', 'format': 'json', 'generator': 'search', 'gsrsearch': t + ' filetype:bitmap', 'gsrnamespace': 6, 'gsrlimit': 12, 'prop': 'imageinfo', 'iiprop': 'url|size|extmetadata|mime', 'iiurlwidth': 800})
+                  try: d = json.loads(get(api))
+                  except Exception as e: print('search failed', t, e); continue
+                  pages = sorted((d.get('query') or {}).get('pages', {}).values(), key=lambda p: p.get('index', 99))
+                  for p in pages:
+                      ii = (p.get('imageinfo') or [{}])[0]; m = ii.get('extmetadata') or {}
+                      lic = (m.get('LicenseShortName') or {}).get('value', '')
+                      if p['title'] in seen or ii.get('mime') not in ('image/jpeg', 'image/png') or ii.get('width', 0) < 700 or not OK.match(lic): continue
+                      seen.add(p['title'])
+                      artist = re.sub('<[^>]+>', '', (m.get('Artist') or {}).get('value', '')).strip()
+                      cands.append({'file': p['title'], 'thumb': ii.get('thumburl'), 'page': ii.get('descriptionurl'), 'license': lic, 'licenseUrl': (m.get('LicenseUrl') or {}).get('value', ''), 'artist': artist[:120], 'term': t})
+                      if len(cands) >= 4: break
+                  if len(cands) >= 4: break
+                  time.sleep(0.5)
+              for i, c in enumerate(cands):
+                  fn = f'{rid}-{i}.jpg'
+                  try: open('out/' + fn, 'wb').write(get(c['thumb'])); c['local'] = fn
+                  except Exception as e: print('download failed', c['file'], e)
+                  time.sleep(0.3)
+              out[rid] = cands; print(rid, [c['file'] for c in cands])
+          json.dump(out, open('out/candidates.json', 'w'), indent=1)
+          PY
+          ls -la out | head -60
+
+      - name: Push to the recipe-photos branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd out
+          git init -q -b recipe-photos
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -q -m "Recipe photo candidates (run ${{ github.run_id }})"
+          git push -q --force "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}" recipe-photos

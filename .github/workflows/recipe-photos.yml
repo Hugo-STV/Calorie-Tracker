@@ -20,11 +20,7 @@ jobs:
         run: |
           mkdir -p out
           cat > q.json <<'J'
-          {"i2": ["mini frittatas", "frittata muffins", "egg bites", "baked egg cups", "frittata"],
-           "i7": ["chili con carne", "chili con carne bowl", "bowl of chili"],
-           "i9": ["peanut butter smoothie", "banana milkshake", "smoothie glass"],
-           "x1": ["grilled chicken breast rice", "chicken rice broccoli meal prep"],
-           "x2": ["greek yogurt berries bowl", "yogurt parfait"]}
+          {"i2": ["mini quiche", "muffin tin omelet", "omelette muffins", "spinach frittata", "vegetable frittata slice", "quiche lorraine slice"]}
           J
           python3 - <<'PY'
           import json, urllib.request, urllib.parse, re, os, time

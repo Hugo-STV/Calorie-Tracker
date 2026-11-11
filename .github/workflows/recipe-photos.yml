@@ -20,16 +20,11 @@ jobs:
         run: |
           mkdir -p out
           cat > q.json <<'J'
-          {"i1": ["overnight oats", "overnight oats jar", "muesli yogurt jar"],
-           "i2": ["egg muffins", "egg muffin cups vegetables", "frittata muffins"],
-           "i3": ["burrito bowl", "chicken burrito bowl", "rice bowl chicken black beans"],
-           "i4": ["boiled eggs plate", "hard boiled eggs sliced", "snack plate eggs cheese fruit"],
-           "i5": ["syrniki", "cottage cheese pancakes", "tvorog pancakes"],
-           "i6": ["tuna bean salad", "tuna and white bean salad", "white bean salad"],
-           "i7": ["turkey chili", "chili con carne bowl", "chili bowl beans"],
-           "i8": ["baked salmon potatoes", "salmon fillet roasted potatoes", "salmon with potatoes"],
-           "i9": ["banana smoothie", "banana peanut butter smoothie", "smoothie glass banana"],
-           "i10": ["beef and broccoli", "beef broccoli stir fry", "stir fried beef broccoli"]}
+          {"i2": ["mini frittatas", "frittata muffins", "egg bites", "baked egg cups", "frittata"],
+           "i7": ["chili con carne", "chili con carne bowl", "bowl of chili"],
+           "i9": ["peanut butter smoothie", "banana milkshake", "smoothie glass"],
+           "x1": ["grilled chicken breast rice", "chicken rice broccoli meal prep"],
+           "x2": ["greek yogurt berries bowl", "yogurt parfait"]}
           J
           python3 - <<'PY'
           import json, urllib.request, urllib.parse, re, os, time

@@ -2762,7 +2762,8 @@ class Component extends DCLogic {
   weekBalance(S, plan, now) {
     now = now || new Date(); const dow = now.getDay(), days = S.days || {}, out = { on: S.weekTrack !== false, net: 0, logged: 0, over: 0, perDay: 0, today: 0, daysLeft: 7 - dow, leftover: 0 };
     for (let i = 0; i < dow; i++) {
-      const d = new Date(now); d.setDate(now.getDate() - dow + i); const r = days[d.toDateString()];
+      const d = new Date(now); d.setDate(now.getDate() - dow + i);
+      const r = S.demo ? this.dayAt(dow - i, S, plan, { kcal: 0 }) : days[d.toDateString()];
       if (!r || !(r.kcal > 0)) continue;
       out.logged++; out.net += r.kcal - (plan.cal + (S.trainMode === 'avg' ? 0 : (r.ex || 0)));
     }

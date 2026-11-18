@@ -4,6 +4,15 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.10.0 — 2026-11-17
+- **Keep my week on track** (More › Tracking, on by default; replaces the Weekend flex switch, which did
+  nothing yet). The week is Sunday to Saturday, like the strip on Today. Each logged day before today is
+  compared with its goal (target + that day's exercise); days under offset days over. If the week so far
+  is over, it comes off today and the days left, evenly: never more than 25% of the target a day, never
+  under the calorie floor; what can't be made up safely is shown, not forced. Being under never raises the
+  goal. The cut comes out of carbs. Today explains it under the calories bar, and How it's set shows the
+  − line. Sample data feeds it too.
+
 ## v1.9.0 — 2026-11-11
 - **Workout fuel** on Plan: Before / After picks for your training. After a finished Peak workout (or
   exercise logged in Fuel) it shows After, otherwise Before; tap either. Before: easy carbs, low in fat,

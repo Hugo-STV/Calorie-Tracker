@@ -4,6 +4,14 @@ Every release that goes live gets a version number here, a matching restore bran
 restorable: see *Rolling back* in the README. The preview (`/preview/`, *Fuel Preview*) always runs
 the next version before it goes live.
 
+## v1.11.0 — 2026-11-19
+- **Your day with this** on the food sheet: a live preview as you change servings, weigh it or switch
+  g / oz. Headline says whether it fits ("452 cal left after this") or how far over it puts you. Bars for
+  calories, protein, carbs and fat show already eaten (faded), this food (bright) and your goal (white
+  line), with what's left or over; protein says "g to go" or "goal hit". A tip says how much fits:
+  servings, or grams / oz when weighing, and whether carbs or fat run out before calories. Uses the
+  day you're logging to, including exercise and the keep-my-week-on-track cut.
+
 ## v1.10.0 — 2026-11-17
 - **Keep my week on track** (More › Tracking, on by default; replaces the Weekend flex switch, which did
   nothing yet). The week is Sunday to Saturday, like the strip on Today. Each logged day before today is

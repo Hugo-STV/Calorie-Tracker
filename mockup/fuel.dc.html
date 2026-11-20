@@ -1701,6 +1701,21 @@ a{color:#C8F25C}a:hover{color:#E2FF9A}
             <sc-if value="{{wg.active}}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{wg.clear}}" style="margin-top: 6px; min-height: 36px; border: 0; background: none; color: #C8F25C; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; padding: 0">Use servings instead</button></sc-if>
           </div>
         </sc-if>
+        <div style="margin-top: 12px; padding: 14px 12px 12px; border-radius: 14px; background: #14171B; border: 1px solid #2A2F37" aria-live="polite">
+          <div style="font-weight: 600">Your day with this <span class="muted" style="font-size: 12px; font-weight: 400">· updates as you change the amount</span></div>
+          <div style="margin-top: 4px; font-size: 14px; font-weight: 600; color: {{imp.headColor}}">{{imp.head}}</div>
+          <sc-for list="{{imp.rows}}" as="ir" hint-placeholder-count="4">
+            <div style="margin-top: 10px">
+              <div class="row" style="font-size: 13px; gap: 8px"><span style="font-weight: 600; display: flex; gap: 6px; flex: none">{{ir.label}}<span style="color: {{ir.color}}">{{ir.addTxt}}</span></span><span class="muted" style="font-variant-numeric: tabular-nums">{{ir.nums}} · <span style="color: {{ir.stColor}}">{{ir.status}}</span></span></div>
+              <div style="position: relative; height: 8px; margin-top: 5px; border-radius: 99px; background: #262B33; overflow: hidden">
+                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{ir.wBefore}}%; background: {{ir.faded}}"></div>
+                <div style="position: absolute; left: {{ir.wBefore}}%; top: 0; bottom: 0; width: {{ir.wAdd}}%; background: {{ir.color}}"></div>
+                <div style="position: absolute; left: {{ir.goalAt}}%; top: 0; bottom: 0; width: 2px; margin-left: -2px; background: #F2F4F7"></div>
+              </div>
+            </div>
+          </sc-for>
+          <div class="muted" style="margin-top: 10px; font-size: 12px; line-height: 1.4">{{imp.tip}} Faded = already eaten · bright = this food · white line = goal.</div>
+        </div>
         <div style="display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap">
           <sc-for list="{{mealChips}}" as="o" hint-placeholder-count="4">
             <button type="button" class="{{o.cls}}" onClick="{{o.pick}}">{{o.label}}</button>
@@ -3492,6 +3507,33 @@ class Component extends DCLogic {
           clear: () => this.setState({ selG: '' }) }; })(),
       mealChips: Object.keys(mealNames).map((k) => ({ label: mealNames[k], cls: chip(meal === k), pick: () => this.setState({ addMeal: k }) })),
       addMealLabel: mealNames[meal].toLowerCase(),
+      // live preview: your day (or the day you're viewing) with this portion added, against your goals
+      imp: (() => {
+        if (!S.sel) return { rows: [], head: '', tip: '' };
+        const cf = this.concrete(S.sel, S.selUnit || 0), n = wActive ? gIn / g0 : S.servings, fmt = (x) => Math.round(x).toLocaleString('en-US');
+        const carbT = Math.max(0, Math.round(plan.c - (vd ? 0 : wk.today) / 4));
+        const rows = [['Calories', 'kcal', '', eat.kcal, cf.kcal * n, budget, '#C8F25C'], ['Protein', 'p', ' g', eat.p, cf.p * n, plan.p, '#FFA866'], ['Carbs', 'c', ' g', eat.c, cf.c * n, carbT, '#7CC0FF'], ['Fat', 'f', ' g', eat.f, cf.f * n, plan.f, '#D4B2FF']].map(([label, key, u, before, add, tgt, color]) => {
+          const after = before + add, scale = Math.max(tgt, after, 1), over = after - tgt, isP = key === 'p';
+          const status = isP ? (over >= 0 ? 'goal hit' : fmt(-over) + u + ' to go') : over > 0.5 ? fmt(over) + u + ' over' : fmt(-over) + u + ' left';
+          return { label, color, faded: color + '59', wBefore: (Math.min(before, scale) / scale * 100).toFixed(1), wAdd: (Math.min(add, scale - Math.min(before, scale)) / scale * 100).toFixed(1), goalAt: (tgt / scale * 100).toFixed(1),
+            nums: fmt(before) + ' → ' + fmt(after) + ' / ' + fmt(tgt) + u, addTxt: '+' + fmt(add) + u, status, stColor: isP ? (over >= 0 ? '#C8F25C' : '#9AA3AE') : over > 0.5 ? '#FFA866' : '#9AA3AE', over: !isP && over > 0.5 };
+        });
+        const left = budget - eat.kcal, after = left - cf.kcal * n;
+        const head = after >= 0 ? 'Fits: ' + fmt(after) + ' cal left after this' : 'Puts you ' + fmt(-after) + ' cal over for the day';
+        // how much fits: calories first, then whichever of carbs / fat runs out sooner (protein has no ceiling)
+        const room = (have, tgt, per) => per > 0 ? (tgt - have) / per : Infinity;
+        const lim = [['calories', room(eat.kcal, budget, cf.kcal)], ['carbs', room(eat.c, carbT, cf.c)], ['fat', room(eat.f, plan.f, cf.f)]];
+        const amt = (x) => { if (wActive) { const g = Math.max(0, Math.floor(x * g0 / 5) * 5); return S.selGU === 'oz' ? Math.round(g / 28.35 * 10) / 10 + ' oz' : g + ' g'; }
+          const q = Math.floor(x * 4) / 4; return q + (q === 1 ? ' serving' : ' servings'); };
+        const tight = lim.slice(1).filter((l) => l[1] < lim[0][1]).sort((a, b) => a[1] - b[1])[0];
+        let tip = '';
+        if (left <= 0) tip = 'You\'re already at your calorie goal for the day.';
+        else if (lim[0][1] < (wActive ? 5 / g0 : 0.25)) tip = 'Even ' + (wActive ? 'a small amount' : '¼ serving') + ' goes over your calories.';
+        else if (tight && tight[1] >= 0) tip = 'Up to ' + amt(lim[0][1]) + ' fits your calories, ' + amt(tight[1]) + ' fits your ' + tight[0] + ' goal.';
+        else if (tight) tip = 'Up to ' + amt(lim[0][1]) + ' fits your calories (you\'re already over on ' + tight[0] + ').';
+        else tip = 'Up to ' + amt(lim[0][1]) + ' fits your calories.';
+        return { rows, head, headColor: after >= 0 ? '#C8F25C' : '#FFA866', tip };
+      })(),
       addFood: () => { const w = wActive && this.weighed(S.sel, gIn); const f = w || this.concrete(S.sel, S.selUnit || 0), n = w ? 1 : S.servings; this.setState({ sheet: null, sel: null, selG: '' }); this.logFood(f, n); },
       formTitle: fm ? fm.title : '', formSub: fm ? fm.sub : '', formFields: fm ? fm.fields : [], formCta: fm ? fm.cta : '',
       formDisabled: fm ? !fm.ok : true, formSave: fm ? fm.save : () => {},
